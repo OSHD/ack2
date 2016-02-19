@@ -1,0 +1,1398 @@
+... Fetching live version
+Server Address: oldschool2.runescape.com
+Version=108
+Server Address: oldschool2.runescape.com
+Removed 2143 unused methods in 0.26 secs
+Deleted 4817 Opaque Predicates!
+ay.ch
+ay.ch
+ay.ch
+ay.bm
+ay.bm
+ay.ch
+ay.bm
+ay.bm
+ay.ch
+ay.ch
+ay.bm
+ay.ar
+ay.ad
+ay.bm
+ay.ch
+ay.ch
+ay.cg
+ay.cm
+ay.ar
+ay.ak
+ay.ch
+ay.bm
+ay.bc
+ay.bc
+ay.aw
+ay.bm
+ay.bc
+ay.bu
+ay.ba
+ay.bp
+ck.cr
+ay.bo
+ay.bx
+ay.bs
+ay.bx
+ay.bs
+ay.bv
+ay.bu
+ay.bc
+ay.aw
+ay.bc
+ay.bm
+ay.bm
+ay.bc
+ck.cr
+ay.bo
+ay.bx
+ay.bs
+ay.bx
+ay.bs
+ay.bv
+ay.ba
+ay.bp
+bo.d
+bo.o
+bo.d
+bo.o
+bo.d
+bo.d
+bo.o
+bo.d
+bo.d
+bo.o
+bo.d
+bo.d
+bo.o
+bo.d
+bo.d
+bc.i
+bc.i
+bc.i
+bc.i
+bc.i
+bc.i
+bc.i
+bc.i
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+bo.d
+bo.d
+bo.o
+bo.o
+bo.d
+bo.d
+bo.o
+bo.o
+db.v
+db.f
+db.v
+db.f
+db.v
+db.f
+db.v
+db.f
+db.v
+db.f
+db.v
+db.f
+ay.ba
+ay.bp
+ay.bm
+ay.bm
+ay.ad
+ay.ak
+ay.bc
+ay.aw
+ck.cr
+ay.bo
+ay.bx
+ay.bs
+ay.bx
+ay.bs
+ay.bv
+ay.bc
+ay.bu
+ay.ad
+ay.ak
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.bc
+ay.bm
+ay.bm
+ay.bm
+ay.br
+ay.ch
+ay.ak
+ay.cg
+ay.cm
+ay.ad
+ay.ch
+ay.ch
+ay.ch
+ay.ch
+ay.aw
+ay.at
+ay.al
+ay.ag
+ay.ay
+ay.ah
+ay.aw
+ay.aw
+ay.at
+ay.at
+ay.at
+ay.aj
+ay.aj
+ay.ag
+ay.ag
+ay.ay
+ay.ay
+ay.az
+ay.az
+ay.ac
+ay.ac
+ay.ac
+ay.az
+ay.aj
+ay.bm
+ay.bm
+ay.bc
+ay.bu
+ay.ba
+ay.bp
+ck.cr
+ay.bo
+ay.bx
+ay.bs
+ay.bx
+ay.bs
+ay.bc
+ay.bv
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.cl
+ay.ad
+ay.ak
+ay.bc
+ay.aw
+ay.ad
+ay.ak
+ay.ch
+ay.cm
+ay.ak
+ay.cg
+ay.ad
+ay.ah
+ay.an
+ay.am
+ay.bt
+ay.an
+ay.bt
+ay.bw
+cf.l
+cf.x
+cf.x
+cf.x
+cf.l
+cf.n
+cf.n
+cf.l
+cf.s
+cf.u
+cf.s
+cf.n
+cf.u
+cf.x
+cf.x
+cf.s
+cf.x
+cf.l
+cf.l
+cf.s
+cf.l
+cf.n
+cf.n
+cf.u
+cf.u
+cf.n
+cf.l
+cf.l
+cf.l
+cf.n
+cf.l
+cf.x
+cf.x
+cf.x
+cf.s
+cf.l
+cf.u
+cf.n
+cf.n
+cf.s
+cf.u
+cf.n
+cf.l
+cf.x
+cf.x
+cf.x
+cf.l
+cf.s
+cf.s
+cf.n
+cf.u
+cf.u
+cf.l
+cf.n
+cf.x
+cf.s
+cf.l
+cf.s
+cf.l
+cf.l
+cf.u
+cf.u
+cf.n
+cf.x
+cf.n
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.n
+cf.n
+cf.u
+cf.x
+cf.x
+cf.s
+cf.s
+cf.l
+cf.l
+cf.l
+cf.l
+cf.u
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.s
+cf.x
+cf.u
+cf.u
+cf.x
+cf.n
+cf.n
+cf.l
+cf.s
+cf.n
+cf.x
+cf.u
+cf.s
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.n
+cf.x
+cf.u
+cf.s
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.l
+cf.n
+cf.n
+cf.s
+cf.l
+cf.l
+cf.s
+cf.x
+cf.x
+cf.n
+cf.u
+cf.u
+cf.x
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+ck.cr
+dx.f
+dx.f
+dx.f
+dx.f
+dx.f
+dx.f
+fh.v
+fh.v
+fh.v
+fh.v
+fh.v
+fh.v
+fh.v
+ei.n
+ei.n
+ei.n
+bk.n
+bk.n
+bk.n
+cf.l
+cf.x
+cf.x
+cf.n
+cf.l
+cf.s
+cf.s
+cf.n
+cf.u
+cf.x
+cf.n
+cf.u
+cf.l
+cf.l
+cf.s
+cf.x
+cf.x
+cf.x
+cf.l
+cf.s
+cf.n
+cf.u
+cf.n
+cf.u
+cf.l
+cf.n
+cf.l
+cf.l
+cf.u
+cf.x
+cf.l
+cf.s
+cf.n
+cf.x
+cf.n
+cf.n
+cf.s
+cf.u
+cf.x
+cf.l
+cf.n
+cf.x
+cf.l
+cf.s
+cf.s
+cf.n
+cf.n
+cf.x
+cf.u
+cf.u
+cf.x
+cf.l
+cf.l
+cf.n
+cf.l
+cf.x
+cf.u
+cf.l
+cf.s
+cf.s
+cf.n
+cf.x
+cf.n
+cf.u
+cf.x
+cf.l
+cf.x
+cf.x
+cf.l
+cf.s
+cf.x
+cf.n
+cf.n
+cf.n
+cf.u
+cf.u
+cf.l
+cf.s
+cf.l
+cf.u
+cf.x
+cf.x
+cf.x
+cf.l
+cf.s
+cf.n
+cf.n
+cf.s
+cf.l
+cf.u
+cf.n
+Graphed 7904 Method Call(s).
+Graphed 33992 Field Call(s).
+OK:nai(Lay;II)V
+OK:nai(Lay;II)V
+Here
+
+ay.ay
+ck.cr
+ay.az
+ay.aw
+bo.d
+mult : null
+
+ay.ay
+ck.cr
+ay.az
+ay.aw
+bo.d
+multnull
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:9
+READU:10
+READU:11
+READU:12
+READU:13
+READU:14
+READU:15
+READU:16
+READU:17
+READU:18
+READU:0
+READU:1
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:9
+READU:10
+READU:11
+READU:12
+READU:13
+READU:14
+READU:15
+READU:16
+READU:17
+READU:18
+READU:19
+READU:20
+READU:21
+READU:0
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:9
+READU:10
+READU:11
+READU:12
+READU:13
+READU:14
+READU:15
+READU:16
+READU:17
+READU:18
+READU:19
+READU:20
+READU:21
+READU:22
+READU:23
+READU:24
+READU:25
+READU:26
+READU:27
+READU:28
+READU:29
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:0
+READU:0
+READU:1
+READU:0
+READU:1
+READU:0
+READU:1
+READU:0
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:0
+READU:1
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:0
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:9
+READU:10
+READU:11
+READU:12
+READU:13
+READU:14
+READU:15
+READU:16
+READU:17
+READU:18
+READU:19
+READU:0
+READU:1
+READU:2
+READU:3
+READU:4
+READU:5
+READU:6
+READU:7
+READU:8
+READU:9
+READU:10
+READU:11
+READU:12
+READU:13
+READU:14
+READU:15
+READU:16
+READU:0
+READU:1
+READU:0
+READU:0
+READU:1
+GameStrings := ft
+
+Bitmap := bo
+  ? bitmap........................bo.c
+  ? engineRastor..................BROKEN
+
+GameCanvas := er
+  ? component.....................er.v
+
+Parameters := gj
+  ? key...........................gj.x
+
+Node := gq
+  ? key...........................gq.ee
+  ? next..........................gq.ex
+  ? previous......................gq.ep
+  ? unlink........................gq.im()V
+
+DualNode := gk extends Node
+  ? dualNext......................gk.cu
+  ? dualPrevious..................gk.cd
+  ? unlinkDual....................gk.eb()V
+
+Entity := ck extends DualNode
+  ? modelHeight...................ck.cr x 643748231
+
+Model := dq extends Entity
+  ? allowClickBounds..............dq.af
+  ? verticesX.....................dq.c
+  ? verticesY.....................dq.p
+  ? verticesZ.....................dq.j
+  ? XYZMag........................dq.ai x DNE
+
+Sprite := cl
+  ? height........................cl.i x DNE
+  ? maxX..........................cl.c x DNE
+  ? maxY..........................cl.p x DNE
+  ? paddingX......................cl.d x DNE
+  ? paddingY......................cl.o x DNE
+  ? pixels........................cl.v
+  ? width.........................cl.f x DNE
+
+InterfaceNode := d extends Node
+  ? owner.........................d.v x -711450013
+  ? type..........................d.f x -1277369941
+
+NodeTable := gv
+  ? buckets.......................gv.f
+  ? index.........................gv.v x DNE
+  ? size..........................gv.o x DNE
+
+Deque := gs
+  ? head..........................gs.v
+  ? tail..........................gs.f
+
+Buffer := dx extends Node
+  ? applyRSA......................dx.az(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V
+  ? caret.........................dx.f x 334524255
+  ? crcTable......................dx.i
+  ? payload.......................dx.v
+  ? readByte......................dx.m(I)B
+  ? readInt.......................dx.b(I)I
+  ? readUShort....................dx.e(I)I
+
+IsaacRandom := di
+  ? b.............................BROKEN
+  ? c.............................BROKEN
+  ? count.........................di.d x -518068009
+  ? isaac.........................di.f(I)V ? (I)[-2147483648,-1135562858)~> -1641523253
+  ? val...........................di.v(S)I ? (S)(180,32767]~> 16473
+
+PacketBuffer := dw extends Buffer
+  ? bitCaret......................dw.h x 1845873127
+  ? bitMasks......................dw.y
+  ? random........................dw.a
+  ? readBits......................dw.hb(II)I ? 159
+  ? readHeader....................dw.hl(I)I
+  ? writeHeader...................dw.ht(IB)V
+
+GPI := aw
+  ? cachedAppearances.............aw.o
+  ? chatBuffer....................aw.q
+  ? globalPlayerCount.............ag.a x -1945075057
+  ? globalPlayerIndices...........aw.z
+  ? localPlayerCount..............ag.q x 1515314215
+  ? localPlayerIndices............aw.a
+  ? movementTypes.................BROKEN
+  ? pendingFlagsCount.............ar.br x -154529799
+  ? pendingFlagsIndices...........aw.l
+  ? skipFlags.....................BROKEN
+
+ExchangeOffer := hy
+  ? itemId........................hy.f x 1743657529
+  ? itemQuantity..................hy.d x -1904724531
+  ? price.........................hy.i x 1194063493
+  ? spent.........................hy.c x 1196320857
+  ? status........................hy.v
+  ? transferred...................hy.o x -1692579637
+
+Varpbit := ax extends DualNode
+  ? highBit.......................ax.o x -2097678691
+  ? lowBit........................ax.d x -1844830197
+  ? varp..........................ax.i x 1484076037
+
+ClanMate := t
+  ? displayName...................t.v
+  ? rank..........................t.d
+  ? world.........................t.i x -650305333
+
+FriendedPlayer := n
+  ? displayName...................n.v
+  ? previousName..................n.f
+  ? world.........................n.i x 1311344281
+
+IgnoredPlayer := j
+  ? displayName...................j.v
+  ? previousName..................j.f
+
+ItemTable := x extends Node
+  ? ids...........................x.i
+  ? quantities....................x.f
+
+Landscape := cm
+  ? addBoundary...................cm.a(IIIILck;Lck;IIII)V
+  ? addBoundaryDecoration.........cm.y(IIIILck;Lck;IIIIII)V
+  ? addEntityMarker...............cm.l(IIIIIIIILck;IZII)Z
+  ? addItemPile...................cm.j(IIIILck;ILck;Lck;)V
+  ? addTempEntity.................cm.z(IIIIILck;IIZ)Z
+  ? addTileDecoration.............cm.p(IIIILck;II)V
+  ? render........................cm.az(IIIIII)V
+  ? tempEntityMarkers.............cm.a
+  ? tiles.........................cm.c
+  ? visibilityMap.................cm.bn
+
+LandscapeTile := ci
+  ? boundaryDecorationStub........ci.j
+  ? boundaryStub..................ci.p
+  ? entityMarkers.................ci.z
+  ? floorLevel....................ci.v x -987997023
+  ? itemPile......................ci.y
+  ? regionX.......................ci.f x 1573429321
+  ? regionY.......................ci.i x -481153711
+  ? tileDecorationStub............ci.a
+
+BoundaryStub := cg
+  ? config........................cg.a x -1517505161
+  ? entityA.......................cg.c
+  ? entityB.......................cg.p
+  ? height........................cg.v x 1222684837
+  ? orientationA..................cg.d x -284458363
+  ? orientationB..................cg.o x -769255619
+  ? strictX.......................cg.f x -2045484377
+  ? strictY.......................cg.i x 2137582751
+  ? uid...........................cg.j x -1812935073
+
+BoundaryDecorationStub := cv
+  ? config........................cv.h x 343583867
+  ? entityA.......................cv.j
+  ? entityB.......................cv.a
+  ? height........................cv.v x -1660394267
+  ? insetX........................cv.c x -643586073
+  ? insetY........................cv.p x -1250896823
+  ? orientationA..................cv.d x -824481397
+  ? orientationB..................cv.o x -1711180177
+  ? strictX.......................cv.f x -205745469
+  ? strictY.......................cv.i x 902883011
+  ? uid...........................cv.y x -573035545
+
+TileDecorationStub := ce
+  ? config........................ce.c x 849535077
+  ? entity........................ce.d
+  ? height........................ce.v x -245659529
+  ? strictX.......................ce.f x 1051453727
+  ? strictY.......................ce.i x -1859907745
+  ? uid...........................ce.o x 763865297
+
+ItemPile := cn
+  ? bottom........................cn.d
+  ? counterHeight.................cn.v x -1791545233
+  ? height........................cn.j x 1214592995
+  ? middle........................cn.o
+  ? strictX.......................cn.f x -1065257965
+  ? strictY.......................cn.i x -1738613599
+  ? top...........................cn.c
+  ? uid...........................cn.p x -1177027277
+
+EntityMarker := cz
+  ? config........................cz.l x -1451143503
+  ? entity........................cz.o
+  ? floorLevel....................cz.v x -595713923
+  ? height........................cz.f x 1808461783
+  ? maxX..........................cz.j x -1056124447
+  ? maxY..........................cz.y x 104624439
+  ? orientation...................cz.c x 1748108673
+  ? regionX.......................cz.p x 2082310487
+  ? regionY.......................cz.a x -1004197203
+  ? strictX.......................cz.i x -140235499
+  ? strictY.......................cz.d x 63361753
+  ? uid...........................cz.w x -5492195
+
+GraphicsStub := ai extends Entity
+  ? finished......................ai.y
+  ? floorLevel....................ai.i x -187167669
+  ? height........................ai.c x 959896903
+  ? id............................ai.v x 1394390567
+  ? regionX.......................ai.d x 974426311
+  ? regionY.......................ai.o x 451042115
+  ? startCycle....................ai.f x -1366165455
+
+DynamicObject := w extends Entity
+  ? floorLevel....................w.d x 269853297
+  ? id............................w.v x 952114427
+  ? orientation...................w.i x 1812854747
+  ? regionX.......................w.o x -711442109
+  ? regionY.......................w.c x -1723737123
+  ? type..........................w.f x 733629229
+
+Projectile := p extends Entity
+  ? endHeight.....................p.c x 570938865
+  ? id............................p.v x 946559685
+  ? loopCycle.....................p.j x 1777182759
+  ? slope.........................p.a x 309085717
+  ? startDistance.................p.y x 922285215
+  ? startHeight...................p.o x -554213201
+  ? strictX.......................p.i x -1145979407
+  ? strictY.......................p.d x -1661102929
+  ? targetIndex...................p.h x 1942403755
+
+Character := ay extends Entity
+  ? animation.....................ay.bm x -328192667
+  ? animFrameId...................ay.ba x 1167084543
+  ? getNextAnimation..............ay.at x -194135383
+  ? healthBarCycle................ay.ah x -214514729
+  ? hitpoints.....................ay.aq x -1320827749
+  ? hitsplatCycles................ay.as
+  ? hitsplatDamages...............ay.ab
+  ? hitsplatTypes.................ay.ax
+  ? idleAnimation.................ay.aw x 2117542747
+  ? interAnimFrameId..............ay.bp x -202425665
+  ? interAnimId...................ay.bc x 1584425833
+  ? maxHitpoints..................ay.bw x -1815854925
+  ? modelHeight...................ay.bo x -1062427759
+  ? npcBoundDim...................ay.ar x 64049856
+  ? npcDegToTurn..................ay.cs x 273643895
+  ? npcTurnAround.................ay.ag x 1032828051
+  ? npcTurnLeft...................ay.az x 1799699837
+  ? npcTurnRight..................ay.ay x -1138575405
+  ? orientation...................ay.cs x 273643895
+  ? overheadText..................ay.aa
+  ? queueSize.....................ay.ch x 961309197
+  ? runAnimation..................ay.ac x 1433962317
+  ? strictX.......................ay.ad x 850935525
+  ? strictY.......................ay.ak x -763748175
+  ? targetIndex...................ay.bt x -1873213265
+  ? unknown7......................ay.al x 2116196439
+  ? walkAnimation.................ay.aj x -656386329
+
+Npc := al extends Character
+  ? definition....................al.v
+
+Player := i extends Character
+  ? combatLevel...................i.e x 874877929
+  ? config........................i.f
+  ? height........................BROKEN
+  ? name..........................i.v
+  ? prayerIcon....................i.i x 592587305
+  ? skullIcon.....................i.d x -141081485
+  ? team..........................i.e x 874877929
+  ? totalLevel....................i.j x -718491801
+
+GroundItem := ak extends Entity
+  ? id............................ak.v x -328489329
+  ? quantity......................ak.f x -379243413
+
+NpcDefinition := ac extends DualNode
+  ? actions.......................ac.e
+  ? colors........................ac.s
+  ? combatLevel...................ac.r x 1546186585
+  ? id............................ac.o x 2061229421
+  ? modifiedColors................ac.n
+  ? name..........................ac.c
+  ? transform.....................ac.p(I)Lac; ? 159
+  ? transformIds..................ac.au
+  ? varp32Index...................ac.aw x -2113565215
+  ? varpIndex.....................ac.ar x -390129581
+
+ObjectDefinition := aa extends DualNode
+  ? actions.......................aa.ak
+  ? clipped.......................aa.aw
+  ? clipType......................aa.k x -652499099
+  ? colors........................aa.w
+  ? id............................aa.a x -794075063
+  ? mapFunction...................aa.ai x -854824943
+  ? modelClipped..................aa.aw
+  ? modifiedColors................aa.l
+  ? name..........................aa.z
+  ? sizeX.........................aa.n x 1534682799
+  ? sizeY.........................aa.s x -1351772359
+  ? transform.....................aa.z(I)Laa; ? (I)[-2147483648,7104675)~> -1070189486
+  ? transformIds..................aa.av
+  ? varp32Index...................aa.an x -1380758079
+  ? varpIndex.....................aa.am x 923645955
+
+ItemDefinition := aq extends DualNode
+  ? actions.......................aq.ak
+  ? colors........................aq.q
+  ? groundActions.................aq.ad
+  ? id............................fy.w x 1176964233
+  ? modifiedColors................aq.x
+  ? name..........................aq.l
+  ? notedId.......................aq.an x -1908001759
+  ? stackable.....................aq.t x 884693979
+  ? storeValue....................aq.ag x 1372983669
+  ? unnotedId.....................aq.am x 1006550135
+
+PlayerConfig := fg
+  ? appearance....................fg.v
+  ? appearanceColors..............fg.f
+  ? female........................fg.i
+  ? npcId.........................fg.d x 757016153
+
+GameEngine := ei
+  ? focused.......................ei.rq
+  ? shell.........................ei.ps
+
+World := g
+  ? activity......................g.l
+  ? domain........................g.z x 807713739
+  ? index.........................g.w x -1826278093
+  ? location......................g.q
+  ? mask..........................g.h x -683317883
+  ? population....................g.x x -1890405749
+  ? world.........................g.o
+
+ScriptEvent := v extends Node
+  ? args..........................v.v
+  ? opbase........................v.y
+
+KeyFocusListener := el
+
+RuneScript := r extends DualNode
+  ? intArgCount...................r.c x 1695580995
+  ? intOperands...................r.i
+  ? intStackCount.................r.j x -315018095
+  ? opcodes.......................r.f
+  ? stringArgCount................r.p x -2091940875
+  ? stringOperands................r.d
+  ? stringStackCount..............r.o x 1866387855
+
+Widget := fy
+  ? actions.......................fy.ck
+  ? alpha.........................fy.av x -62039033
+  ? borderThickness...............fy.as x -1261190405
+  ? boundsIndex...................fy.ew x 1113570083
+  ? buttonType....................fy.u x -112825295
+  ? children......................fy.ec
+  ? columnPadding.................fy.bh x -848808615
+  ? config........................fy.cj x -1121486011
+  ? configListenerArgs............fy.cq
+  ? configTriggers................fy.dq
+  ? contentType...................fy.s x -1576291853
+  ? flippedHorizontally...........fy.bw
+  ? flippedVertically.............fy.aq
+  ? fontId........................fy.by x -1997904013
+  ? height........................fy.ak x 1458286821
+  ? hidden........................fy.aw
+  ? id............................fy.w x 1176964233
+  ? index.........................fy.l x -5591703
+  ? insetX........................fy.at x -656606397
+  ? insetY........................fy.al x 969028545
+  ? interactable..................fy.aq
+  ? itemId........................fy.ej x -2065786127
+  ? itemIds.......................fy.dt
+  ? itemQuantities................fy.dl
+  ? itemQuantity..................fy.et x 1835778085
+  ? loopCycle.....................fy.em x -908579639
+  ? modelId.......................fy.bn x 2137980523
+  ? modelType.....................fy.bt x 776139469
+  ? modelZoom.....................fy.bx x 2142477683
+  ? mouseEnterListener............fy.cc
+  ? mouseExitListener.............fy.cn
+  ? mouseHoverListener............fy.cz
+  ? name..........................fy.cy
+  ? parent........................fy.cm
+  ? parentId......................fy.ar x 1729142883
+  ? relativeX.....................fy.g x -945097897
+  ? relativeY.....................fy.af x -1945821643
+  ? renderListener................fy.du
+  ? rotationX.....................fy.bg x -1877737263
+  ? rotationY.....................fy.bz x -1350263333
+  ? rotationZ.....................fy.bu x 1030570619
+  ? rowPadding....................fy.bo x -921814147
+  ? scrollListener................fy.de
+  ? selectedAction................fy.cd
+  ? shadowColor...................fy.ah x 1310134889
+  ? skillListenerArgs.............fy.dk
+  ? skillTriggers.................fy.do
+  ? spriteId......................fy.ax x 999546143
+  ? tableActions..................fy.ch
+  ? tableListenerArgs.............fy.da
+  ? tableModTriggers..............fy.db
+  ? text..........................fy.bj
+  ? textColor.....................fy.ay x -1501775845
+  ? textShadowed..................fy.bl
+  ? textureId.....................fy.ae x -68407057
+  ? tooltip.......................fy.ds
+  ? type..........................fy.q x 560562297
+  ? varpOpcodes...................fy.di
+  ? viewportHeight................fy.ag x -1641412577
+  ? viewportWidth.................fy.aj x -1199410745
+  ? width.........................fy.ad x -1570148805
+  ? xSprites......................fy.cl
+  ? ySprites......................fy.cl
+
+Client := client extends GameEngine
+  ? addMenuRow....................ec.cs(Ljava/lang/String;Ljava/lang/String;IIIII)V ? (I)(653045381,2147483647]~> 1400264514
+  ? audioEffectCount..............client.nz x 1381441393
+  ? bootState.....................client.am x 441386653
+  ? cacheDirectory................ey.o
+  ? cacheLocation.................ey.o
+  ? cameraPitch...................dr.fw    x -1236188669
+  ? cameraX.......................dj.fn    x -1945829689
+  ? cameraY.......................a.fj     x 941812487
+  ? cameraYaw.....................f.fc     x 1970239877
+  ? cameraZ.......................g.fu     x -392278511
+  ? clanChatName..................client.me
+  ? clanChatOwner.................client.my
+  ? clanChatRank..................y.mk
+  ? clanChatSize..................cp.mh    x -376943553
+  ? clanMates.....................l.ms
+  ? colorsToFind..................BROKEN
+  ? colorsToFind1.................BROKEN
+  ? colorsToReplace...............BROKEN
+  ? colorsToReplace1..............BROKEN
+  ? connectionState...............client.bk x -984610939
+  ? currentLevels.................client.hz
+  ? currentSpellTargets...........ag.ik    x -864919757
+  ? cursorState...................BROKEN
+  ? destinationX..................BROKEN
+  ? destinationY..................BROKEN
+  ? energy........................client.jw x 1389497913
+  ? engineCycle...................client.k x 1694239707
+  ? engineVars....................fp.f
+  ? experiences...................client.hc
+  ? floorLevel....................f.ga     x 1014567787
+  ? focused.......................ei.rq
+  ? fps...........................client.qy x 2072264711
+  ? friendedPlayers...............client.og
+  ? friendListSize................client.oh x -1865751153
+  ? getItemDefinition.............i.f(II)Laq; ? (I)[-2147483648,1671683357) U (1671683357,2147483647]~> 1671683358
+  ? getItemSprite.................x.h(IIIIIZI)Lcl; ? 159
+  ? getKeyFocusListener...........el.v
+  ? getNpcDefinition..............aw.v(II)Lac; ? (I)[-2147483648,-1718516433) U (-1718516433,2147483647]~> -1718516432
+  ? getObjectDefinition...........z.f(IB)Laa; ? 159
+  ? getRuneScript.................dr.v(II)Lr; ? (I)[-2147483648,-1452776880) U (-1452776880,2147483647]~> -1452776879
+  ? getVarpbit....................e.v(II)I ? (I)[-2147483648,-2113565215)~> -2130524431
+  ? getWidgetConfig...............o.dh(Lfy;I)I ? (I)[-2147483648,-358510671)~> -1252997159
+  ? graphicsObjectDeque...........client.hm
+  ? groundItemDeque...............client.hq
+  ? hintArrowX....................client.at x 120451353
+  ? hintArrowY....................client.al x 1342346249
+  ? ignoredPlayers................client.oq
+  ? ignoreListSize................client.oh x -1865751153
+  ? interfaceNodes................client.im
+  ? interfaces....................fy.v
+  ? itemSelectionStatus...........client.ia x -904669387
+  ? itemTables....................x.v
+  ? landscape.....................n.dy
+  ? levels........................client.hi
+  ? loadWorlds....................bc.v(I)Z ? (I)[-2147483648,-761827356)~> -1454655502
+  ? localExchangeOffers...........client.pr
+  ? membersWorld..................client.h
+  ? menuActionPrefix..............client.iq
+  ? menuActions...................client.iy
+  ? menuArg0......................client.iu
+  ? menuArg1......................client.hp
+  ? menuArg2......................client.ig
+  ? menuHeight....................t.hb     x 591650091
+  ? menuItemCount.................client.hh x -2093403587
+  ? menuNouns.....................client.ij
+  ? menuOpcodes...................client.in
+  ? menuOpen......................client.hs
+  ? menuWidth.....................bc.hx    x 1755352163
+  ? menuX.........................cw.ht    x 1431836259
+  ? menuY.........................aw.hl    x -2035627519
+  ? minimapRotation...............client.ff x 1492575139
+  ? minimapScale..................client.ef x 1494142579
+  ? minimapSprite.................ay.mv
+  ? myPlayer......................s.hg
+  ? myPlayerIndex.................client.gq x 1323126647
+  ? myRights......................client.jl x 24038553
+  ? myWorld.......................client.d x 763470159
+  ? npcArray......................client.cf
+  ? npcIndices....................client.ch
+  ? onCursorCount.................dq.bd    x DNE
+  ? onCursorUids..................dq.bm
+  ? packet........................client.cr
+  ? playerActions.................client.hj
+  ? playerArray...................client.gz
+  ? processFrames.................cz.bp(B)Z ? (B)[-128,0) U (0,127]~> 1
+  ? processLogic..................client.eg()V
+  ? processLogin..................dm.x(I)V ? (I)(1115022925,2147483647]~> 1631253286
+  ? projectileDeque...............client.hn
+  ? regionBaseX...................t.dq     x -1013043268
+  ? regionBaseY...................a.da     x 2062356389
+  ? renderRules...................c.f
+  ? screenCenterX.................cm.k     x DNE
+  ? screenCenterY.................cm.k     x DNE
+  ? screenHeight..................client.ok x 1355894443
+  ? screenWidth...................client.op x -1426491123
+  ? screenZoom....................client.om x -1142851171
+  ? selectedItemIndex.............w.ir     x -1160042355
+  ? selectedItemName..............client.it
+  ? selectedSpellName.............client.il
+  ? setWorld......................ei.z(Lg;I)V ? 159
+  ? spellSelected.................client.ic
+  ? tempVars......................fp.i
+  ? tileHeights...................c.v
+  ? viewRotation..................client.ec x 1325896879
+  ? weight........................client.jn x -533895295
+  ? worldCount....................es.j     x 1129156130
+  ? worlds........................g.o
+  ? worldSelectorDisplayed........client.mu
+  ? xViewportBuffer...............dq.ag
+  ? yViewportBuffer...............dq.aj
+
+  Found 419/432 hooks, 47/47 classes!
+gq
+gk
+ck
+ay

@@ -8,6 +8,7 @@ import static org.objectweb.asm.Opcodes.LCONST_0;
 import static org.objectweb.asm.Opcodes.LCONST_1;
 import static org.objectweb.asm.Opcodes.LDC;
 
+import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.IntInsnNode;
@@ -39,6 +40,15 @@ public class ASMUtil {
 
     public static String fieldKey(FieldInsnNode fin) {
         return fieldKey(fin.owner,fin.name,fin.desc);
+    }
+    
+    public static String getMethodDescriptor(Class<?> ret, Class<?>... args) {
+        Type ret0 = Type.getType(ret);
+        Type[] args0 = new Type[args.length];
+        for(int i = 0; i < args.length; i++) {
+            args0[i] = Type.getType(args[i]);
+        }
+        return Type.getMethodDescriptor(ret0,args0);
     }
 
 }

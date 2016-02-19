@@ -30,7 +30,7 @@ public class DummyParameterVisitor extends NodeVisitor {
     private int numberFor(AbstractInsnNode ain) {
         if (ain instanceof IntInsnNode) {
             return ((IntInsnNode) ain).operand;
-        } else if (ain instanceof LdcInsnNode) {
+        } else if (ain instanceof LdcInsnNode && ( ((LdcInsnNode) ain).cst instanceof Integer ) ) {
             return (int) ((LdcInsnNode) ain).cst;
         } else if (ain instanceof InsnNode) {
             if (ain.opcode() >= ICONST_0 && ain.opcode() <= DCONST_1) {

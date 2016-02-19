@@ -3,7 +3,9 @@ package com.dank.analysis.impl.misc;
 import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
-import jdk.nashorn.internal.codegen.types.Type;
+import com.dank.util.ASMUtil;
+
+import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import java.awt.*;
@@ -22,10 +24,10 @@ public class Sprite extends Analyser {
         for(MethodNode mn : cn.methods) {
             if(!mn.name.equals("<init>")) continue;
             final String desc = mn.desc;
-            if(desc.equals(Type.getMethodDescriptor(Void.TYPE,int.class,int.class))) {
+            if(desc.equals(ASMUtil.getMethodDescriptor(Void.TYPE,int.class,int.class))) {
 
                 type_a = true;
-            } else if(desc.equals(Type.getMethodDescriptor(Void.TYPE,byte[].class, Component.class))) {
+            } else if(desc.equals(ASMUtil.getMethodDescriptor(Void.TYPE,byte[].class, Component.class))) {
 
                 type_b = true;
             }
@@ -40,7 +42,7 @@ public class Sprite extends Analyser {
     public void evaluate(ClassNode cn) {
         for(MethodNode mn : cn.methods) {
             if(!mn.name.equals("<init>")) continue;
-            if(!mn.desc.equals(Type.getMethodDescriptor(Void.TYPE, byte[].class,Component.class))) continue;;
+            if(!mn.desc.equals(ASMUtil.getMethodDescriptor(Void.TYPE, byte[].class,Component.class))) continue;;
 
             RSField width = null;
             RSField height = null;

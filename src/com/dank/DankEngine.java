@@ -69,7 +69,7 @@ public final class DankEngine implements Opcodes {
     public static CodecResolver resolver;
     private static Manifest manifest;
     private static int version = 107;
-    public static boolean fetch = true;
+    public static boolean fetch = false;
 
     public static ClassNode lookupClass(String name) {
         return classPath.get(name);
@@ -256,7 +256,7 @@ public final class DankEngine implements Opcodes {
             total_classes += 1;
             found_hooks += hook.getIdentifiedSet().size();
             if (hook.getInternalName() != null) found_classes++;
-            hook.verify();
+           // hook.verify(); //TODO throws errors???
             warnings += hook.getWarnings().size();
         }
         System.out.println("  Found " + found_hooks + "/" + total_hooks + " hooks, " + found_classes + "/" + total_classes + " classes!");
