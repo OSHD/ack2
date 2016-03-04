@@ -1,0 +1,6 @@
+Remove Opaque Predicates
+Remove Exceptions
+Remove Parameters
+
+Reorder Arithmetic
+

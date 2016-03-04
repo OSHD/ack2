@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pf">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/pf.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
