@@ -43,16 +43,16 @@
         },
         "pendingFlagsCount": {
           "owner": "ac",
-          "name": "ac",
+          "name": "l",
           "desc": "I",
-          "decoder": -143912787,
+          "decoder": 1335087571,
           "access": 24
         },
         "localPlayerCount": {
           "owner": "ac",
-          "name": "aw",
+          "name": "az",
           "desc": "I",
-          "decoder": -1033292732,
+          "decoder": -1525306593,
           "access": 1
         },
         "localPlayerIndices": {
@@ -63,10 +63,10 @@
         },
         "globalPlayerCount": {
           "owner": "ac",
-          "name": "ap",
+          "name": "ar",
           "desc": "I",
-          "decoder": 1275440585,
-          "access": 25
+          "decoder": -555804669,
+          "access": 8
         }
       }
     },
@@ -78,7 +78,7 @@
           "name": "ac",
           "desc": "I",
           "decoder": 406806725,
-          "access": 24
+          "access": 8
         },
         "modifiedColors": {
           "owner": "ao",
@@ -185,10 +185,10 @@
         },
         "notedId": {
           "owner": "aj",
-          "name": "ae",
+          "name": "bv",
           "desc": "I",
-          "decoder": 2016670489,
-          "access": 8
+          "decoder": 1582835183,
+          "access": 24
         },
         "groundActions": {
           "owner": "aj",
@@ -198,10 +198,10 @@
         },
         "unnotedId": {
           "owner": "aj",
-          "name": "aq",
+          "name": "bs",
           "desc": "I",
-          "decoder": 277081765,
-          "access": 1
+          "decoder": 406031135,
+          "access": 24
         },
         "modifiedColors": {
           "owner": "aj",
@@ -224,10 +224,10 @@
         },
         "storeValue": {
           "owner": "aj",
-          "name": "ah",
+          "name": "ag",
           "desc": "I",
-          "decoder": -1937461995,
-          "access": 1
+          "decoder": -601334475,
+          "access": 24
         },
         "actions": {
           "owner": "aj",
@@ -519,14 +519,14 @@
           "owner": "fv",
           "name": "ax",
           "desc": "Z",
-          "access": 0
+          "access": 1
         },
         "textureId": {
           "owner": "fv",
           "name": "ap",
           "desc": "I",
           "decoder": -340656097,
-          "access": 25
+          "access": 8
         },
         "mouseExitListener": {
           "owner": "fv",
@@ -605,7 +605,7 @@
           "name": "ac",
           "desc": "I",
           "decoder": 919377675,
-          "access": 24
+          "access": 8
         },
         "varpOpcodes": {
           "owner": "fv",
@@ -852,8 +852,8 @@
           "access": 0
         },
         "worldSelectorDisplayed": {
-          "owner": "ac",
-          "name": "av",
+          "owner": "client",
+          "name": "am",
           "desc": "Z",
           "access": 0
         },
@@ -988,7 +988,7 @@
         },
         "xViewportBuffer": {
           "owner": "dd",
-          "name": "ah",
+          "name": "aj",
           "desc": "[I",
           "access": 24
         },
@@ -1063,9 +1063,9 @@
         },
         "yViewportBuffer": {
           "owner": "dd",
-          "name": "av",
+          "name": "af",
           "desc": "[I",
-          "access": 24
+          "access": 0
         },
         "menuArg1": {
           "owner": "client",
@@ -1225,13 +1225,13 @@
         },
         "screenCenterX": {
           "owner": "cq",
-          "name": "c",
+          "name": "t",
           "desc": "I",
           "access": 1
         },
         "screenCenterY": {
           "owner": "cq",
-          "name": "c",
+          "name": "t",
           "desc": "I",
           "access": 1
         },
@@ -1669,17 +1669,17 @@
       "fields": {
         "prayerIcon": {
           "owner": "a",
-          "name": "i",
-          "desc": "I",
-          "decoder": 445778359,
-          "access": 24
-        },
-        "skullIcon": {
-          "owner": "a",
           "name": "a",
           "desc": "I",
           "decoder": -1934693589,
           "access": 25
+        },
+        "skullIcon": {
+          "owner": "a",
+          "name": "i",
+          "desc": "I",
+          "decoder": 445778359,
+          "access": 24
         },
         "totalLevel": {
           "owner": "a",
@@ -1836,7 +1836,7 @@
           "name": "ac",
           "desc": "I",
           "decoder": -413189312,
-          "access": 24
+          "access": 8
         },
         "hitpoints": {
           "owner": "ag",
@@ -2041,7 +2041,7 @@
         },
         "clipped": {
           "owner": "an",
-          "name": "ax",
+          "name": "x",
           "desc": "Z",
           "access": 0
         },
