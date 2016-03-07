@@ -41,10 +41,10 @@ public class ReferenceNode extends AbstractNode {
         AbstractInsnNode ain = insn();
         if (ain instanceof FieldInsnNode) {
             FieldInsnNode fin = (FieldInsnNode) ain;
-            return fin.owner + "" + fin.name;
+            return fin.owner + "." + fin.name + fin.desc;
         } else if (ain instanceof MethodInsnNode) {
             MethodInsnNode min = (MethodInsnNode) ain;
-            return min.owner + "" + min.name + min.desc;
+            return min.owner + "." + min.name + min.desc;
         }
         return null;
     }

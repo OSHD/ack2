@@ -6,8 +6,12 @@ import com.dank.analysis.impl.widget.visitor.RuneScriptVisitor;
 import com.dank.hook.RSMethod;
 import com.dank.util.Wildcard;
 import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Type;
+import org.objectweb.asm.commons.cfg.BasicBlock;
+import org.objectweb.asm.commons.cfg.BlockVisitor;
 import org.objectweb.asm.commons.cfg.tree.NodeTree;
 import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
+import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
 import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -22,6 +26,8 @@ import com.dank.analysis.impl.widget.visitor.GenericVisitor;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.util.Filter;
+
+import java.lang.reflect.Modifier;
 
 /**
  * Project: DankWise
@@ -95,6 +101,7 @@ public class Widget extends Analyser {
             if (!mn.isStatic()) {
                 final NodeTree tree = TreeBuilder.build(mn);
                 tree.accept(new GenericVisitor());
+                tree.accept(new FontCacheVisitor());
             }
         }
         for (final FieldNode fn : cn.fields) {
@@ -104,6 +111,10 @@ public class Widget extends Analyser {
                 } else if (fn.desc.equals(Hook.WIDGET.getInternalDesc())) {
                     Hook.WIDGET.put(new RSField(fn, "parent"));
                 }
+            } else if (fn.isStatic()) {
+                if (fn.desc.equals(Type.getDescriptor(boolean[].class))) {
+                    Hook.CLIENT.put(new RSField(fn, "loadedWindows"));
+                }
             }
         }
 
@@ -111,14 +122,27 @@ public class Widget extends Analyser {
 
         for (ClassNode c : DankEngine.classPath.getClasses()) {
             for (MethodNode mn : c.methods) {
-                if(new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
-                    System.out.println("??"+mn.key());
+                if (new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+                    System.out.println("??" + mn.key());
                     Hook.CLIENT.put(new RSMethod(mn, "runScript"));
                     TreeBuilder.build(mn).accept(new MarginVisitor());
                     TreeBuilder.build(mn).accept(new RuneScriptVisitor());
                 }
                 TreeBuilder.build(mn).accept(rsohv);
 
+            }
+        }
+    }
+
+    public class FontCacheVisitor extends NodeVisitor {
+
+        @Override
+        public void visitField(FieldMemberNode fmn) {
+//            System.out.println(Hook.FONT_IMPL.getInternalName());
+            if (new Wildcard("(I)" + Hook.FONT_IMPL.getInternalDesc()).matches(fmn.method().desc)) {
+                if (fmn.isStatic() && fmn.desc().equals(Hook.CACHE_TABLE.getInternalDesc())) {
+                    Hook.CLIENT.put(new RSField(fmn, "fontCache"));
+                }
             }
         }
     }

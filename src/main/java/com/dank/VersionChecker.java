@@ -11,6 +11,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
+import java.util.prefs.Preferences;
 
 /**
  * @author Septron
@@ -21,7 +22,7 @@ public class VersionChecker extends Observable implements Runnable {
     @Override
     public void run() {
         long timeSinceLastCheck = System.currentTimeMillis();
-        int version = 94;
+        int version = 100;
         try {
             System.out.println("... Fetching live version");
             int old = Integer.parseInt((String) DankBuild.instance.get("curRevision"));
@@ -66,5 +67,24 @@ public class VersionChecker extends Observable implements Runnable {
                 super.notifyObservers();
             }
         }
+    }
+
+    public static void main(String[] args) {
+    }
+
+    private void writeToRegistry(String key, String value) {
+        Preferences userPref = Preferences.userRoot();
+        userPref.put(key, value);
+        String s = userPref.get(key, "^@%");
+        if (s.equals("^@%"))
+            System.out.println("Failed to save settings...");
+        else
+            System.out.println("Settings saved.");
+    }
+
+    private String readRegistry(String key) {
+        Preferences userPref = Preferences.userRoot();
+        String s = userPref.get(key, "null");
+        return s;
     }
 }

@@ -82,6 +82,6 @@ public class RSMethod extends RSMember {
     }
 
     public String key() {
-        return owner + "" + name + desc;
+        return owner + "." + name + desc;
     }
 }

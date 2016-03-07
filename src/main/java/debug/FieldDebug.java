@@ -65,7 +65,7 @@ public class FieldDebug {
                 fv.accept(methodNode);
                 System.out.println(methodNode.owner.name + "." + methodNode.name + methodNode.desc);
                 for (BasicBlock bb : fv.graph) {
-                    if (methodNode.owner.name.equals("dk"))
+                    if (methodNode.owner.name.equals("cx"))
 //                    System.out.println(bb.stack().toString());
                         System.out.println(bb.toString());
                 }
@@ -77,7 +77,7 @@ public class FieldDebug {
 //        new FieldDebug("ez", "b", true);
 
 
-        new FieldDebug("fv", "cu", true);
+        new FieldDebug("cx", "q", true);
 
     }
 }

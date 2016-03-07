@@ -21,7 +21,6 @@ import java.util.*;
 public enum Hook {
 
 
-
     GAME_STRINGS("GameStrings", null),
 
     GRAPHICS_ENGINE("Bitmap", null, "engineRastor::[I", "bitmap::Ljava/awt/Image;"),
@@ -69,7 +68,7 @@ public enum Hook {
 
     LANDSCAPE("Landscape", null, "tiles::[[[LLandscapeTile;", "tempEntityMarkers::[LEntityMarker;", "addEntityMarker::null",
             "addBoundary::null", "addBoundaryDecoration::null", "addItemPile::null", "addTileDecoration::null",
-            "render","addTempEntity","visibilityMap", "addObject", "removeObject"),
+            "render", "addTempEntity", "visibilityMap", "addObject", "removeObject"),
 
     LANDSCAPE_TILE("LandscapeTile", null, "entityMarkers::[LEntityMarker;", "boundaryStub::LBoundaryStub;",
             "boundaryDecorationStub::LBoundaryDecorationStub;", "tileDecorationStub::LTileDecorationStub;",
@@ -106,7 +105,7 @@ public enum Hook {
     NPC("Npc", CHARACTER, "definition::LNpcDefinition;"),
 
     PLAYER("Player", CHARACTER, "combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
-            "team::I", "config::LPlayerConfig;", "totalLevel::I","height::I"),
+            "team::I", "config::LPlayerConfig;", "totalLevel::I", "height::I"),
 
     GROUND_ITEM("GroundItem", ENTITY, "id::I", "quantity::I"),
 
@@ -130,7 +129,7 @@ public enum Hook {
     WORLD("World", null, "world::I", "index::I", "mask::I", "location::I", "domain::Ljava/lang/String;",
             "activity::Ljava/lang/String;", "population::I"),
 
-    GRAPHICS("Graphics", DUAL_NODE),
+    GRAPHICS("Graphics", DUAL_NODE, "raster::[I", "rasterWidth::I", "rasterHeight::I"),
 
     MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
             "type::I", "cycle::I", "index::I"),
@@ -158,11 +157,11 @@ public enum Hook {
             "tableActions::Ljava/lang/String;", "varpOpcodes::[[I", "itemIds::[I", "itemQuantities::[I",
             "interactable::Z", "tooltip::Ljava/lang/String;", "type::I", "contentType::I", "buttonType::I",
             "rowPadding::I", "columnPadding::I", "xSprites::[I", "ySprites::[I",
-            "parent::LWidget;", "children::[LWidget;","xMargin::[I", "yMargin::[I","wMargin::[I", "hMargin::[I",
-            "xLayout::[I", "yLayout::[I", "hLayout::[I", "wLayout::[I", "enableEvents::Z", "textMode::I","thickness::I",
+            "parent::LWidget;", "children::[LWidget;", "xMargin::[I", "yMargin::[I", "wMargin::[I", "hMargin::[I",
+            "xLayout::[I", "yLayout::[I", "hLayout::[I", "wLayout::[I", "enableEvents::Z", "textMode::I", "thickness::I",
             "rotation::I", "repeat::Z", "selectMode::I", "spriteId2::I", "fontId::I", "textSpacing::I", "horizontalMargin::I",
             "verticalMargin::I", "fill::Z", "perpendicular::Z", "textShadowed::Z", "v2::Z"
-            ),
+    ),
 
     CLIENT("Client", GAME_ENGINE, "myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
@@ -193,7 +192,18 @@ public enum Hook {
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",
             "getKeyFocusListener::LKeyFocusListener;", "canvas::Ljava/awt/Canvas;", "widgetsHeight::[I",
             "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "runScript", "messageChannels",
-            "currentLoginName::Ljava/lang/String;", "runScript");
+            "currentLoginName::Ljava/lang/String;", "runScript", "hideRoofs::I", "buildComponentEvents",
+            "renderComponent", "addHUD", "removeHUD", "repaintWidget", "layoutContainer", "addMessage",
+            "layoutContainer2", "layoutComponent", "layoutWindow", "drawMenu", "chunkIds::[I", "loadedWindows",
+            "loadImage", "fontCache"),
+    ABSTRACT_FONT("AbstractFont", GRAPHICS),
+
+    FONT_IMPL("FontImpl", ABSTRACT_FONT),
+
+    IMAGE_PRODUCT("ImageProduct", null),
+
+    CACHE_TABLE("CacheTable", null, "get");
+
 
     public final Map<String, RSMember> hooks;
     public final Map<String, String> hookToDesc;
@@ -206,7 +216,7 @@ public enum Hook {
 
     Hook(final String definedName, final Hook superType, final String... keys) {
         this.definedName = definedName;
-        this.superType   = superType;
+        this.superType = superType;
         String[] keys0 = new String[keys.length];
         String[] desc0 = new String[keys.length];
         for (int i = 0; i < keys.length; i++) {
@@ -261,11 +271,11 @@ public enum Hook {
 
     public void put(RSMember member) {
         RSMember old = hooks.get(member.mnemonic);
-        if(old != null && !old.equals(member)) {
+        if (old != null && !old.equals(member)) {
             String h = member.isField() ? "Field" : "Method";
             warn("Overwrite of " + h + " '" + member.mnemonic + "' [" + old.key() + " ==> " + member.key() + "]");
         }
-        if(!hooks.containsKey(member.mnemonic)) {
+        if (!hooks.containsKey(member.mnemonic)) {
             String h = member.isField() ? "Field" : "Method";
             warn(h + " '" + member.mnemonic + "' is not defined.");
         }
@@ -275,32 +285,32 @@ public enum Hook {
     private static String popPred(String methodDesc) {
         Type[] args = Type.getArgumentTypes(methodDesc);
         Type ret = Type.getReturnType(methodDesc);
-        Type[] args0 = Arrays.copyOf(args,args.length-1);
-        return Type.getMethodDescriptor(ret,args0);
+        Type[] args0 = Arrays.copyOf(args, args.length - 1);
+        return Type.getMethodDescriptor(ret, args0);
     }
 
     public void verify() {
-        for(RSMember mem : hooks.values()) {
-            if(mem == null) continue;
+        for (RSMember mem : hooks.values()) {
+            if (mem == null) continue;
             String desc0 = mapDesc(mem.desc);
-            String desc  = hookToDesc.get(mem.mnemonic);
-            if(desc == null) continue; // undefined member
-            if(mem.isMethod()) {
-                boolean has_pred = OpPredicateRemover.hasPred(mem.owner,mem.name,mem.desc);
-                if(has_pred) desc0 = popPred(desc0);
+            String desc = hookToDesc.get(mem.mnemonic);
+            if (desc == null) continue; // undefined member
+            if (mem.isMethod()) {
+                boolean has_pred = OpPredicateRemover.hasPred(mem.owner, mem.name, mem.desc);
+                if (has_pred) desc0 = popPred(desc0);
             }
-            if(!desc.equals(desc0)) {
+            if (!desc.equals(desc0)) {
                 String h = mem.isField() ? "Field" : "Method";
-                warn( h + " '" + mem.mnemonic + "' has a unexpected descriptor " + "(defined=" + desc + ",resolved=" + desc0 + ")");
+                warn(h + " '" + mem.mnemonic + "' has a unexpected descriptor " + "(defined=" + desc + ",resolved=" + desc0 + ")");
             }
         }
 
-        for(RSMember mem : hooks.values()) {
-            if(mem == null) continue;
-            for(RSMember mem0 : hooks.values()) {
-                if(mem0 == null) continue;
-                if(mem == mem0) continue;
-                if(mem.equals(mem0)) {
+        for (RSMember mem : hooks.values()) {
+            if (mem == null) continue;
+            for (RSMember mem0 : hooks.values()) {
+                if (mem0 == null) continue;
+                if (mem == mem0) continue;
+                if (mem.equals(mem0)) {
                     String h = mem.isField() ? "Fields" : "Methods";
                     warn(h + " " + mem.mnemonic + " and " + mem0.mnemonic + " are equal.");
                 }
@@ -317,16 +327,13 @@ public enum Hook {
     }
 
     private static String mapDesc(String desc) {
-        if(desc.charAt(0) == '(') return mapMethodDesc(desc);
+        if (desc.charAt(0) == '(') return mapMethodDesc(desc);
         return MAPPER.mapDesc(desc); //Map object
     }
 
     private static String map(String typeName) {
         return MAPPER.map(typeName);
     }
-
-
-
 
 
     public RSMember get(final String key) {
@@ -354,7 +361,7 @@ public enum Hook {
     }
 
     public void setInternalName(final String internalName) {
-        if(this.internalName != null && !this.internalName.equals(internalName)) {
+        if (this.internalName != null && !this.internalName.equals(internalName)) {
             warn("TypeName override (" + this.internalName + " ==> " + internalName + ")");
         }
         this.internalName = internalName;
@@ -420,11 +427,11 @@ public enum Hook {
 
         for (final Thing spec : members) {
             int max = 0;
-            for(Thing thing : members) {
-                if(thing.getValue() == null) continue;
-                if(thing.getValue().desc.contains(")")) continue;
+            for (Thing thing : members) {
+                if (thing.getValue() == null) continue;
+                if (thing.getValue().desc.contains(")")) continue;
                 String k = thing.getValue().owner + "" + thing.getValue().name;
-                if(k.length()>max) max = k.length();
+                if (k.length() > max) max = k.length();
             }
             max--;
 
@@ -437,19 +444,19 @@ public enum Hook {
                 if (spec.getValue().desc.contains(")")) {
                     specbuilder.append(spec.getValue().owner).append('.').append(spec.getValue().name).append(spec.getValue().desc);
                     RSMember m = spec.val;
-                    String domain = OpPredicateRemover.getDomain(m.owner,m.name,m.desc);
-                    if(domain!=null) {
+                    String domain = OpPredicateRemover.getDomain(m.owner, m.name, m.desc);
+                    if (domain != null) {
                         specbuilder.append(" " + '\u03B5' + " ").append(domain);
                     }
                 } else {
                     specbuilder.append(spec.getValue().owner).append('.').append(spec.getValue().name);
                     if (spec.getValue().desc.equals("I")) {
 //                        final Number n = MultiplierVisitor.getDecoder(spec.getValue().owner.concat(".").concat(spec.getValue().name));
-                       final Number n = DankEngine.resolver.getDecoder(spec.getValue().owner, spec.getValue().name, spec.getValue().desc);
+                        final Number n = DankEngine.resolver.getDecoder(spec.getValue().owner, spec.getValue().name, spec.getValue().desc);
 //                       final Number n = MultiplierFinder.findMultiplier(spec.getValue().owner, spec.getValue().name);
 //                       final Number n = Multiplier.getMultiple(spec.getValue().owner+ "."+ spec.getValue().name);
                         int k = spec.getValue().owner.length() + spec.val.name.length();
-                        while (k++<max) specbuilder.append(' ');
+                        while (k++ < max) specbuilder.append(' ');
                         specbuilder.append(" x ")/*.append(i)*/.append(n != null ? n : "DNE");
                     }
 

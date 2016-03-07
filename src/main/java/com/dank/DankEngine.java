@@ -32,6 +32,7 @@ import com.dank.patch.GMethod;
 import com.dank.patch.Patch;
 import com.dank.util.FieldCallGraphVisitor;
 import com.dank.util.MethodCallGraphVisitor;
+import com.dank.util.deob.MultiRemover;
 import com.dank.util.deob.OpPredicateRemover;
 import com.dank.util.io.Fetcher;
 import com.dank.util.multipliers.Multiplier;
@@ -49,6 +50,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.Analyzer;
+import org.pf.text.Version;
 
 import java.io.*;
 import java.util.Collections;
@@ -69,8 +71,11 @@ public final class DankEngine implements Opcodes {
     public static FieldCallGraphVisitor fGraph;
     public static CodecResolver resolver;
     private static Manifest manifest;
-    private static int version = 108;
+    private static int version = 107;
     public static boolean fetch = false;
+
+    public static boolean auto = true;
+
 
     public static ClassNode lookupClass(String name) {
         return classPath.get(name);
@@ -132,6 +137,11 @@ public final class DankEngine implements Opcodes {
         };
         System.setOut(stream);
 
+//        while (auto) {
+//            VersionChecker checker = new VersionChecker();
+//            checker.run();
+//        }
+
         File from;
         File deob;
         File remap;
@@ -172,14 +182,13 @@ public final class DankEngine implements Opcodes {
         }
 
         OpPredicateRemover.run(classPath.getMap());
-
         // MultiRemover.run(classPath.getMap());
 
         final Analyser[] analysers = {new GStrings(), new GameCanvas(), new Parameters(), new Node(), new DualNode(), new Deque(),
 
                 new HashTable(), new Renderable(), new Buffer(), new PacketBuffer(), new IsaacRandom(), new GPI(), new ScriptEvent(),
                 new InterfaceNode(), new GraphicsStub(), new ItemTable(), new Varpbit(), new Sprite(), new RuneScript(),
-
+                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct(),
                 new Projectile(), new ItemDefinition(), new Widget(), new ObjectDefinition(), new PlayerConfig(),
                 new ExchangeOffer(),
                 new Player(),
@@ -189,7 +198,8 @@ public final class DankEngine implements Opcodes {
                 new Npc(),
                 new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new TileStub(), new GroundItem(),
                 new ItemPile(), new DynamicObject(), new Landscape(), new LandscapeTile(), new Model(),
-                new KeyFocusListener(), new GraphicsEngine(), new Graphics(), new Messages(), new MessageHandler()
+                new KeyFocusListener(), new GraphicsEngine(), new Graphics(), new Messages(), new MessageHandler(),
+//                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */
         };
 

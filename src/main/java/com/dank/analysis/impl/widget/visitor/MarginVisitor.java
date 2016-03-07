@@ -53,7 +53,7 @@ public class MarginVisitor extends NodeVisitor implements Opcodes {
 
             add(new OpcodeHook(1115, PUTFIELD, "textShadowed").skip(3));//good
 
-            add(new OpcodeHook(3112, PUTSTATIC, "hideRoofs").skip(0));//good
+//            add(new OpcodeHook(3112, PUTSTATIC, "Z", "hideRoofs").skip(0));//good
 
 
         }
@@ -65,7 +65,7 @@ public class MarginVisitor extends NodeVisitor implements Opcodes {
             if (from.opcode() == op) {
                 final FieldInsnNode topkek = (FieldInsnNode) from;
                 if (topkek.desc.equals(desc) && (owner == null || owner.equals(topkek.owner))) {
-                    System.out.println("Skips : (" + skipped + ")" + topkek.owner + "." + topkek.name + "(" + topkek.opname() + ")");
+//                    System.out.println("Skips : (" + skipped + ")" + topkek.owner + "." + topkek.name + "(" + topkek.opname() + ")");
                     if (skipped == skips) {
                         return topkek;
                     } else {
@@ -85,7 +85,7 @@ public class MarginVisitor extends NodeVisitor implements Opcodes {
                 final FieldInsnNode fin = next(nn.insn(), hook.fieldOpcode, hook.fieldDesc,
                         owner, hook.skips);
 
-                System.out.println(">" + nn.number());
+//                System.out.println(">" + nn.number());
                 if (fin != null && fin.owner.equals(Hook.WIDGET.getInternalName())) {
                     hook.container.put(new RSField(fin, hook.mnemonic));
                 }

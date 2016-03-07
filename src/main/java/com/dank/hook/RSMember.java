@@ -63,7 +63,7 @@ public abstract class RSMember implements Comparable<RSMember> {
     }
 
     public String key() {
-        return owner + "" + name;
+        return owner + "." + name + desc;
     }
 
 }

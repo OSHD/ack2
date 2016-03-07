@@ -92,6 +92,13 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(3618, GETSTATIC, "B", Hook.CLIENT, "clanChatRank"));
             add(new OpcodeHook(3612, GETSTATIC, Hook.CLIENT, "clanChatSize"));
             add(new OpcodeHook(3316, GETSTATIC, Hook.CLIENT, "myRights"));
+            add(new OpcodeHook(3112, PUTSTATIC, Hook.CLIENT, "hideRoofs").skip(0));//good
+
+            add(new OpcodeHook(3306, GETSTATIC,"[I", Hook.CLIENT, "levels").skip(2));//good
+            add(new OpcodeHook(3305, GETSTATIC,"[I",Hook.CLIENT, "currentLevels").skip(2));//good
+            add(new OpcodeHook(3307, GETSTATIC,"[I", Hook.CLIENT, "experiences").skip(2));//good
+
+            add(new OpcodeHook(3300, GETSTATIC,"I", Hook.CLIENT, "engineCycle").skip(0));//good
 
 //            add(new OpcodeHook(3305, GETSTATIC, Hook.CLIENT, "currentLevels").skip(4));
 //            add(new OpcodeHook(3306, GETSTATIC, Hook.CLIENT, "levels"));

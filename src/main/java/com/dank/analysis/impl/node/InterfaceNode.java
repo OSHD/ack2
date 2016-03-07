@@ -56,7 +56,7 @@ public class InterfaceNode extends Analyser implements Opcodes {
             }
         })));
         for (final FieldNode fn : cn.fields) {
-            if (!Modifier.isStatic(fn.access) && !fn.name.equals(Hook.INTERFACE_NODE.get("type").name)) {
+            if (!Modifier.isStatic(fn.access) && !fn.name.equals(Hook.INTERFACE_NODE.get("type").name) && fn.desc.contains("I")) {
                 Hook.INTERFACE_NODE.put(new RSField(fn, "owner"));
             }
         }

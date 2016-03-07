@@ -52,7 +52,7 @@ public class Npc extends Analyser {
 
         System.out.println(runAnimation.key());
 
-        setMultipliers(new MethodNode[]{runAnimation}, new RSMember[]{Hook.CHARACTER.get("runAnimation")});
+//        setMultipliers(new MethodNode[]{runAnimation}, new RSMember[]{Hook.CHARACTER.get("runAnimation")});
     }
 
     public void setMultipliers(MethodNode[] methods, RSMember[] fields) {

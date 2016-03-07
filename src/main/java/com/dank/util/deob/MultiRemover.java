@@ -735,7 +735,7 @@ public class MultiRemover {
                     }
 
                 }
-                System.out.println(node.key + "*" + best + " (" + count + "/" + node.access.size() + ")");
+                System.out.println("**" + node.key + "*" + best + " (" + count + "/" + node.access.size() + ")");
                 num++;
             } else {
                 System.out.println(node.key + ":(" + node.num_handles + "/" + node.access.size() + ")");

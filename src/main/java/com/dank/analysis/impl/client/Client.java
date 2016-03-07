@@ -55,6 +55,83 @@ public class Client extends Analyser {
 
         for (final ClassNode node : getClassPath().getClasses()) {
             for (final MethodNode mn : node.methods) {
+
+                if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII)V").matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "buildComponentEvents"));
+                }
+
+                if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII?)V").matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "renderComponent"));
+                }
+
+                if (new Wildcard("(III?)" + Hook.INTERFACE_NODE.getInternalDesc()).matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "addHUD"));
+                }
+
+                if (new Wildcard("(" + Hook.INTERFACE_NODE.getInternalDesc() + "Z?)V").matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "removeHUD"));
+                }
+
+//                if (new Wildcard("(" + Hook.WIDGET.getInternalDesc() + "I)V").matches(mn.desc)) {
+//                    Hook.CLIENT.put(new RSMethod(mn, "repaintWidget"));
+//                }
+
+                if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + Hook.WIDGET.getInternalDesc() + "Z?)V").matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "layoutContainer"));
+                    TreeBuilder.build(mn).accept(new NodeVisitor() {
+
+                        @Override
+                        public void visitMethod(MethodMemberNode mmn) {
+                            if (mmn.opcode() == Opcodes.INVOKESTATIC) {
+                                if (new Wildcard("(IIIZ?)V").matches(mmn.desc())) {
+                                    Hook.CLIENT.put(new RSMethod(mmn, "layoutWindow"));
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIZ?)V").matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "layoutContainer2"));
+                }
+
+                if (new Wildcard("(L*;II?)" + Hook.SPRITE.getInternalDesc()).matches(mn.desc)) {
+                    Hook.CLIENT.put(new RSMethod(mn, "loadImage"));
+                }
+
+                if (new Wildcard("(ILjava/lang/String;Ljava/lang/String;I)V").matches(mn.desc)) {
+                    TreeBuilder.build(mn).accept(new NodeVisitor() {
+                        @Override
+                        public void visitMethod(MethodMemberNode mmn) {
+                            if (mmn.opcode() == Opcodes.INVOKESTATIC) {
+                                Hook.CLIENT.put(new RSMethod(mmn, "addMessage"));
+                            }
+                        }
+                    });
+                }
+
+                if (new Wildcard("()V").matches(mn.desc)) {
+
+                    TreeBuilder.build(mn).accept(new NodeVisitor() {
+                        @Override
+                        public void visitMethod(MethodMemberNode mmn) {
+                            if (mmn.opcode() == Opcodes.INVOKESTATIC) {
+                                if (new Wildcard("(" + Hook.WIDGET.getInternalDesc() + "?)V").matches(mmn.desc())) {
+
+                                    if (Hook.CLIENT.get("repaintWidget") == null) {
+                                        Hook.CLIENT.put(new RSMethod(mmn, "repaintWidget"));
+                                    }
+                                    if (Hook.CLIENT.get("layoutComponent") == null &&
+                                            !Hook.CLIENT.get("repaintWidget").name.equals(mmn.name())) {
+                                        Hook.CLIENT.put(new RSMethod(mmn, "layoutComponent"));
+                                    }
+
+                                }
+                            }
+                        }
+                    });
+                }
+
                 visitMethods(mn);
                 if (Modifier.isStatic(mn.access)) {
                     getWidgetPositions(mn);
@@ -75,7 +152,7 @@ public class Client extends Analyser {
                         tree.accept(new DequeObjectVisitor(block));
                         tree.accept(new SelectedItemIndexVisitor(block));
                         tree.accept(new CursorStateVisitor(block));
-                        tree.accept(new EngineCycleVisitor());
+//                        tree.accept(new EngineCycleVisitor());
                         tree.accept(new ConnectionStateVisitor());
                         tree.accept(new FpsVisitor());
                         tree.accept(new TileDataVisitor());
@@ -83,14 +160,13 @@ public class Client extends Analyser {
                         tree.accept(new MessageChannelsVisitor(block));
                         tree.accept(new CurrentNameVisitor(block));
                     }
-                }
-                else if(Modifier.isProtected(mn.access)) {
+                } else if (Modifier.isProtected(mn.access)) {
                     for (final BasicBlock block : mn.graph()) {
                         final NodeTree tree = block.tree();
                         tree.accept(new WidgetPositionVisitor(block));
                     }
                 }
-             }
+            }
         }
 
         for (final ClassNode node : getClassPath().getClasses()) {
@@ -167,7 +243,7 @@ public class Client extends Analyser {
     }
 
     private void findRunScript(MethodNode mn) {
-        if(new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+        if (new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
 //        if(mn.desc.contains("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V")) {
 //            System.out.println(mn.owner + "." + mn.name + mn.desc);
             Hook.CLIENT.put(new RSMethod(mn, "runScript"));
@@ -204,7 +280,7 @@ public class Client extends Analyser {
         if (mn.desc.startsWith("(Ljava/lang/String;Ljava/lang/String;IIII")) {
             tree.accept(new MenuActionVisitor());
         } else if (mn.name.equals("<clinit>")) {
-            tree.accept(new StatsVisitor());
+//            tree.accept(new StatsVisitor());
         } else if (mn.desc.startsWith("(" + Hook.CHARACTER.getInternalDesc())) {
             tree.accept(new CharacterTargetIndexVisitor());
         } else if (mn.isStatic() && mn.desc.startsWith("(I")) {
@@ -465,7 +541,7 @@ public class Client extends Analyser {
     public void getWidgetPositions(MethodNode mn) {
         if (Hook.CLIENT.get("widgetPositionsX") != null && Hook.CLIENT.get("getWidgetBoundsHeight") != null) return;
 
-            if (new Wildcard("()V").matches(mn.desc) && (Modifier.isStatic(mn.access) || Modifier.isProtected(mn.access))) {
+        if (new Wildcard("()V").matches(mn.desc) && (Modifier.isStatic(mn.access) || Modifier.isProtected(mn.access))) {
             FlowVisitor fv = new FlowVisitor();
             fv.accept(mn);
 

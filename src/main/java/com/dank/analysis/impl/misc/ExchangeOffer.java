@@ -73,6 +73,7 @@ public class ExchangeOffer extends Analyser {
         @Override
         public void visitMethod(MethodMemberNode mmn) {
             if (mmn.owner().equals(Hook.BUFFER.getInternalName())) {
+                System.out.println(mmn.tree());
                 FieldMemberNode byteSet = (FieldMemberNode) mmn.preLayer(PUTFIELD);
                 FieldMemberNode intSet = (FieldMemberNode) mmn.preLayer(IMUL, PUTFIELD);
                 if (intSet != null) {
@@ -85,6 +86,7 @@ public class ExchangeOffer extends Analyser {
                 if (byteSet != null && byteSet.desc().equals("B")) { //just incase
                     Hook.EXCHANGE_OFFER.put(new RSField(byteSet, "status"));
                     Hook.BUFFER.put(new RSMethod(mmn, "readByte"));
+
                 }
             }
         }
