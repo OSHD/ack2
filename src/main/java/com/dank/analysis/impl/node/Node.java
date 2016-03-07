@@ -2,6 +2,8 @@ package com.dank.analysis.impl.node;
 
 import java.lang.reflect.Modifier;
 
+import com.dank.analysis.impl.widget.visitor.MarginVisitor;
+import com.dank.util.Wildcard;
 import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
 import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.ClassNode;
@@ -42,11 +44,18 @@ public class Node extends Analyser {
                 Hook.NODE.put(new RSMethod(mn, "unlink"));
             }
         }
-        NodeVisitor rsohv = new RunescriptOpcodeHandlerVisitor();
-        for (ClassNode c : DankEngine.classPath.getClasses()) {
-            for (MethodNode mn : c.methods) {
-                TreeBuilder.build(mn).accept(rsohv);
-            }
-        }
+
+//        NodeVisitor rsohv = new RunescriptOpcodeHandlerVisitor();
+//
+//        for (ClassNode c : DankEngine.classPath.getClasses()) {
+//            for (MethodNode mn : c.methods) {
+//                if(new Wildcard("(" + Hook.RUNESCRIPT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+//                    System.out.println("??"+mn.key());
+//                    TreeBuilder.build(mn).accept(new MarginVisitor());
+//                }
+//                TreeBuilder.build(mn).accept(rsohv);
+//
+//            }
+//        }
     }
 }

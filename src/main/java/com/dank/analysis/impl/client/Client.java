@@ -80,6 +80,8 @@ public class Client extends Analyser {
                         tree.accept(new FpsVisitor());
                         tree.accept(new TileDataVisitor());
                         tree.accept(new ScreenVisitor());
+                        tree.accept(new MessageChannelsVisitor(block));
+                        tree.accept(new CurrentNameVisitor(block));
                     }
                 }
                 else if(Modifier.isProtected(mn.access)) {

@@ -1,15 +1,12 @@
 package com.dank.analysis.impl.widget.visitor;
 
 import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
-import org.objectweb.asm.commons.cfg.tree.node.ArithmeticNode;
-import org.objectweb.asm.commons.cfg.tree.node.ArrayLoadNode;
-import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
-import org.objectweb.asm.commons.cfg.tree.node.JumpNode;
-import org.objectweb.asm.commons.cfg.tree.node.MethodMemberNode;
-import org.objectweb.asm.commons.cfg.tree.node.ReferenceNode;
+import org.objectweb.asm.commons.cfg.tree.node.*;
 
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
 
 /**
  * Project: DankWise
@@ -19,6 +16,7 @@ import com.dank.hook.RSField;
  * Copyright under GPL license by Dogerina.
  */
 public class GenericVisitor extends NodeVisitor {
+
 
     @Override
     public void visitMethod(MethodMemberNode mmn) {

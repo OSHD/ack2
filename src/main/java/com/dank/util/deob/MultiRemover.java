@@ -1,6 +1,7 @@
 package com.dank.util.deob;
 
 import com.dank.asm.RIS;
+import com.dank.hook.RSField;
 import jdk.internal.org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
@@ -23,7 +24,7 @@ import static jdk.internal.org.objectweb.asm.Opcodes.*;
  * I(X) = gets the encoder if its a decoder, the decoder if its a encoder
  * ---------------------
  * Properties:
- *
+ * <p>
  * C  *  C' == 1  *Fundamental*
  * f  *  C  == F
  * f  *  C' == F'
@@ -31,27 +32,26 @@ import static jdk.internal.org.objectweb.asm.Opcodes.*;
  * F' *  C  == f
  * C' == I(C)
  * C  == I(C')
- *
+ * <p>
  * Logical Properties:
  * f += v ==> f = f + v
  * f *= f ==> f = f * v
  * f /= v ==> f = f / v
- *
+ * <p>
  * Axioms:
- *
+ * <p>
  * if( f * C == F ):
- *
- *      f += v
- *  ==  f == f + v
- *  ==  f * C == f * C + v * C
- *  ==  F += (v*C)
- *-----------------------------
- *      f *= v
- *  ==  f == f * v
- *  ==  f * C == f * v * C
- *  ==  F *= (v)
- *-----------------------------
- *
+ * <p>
+ * f += v
+ * ==  f == f + v
+ * ==  f * C == f * C + v * C
+ * ==  F += (v*C)
+ * -----------------------------
+ * f *= v
+ * ==  f == f * v
+ * ==  f * C == f * v * C
+ * ==  F *= (v)
+ * -----------------------------
  */
 
 /**
@@ -62,6 +62,8 @@ import static jdk.internal.org.objectweb.asm.Opcodes.*;
 //Goal find the constant in which to multiply all encoders/deocders which will cancel/simplify the expression ( --> C * 1 == C )
 public class MultiRemover {
 
+    private final HashMap<RSField, ActiveModulas> correct_multipliers = new HashMap<RSField, ActiveModulas>();
+
     private static class FieldKey {
 
         final String owner;
@@ -69,7 +71,7 @@ public class MultiRemover {
         final String desc;
 
         FieldKey(FieldInsnNode fin) {
-            this(fin.owner,fin.name,fin.desc);
+            this(fin.owner, fin.name, fin.desc);
         }
 
         FieldKey(String owner, String name, String desc) {
@@ -78,13 +80,13 @@ public class MultiRemover {
             this.desc = desc;
         }
 
-        boolean cache=false;
-        int hash=0;
+        boolean cache = false;
+        int hash = 0;
 
         @Override
         public int hashCode() {
-            if(cache) return hash;
-            hash = Arrays.hashCode(new Object[]{owner,name,desc});
+            if (cache) return hash;
+            hash = Arrays.hashCode(new Object[]{owner, name, desc});
             cache = true;
             return hash;
         }
@@ -107,6 +109,7 @@ public class MultiRemover {
 
     private static interface CodedAssignment {
         void multiply(long num);
+
         LdcInsnNode getLdc();
     }
 
@@ -116,7 +119,7 @@ public class MultiRemover {
     private static class PutConstant implements CodedAssignment {
 
         final FieldInsnNode fin;
-        final LdcInsnNode   ldc;
+        final LdcInsnNode ldc;
 
         PutConstant(FieldInsnNode fin, LdcInsnNode ldc) {
             // if(ldc == null) its 0
@@ -142,7 +145,7 @@ public class MultiRemover {
     private static class PutValue implements CodedAssignment {
 
         final FieldInsnNode fin;
-        final LdcInsnNode   ldc;
+        final LdcInsnNode ldc;
 
         PutValue(FieldInsnNode fin, LdcInsnNode ldc) {
             this.fin = fin;
@@ -166,7 +169,7 @@ public class MultiRemover {
     private static class GetField implements CodedAssignment {
 
         final FieldInsnNode fin;
-        final LdcInsnNode   ldc;
+        final LdcInsnNode ldc;
 
         GetField(FieldInsnNode fin, LdcInsnNode ldc) {
             this.fin = fin;
@@ -187,7 +190,7 @@ public class MultiRemover {
     private static class StackHound implements CodedAssignment {
 
         final FieldInsnNode fin;
-        final LdcInsnNode   ldc;
+        final LdcInsnNode ldc;
 
         StackHound(FieldInsnNode fin, LdcInsnNode ldc) {
             this.fin = fin;
@@ -214,7 +217,7 @@ public class MultiRemover {
 
         FieldInsnNode A;
         FieldInsnNode B;
-        LdcInsnNode   ldc;
+        LdcInsnNode ldc;
 
         PutCompound(FieldInsnNode A, FieldInsnNode B, LdcInsnNode ldc) {
             this.A = A;
@@ -255,7 +258,7 @@ public class MultiRemover {
 
     }
 
-    public static int getInverse ( int coder ) {
+    public static int getInverse(int coder) {
         try {
             final BigInteger num = BigInteger.valueOf(coder);
             return num.modInverse(new BigInteger(String.valueOf(1L << 32))).intValue();
@@ -266,24 +269,18 @@ public class MultiRemover {
 
     //Coders (encoder/decoder) will always be 0, or an ldc
     private static boolean canBeCoder(AbstractInsnNode ain) {
-        if(ain.opcode() == ICONST_0) {
+        if (ain.opcode() == ICONST_0) {
             return true;
-        } else if(ain.opcode() == LDC) {
+        } else if (ain.opcode() == LDC) {
             Object cst = ((LdcInsnNode) ain).cst;
-            if(cst instanceof Number) return true;
+            if (cst instanceof Number) return true;
         } //Can't be an int instruction
         return false;
     }
 
 
-
     public static final RIS.Constraint L2 = match -> match.length == 2;
     public static final RIS.Constraint L4 = match -> match.length == 4;
-
-
-
-
-
 
 
     private static class Handle {
@@ -299,23 +296,24 @@ public class MultiRemover {
         int num_handles = 0;
 
         Node(FieldKey key) {
-            this.key      = key;
-            this.access   = new HashSet<>();
+            this.key = key;
+            this.access = new HashSet<>();
             this.handles = new ArrayDeque<>();
         }
 
         HashSet<FieldInsnNode> handled = new HashSet<>();
+
         void addHandle(CodedAssignment handler, FieldInsnNode... fields) {
-            for(FieldInsnNode fin : fields) {
-                if(!access.contains(fin)) {
+            for (FieldInsnNode fin : fields) {
+                if (!access.contains(fin)) {
                     System.err.println("Bad handle:" + fin);
                     continue;
                 }
 
-                if(handled.contains(fin)) {
-                    for(Handle handle : handles) {
-                        if(handle.handles.contains(fin)) {
-                           // System.err.println("Cross Handle(" + fin + "): " + handler + " | " + handle.handler);
+                if (handled.contains(fin)) {
+                    for (Handle handle : handles) {
+                        if (handle.handles.contains(fin)) {
+                            // System.err.println("Cross Handle(" + fin + "): " + handler + " | " + handle.handler);
                             return;
                         }
                     }
@@ -333,7 +331,7 @@ public class MultiRemover {
 
     }
 
-    private static Node getNode(Map<FieldKey,Node> nodes, FieldInsnNode fin) {
+    private static Node getNode(Map<FieldKey, Node> nodes, FieldInsnNode fin) {
         return nodes.get(new FieldKey(fin));
     }
 
@@ -341,15 +339,15 @@ public class MultiRemover {
 
 
     private static boolean chkEquality(FieldInsnNode A0, FieldInsnNode B0) {
-        if(A0.owner.equals(A0.owner)
-        && A0.name.equals(B0.name)
-        && A0.desc.equals(B0.desc)) {
+        if (A0.owner.equals(A0.owner)
+                && A0.name.equals(B0.name)
+                && A0.desc.equals(B0.desc)) {
             return true;
         }
         return false;
     }
 
-    private static final Pattern CASE_0      = Pattern.compile("(ICONST_1|LCONST_1) ALOAD GETFIELD (IMUL|LMUL) PUTFIELD".toLowerCase());
+    private static final Pattern CASE_0 = Pattern.compile("(ICONST_1|LCONST_1) ALOAD GETFIELD (IMUL|LMUL) PUTFIELD".toLowerCase());
 
     private static void visit_StackSettle(MethodNode mn, HashMap<FieldKey, Node> nodes) {
 
@@ -363,9 +361,9 @@ public class MultiRemover {
                 Node node = getNode(nodes, fin);
                 if (node == null || node.handled.contains(fin)) continue;
 
-           //     if(ain.toString().equals("s#k@I"))
-                if(ain.opcode()==PUTFIELD||ain.opcode()==PUTSTATIC) {
-                    StatementExplorer.explore(stack,i,0,new StatementExplorer.Observer() {
+                //     if(ain.toString().equals("s#k@I"))
+                if (ain.opcode() == PUTFIELD || ain.opcode() == PUTSTATIC) {
+                    StatementExplorer.explore(stack, i, 0, new StatementExplorer.Observer() {
                         @Override
                         public void visitStarted(AbstractInsnNode initial) {
                             System.out.println(initial + " ...");
@@ -373,7 +371,7 @@ public class MultiRemover {
 
                         @Override
                         public void visit(AbstractInsnNode cur, int pos, int stackSize) {
-                            System.out.println(cur.opname() +":" + cur + "|=" + stackSize);
+                            System.out.println(cur.opname() + ":" + cur + "|=" + stackSize);
                         }
 
                         @Override
@@ -419,13 +417,14 @@ public class MultiRemover {
                         size = 0;
                     }
                 } else {
-                    *//**
-                     *
-                     * GETFIELD    LDC
-                     * LDC         GETFIELD
-                     * ---------
-                     * IMUL
-                     *//*
+                    */
+    /**
+     *
+     * GETFIELD    LDC
+     * LDC         GETFIELD
+     * ---------
+     * IMUL
+     *//*
                     if ((ain.opcode() == GETFIELD || ain.opcode() == GETSTATIC)) {
                         if (next != null && (next.opcode() == IMUL || next.opcode() == LMUL)) {
                             hit = true;
@@ -478,26 +477,26 @@ public class MultiRemover {
     }*/
 
 
-    private static final Pattern TRANSFER    = Pattern.compile("(ICONST_1|LCONST_1) ALOAD GETFIELD (IMUL|LMUL) PUTFIELD".toLowerCase());
-    private static final Pattern TRANSFER_0  = Pattern.compile("ALOAD GETFIELD (ICONST_1|LCONST_1) (IMUL|LMUL) PUTFIELD".toLowerCase());
+    private static final Pattern TRANSFER = Pattern.compile("(ICONST_1|LCONST_1) ALOAD GETFIELD (IMUL|LMUL) PUTFIELD".toLowerCase());
+    private static final Pattern TRANSFER_0 = Pattern.compile("ALOAD GETFIELD (ICONST_1|LCONST_1) (IMUL|LMUL) PUTFIELD".toLowerCase());
 
     private static void visit_Transfer(HashMap<FieldKey, Node> nodes, RIS searcher) {
 
-        for(AbstractInsnNode[] match : searcher.search(TRANSFER)) {
+        for (AbstractInsnNode[] match : searcher.search(TRANSFER)) {
             FieldInsnNode A = (FieldInsnNode) match[2];
             FieldInsnNode B = (FieldInsnNode) match[4];
-            if(!chkEquality(A,B)) continue;
-            Node node = getNode(nodes,A); // A.equals(B)
-            if(node == null) continue;
+            if (!chkEquality(A, B)) continue;
+            Node node = getNode(nodes, A); // A.equals(B)
+            if (node == null) continue;
             node.addHandle(new Transfer(A, B), A, B);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(TRANSFER_0)) {
+        for (AbstractInsnNode[] match : searcher.search(TRANSFER_0)) {
             FieldInsnNode A = (FieldInsnNode) match[1];
             FieldInsnNode B = (FieldInsnNode) match[4];
-            if(!chkEquality(A,B)) continue;
-            Node node = getNode(nodes,A); // A.equals(B)
-            if(node == null) continue;
+            if (!chkEquality(A, B)) continue;
+            Node node = getNode(nodes, A); // A.equals(B)
+            if (node == null) continue;
             node.addHandle(new Transfer(A, B), A, B);
         }
 
@@ -505,7 +504,7 @@ public class MultiRemover {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private static final Pattern PUT_COMPOUND   = Pattern.compile("GETSTATIC LDC (IADD|ISUB|LADD|LSUB) PUTSTATIC".toLowerCase());
+    private static final Pattern PUT_COMPOUND = Pattern.compile("GETSTATIC LDC (IADD|ISUB|LADD|LSUB) PUTSTATIC".toLowerCase());
     private static final Pattern PUT_COMPOUND_0 = Pattern.compile("DUP GETFIELD LDC (IADD|ISUB|LADD|LSUB) PUTFIELD".toLowerCase());
 
     private static final Pattern PUT_COMPOUND_1 = Pattern.compile("GETSTATIC LDC (ILOAD|LLOAD) (IMUL}LMUL) (IADD|ISUB|LADD|LSUB) PUTSTATIC".toLowerCase());
@@ -514,34 +513,34 @@ public class MultiRemover {
 
     private static void visit_PutCompound(HashMap<FieldKey, Node> nodes, RIS searcher) {
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_COMPOUND)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_COMPOUND)) {
             FieldInsnNode A = (FieldInsnNode) match[0];
             FieldInsnNode B = (FieldInsnNode) match[3];
-            if(!chkEquality(A,B)) continue;
-            LdcInsnNode ldc = (LdcInsnNode  ) match[1];
-            Node node = getNode(nodes,A); // A.equals(B)
-            if(node == null) continue;
+            if (!chkEquality(A, B)) continue;
+            LdcInsnNode ldc = (LdcInsnNode) match[1];
+            Node node = getNode(nodes, A); // A.equals(B)
+            if (node == null) continue;
             node.addHandle(new PutCompound(A, B, ldc), A, B);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_COMPOUND_0)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_COMPOUND_0)) {
             FieldInsnNode A = (FieldInsnNode) match[1];
             FieldInsnNode B = (FieldInsnNode) match[4];
-            if(!chkEquality(A,B)) continue;
-            LdcInsnNode ldc = (LdcInsnNode  ) match[2];
-            Node node = getNode(nodes,A); // A.equals(B)
-            if(node == null) continue;
-            node.addHandle(new PutCompound(A,B,ldc),A,B);
+            if (!chkEquality(A, B)) continue;
+            LdcInsnNode ldc = (LdcInsnNode) match[2];
+            Node node = getNode(nodes, A); // A.equals(B)
+            if (node == null) continue;
+            node.addHandle(new PutCompound(A, B, ldc), A, B);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_COMPOUND_1)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_COMPOUND_1)) {
             FieldInsnNode A = (FieldInsnNode) match[0];
             FieldInsnNode B = (FieldInsnNode) match[5];
-            if(!chkEquality(A,B)) continue;
-            LdcInsnNode ldc = (LdcInsnNode  ) match[1];
-            Node node = getNode(nodes,A); // A.equals(B)
-            if(node == null) continue;
-            node.addHandle(new PutCompound(A,B,ldc),A,B);
+            if (!chkEquality(A, B)) continue;
+            LdcInsnNode ldc = (LdcInsnNode) match[1];
+            Node node = getNode(nodes, A); // A.equals(B)
+            if (node == null) continue;
+            node.addHandle(new PutCompound(A, B, ldc), A, B);
         }
 
 
@@ -555,20 +554,20 @@ public class MultiRemover {
 
     private static void visit_PutConstant(HashMap<FieldKey, Node> nodes, RIS searcher) {
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_CONSTANT)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_CONSTANT)) {
             FieldInsnNode fin = (FieldInsnNode) match[1];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[0];
-            if(ldc.cst instanceof String) continue;
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new PutConstant(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[0];
+            if (ldc.cst instanceof String) continue;
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new PutConstant(fin, ldc), fin);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_CONSTANT_0, match1 -> match1.length == 2)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_CONSTANT_0, match1 -> match1.length == 2)) {
             FieldInsnNode fin = (FieldInsnNode) match[1];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new PutConstant(fin,null),fin);
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new PutConstant(fin, null), fin);
         }
 
     }
@@ -577,7 +576,7 @@ public class MultiRemover {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private static final Pattern GET_VALUE   = Pattern.compile("(GETFIELD|GETSTATIC) LDC (IMUL|LMUL)".toLowerCase());
+    private static final Pattern GET_VALUE = Pattern.compile("(GETFIELD|GETSTATIC) LDC (IMUL|LMUL)".toLowerCase());
     private static final Pattern GET_VALUE_0 = Pattern.compile("LDC (GETFIELD|GETSTATIC) (IMUL|LMUL)".toLowerCase());
 
     private static final Pattern GET_VALUE_1 = Pattern.compile("LDC ALOAD GETFIELD (IMUL|LMUL)".toLowerCase());
@@ -585,36 +584,36 @@ public class MultiRemover {
 
     private static void visit_GetValue(HashMap<FieldKey, Node> nodes, RIS searcher) {
 
-        for(AbstractInsnNode[] match : searcher.search(GET_VALUE)) {
+        for (AbstractInsnNode[] match : searcher.search(GET_VALUE)) {
             FieldInsnNode fin = (FieldInsnNode) match[0];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[1];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new GetField(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[1];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new GetField(fin, ldc), fin);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(GET_VALUE_0)) {
+        for (AbstractInsnNode[] match : searcher.search(GET_VALUE_0)) {
             FieldInsnNode fin = (FieldInsnNode) match[1];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[0];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new GetField(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[0];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new GetField(fin, ldc), fin);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(GET_VALUE_1)) {
+        for (AbstractInsnNode[] match : searcher.search(GET_VALUE_1)) {
             FieldInsnNode fin = (FieldInsnNode) match[2];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[0];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new GetField(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[0];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new GetField(fin, ldc), fin);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(GET_VALUE_2, match1 -> match1.length == 4)) {
+        for (AbstractInsnNode[] match : searcher.search(GET_VALUE_2, match1 -> match1.length == 4)) {
             FieldInsnNode fin = (FieldInsnNode) match[1];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[2];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new GetField(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[2];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new GetField(fin, ldc), fin);
         }
 
     }
@@ -628,22 +627,21 @@ public class MultiRemover {
 
     private static void visit_PutValue(HashMap<FieldKey, Node> nodes, RIS searcher) {
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_VALUE)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_VALUE)) {
             FieldInsnNode fin = (FieldInsnNode) match[2];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[0];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new PutValue(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[0];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new PutValue(fin, ldc), fin);
         }
 
-        for(AbstractInsnNode[] match : searcher.search(PUT_VALUE_0)) {
+        for (AbstractInsnNode[] match : searcher.search(PUT_VALUE_0)) {
             FieldInsnNode fin = (FieldInsnNode) match[3];
-            LdcInsnNode   ldc = (LdcInsnNode)   match[0];
-            Node node = getNode(nodes,fin);
-            if(node == null) continue;
-            node.addHandle(new PutValue(fin,ldc),fin);
+            LdcInsnNode ldc = (LdcInsnNode) match[0];
+            Node node = getNode(nodes, fin);
+            if (node == null) continue;
+            node.addHandle(new PutValue(fin, ldc), fin);
         }
-
 
 
     }
@@ -651,7 +649,7 @@ public class MultiRemover {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private static void visit(MethodNode mn, HashMap<FieldKey,Node> nodes) {
+    private static void visit(MethodNode mn, HashMap<FieldKey, Node> nodes) {
 
         RIS searcher = new RIS(mn.instructions);
 
@@ -659,43 +657,43 @@ public class MultiRemover {
         visit_PutValue(nodes, searcher);
         visit_PutConstant(nodes, searcher);
         visit_PutCompound(nodes, searcher);
-        visit_Transfer(nodes,searcher);
-     //   visit_StackSettle(mn,nodes);
+        visit_Transfer(nodes, searcher);
+        //   visit_StackSettle(mn,nodes);
     }
 
 
-    public static void run(Map<String,ClassNode> classes) {
+    public static void run(Map<String, ClassNode> classes) {
 
 
-        HashMap<FieldKey,Node> nodes = new HashMap<>();
+        HashMap<FieldKey, Node> nodes = new HashMap<>();
 
-        for(ClassNode cn : classes.values()) {
-            for(MethodNode mn : cn.methods) {
+        for (ClassNode cn : classes.values()) {
+            for (MethodNode mn : cn.methods) {
 
                 /** Search for field access **/
                 boolean do_visit = false;
-                for(AbstractInsnNode ain : mn.instructions.toArray()) {
-                    if(ain instanceof FieldInsnNode) {
+                for (AbstractInsnNode ain : mn.instructions.toArray()) {
+                    if (ain instanceof FieldInsnNode) {
                         FieldInsnNode fin = (FieldInsnNode) ain;
-                        if(fin.desc.equals("Z")) continue;
+                        if (fin.desc.equals("Z")) continue;
                         Type type = Type.getType(fin.desc);
-                        if(type.getSort() == Type.INT
-                        || type.getSort() == Type.LONG) { //Encoded types must have 32+ bits
+                        if (type.getSort() == Type.INT
+                                || type.getSort() == Type.LONG) { //Encoded types must have 32+ bits
                             do_visit = true;
                             FieldKey key = new FieldKey(fin);
                             Node node = nodes.get(key);
-                            if(node == null) {
+                            if (node == null) {
                                 node = new Node(key);
-                                nodes.put(key,node);
+                                nodes.put(key, node);
                             }
                             node.access.add((FieldInsnNode) ain);
                         }
                     }
                 }
 
-                if(!do_visit) continue; //No field access to analyze
+                if (!do_visit) continue; //No field access to analyze
 
-                visit(mn,nodes);
+                visit(mn, nodes);
 
             }
         }
@@ -706,32 +704,32 @@ public class MultiRemover {
         Node[] pool = nodes.values().toArray(new Node[nodes.size()]);
         Arrays.sort(pool, (o1, o2) -> Integer.compare(o1.access.size() - o1.num_handles, o2.access.size() - o2.num_handles));
 
-        for(Node node : pool) {
+        for (Node node : pool) {
 
-            if(node.num_handles == node.access.size()) {
+            if (node.num_handles == node.access.size()) {
                 long best = 0;
                 int count = 0;
-                for(Handle handle : node.handles) {
+                for (Handle handle : node.handles) {
 
                     LdcInsnNode ldc = handle.handler.getLdc();
-                    if(ldc == null) continue;
+                    if (ldc == null) continue;
                     int val = ((Number) ldc.cst).intValue();
 
                     int c = 0;
-                    for(Handle h0 : node.handles) {
+                    for (Handle h0 : node.handles) {
 
-                        if(h0 == handle) continue;
+                        if (h0 == handle) continue;
                         LdcInsnNode ldc0 = h0.handler.getLdc();
-                        if(ldc0 == null) continue;
+                        if (ldc0 == null) continue;
                         int val0 = ((Number) ldc0.cst).intValue();
 
-                        if( val*val0==1) {
+                        if (val * val0 == 1) {
                             c++;
                         }
 
                     }
 
-                    if(c > best) {
+                    if (c > best) {
                         count = c;
                         best = val;
                     }
@@ -744,10 +742,10 @@ public class MultiRemover {
                 AbstractInsnNode ain;
 
                 out:
-                for(FieldInsnNode fin : node.access) {
-                    for(Handle handle : node.handles) {
-                        for(FieldInsnNode f : handle.handles) {
-                            if(fin == f) continue out;
+                for (FieldInsnNode fin : node.access) {
+                    for (Handle handle : node.handles) {
+                        for (FieldInsnNode f : handle.handles) {
+                            if (fin == f) continue out;
                         }
                     }
                     System.out.println("\t-> " + fin.method().owner.name + "#" + fin.method().name + "@" + fin.method().desc);
@@ -761,7 +759,7 @@ public class MultiRemover {
         } // -1 + -2 + 1 + 1 + 1
 
         System.out.println(none);
-        System.out.println(num + "/" + (nodes.size()-none));
+        System.out.println(num + "/" + (nodes.size() - none));
 
     }
 

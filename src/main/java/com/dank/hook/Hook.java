@@ -158,7 +158,11 @@ public enum Hook {
             "tableActions::Ljava/lang/String;", "varpOpcodes::[[I", "itemIds::[I", "itemQuantities::[I",
             "interactable::Z", "tooltip::Ljava/lang/String;", "type::I", "contentType::I", "buttonType::I",
             "rowPadding::I", "columnPadding::I", "xSprites::[I", "ySprites::[I",
-            "parent::LWidget;", "children::[LWidget;"),
+            "parent::LWidget;", "children::[LWidget;","xMargin::[I", "yMargin::[I","wMargin::[I", "hMargin::[I",
+            "xLayout::[I", "yLayout::[I", "hLayout::[I", "wLayout::[I", "enableEvents::Z", "textMode::I","thickness::I",
+            "rotation::I", "repeat::Z", "selectMode::I", "spriteId2::I", "fontId::I", "textSpacing::I", "horizontalMargin::I",
+            "verticalMargin::I", "fill::Z", "perpendicular::Z", "textShadowed::Z", "v2::Z"
+            ),
 
     CLIENT("Client", GAME_ENGINE, "myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
@@ -188,7 +192,8 @@ public enum Hook {
             "cacheLocation::Ljava/io/File;", "processFrames::()V", "processLogin::()V", "processLogic::()V",
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",
             "getKeyFocusListener::LKeyFocusListener;", "canvas::Ljava/awt/Canvas;", "widgetsHeight::[I",
-            "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "runScript");
+            "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "runScript", "messageChannels",
+            "currentLoginName::Ljava/lang/String;", "runScript");
 
     public final Map<String, RSMember> hooks;
     public final Map<String, String> hookToDesc;

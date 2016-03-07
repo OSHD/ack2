@@ -1,5 +1,7 @@
 package com.dank.analysis.impl.client.visitor;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +25,11 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
     //should've used Map<Integer, OpcodeHook> instead, but cbf now
     private final Set<OpcodeHook> hooks = new HashSet<OpcodeHook>() {
         {
+
+//            if (add(new OpcodeHook(1000, PUTFIELD, "xMargin").skip(0))) {
+//
+//            }
+
             //bounds and positioning
             add(new OpcodeHook(1100, GETFIELD, "insetX"));
             add(new OpcodeHook(1601, GETFIELD, "insetY"));
@@ -86,6 +93,11 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(3612, GETSTATIC, Hook.CLIENT, "clanChatSize"));
             add(new OpcodeHook(3316, GETSTATIC, Hook.CLIENT, "myRights"));
 
+//            add(new OpcodeHook(3305, GETSTATIC, Hook.CLIENT, "currentLevels").skip(4));
+//            add(new OpcodeHook(3306, GETSTATIC, Hook.CLIENT, "levels"));
+//            add(new OpcodeHook(3307, GETSTATIC, Hook.CLIENT, "experiences"));
+
+
             add(new OpcodeHook(3614, GETFIELD, "world").container(Hook.CLAN_MATE));
             add(new OpcodeHook(3615, GETFIELD, "B", "rank").container(Hook.CLAN_MATE));
             add(new OpcodeHook(3613, GETFIELD, "Ljava/lang/String;", "displayName").container(Hook.CLAN_MATE));
@@ -115,8 +127,9 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             if (from.opcode() == op) {
                 final FieldInsnNode topkek = (FieldInsnNode) from;
                 if (topkek.desc.equals(desc) && (owner == null || owner.equals(topkek.owner))) {
+//                    System.out.println("Skips : (" + skipped + ")" + topkek.owner + "." + topkek.name + "(" + topkek.opname() + ")");
                     if (skipped == skips) {
-                        //System.out.println("aiii " + from.method().key());
+//                        System.out.println("test: " + from.method().key());
                         return topkek;
                     } else {
                         skipped++;
@@ -127,11 +140,14 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
         return null;
     }
 
+    boolean write = true;
+
     @Override
     public void visitNumber(final NumberNode nn) {
         for (final OpcodeHook hook : hooks) {
             if (hook.number == nn.number()) {
                 final String owner = hook.fieldOpcode == GETSTATIC || hook.fieldOpcode == PUTSTATIC ? null : hook.container.getInternalName();
+//                System.out.println(">>" + nn.number());
                 final FieldInsnNode fin = next(nn.insn(), hook.fieldOpcode, hook.fieldDesc, owner, hook.skips);
                 if (fin != null) {
                     hook.container.put(new RSField(fin, hook.mnemonic));

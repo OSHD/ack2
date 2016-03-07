@@ -6,6 +6,197 @@ Removed 2155 unused methods in 0.08 secs
 Deleted 4745 Opaque Predicates!
 Graphed 9605 Method Call(s).
 Graphed 37909 Field Call(s).
+??dk.j(Lj;II)V
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+Skips : (3)fv.u(PUTFIELD)
+Skips : (4)fv.t(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+Skips : (3)fv.u(PUTFIELD)
+Skips : (4)fv.t(PUTFIELD)
+Skips : (5)fv.c(PUTFIELD)
+Skips : (6)fv.d(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+Skips : (3)fv.u(PUTFIELD)
+Skips : (4)fv.t(PUTFIELD)
+Skips : (5)fv.c(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+Skips : (3)fv.u(PUTFIELD)
+Skips : (4)fv.t(PUTFIELD)
+Skips : (5)fv.c(PUTFIELD)
+Skips : (6)fv.d(PUTFIELD)
+Skips : (7)fv.z(PUTFIELD)
+>1000
+Skips : (0)fv.g(PUTFIELD)
+Skips : (1)fv.q(PUTFIELD)
+Skips : (2)fv.ac(PUTFIELD)
+Skips : (3)fv.u(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+Skips : (6)fv.p(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+Skips : (6)fv.p(PUTFIELD)
+Skips : (7)fv.w(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+Skips : (6)fv.p(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+Skips : (4)fv.x(PUTFIELD)
+Skips : (5)fv.e(PUTFIELD)
+Skips : (6)fv.p(PUTFIELD)
+Skips : (7)fv.w(PUTFIELD)
+>1000
+Skips : (0)fv.t(PUTFIELD)
+Skips : (1)fv.c(PUTFIELD)
+Skips : (2)fv.d(PUTFIELD)
+Skips : (3)fv.z(PUTFIELD)
+>1000
+Skips : (0)fv.at(PUTFIELD)
+>1102
+Skips : (0)fv.aq(PUTFIELD)
+>1104
+Skips : (0)fv.ap(PUTFIELD)
+>1105
+Skips : (0)fv.au(PUTFIELD)
+>1106
+Skips : (0)fv.ay(PUTFIELD)
+>1107
+Skips : (0)fv.ba(PUTFIELD)
+>1113
+Skips : (0)fv.bm(PUTFIELD)
+Skips : (1)fv.bh(PUTFIELD)
+>1114
+Skips : (0)fv.bm(PUTFIELD)
+>1114
+Skips : (0)fv.bm(PUTFIELD)
+Skips : (1)fv.bh(PUTFIELD)
+Skips : (2)fv.bn(PUTFIELD)
+>1114
+Skips : (0)fv.bp(PUTFIELD)
+>1115
+Skips : (0)fv.av(PUTFIELD)
+Skips : (1)fv.ah(PUTFIELD)
+Skips : (2)fv.aa(PUTFIELD)
+Skips : (3)fv.as(PUTFIELD)
+>1115
+Skips : (0)fv.av(PUTFIELD)
+>1116
+Skips : (0)fv.ee(PUTFIELD)
+>1205
+Skips : (0)fv.bz(PUTFIELD)
+>1205
+Skips : (0)fv.cu(PUTFIELD)
+>1427
+Skips : (0)as.pk(PUTSTATIC)
+>3112
+>1000
+>1000
+>1000
+>1000
+>1000
+>1000
+>1000
+>1000
+Skips : (0)fv.q(GETFIELD)
+Skips : (1)fv.q(GETFIELD)
+Skips : (2)fv.u(GETFIELD)
+Skips : (3)fv.g(GETFIELD)
+Skips : (4)fv.g(GETFIELD)
+Skips : (5)fv.ai(GETFIELD)
+Skips : (6)fv.aa(GETFIELD)
+Skips : (7)fv.ak(GETFIELD)
+Skips : (8)fv.aa(GETFIELD)
+Skips : (9)fv.ak(GETFIELD)
+Skips : (10)fv.ai(GETFIELD)
+>40
 hz.n()I
 >(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Laa;
 GameStrings := fn
@@ -387,11 +578,16 @@ Widget := fv
   ✓ configListenerArgs............fv.cw
   ✓ configTriggers................fv.dd
   ✓ contentType...................fv.s x -1197159853
+  ✓ enableEvents..................fv.cu
+  ✓ fill..........................fv.at
   ✓ flippedHorizontally...........fv.bs
   ✓ flippedVertically.............fv.aj
   ✓ fontId........................fv.ba x 641016129
   ✓ height........................fv.am x -659847977
   ✓ hidden........................fv.ax
+  ✓ hLayout.......................fv.z x -805103009
+  ✓ hMargin.......................fv.e x 958079741
+  ✓ horizontalMargin..............fv.bm x 1538859279
   ✓ id............................fv.q x -327674437
   ✓ index.........................fv.u x 1683615059
   ✓ insetX........................fv.ai x -1079716829
@@ -411,33 +607,49 @@ Widget := fv
   ✓ name..........................fv.cn
   ✓ parent........................fv.cq
   ✓ parentId......................fv.ac x 919377675
+  ✕ perpendicular.................BROKEN
   ✓ relativeX.....................fv.v x 601602425
   ✓ relativeY.....................fv.ab x 1233782341
   ✓ renderListener................fv.du
+  ✓ repeat........................fv.ay
+  ✓ rotation......................fv.au x 1057882035
   ✓ rotationX.....................fv.bc x 1522695491
   ✓ rotationY.....................fv.bi x 1181515935
   ✓ rotationZ.....................fv.bj x -604443023
   ✓ rowPadding....................fv.bu x -1435781085
   ✓ scrollListener................fv.dz
   ✓ selectedAction................fv.cd
+  ✓ selectMode....................fv.av x -959326805
   ✓ shadowColor...................fv.ag x -2139505109
   ✓ skillListenerArgs.............fv.dt
   ✓ skillTriggers.................fv.dr
   ✓ spriteId......................fv.au x 1057882035
+  ✓ spriteId2.....................fv.ap x -340656097
   ✓ tableActions..................fv.cg
   ✓ tableListenerArgs.............fv.dn
   ✓ tableModTriggers..............fv.dv
   ✓ text..........................fv.bt
   ✓ textColor.....................fv.ag x -2139505109
+  ✓ textMode......................fv.bz x -1232883221
   ✓ textShadowed..................fv.bp
+  ✓ textSpacing...................fv.bn x -698022671
   ✓ textureId.....................fv.ap x -340656097
+  ✓ thickness.....................fv.aq x -1741422985
   ✓ tooltip.......................fv.da
   ✓ type..........................fv.g x -1792634527
+  ✕ v2............................BROKEN
   ✓ varpOpcodes...................fv.dw
+  ✓ verticalMargin................fv.bh x -952780283
   ✓ viewportHeight................fv.as x 304125587
   ✓ viewportWidth.................fv.aa x 51009555
   ✓ width.........................fv.ak x -1143241963
+  ✓ wLayout.......................fv.d x -1412904763
+  ✓ wMargin.......................fv.x x 31664133
+  ✓ xLayout.......................fv.p x 504652591
+  ✓ xMargin.......................fv.t x -1576728869
   ✓ xSprites......................fv.cr
+  ✓ yLayout.......................fv.w x -1123968499
+  ✓ yMargin.......................fv.c x 354701883
   ✓ ySprites......................fv.cx
 
 Client := client extends GameEngine
@@ -463,6 +675,7 @@ Client := client extends GameEngine
   ✓ colorsToReplace1..............bs.k
   ✓ connectionState...............client.d x 1285263801
   ✓ currentLevels.................client.hg
+  ✓ currentLoginName..............ac.ao
   ✓ currentSpellTargets...........client.iu x 439875143
   ✕ cursorState...................BROKEN
   ✕ destinationX..................BROKEN
@@ -512,6 +725,7 @@ Client := client extends GameEngine
   ✓ menuWidth.....................bh.hl    x -1187496983
   ✓ menuX.........................eu.ha    x -886181513
   ✓ menuY.........................bp.hn    x 572824159
+  ✓ messageChannels...............b.j
   ✓ minimapRotation...............client.fi x -1793160455
   ✓ minimapScale..................client.ed x 269522371
   ✓ minimapSprite.................al.me
@@ -558,7 +772,7 @@ Client := client extends GameEngine
   ✓ xViewportBuffer...............dd.aj
   ✓ yViewportBuffer...............dd.af
 
-  Found 440/450 hooks, 50/50 classes!
+  Found 461/473 hooks, 50/50 classes!
 gu
 gj
 ce

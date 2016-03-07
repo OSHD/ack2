@@ -1,7 +1,13 @@
 package com.dank.analysis.impl.widget;
 
+import com.dank.analysis.impl.client.visitor.RunescriptOpcodeHandlerVisitor;
+import com.dank.analysis.impl.widget.visitor.MarginVisitor;
+import com.dank.analysis.impl.widget.visitor.RuneScriptVisitor;
+import com.dank.hook.RSMethod;
+import com.dank.util.Wildcard;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.tree.NodeTree;
+import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
 import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -84,6 +90,7 @@ public class Widget extends Analyser {
 
     @Override
     public void evaluate(ClassNode cn) {
+
         for (final MethodNode mn : cn.methods) {
             if (!mn.isStatic()) {
                 final NodeTree tree = TreeBuilder.build(mn);
@@ -97,6 +104,21 @@ public class Widget extends Analyser {
                 } else if (fn.desc.equals(Hook.WIDGET.getInternalDesc())) {
                     Hook.WIDGET.put(new RSField(fn, "parent"));
                 }
+            }
+        }
+
+        NodeVisitor rsohv = new RunescriptOpcodeHandlerVisitor();
+
+        for (ClassNode c : DankEngine.classPath.getClasses()) {
+            for (MethodNode mn : c.methods) {
+                if(new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+                    System.out.println("??"+mn.key());
+                    Hook.CLIENT.put(new RSMethod(mn, "runScript"));
+                    TreeBuilder.build(mn).accept(new MarginVisitor());
+                    TreeBuilder.build(mn).accept(new RuneScriptVisitor());
+                }
+                TreeBuilder.build(mn).accept(rsohv);
+
             }
         }
     }

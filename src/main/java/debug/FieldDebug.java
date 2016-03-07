@@ -44,29 +44,30 @@ public class FieldDebug {
 
         List<MethodNode> full_method = new ArrayList<MethodNode>();
 
-        for(ClassNode classNode : classPath.getClasses()) {
+        for (ClassNode classNode : classPath.getClasses()) {
             for (MethodNode methodNode : classNode.methods) {
                 FlowVisitor fv = new FlowVisitor();
                 fv.accept(methodNode);
-                for(BasicBlock bb : fv.blocks) {
+                for (BasicBlock bb : fv.blocks) {
                     for (AbstractInsnNode ain : bb.instructions) {
                         if (ain instanceof FieldInsnNode && ((FieldInsnNode) ain).owner.equals(owner) && ((FieldInsnNode) ain).name.equals(field_name)) {
-                            System.out.println(methodNode.owner.name + "." + methodNode.name +methodNode.desc);
+                            System.out.println(methodNode.owner.name + "." + methodNode.name + methodNode.desc);
                             System.out.println(bb.tree().toString());
-                            if(fullMethod) full_method.add(methodNode);
+                            if (fullMethod) full_method.add(methodNode);
                         }
                     }
                 }
             }
         }
-        if(fullMethod && full_method.size() > 0) {
+        if (fullMethod && full_method.size() > 0) {
             FlowVisitor fv = new FlowVisitor();
-            for(MethodNode methodNode : full_method) {
+            for (MethodNode methodNode : full_method) {
                 fv.accept(methodNode);
                 System.out.println(methodNode.owner.name + "." + methodNode.name + methodNode.desc);
-                for(BasicBlock bb : fv.blocks) {
+                for (BasicBlock bb : fv.graph) {
+                    if (methodNode.owner.name.equals("dk"))
 //                    System.out.println(bb.stack().toString());
-                    System.out.println(bb.tree().toString());
+                        System.out.println(bb.toString());
                 }
             }
         }
@@ -76,7 +77,7 @@ public class FieldDebug {
 //        new FieldDebug("ez", "b", true);
 
 
-        new FieldDebug("aa", "i", false);
+        new FieldDebug("fv", "cu", true);
 
     }
 }

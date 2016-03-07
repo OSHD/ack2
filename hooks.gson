@@ -117,7 +117,7 @@
           "name": "c",
           "desc": "I",
           "decoder": 2120085835,
-          "access": 1
+          "access": 8
         },
         "actions": {
           "owner": "ao",
@@ -181,7 +181,7 @@
           "name": "e",
           "desc": "I",
           "decoder": 1298069515,
-          "access": 1
+          "access": 8
         },
         "notedId": {
           "owner": "aj",
@@ -259,6 +259,13 @@
           "decoder": 387130445,
           "access": 25
         },
+        "thickness": {
+          "owner": "fv",
+          "name": "aq",
+          "desc": "I",
+          "decoder": -1741422985,
+          "access": 24
+        },
         "relativeY": {
           "owner": "fv",
           "name": "ab",
@@ -326,6 +333,13 @@
           "decoder": 1522695491,
           "access": 25
         },
+        "yLayout": {
+          "owner": "fv",
+          "name": "w",
+          "desc": "I",
+          "decoder": -1123968499,
+          "access": 8
+        },
         "tableListenerArgs": {
           "owner": "fv",
           "name": "dn",
@@ -376,6 +390,13 @@
           "name": "q",
           "desc": "I",
           "decoder": -327674437,
+          "access": 24
+        },
+        "xMargin": {
+          "owner": "fv",
+          "name": "t",
+          "desc": "I",
+          "decoder": -1576728869,
           "access": 24
         },
         "shadowColor": {
@@ -439,6 +460,12 @@
           "desc": "I",
           "decoder": -1728218901,
           "access": 8
+        },
+        "fill": {
+          "owner": "fv",
+          "name": "at",
+          "desc": "Z",
+          "access": 0
         },
         "textColor": {
           "owner": "fv",
@@ -521,6 +548,20 @@
           "desc": "Z",
           "access": 1
         },
+        "yMargin": {
+          "owner": "fv",
+          "name": "c",
+          "desc": "I",
+          "decoder": 354701883,
+          "access": 8
+        },
+        "wLayout": {
+          "owner": "fv",
+          "name": "d",
+          "desc": "I",
+          "decoder": -1412904763,
+          "access": 24
+        },
         "textureId": {
           "owner": "fv",
           "name": "ap",
@@ -541,6 +582,13 @@
           "decoder": 1206843229,
           "access": 25
         },
+        "hMargin": {
+          "owner": "fv",
+          "name": "e",
+          "desc": "I",
+          "decoder": 958079741,
+          "access": 8
+        },
         "buttonType": {
           "owner": "fv",
           "name": "y",
@@ -554,6 +602,13 @@
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
+        "textSpacing": {
+          "owner": "fv",
+          "name": "bn",
+          "desc": "I",
+          "decoder": -698022671,
+          "access": 8
+        },
         "alpha": {
           "owner": "fv",
           "name": "al",
@@ -561,10 +616,36 @@
           "decoder": -1263251699,
           "access": 8
         },
+        "repeat": {
+          "owner": "fv",
+          "name": "ay",
+          "desc": "Z",
+          "access": 0
+        },
+        "textMode": {
+          "owner": "fv",
+          "name": "bz",
+          "desc": "I",
+          "decoder": -1232883221,
+          "access": 24
+        },
         "itemQuantities": {
           "owner": "fv",
           "name": "dx",
           "desc": "[I",
+          "access": 0
+        },
+        "horizontalMargin": {
+          "owner": "fv",
+          "name": "bm",
+          "desc": "I",
+          "decoder": 1538859279,
+          "access": 24
+        },
+        "enableEvents": {
+          "owner": "fv",
+          "name": "cu",
+          "desc": "Z",
           "access": 0
         },
         "textShadowed": {
@@ -600,6 +681,27 @@
           "decoder": 51009555,
           "access": 9
         },
+        "rotation": {
+          "owner": "fv",
+          "name": "au",
+          "desc": "I",
+          "decoder": 1057882035,
+          "access": 0
+        },
+        "verticalMargin": {
+          "owner": "fv",
+          "name": "bh",
+          "desc": "I",
+          "decoder": -952780283,
+          "access": 25
+        },
+        "xLayout": {
+          "owner": "fv",
+          "name": "p",
+          "desc": "I",
+          "decoder": 504652591,
+          "access": 24
+        },
         "parentId": {
           "owner": "fv",
           "name": "ac",
@@ -618,6 +720,34 @@
           "name": "cd",
           "desc": "Ljava/lang/String;",
           "access": 9
+        },
+        "wMargin": {
+          "owner": "fv",
+          "name": "x",
+          "desc": "I",
+          "decoder": 31664133,
+          "access": 8
+        },
+        "spriteId2": {
+          "owner": "fv",
+          "name": "ap",
+          "desc": "I",
+          "decoder": -340656097,
+          "access": 8
+        },
+        "hLayout": {
+          "owner": "fv",
+          "name": "z",
+          "desc": "I",
+          "decoder": -805103009,
+          "access": 8
+        },
+        "selectMode": {
+          "owner": "fv",
+          "name": "av",
+          "desc": "I",
+          "decoder": -959326805,
+          "access": 24
         },
         "width": {
           "owner": "fv",
@@ -886,7 +1016,7 @@
           "name": "p",
           "desc": "I",
           "decoder": 1183949399,
-          "access": 1
+          "access": 24
         },
         "regionBaseY": {
           "owner": "ct",
@@ -1150,6 +1280,12 @@
           "desc": "[I",
           "access": 0
         },
+        "currentLoginName": {
+          "owner": "ac",
+          "name": "ao",
+          "desc": "Ljava/lang/String;",
+          "access": 9
+        },
         "itemTables": {
           "owner": "y",
           "name": "j",
@@ -1227,13 +1363,13 @@
           "owner": "cq",
           "name": "t",
           "desc": "I",
-          "access": 1
+          "access": 24
         },
         "screenCenterY": {
           "owner": "cq",
           "name": "t",
           "desc": "I",
-          "access": 1
+          "access": 24
         },
         "colorsToReplace": {
           "owner": "eg",
@@ -1260,7 +1396,7 @@
           "name": "d",
           "desc": "I",
           "decoder": 1285263801,
-          "access": 1
+          "access": 24
         },
         "floorLevel": {
           "owner": "bp",
@@ -1384,7 +1520,7 @@
           "name": "aq",
           "desc": "I",
           "decoder": 1125618589,
-          "access": 1
+          "access": 24
         },
         "interfaces": {
           "owner": "fv",
@@ -1469,6 +1605,12 @@
           "desc": "I",
           "decoder": 1734781257,
           "access": 25
+        },
+        "messageChannels": {
+          "owner": "b",
+          "name": "j",
+          "desc": "Ljava/util/Map;",
+          "access": 0
         }
       },
       "methods": {
@@ -1699,14 +1841,14 @@
           "name": "w",
           "desc": "I",
           "decoder": -907063375,
-          "access": 1
+          "access": 8
         },
         "combatLevel": {
           "owner": "a",
           "name": "w",
           "desc": "I",
           "decoder": -907063375,
-          "access": 1
+          "access": 8
         },
         "config": {
           "owner": "a",
@@ -2063,7 +2205,7 @@
           "name": "aq",
           "desc": "I",
           "decoder": -41749255,
-          "access": 1
+          "access": 24
         },
         "modifiedColors": {
           "owner": "an",
@@ -2108,14 +2250,14 @@
           "name": "d",
           "desc": "I",
           "decoder": 953271157,
-          "access": 1
+          "access": 24
         },
         "clipType": {
           "owner": "an",
           "name": "t",
           "desc": "I",
           "decoder": 482521369,
-          "access": 1
+          "access": 24
         }
       },
       "methods": {

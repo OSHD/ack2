@@ -57,7 +57,13 @@ public class Character extends Analyser {
     }
 
     public void resolveAnimationMultipliers() {
+        MethodNode methodNode = Inter.runAnimationMethod;
 
+        //find multi in line with field -- that's the solution.
+        //also... the inverse of the getter is equal to the setter...
+        //so if you find the getter you also found the setter....
+
+        //Using the interpreter? using modulas inverse ummmm
     }
 
     private int pos = 0;

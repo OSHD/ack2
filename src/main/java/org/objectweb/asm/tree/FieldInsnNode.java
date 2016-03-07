@@ -110,4 +110,8 @@ public class FieldInsnNode extends AbstractInsnNode {
     public String toString() {
         return owner + "#" + name + "@" + desc;
     }
+
+    public String key() {
+        return owner + "." + name + "(" + desc + ")" + "(" +opname()+ ")";
+    }
 }
