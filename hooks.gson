@@ -1,860 +1,872 @@
 {
-  "rev": 107,
-  "crc": 759672605,
+  "rev": 109,
+  "crc": 1536604858,
   "classes": {
     "Entity": {
-      "name": "ck",
+      "name": "cr",
       "fields": {
         "modelHeight": {
-          "owner": "ck",
-          "name": "cr",
+          "owner": "cr",
+          "name": "cv",
           "desc": "I",
-          "decoder": 643748231,
+          "decoder": -564644063,
           "access": 1
         }
       }
     },
     "GPI": {
-      "name": "aw",
+      "name": "ac",
       "fields": {
         "chatBuffer": {
-          "owner": "aw",
-          "name": "q",
-          "desc": "Ldx;",
+          "owner": "ac",
+          "name": "z",
+          "desc": "Lds;",
           "access": 0
         },
         "globalPlayerIndices": {
-          "owner": "aw",
-          "name": "a",
+          "owner": "ac",
+          "name": "j",
           "desc": "[I",
           "access": 1
         },
         "pendingFlagsIndices": {
-          "owner": "aw",
-          "name": "l",
+          "owner": "cq",
+          "name": "ah",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "cachedAppearances": {
-          "owner": "aw",
-          "name": "o",
-          "desc": "[Ldx;",
+          "owner": "ac",
+          "name": "y",
+          "desc": "[Lds;",
           "access": 0
         },
         "pendingFlagsCount": {
-          "owner": "ar",
-          "name": "al",
+          "owner": "ac",
+          "name": "e",
           "desc": "I",
-          "decoder": -506979759,
-          "access": 8
+          "decoder": 799467117,
+          "access": 1
         },
         "localPlayerCount": {
-          "owner": "ag",
-          "name": "a",
+          "owner": "ac",
+          "name": "i",
           "desc": "I",
-          "decoder": -1945075057,
+          "decoder": -1140879549,
+          "access": 24
+        },
+        "movementTypes": {
+          "owner": "ac",
+          "name": "s",
+          "desc": "[B",
+          "access": 0
+        },
+        "skipFlags": {
+          "owner": "ac",
+          "name": "f",
+          "desc": "[B",
           "access": 0
         },
         "localPlayerIndices": {
-          "owner": "aw",
-          "name": "z",
+          "owner": "ac",
+          "name": "g",
           "desc": "[I",
-          "access": 0
+          "access": 8
         },
         "globalPlayerCount": {
-          "owner": "ag",
-          "name": "q",
+          "owner": "ac",
+          "name": "m",
           "desc": "I",
-          "decoder": 1515314215,
-          "access": 8
+          "decoder": -1962560395,
+          "access": 25
         }
       }
     },
     "NpcDefinition": {
-      "name": "ac",
+      "name": "ar",
       "fields": {
         "varpIndex": {
-          "owner": "ac",
-          "name": "ar",
+          "owner": "ar",
+          "name": "ah",
           "desc": "I",
-          "decoder": -390129581,
+          "decoder": 1567288871,
           "access": 8
         },
         "modifiedColors": {
-          "owner": "ac",
-          "name": "n",
+          "owner": "ar",
+          "name": "b",
           "desc": "[S",
           "access": 0
         },
         "name": {
-          "owner": "ac",
-          "name": "c",
+          "owner": "ar",
+          "name": "e",
           "desc": "Ljava/lang/String;",
           "access": 8
         },
         "varp32Index": {
-          "owner": "ac",
-          "name": "aw",
+          "owner": "ar",
+          "name": "ac",
           "desc": "I",
-          "decoder": -2113565215,
+          "decoder": -1405843365,
           "access": 8
         },
         "transformIds": {
-          "owner": "ac",
-          "name": "au",
+          "owner": "ar",
+          "name": "ak",
           "desc": "[I",
           "access": 8
         },
         "id": {
-          "owner": "ac",
-          "name": "o",
+          "owner": "ar",
+          "name": "y",
           "desc": "I",
-          "decoder": 2061229421,
+          "decoder": 136033589,
           "access": 24
         },
         "combatLevel": {
-          "owner": "ac",
-          "name": "r",
+          "owner": "ar",
+          "name": "q",
           "desc": "I",
-          "decoder": 1546186585,
+          "decoder": -1595765817,
           "access": 8
         },
         "actions": {
-          "owner": "ac",
-          "name": "e",
+          "owner": "ar",
+          "name": "d",
           "desc": "[Ljava/lang/String;",
           "access": 0
         },
         "colors": {
-          "owner": "ac",
-          "name": "s",
+          "owner": "ar",
+          "name": "t",
           "desc": "[S",
           "access": 0
         }
       },
       "methods": {
         "transform": {
-          "owner": "ac",
-          "name": "p",
-          "desc": "(I)Lac;",
-          "predicate": 159,
+          "owner": "ar",
+          "name": "m",
+          "desc": "(I)Lar;",
+          "predicate": 1101976923,
           "access": 0
         }
       }
     },
     "Node": {
-      "name": "gq",
+      "name": "gs",
       "fields": {
         "next": {
-          "owner": "gq",
-          "name": "ex",
-          "desc": "Lgq;",
+          "owner": "gs",
+          "name": "ep",
+          "desc": "Lgs;",
           "access": 0
         },
         "previous": {
-          "owner": "gq",
-          "name": "ep",
-          "desc": "Lgq;",
+          "owner": "gs",
+          "name": "ez",
+          "desc": "Lgs;",
           "access": 0
         },
         "key": {
-          "owner": "gq",
-          "name": "ee",
+          "owner": "gs",
+          "name": "eq",
           "desc": "J",
           "access": 0
         }
       },
       "methods": {
         "unlink": {
-          "owner": "gq",
-          "name": "im",
+          "owner": "gs",
+          "name": "ia",
           "desc": "()V",
-          "access": 24
+          "access": 0
         }
       }
     },
     "ItemDefinition": {
-      "name": "aq",
+      "name": "ae",
       "fields": {
         "stackable": {
-          "owner": "aq",
-          "name": "t",
+          "owner": "ae",
+          "name": "k",
           "desc": "I",
-          "decoder": 884693979,
+          "decoder": -244115507,
           "access": 8
         },
         "notedId": {
-          "owner": "aq",
-          "name": "bt",
+          "owner": "ae",
+          "name": "br",
           "desc": "I",
-          "decoder": 1265585611,
+          "decoder": 1077275391,
           "access": 24
         },
         "groundActions": {
-          "owner": "aq",
-          "name": "ad",
+          "owner": "ae",
+          "name": "at",
           "desc": "[Ljava/lang/String;",
           "access": 0
         },
         "unnotedId": {
-          "owner": "aq",
-          "name": "bw",
+          "owner": "ae",
+          "name": "bd",
           "desc": "I",
-          "decoder": 1707286105,
+          "decoder": 661772647,
           "access": 24
         },
         "modifiedColors": {
-          "owner": "aq",
-          "name": "x",
+          "owner": "ae",
+          "name": "u",
           "desc": "[S",
           "access": 0
         },
         "name": {
-          "owner": "aq",
-          "name": "l",
+          "owner": "ae",
+          "name": "v",
           "desc": "Ljava/lang/String;",
-          "access": 9
+          "access": 8
         },
         "id": {
-          "owner": "fy",
-          "name": "w",
+          "owner": "fa",
+          "name": "i",
           "desc": "I",
-          "decoder": 1176964233,
+          "decoder": -448619199,
           "access": 24
         },
         "storeValue": {
-          "owner": "aq",
-          "name": "aw",
+          "owner": "ae",
+          "name": "ar",
           "desc": "I",
-          "decoder": 1532704905,
-          "access": 8
+          "decoder": -595412137,
+          "access": 1
         },
         "actions": {
-          "owner": "aq",
-          "name": "ak",
+          "owner": "ae",
+          "name": "aw",
           "desc": "[Ljava/lang/String;",
           "access": 8
         },
         "colors": {
-          "owner": "aq",
-          "name": "q",
+          "owner": "ae",
+          "name": "z",
           "desc": "[S",
           "access": 0
         }
       }
     },
     "Widget": {
-      "name": "fy",
+      "name": "fa",
       "fields": {
         "parent": {
-          "owner": "fy",
-          "name": "cm",
-          "desc": "Lfy;",
+          "owner": "fa",
+          "name": "cz",
+          "desc": "Lfa;",
           "access": 0
         },
         "modelId": {
-          "owner": "fy",
-          "name": "bn",
+          "owner": "fa",
+          "name": "bt",
           "desc": "I",
-          "decoder": 2137980523,
-          "access": 24
+          "decoder": -1161936389,
+          "access": 25
         },
         "thickness": {
-          "owner": "fy",
-          "name": "am",
+          "owner": "fa",
+          "name": "av",
           "desc": "I",
-          "decoder": 1921093689,
+          "decoder": -1823949491,
           "access": 24
         },
         "relativeY": {
-          "owner": "fy",
-          "name": "af",
+          "owner": "fa",
+          "name": "ad",
           "desc": "I",
-          "decoder": -1945821643,
+          "decoder": 59348735,
           "access": 8
         },
         "relativeX": {
-          "owner": "fy",
-          "name": "g",
+          "owner": "fa",
+          "name": "o",
           "desc": "I",
-          "decoder": -945097897,
+          "decoder": 437714097,
           "access": 8
         },
         "itemIds": {
-          "owner": "fy",
-          "name": "dt",
+          "owner": "fa",
+          "name": "dm",
           "desc": "[I",
           "access": 0
         },
         "skillListenerArgs": {
-          "owner": "fy",
-          "name": "dk",
+          "owner": "fa",
+          "name": "dl",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "tooltip": {
-          "owner": "fy",
-          "name": "ds",
+          "owner": "fa",
+          "name": "dz",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "viewportHeight": {
-          "owner": "fy",
-          "name": "ag",
+          "owner": "fa",
+          "name": "ai",
           "desc": "I",
-          "decoder": -1641412577,
+          "decoder": -666551997,
           "access": 9
         },
         "type": {
-          "owner": "fy",
-          "name": "q",
+          "owner": "fa",
+          "name": "z",
           "desc": "I",
-          "decoder": 560562297,
+          "decoder": -1139340531,
           "access": 8
         },
         "columnPadding": {
-          "owner": "fy",
-          "name": "bh",
+          "owner": "fa",
+          "name": "bm",
           "desc": "I",
-          "decoder": -848808615,
-          "access": 24
+          "decoder": 1633895717,
+          "access": 25
         },
         "borderThickness": {
-          "owner": "fy",
-          "name": "as",
+          "owner": "fa",
+          "name": "au",
           "desc": "I",
-          "decoder": -1261190405,
-          "access": 24
+          "decoder": -1939554089,
+          "access": 1
         },
         "rotationX": {
-          "owner": "fy",
-          "name": "bg",
+          "owner": "fa",
+          "name": "bs",
           "desc": "I",
-          "decoder": -1877737263,
+          "decoder": -1356525223,
           "access": 8
         },
         "yLayout": {
-          "owner": "fy",
-          "name": "e",
+          "owner": "fa",
+          "name": "d",
           "desc": "I",
-          "decoder": 64933677,
-          "access": 8
+          "decoder": -1077257465,
+          "access": 24
         },
         "tableListenerArgs": {
-          "owner": "fy",
-          "name": "da",
+          "owner": "fa",
+          "name": "di",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "rotationY": {
-          "owner": "fy",
-          "name": "bz",
+          "owner": "fa",
+          "name": "bn",
           "desc": "I",
-          "decoder": -1350263333,
+          "decoder": -232113331,
           "access": 25
         },
         "fontId": {
-          "owner": "fy",
-          "name": "by",
+          "owner": "fa",
+          "name": "bw",
           "desc": "I",
-          "decoder": -1997904013,
-          "access": 24
-        },
-        "rotationZ": {
-          "owner": "fy",
-          "name": "bu",
-          "desc": "I",
-          "decoder": 1030570619,
+          "decoder": 1601212731,
           "access": 25
         },
+        "rotationZ": {
+          "owner": "fa",
+          "name": "bl",
+          "desc": "I",
+          "decoder": -1957625285,
+          "access": 24
+        },
         "children": {
-          "owner": "fy",
-          "name": "ec",
-          "desc": "[Lfy;",
+          "owner": "fa",
+          "name": "ey",
+          "desc": "[Lfa;",
           "access": 0
         },
         "skillTriggers": {
-          "owner": "fy",
-          "name": "do",
+          "owner": "fa",
+          "name": "da",
           "desc": "[I",
           "access": 0
         },
         "text": {
-          "owner": "fy",
-          "name": "bj",
+          "owner": "fa",
+          "name": "bf",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "id": {
-          "owner": "fy",
-          "name": "w",
+          "owner": "fa",
+          "name": "i",
           "desc": "I",
-          "decoder": 1176964233,
+          "decoder": -448619199,
           "access": 24
         },
         "xMargin": {
-          "owner": "fy",
-          "name": "k",
+          "owner": "fa",
+          "name": "p",
           "desc": "I",
-          "decoder": 283536031,
-          "access": 25
+          "decoder": 1127832283,
+          "access": 24
         },
         "shadowColor": {
-          "owner": "fy",
-          "name": "ah",
+          "owner": "fa",
+          "name": "az",
           "desc": "I",
-          "decoder": 1310134889,
+          "decoder": -1314855857,
           "access": 24
         },
         "contentType": {
-          "owner": "fy",
-          "name": "s",
+          "owner": "fa",
+          "name": "t",
           "desc": "I",
-          "decoder": -1576291853,
+          "decoder": 1440606565,
           "access": 8
         },
         "height": {
-          "owner": "fy",
-          "name": "ak",
+          "owner": "fa",
+          "name": "aw",
           "desc": "I",
-          "decoder": 1458286821,
+          "decoder": -492756809,
           "access": 8
         },
         "scrollListener": {
-          "owner": "fy",
-          "name": "de",
-          "desc": "[Ljava/lang/Object;",
-          "access": 0
-        },
-        "spriteId": {
-          "owner": "fy",
-          "name": "ax",
-          "desc": "I",
-          "decoder": 999546143,
-          "access": 25
-        },
-        "index": {
-          "owner": "fy",
-          "name": "l",
-          "desc": "I",
-          "decoder": -5591703,
-          "access": 24
-        },
-        "modelType": {
-          "owner": "fy",
-          "name": "bt",
-          "desc": "I",
-          "decoder": 776139469,
-          "access": 24
-        },
-        "insetX": {
-          "owner": "fy",
-          "name": "at",
-          "desc": "I",
-          "decoder": -656606397,
-          "access": 8
-        },
-        "insetY": {
-          "owner": "fy",
-          "name": "al",
-          "desc": "I",
-          "decoder": 969028545,
-          "access": 8
-        },
-        "fill": {
-          "owner": "fy",
-          "name": "ao",
-          "desc": "Z",
-          "access": 0
-        },
-        "textColor": {
-          "owner": "fy",
-          "name": "ay",
-          "desc": "I",
-          "decoder": -1501775845,
-          "access": 24
-        },
-        "itemId": {
-          "owner": "fy",
-          "name": "ej",
-          "desc": "I",
-          "decoder": -2065786127,
-          "access": 25
-        },
-        "flippedHorizontally": {
-          "owner": "fy",
-          "name": "bw",
-          "desc": "Z",
-          "access": 0
-        },
-        "flippedVertically": {
-          "owner": "fy",
-          "name": "aq",
-          "desc": "Z",
-          "access": 1
-        },
-        "modelZoom": {
-          "owner": "fy",
-          "name": "bx",
-          "desc": "I",
-          "decoder": 2142477683,
-          "access": 25
-        },
-        "name": {
-          "owner": "fy",
-          "name": "cy",
-          "desc": "Ljava/lang/String;",
-          "access": 9
-        },
-        "actions": {
-          "owner": "fy",
-          "name": "ck",
-          "desc": "[Ljava/lang/String;",
-          "access": 0
-        },
-        "tableActions": {
-          "owner": "fy",
-          "name": "ch",
-          "desc": "[Ljava/lang/String;",
-          "access": 0
-        },
-        "mouseHoverListener": {
-          "owner": "fy",
-          "name": "cz",
-          "desc": "[Ljava/lang/Object;",
-          "access": 0
-        },
-        "configTriggers": {
-          "owner": "fy",
-          "name": "dq",
-          "desc": "[I",
-          "access": 0
-        },
-        "ySprites": {
-          "owner": "fy",
-          "name": "cl",
-          "desc": "[I",
-          "access": 0
-        },
-        "renderListener": {
-          "owner": "fy",
+          "owner": "fa",
           "name": "du",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
+        "spriteId": {
+          "owner": "fa",
+          "name": "af",
+          "desc": "I",
+          "decoder": 1947865225,
+          "access": 25
+        },
+        "index": {
+          "owner": "fa",
+          "name": "v",
+          "desc": "I",
+          "decoder": -1291964211,
+          "access": 24
+        },
+        "modelType": {
+          "owner": "fa",
+          "name": "br",
+          "desc": "I",
+          "decoder": -1353234851,
+          "access": 24
+        },
+        "insetX": {
+          "owner": "fa",
+          "name": "as",
+          "desc": "I",
+          "decoder": -159771149,
+          "access": 8
+        },
+        "insetY": {
+          "owner": "fa",
+          "name": "ao",
+          "desc": "I",
+          "decoder": 1842948647,
+          "access": 8
+        },
+        "fill": {
+          "owner": "fa",
+          "name": "ag",
+          "desc": "Z",
+          "access": 0
+        },
+        "textColor": {
+          "owner": "fa",
+          "name": "ab",
+          "desc": "I",
+          "decoder": 2162251,
+          "access": 24
+        },
+        "itemId": {
+          "owner": "fa",
+          "name": "ek",
+          "desc": "I",
+          "decoder": 1766315823,
+          "access": 25
+        },
+        "flippedHorizontally": {
+          "owner": "fa",
+          "name": "bd",
+          "desc": "Z",
+          "access": 0
+        },
+        "flippedVertically": {
+          "owner": "fa",
+          "name": "ae",
+          "desc": "Z",
+          "access": 1
+        },
+        "modelZoom": {
+          "owner": "fa",
+          "name": "bz",
+          "desc": "I",
+          "decoder": 1366672251,
+          "access": 25
+        },
+        "name": {
+          "owner": "fa",
+          "name": "ct",
+          "desc": "Ljava/lang/String;",
+          "access": 9
+        },
+        "actions": {
+          "owner": "fa",
+          "name": "cr",
+          "desc": "[Ljava/lang/String;",
+          "access": 0
+        },
+        "tableActions": {
+          "owner": "fa",
+          "name": "cc",
+          "desc": "[Ljava/lang/String;",
+          "access": 0
+        },
+        "mouseHoverListener": {
+          "owner": "fa",
+          "name": "co",
+          "desc": "[Ljava/lang/Object;",
+          "access": 0
+        },
+        "configTriggers": {
+          "owner": "fa",
+          "name": "dn",
+          "desc": "[I",
+          "access": 0
+        },
+        "ySprites": {
+          "owner": "fa",
+          "name": "cs",
+          "desc": "[I",
+          "access": 0
+        },
+        "renderListener": {
+          "owner": "fa",
+          "name": "dh",
+          "desc": "[Ljava/lang/Object;",
+          "access": 0
+        },
         "hidden": {
-          "owner": "fy",
-          "name": "aw",
+          "owner": "fa",
+          "name": "ac",
           "desc": "Z",
           "access": 0
         },
         "yMargin": {
-          "owner": "fy",
-          "name": "r",
+          "owner": "fa",
+          "name": "q",
           "desc": "I",
-          "decoder": -1321438181,
+          "decoder": 723949127,
           "access": 8
         },
         "wLayout": {
-          "owner": "fy",
-          "name": "n",
+          "owner": "fa",
+          "name": "b",
           "desc": "I",
-          "decoder": -1200077179,
+          "decoder": -2018354347,
           "access": 8
         },
         "textureId": {
-          "owner": "fy",
-          "name": "ae",
+          "owner": "fa",
+          "name": "ap",
           "desc": "I",
-          "decoder": -68407057,
-          "access": 24
+          "decoder": 1089073517,
+          "access": 8
         },
         "mouseExitListener": {
-          "owner": "fy",
+          "owner": "fa",
           "name": "cn",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "boundsIndex": {
-          "owner": "fy",
-          "name": "ew",
+          "owner": "fa",
+          "name": "ex",
           "desc": "I",
-          "decoder": 1113570083,
+          "decoder": -214895611,
           "access": 25
         },
         "hMargin": {
-          "owner": "fy",
-          "name": "t",
+          "owner": "fa",
+          "name": "k",
           "desc": "I",
-          "decoder": -1925916855,
+          "decoder": 1934872927,
           "access": 8
         },
         "buttonType": {
-          "owner": "fy",
-          "name": "n",
+          "owner": "fa",
+          "name": "u",
           "desc": "I",
-          "decoder": -1200077179,
-          "access": 8
+          "decoder": -1996680343,
+          "access": 24
         },
         "mouseEnterListener": {
-          "owner": "fy",
-          "name": "cc",
+          "owner": "fa",
+          "name": "cf",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "textSpacing": {
-          "owner": "fy",
+          "owner": "fa",
           "name": "bi",
           "desc": "I",
-          "decoder": -614474809,
-          "access": 25
+          "decoder": 1038040741,
+          "access": 8
         },
         "alpha": {
-          "owner": "fy",
-          "name": "av",
+          "owner": "fa",
+          "name": "an",
           "desc": "I",
-          "decoder": -62039033,
+          "decoder": -93851663,
           "access": 8
         },
         "repeat": {
-          "owner": "fy",
-          "name": "ab",
+          "owner": "fa",
+          "name": "ay",
           "desc": "Z",
           "access": 0
         },
         "textMode": {
-          "owner": "fy",
-          "name": "bv",
+          "owner": "fa",
+          "name": "bc",
           "desc": "I",
-          "decoder": 1616443583,
+          "decoder": -1655971615,
           "access": 25
         },
         "itemQuantities": {
-          "owner": "fy",
-          "name": "dl",
+          "owner": "fa",
+          "name": "dj",
           "desc": "[I",
           "access": 0
         },
         "horizontalMargin": {
-          "owner": "fy",
-          "name": "bq",
+          "owner": "fa",
+          "name": "bj",
           "desc": "I",
-          "decoder": -1860439357,
-          "access": 25
+          "decoder": 1299552715,
+          "access": 8
         },
         "enableEvents": {
-          "owner": "fy",
-          "name": "co",
+          "owner": "fa",
+          "name": "cq",
           "desc": "Z",
           "access": 0
         },
         "textShadowed": {
-          "owner": "fy",
-          "name": "bl",
+          "owner": "fa",
+          "name": "bk",
           "desc": "Z",
           "access": 0
         },
         "tableModTriggers": {
-          "owner": "fy",
-          "name": "db",
+          "owner": "fa",
+          "name": "dd",
           "desc": "[I",
           "access": 0
         },
         "rowPadding": {
-          "owner": "fy",
-          "name": "bo",
+          "owner": "fa",
+          "name": "bh",
           "desc": "I",
-          "decoder": -921814147,
+          "decoder": -1129166081,
           "access": 24
         },
         "itemQuantity": {
-          "owner": "fy",
+          "owner": "fa",
           "name": "et",
           "desc": "I",
-          "decoder": 1835778085,
-          "access": 8
+          "decoder": 1720816295,
+          "access": 25
         },
         "viewportWidth": {
-          "owner": "fy",
-          "name": "aj",
+          "owner": "fa",
+          "name": "am",
           "desc": "I",
-          "decoder": -1199410745,
+          "decoder": 1232467909,
           "access": 9
         },
         "rotation": {
-          "owner": "fy",
-          "name": "ax",
+          "owner": "fa",
+          "name": "af",
           "desc": "I",
-          "decoder": 999546143,
+          "decoder": 1947865225,
           "access": 25
         },
         "verticalMargin": {
-          "owner": "fy",
-          "name": "be",
+          "owner": "fa",
+          "name": "ba",
           "desc": "I",
-          "decoder": 1128707983,
+          "decoder": -924761225,
           "access": 8
         },
         "xLayout": {
-          "owner": "fy",
-          "name": "m",
+          "owner": "fa",
+          "name": "x",
           "desc": "I",
-          "decoder": -1815068025,
+          "decoder": 1392942929,
           "access": 8
         },
         "parentId": {
-          "owner": "fy",
-          "name": "ar",
+          "owner": "fa",
+          "name": "ah",
           "desc": "I",
-          "decoder": 1729142883,
+          "decoder": -956586605,
           "access": 8
         },
         "varpOpcodes": {
-          "owner": "fy",
-          "name": "di",
+          "owner": "fa",
+          "name": "db",
           "desc": "[[I",
           "access": 0
         },
         "selectedAction": {
-          "owner": "fy",
-          "name": "cd",
+          "owner": "fa",
+          "name": "cm",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "wMargin": {
-          "owner": "fy",
-          "name": "b",
+          "owner": "fa",
+          "name": "w",
           "desc": "I",
-          "decoder": 1720449131,
+          "decoder": -418871157,
           "access": 8
         },
         "spriteId2": {
-          "owner": "fy",
-          "name": "ae",
+          "owner": "fa",
+          "name": "ap",
           "desc": "I",
-          "decoder": -68407057,
-          "access": 24
+          "decoder": 1089073517,
+          "access": 8
         },
         "hLayout": {
-          "owner": "fy",
-          "name": "u",
+          "owner": "fa",
+          "name": "c",
           "desc": "I",
-          "decoder": -112825295,
-          "access": 8
-        },
-        "selectMode": {
-          "owner": "fy",
-          "name": "as",
-          "desc": "I",
-          "decoder": -1261190405,
+          "decoder": -2064145175,
           "access": 24
         },
-        "width": {
-          "owner": "fy",
-          "name": "ad",
+        "selectMode": {
+          "owner": "fa",
+          "name": "au",
           "desc": "I",
-          "decoder": -1570148805,
-          "access": 8
+          "decoder": -1939554089,
+          "access": 1
+        },
+        "width": {
+          "owner": "fa",
+          "name": "at",
+          "desc": "I",
+          "decoder": 1206291921,
+          "access": 24
         },
         "configListenerArgs": {
-          "owner": "fy",
-          "name": "cq",
+          "owner": "fa",
+          "name": "ce",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "interactable": {
-          "owner": "fy",
-          "name": "aq",
+          "owner": "fa",
+          "name": "h",
           "desc": "Z",
           "access": 1
         },
         "config": {
-          "owner": "fy",
-          "name": "cj",
+          "owner": "fa",
+          "name": "ci",
           "desc": "I",
-          "decoder": -1121486011,
-          "access": 25
+          "decoder": 1423594245,
+          "access": 24
         },
         "loopCycle": {
-          "owner": "fy",
-          "name": "em",
+          "owner": "fa",
+          "name": "ec",
           "desc": "I",
-          "decoder": -908579639,
+          "decoder": 1849339109,
           "access": 25
         },
         "xSprites": {
-          "owner": "fy",
-          "name": "cl",
+          "owner": "fa",
+          "name": "ca",
           "desc": "[I",
           "access": 0
         }
       }
     },
     "GameEngine": {
-      "name": "ei",
+      "name": "el",
       "fields": {
         "shell": {
-          "owner": "ei",
-          "name": "ps",
-          "desc": "Lei;",
+          "owner": "el",
+          "name": "pv",
+          "desc": "Lel;",
           "access": 0
         },
         "focused": {
-          "owner": "ei",
-          "name": "rq",
+          "owner": "el",
+          "name": "ri",
           "desc": "Z",
           "access": 0
         }
       }
     },
     "World": {
-      "name": "g",
+      "name": "o",
       "fields": {
         "world": {
-          "owner": "g",
-          "name": "o",
-          "desc": "[Lg;",
+          "owner": "o",
+          "name": "y",
+          "desc": "[Lo;",
           "access": 0
         },
         "activity": {
-          "owner": "g",
-          "name": "l",
+          "owner": "o",
+          "name": "v",
           "desc": "Ljava/lang/String;",
-          "access": 9
+          "access": 8
         },
         "domain": {
-          "owner": "g",
-          "name": "z",
+          "owner": "o",
+          "name": "h",
           "desc": "I",
-          "decoder": 807713739,
+          "decoder": -678873207,
           "access": 24
         },
         "index": {
-          "owner": "g",
-          "name": "w",
+          "owner": "o",
+          "name": "i",
           "desc": "I",
-          "decoder": -1826278093,
+          "decoder": -1673311441,
           "access": 24
         },
         "location": {
-          "owner": "g",
-          "name": "q",
+          "owner": "o",
+          "name": "z",
           "desc": "Ljava/lang/String;",
-          "access": 9
+          "access": 8
         },
         "mask": {
-          "owner": "g",
-          "name": "h",
+          "owner": "o",
+          "name": "l",
           "desc": "I",
-          "decoder": -683317883,
+          "decoder": 1453645189,
           "access": 24
         },
         "population": {
-          "owner": "g",
-          "name": "x",
+          "owner": "o",
+          "name": "u",
           "desc": "I",
-          "decoder": -1890405749,
-          "access": 1
+          "decoder": -416090705,
+          "access": 24
         }
       }
     },
@@ -863,111 +875,111 @@
       "fields": {
         "counterHeight": {
           "owner": "cn",
-          "name": "v",
+          "name": "a",
           "desc": "I",
-          "decoder": -1791545233,
+          "decoder": 1979191033,
           "access": 24
         },
         "uid": {
           "owner": "cn",
-          "name": "p",
+          "name": "g",
           "desc": "I",
-          "decoder": -1177027277,
-          "access": 1
+          "decoder": 713144085,
+          "access": 0
         },
         "middle": {
           "owner": "cn",
-          "name": "o",
-          "desc": "Lck;",
+          "name": "y",
+          "desc": "Lcr;",
           "access": 0
         },
         "top": {
           "owner": "cn",
-          "name": "c",
-          "desc": "Lck;",
+          "name": "e",
+          "desc": "Lcr;",
           "access": 0
         },
         "bottom": {
           "owner": "cn",
-          "name": "d",
-          "desc": "Lck;",
+          "name": "s",
+          "desc": "Lcr;",
           "access": 0
         },
         "strictY": {
           "owner": "cn",
-          "name": "i",
+          "name": "f",
           "desc": "I",
-          "decoder": -1738613599,
-          "access": 0
+          "decoder": -1428007657,
+          "access": 24
         },
         "strictX": {
           "owner": "cn",
-          "name": "f",
+          "name": "r",
           "desc": "I",
-          "decoder": -1065257965,
-          "access": 0
+          "decoder": 683648049,
+          "access": 24
         },
         "height": {
           "owner": "cn",
-          "name": "j",
+          "name": "m",
           "desc": "I",
-          "decoder": 1214592995,
-          "access": 0
+          "decoder": 360153119,
+          "access": 25
         }
       }
     },
     "PlayerConfig": {
-      "name": "fg",
+      "name": "fd",
       "fields": {
         "appearance": {
-          "owner": "fg",
-          "name": "v",
+          "owner": "fd",
+          "name": "a",
           "desc": "[I",
           "access": 24
         },
         "appearanceColors": {
-          "owner": "fg",
-          "name": "f",
+          "owner": "fd",
+          "name": "r",
           "desc": "[I",
           "access": 0
         },
         "female": {
-          "owner": "fg",
-          "name": "i",
+          "owner": "fd",
+          "name": "f",
           "desc": "Z",
           "access": 1
         },
         "npcId": {
-          "owner": "fg",
-          "name": "d",
+          "owner": "fd",
+          "name": "s",
           "desc": "I",
-          "decoder": 757016153,
-          "access": 0
+          "decoder": -395747915,
+          "access": 24
         }
       }
     },
     "FontImpl": {
-      "name": "hi"
+      "name": "ht"
     },
     "DualNode": {
-      "name": "gk",
+      "name": "gq",
       "fields": {
         "dualNext": {
-          "owner": "gk",
+          "owner": "gq",
           "name": "cu",
-          "desc": "Lgk;",
+          "desc": "Lgq;",
           "access": 0
         },
         "dualPrevious": {
-          "owner": "gk",
-          "name": "cd",
-          "desc": "Lgk;",
+          "owner": "gq",
+          "name": "cm",
+          "desc": "Lgq;",
           "access": 0
         }
       },
       "methods": {
         "unlinkDual": {
-          "owner": "gk",
+          "owner": "gq",
           "name": "eb",
           "desc": "()V",
           "access": 0
@@ -979,349 +991,350 @@
       "fields": {
         "myPlayerIndex": {
           "owner": "client",
-          "name": "gq",
+          "name": "gs",
           "desc": "I",
-          "decoder": 1323126647,
+          "decoder": -1100220297,
           "access": 0
         },
         "worldSelectorDisplayed": {
-          "owner": "ar",
-          "name": "as",
+          "owner": "ho",
+          "name": "ar",
           "desc": "Z",
-          "access": 0
+          "access": 1
         },
         "widgetsHeight": {
           "owner": "client",
-          "name": "lk",
+          "name": "lu",
           "desc": "[I",
           "access": 0
         },
         "tempVars": {
-          "owner": "fp",
-          "name": "i",
+          "owner": "fx",
+          "name": "f",
           "desc": "[I",
           "access": 8
         },
         "tileHeights": {
-          "owner": "c",
-          "name": "v",
+          "owner": "e",
+          "name": "a",
           "desc": "[[[I",
           "access": 0
         },
         "membersWorld": {
           "owner": "client",
-          "name": "h",
+          "name": "l",
           "desc": "Z",
           "access": 9
         },
         "engineCycle": {
           "owner": "client",
-          "name": "k",
+          "name": "d",
           "desc": "I",
-          "decoder": 1694239707,
-          "access": 25
+          "decoder": 1966177037,
+          "access": 24
         },
         "regionBaseY": {
-          "owner": "a",
-          "name": "da",
+          "owner": "b",
+          "name": "di",
           "desc": "I",
-          "decoder": 2062356389,
+          "decoder": 1420280507,
           "access": 25
         },
-        "cacheDirectory": {
-          "owner": "ey",
-          "name": "d",
-          "desc": "Ljava/io/File;",
-          "access": 0
+        "cursorState": {
+          "owner": "client",
+          "name": "gt",
+          "desc": "I",
+          "decoder": -1476101085,
+          "access": 25
         },
         "graphicsObjectDeque": {
           "owner": "client",
-          "name": "hm",
-          "desc": "Lgs;",
+          "name": "hl",
+          "desc": "Lgd;",
           "access": 0
         },
         "regionBaseX": {
-          "owner": "t",
-          "name": "dq",
+          "owner": "ez",
+          "name": "dn",
           "desc": "I",
-          "decoder": -1013043268,
+          "decoder": -521676429,
           "access": 25
         },
         "energy": {
           "owner": "client",
-          "name": "jw",
+          "name": "jg",
           "desc": "I",
-          "decoder": 1389497913,
+          "decoder": 60076685,
           "access": 0
         },
         "clanChatSize": {
-          "owner": "cp",
-          "name": "mh",
+          "owner": "n",
+          "name": "mk",
           "desc": "I",
-          "decoder": -376943553,
+          "decoder": 1721952555,
           "access": 0
         },
         "worldCount": {
-          "owner": "es",
+          "owner": "ej",
           "name": "j",
           "desc": "I",
-          "decoder": 1129156130,
-          "access": 0
+          "decoder": 1292881431,
+          "access": 8
         },
         "canvas": {
-          "owner": "da",
-          "name": "qb",
+          "owner": "ap",
+          "name": "qd",
           "desc": "Ljava/awt/Canvas;",
           "access": 0
         },
         "ignoredPlayers": {
           "owner": "client",
-          "name": "oq",
-          "desc": "[Lj;",
+          "name": "oz",
+          "desc": "[Lm;",
           "access": 0
         },
         "npcIndices": {
           "owner": "client",
-          "name": "ch",
+          "name": "cc",
           "desc": "[I",
           "access": 0
         },
         "packet": {
           "owner": "client",
-          "name": "cr",
-          "desc": "Ldw;",
+          "name": "cv",
+          "desc": "Ldg;",
           "access": 0
         },
         "menuActionPrefix": {
           "owner": "client",
-          "name": "iq",
+          "name": "ix",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "menuWidth": {
-          "owner": "bc",
-          "name": "hx",
+          "owner": "fs",
+          "name": "hw",
           "desc": "I",
-          "decoder": 1755352163,
+          "decoder": 1136014611,
           "access": 0
         },
         "myRights": {
           "owner": "client",
-          "name": "jl",
+          "name": "jw",
           "desc": "I",
-          "decoder": 24038553,
+          "decoder": 51300059,
           "access": 0
         },
         "myWorld": {
           "owner": "client",
-          "name": "d",
+          "name": "s",
           "desc": "I",
-          "decoder": 763470159,
-          "access": 0
+          "decoder": -1363207799,
+          "access": 24
         },
         "xViewportBuffer": {
-          "owner": "dq",
-          "name": "ag",
+          "owner": "dn",
+          "name": "ai",
           "desc": "[I",
           "access": 0
         },
         "cacheLocation": {
           "owner": "ey",
-          "name": "d",
+          "name": "r",
           "desc": "Ljava/io/File;",
           "access": 0
         },
         "menuActions": {
           "owner": "client",
-          "name": "iy",
+          "name": "if",
           "desc": "[Ljava/lang/String;",
           "access": 0
         },
         "playerActions": {
           "owner": "client",
-          "name": "hj",
+          "name": "ho",
           "desc": "[Ljava/lang/String;",
           "access": 0
         },
         "ignoreListSize": {
           "owner": "client",
-          "name": "oh",
+          "name": "op",
           "desc": "I",
-          "decoder": -1865751153,
+          "decoder": -600135987,
           "access": 0
         },
         "screenWidth": {
           "owner": "client",
-          "name": "ok",
+          "name": "oi",
           "desc": "I",
-          "decoder": 1355894443,
+          "decoder": -1040513165,
           "access": 0
         },
         "worlds": {
-          "owner": "g",
-          "name": "o",
-          "desc": "[Lg;",
+          "owner": "o",
+          "name": "y",
+          "desc": "[Lo;",
           "access": 0
         },
         "renderRules": {
-          "owner": "c",
-          "name": "f",
+          "owner": "e",
+          "name": "r",
           "desc": "[[[B",
           "access": 0
         },
         "menuOpen": {
           "owner": "client",
-          "name": "hs",
+          "name": "hn",
           "desc": "Z",
           "access": 0
         },
         "localExchangeOffers": {
           "owner": "client",
-          "name": "pr",
-          "desc": "[Lhy;",
+          "name": "pn",
+          "desc": "[Lhp;",
           "access": 0
         },
         "friendListSize": {
           "owner": "client",
-          "name": "oh",
+          "name": "op",
           "desc": "I",
-          "decoder": -1865751153,
+          "decoder": -600135987,
           "access": 0
         },
         "engineVars": {
-          "owner": "fp",
-          "name": "f",
+          "owner": "fx",
+          "name": "r",
           "desc": "[I",
           "access": 0
         },
         "yViewportBuffer": {
-          "owner": "dq",
-          "name": "aj",
+          "owner": "dn",
+          "name": "am",
           "desc": "[I",
           "access": 0
         },
         "menuArg1": {
           "owner": "client",
-          "name": "hp",
+          "name": "hf",
           "desc": "[I",
           "access": 0
         },
         "menuArg2": {
           "owner": "client",
-          "name": "ig",
+          "name": "is",
           "desc": "[I",
           "access": 0
         },
         "menuArg0": {
           "owner": "client",
-          "name": "iu",
+          "name": "iv",
           "desc": "[I",
           "access": 0
         },
         "minimapRotation": {
           "owner": "client",
-          "name": "ff",
+          "name": "fb",
           "desc": "I",
-          "decoder": 1492575139,
+          "decoder": 1597874683,
           "access": 25
         },
         "cameraY": {
-          "owner": "a",
-          "name": "fj",
+          "owner": "b",
+          "name": "fw",
           "desc": "I",
-          "decoder": 941812487,
+          "decoder": 2018633355,
           "access": 25
         },
         "spellSelected": {
           "owner": "client",
-          "name": "jz",
+          "name": "jk",
           "desc": "Z",
           "access": 0
         },
         "cameraZ": {
-          "owner": "g",
-          "name": "fu",
+          "owner": "ak",
+          "name": "fc",
           "desc": "I",
-          "decoder": -392278511,
+          "decoder": -125723295,
           "access": 25
         },
         "cameraX": {
-          "owner": "dj",
-          "name": "fn",
+          "owner": "aj",
+          "name": "fp",
           "desc": "I",
-          "decoder": -1945829689,
+          "decoder": -1707774671,
           "access": 25
         },
         "clanChatOwner": {
           "owner": "client",
-          "name": "my",
+          "name": "mh",
           "desc": "Ljava/lang/String;",
           "access": 0
         },
         "playerArray": {
           "owner": "client",
-          "name": "gz",
-          "desc": "[Li;",
+          "name": "gx",
+          "desc": "[Lf;",
           "access": 0
         },
         "menuNouns": {
           "owner": "client",
-          "name": "ij",
+          "name": "ia",
           "desc": "[Ljava/lang/String;",
           "access": 0
         },
         "screenZoom": {
           "owner": "client",
-          "name": "om",
+          "name": "oc",
           "desc": "I",
-          "decoder": -1142851171,
+          "decoder": 2072351141,
           "access": 0
         },
         "levels": {
           "owner": "client",
-          "name": "hi",
+          "name": "ht",
           "desc": "[I",
           "access": 0
         },
         "currentLoginName": {
-          "owner": "ar",
-          "name": "ac",
+          "owner": "ah",
+          "name": "ar",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "itemTables": {
-          "owner": "x",
-          "name": "v",
-          "desc": "Lgv;",
+          "owner": "u",
+          "name": "a",
+          "desc": "Lgo;",
           "access": 0
         },
         "clanMates": {
-          "owner": "l",
-          "name": "ms",
-          "desc": "[Lt;",
+          "owner": "an",
+          "name": "mx",
+          "desc": "[Lk;",
           "access": 0
         },
         "onCursorCount": {
-          "owner": "dq",
-          "name": "bd",
+          "owner": "dn",
+          "name": "by",
           "desc": "I",
           "access": 1
         },
         "onCursorUids": {
-          "owner": "dq",
-          "name": "bm",
+          "owner": "dn",
+          "name": "bu",
           "desc": "[I",
           "access": 0
         },
         "friendedPlayers": {
           "owner": "client",
-          "name": "og",
-          "desc": "[Ln;",
+          "name": "ov",
+          "desc": "[Lb;",
           "access": 0
         },
         "widgetPositionsY": {
           "owner": "client",
-          "name": "lq",
+          "name": "lg",
           "desc": "[I",
           "access": 0
         },
@@ -1333,21 +1346,21 @@
         },
         "widgetPositionsX": {
           "owner": "client",
-          "name": "li",
+          "name": "lv",
           "desc": "[I",
           "access": 0
         },
         "selectedSpellName": {
           "owner": "client",
-          "name": "il",
+          "name": "iw",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "cameraYaw": {
-          "owner": "f",
-          "name": "fc",
+          "owner": "v",
+          "name": "fr",
           "desc": "I",
-          "decoder": 1970239877,
+          "decoder": -1396045617,
           "access": 25
         },
         "clanChatName": {
@@ -1357,57 +1370,57 @@
           "access": 0
         },
         "screenCenterX": {
-          "owner": "cm",
-          "name": "k",
+          "owner": "cz",
+          "name": "p",
           "desc": "I",
-          "access": 25
+          "access": 24
         },
         "screenCenterY": {
-          "owner": "cm",
-          "name": "k",
+          "owner": "cz",
+          "name": "p",
           "desc": "I",
-          "access": 25
+          "access": 24
         },
         "audioEffectCount": {
           "owner": "client",
-          "name": "nz",
+          "name": "nw",
           "desc": "I",
-          "decoder": 1381441393,
+          "decoder": -465606255,
           "access": 0
         },
         "itemSelectionStatus": {
           "owner": "client",
-          "name": "ia",
+          "name": "ib",
           "desc": "I",
-          "decoder": -904669387,
+          "decoder": 1082936463,
           "access": 0
         },
         "connectionState": {
           "owner": "client",
-          "name": "bk",
+          "name": "b",
           "desc": "I",
-          "decoder": -984610939,
-          "access": 1
+          "decoder": -959777641,
+          "access": 8
         },
         "floorLevel": {
-          "owner": "f",
-          "name": "ga",
+          "owner": "ay",
+          "name": "gl",
           "desc": "I",
-          "decoder": 1014567787,
+          "decoder": 184537967,
           "access": 0
         },
         "minimapScale": {
           "owner": "client",
-          "name": "ef",
+          "name": "ea",
           "desc": "I",
-          "decoder": 1494142579,
+          "decoder": 2033178713,
           "access": 1
         },
         "weight": {
           "owner": "client",
           "name": "jn",
           "desc": "I",
-          "decoder": -533895295,
+          "decoder": 2050958043,
           "access": 0
         },
         "widgetsWidth": {
@@ -1418,793 +1431,791 @@
         },
         "experiences": {
           "owner": "client",
-          "name": "hc",
+          "name": "hk",
           "desc": "[I",
           "access": 0
         },
         "viewRotation": {
           "owner": "client",
-          "name": "ec",
+          "name": "ey",
           "desc": "I",
-          "decoder": 1325896879,
+          "decoder": 758508433,
           "access": 25
         },
         "projectileDeque": {
           "owner": "client",
-          "name": "hn",
-          "desc": "Lgs;",
+          "name": "hq",
+          "desc": "Lgd;",
           "access": 0
         },
         "hintArrowX": {
           "owner": "client",
-          "name": "at",
+          "name": "as",
           "desc": "I",
-          "decoder": 120451353,
+          "decoder": -1634659351,
           "access": 8
         },
         "hintArrowY": {
           "owner": "client",
-          "name": "al",
+          "name": "ao",
           "desc": "I",
-          "decoder": 1342346249,
+          "decoder": -25864989,
           "access": 8
         },
         "focused": {
-          "owner": "ei",
-          "name": "rq",
+          "owner": "el",
+          "name": "ri",
           "desc": "Z",
           "access": 0
         },
         "currentLevels": {
           "owner": "client",
-          "name": "hz",
+          "name": "hs",
           "desc": "[I",
           "access": 0
         },
         "menuHeight": {
-          "owner": "t",
-          "name": "hb",
+          "owner": "ds",
+          "name": "hv",
           "desc": "I",
-          "decoder": 591650091,
+          "decoder": 1435262831,
           "access": 0
         },
         "currentSpellTargets": {
-          "owner": "ag",
-          "name": "ik",
+          "owner": "u",
+          "name": "iy",
           "desc": "I",
-          "decoder": -864919757,
+          "decoder": -1463402645,
           "access": 0
         },
         "selectedItemIndex": {
-          "owner": "w",
-          "name": "ir",
+          "owner": "ev",
+          "name": "ii",
           "desc": "I",
-          "decoder": -1160042355,
+          "decoder": -739619511,
           "access": 0
         },
         "npcArray": {
           "owner": "client",
-          "name": "cf",
-          "desc": "[Lal;",
+          "name": "cs",
+          "desc": "[Lao;",
           "access": 0
         },
         "interfaceNodes": {
           "owner": "client",
-          "name": "im",
-          "desc": "Lgv;",
+          "name": "iu",
+          "desc": "Lgo;",
           "access": 0
         },
         "hideRoofs": {
           "owner": "client",
-          "name": "nz",
+          "name": "nw",
           "desc": "I",
-          "decoder": 1381441393,
+          "decoder": -465606255,
           "access": 0
         },
         "groundItemDeque": {
           "owner": "client",
-          "name": "hq",
-          "desc": "[[[Lgs;",
+          "name": "ha",
+          "desc": "[[[Lgd;",
           "access": 0
         },
         "bootState": {
           "owner": "client",
-          "name": "am",
+          "name": "av",
           "desc": "I",
-          "decoder": 441386653,
+          "decoder": -766626633,
           "access": 24
         },
         "interfaces": {
-          "owner": "fy",
-          "name": "v",
-          "desc": "[[Lfy;",
+          "owner": "fa",
+          "name": "a",
+          "desc": "[[Lfa;",
           "access": 0
         },
         "menuItemCount": {
           "owner": "client",
-          "name": "hh",
+          "name": "hi",
           "desc": "I",
-          "decoder": -2093403587,
+          "decoder": -1552435313,
           "access": 0
         },
         "screenHeight": {
           "owner": "client",
-          "name": "op",
+          "name": "os",
           "desc": "I",
-          "decoder": -1426491123,
+          "decoder": 1018157665,
           "access": 0
         },
         "fps": {
           "owner": "client",
-          "name": "qy",
+          "name": "qo",
           "desc": "I",
-          "decoder": 2072264711,
+          "decoder": 1903634739,
           "access": 0
         },
         "clanChatRank": {
-          "owner": "y",
-          "name": "mk",
+          "owner": "l",
+          "name": "mz",
           "desc": "B",
           "access": 0
         },
         "minimapSprite": {
-          "owner": "ay",
-          "name": "mv",
-          "desc": "Lcl;",
+          "owner": "r",
+          "name": "ma",
+          "desc": "Lca;",
           "access": 0
         },
         "menuY": {
-          "owner": "aw",
-          "name": "hl",
+          "owner": "ak",
+          "name": "hu",
           "desc": "I",
-          "decoder": -2035627519,
+          "decoder": -1824498913,
           "access": 0
         },
         "menuX": {
-          "owner": "cw",
-          "name": "ht",
+          "owner": "v",
+          "name": "hz",
           "desc": "I",
-          "decoder": 1431836259,
+          "decoder": 136299961,
           "access": 0
         },
         "myPlayer": {
-          "owner": "s",
-          "name": "hg",
-          "desc": "Li;",
+          "owner": "eo",
+          "name": "hj",
+          "desc": "Lf;",
           "access": 0
         },
         "menuOpcodes": {
           "owner": "client",
-          "name": "in",
+          "name": "ij",
           "desc": "[I",
           "access": 0
         },
         "loadedWindows": {
-          "owner": "fy",
-          "name": "f",
+          "owner": "fa",
+          "name": "r",
           "desc": "[Z",
           "access": 25
         },
         "landscape": {
-          "owner": "n",
-          "name": "dy",
-          "desc": "Lcm;",
+          "owner": "bh",
+          "name": "dt",
+          "desc": "Lcz;",
           "access": 0
         },
         "cameraPitch": {
-          "owner": "dr",
-          "name": "fw",
+          "owner": "u",
+          "name": "ff",
           "desc": "I",
-          "decoder": -1236188669,
+          "decoder": 838886437,
           "access": 25
         },
         "messageChannels": {
-          "owner": "z",
-          "name": "v",
+          "owner": "h",
+          "name": "a",
           "desc": "Ljava/util/Map;",
           "access": 0
         }
       },
       "methods": {
         "getItemDefinition": {
-          "owner": "i",
-          "name": "f",
-          "desc": "(II)Laq;",
-          "predicate": 1671683358,
+          "owner": "bk",
+          "name": "a",
+          "desc": "(II)Lae;",
+          "predicate": 159,
           "access": 0
         },
         "addHUD": {
-          "owner": "x",
-          "name": "dc",
-          "desc": "(IIII)Ld;",
-          "predicate": 843432120,
+          "owner": "ab",
+          "name": "dd",
+          "desc": "(IIII)Ls;",
+          "predicate": 159,
           "access": 0
         },
         "getVarpbit": {
-          "owner": "e",
-          "name": "v",
-          "desc": "(II)I",
-          "predicate": -2130524431,
-          "access": 8
+          "owner": "au",
+          "name": "r",
+          "desc": "(II)Laf;",
+          "predicate": 887740554,
+          "access": 0
         },
         "getObjectDefinition": {
-          "owner": "z",
-          "name": "f",
+          "owner": "fg",
+          "name": "a",
           "desc": "(IB)Laa;",
-          "predicate": 159,
+          "predicate": 64,
           "access": 0
         },
         "getWidgetConfig": {
-          "owner": "o",
-          "name": "dh",
-          "desc": "(Lfy;I)I",
-          "predicate": -1252997159,
+          "owner": "cg",
+          "name": "dg",
+          "desc": "(Lfa;I)I",
+          "predicate": 130494322,
           "access": 0
         },
         "getRuneScript": {
-          "owner": "dr",
-          "name": "v",
-          "desc": "(II)Lr;",
-          "predicate": -1452776879,
+          "owner": "aa",
+          "name": "a",
+          "desc": "(II)Lq;",
+          "predicate": 1591811628,
           "access": 0
         },
         "layoutContainer2": {
-          "owner": "ai",
-          "name": "ct",
-          "desc": "([Lfy;IIIZI)V",
-          "predicate": 1746067234,
-          "access": 0
-        },
-        "processFrames": {
-          "owner": "cz",
-          "name": "bp",
-          "desc": "(B)Z",
-          "predicate": 1,
-          "access": 0
-        },
-        "getItemSprite": {
-          "owner": "x",
-          "name": "h",
-          "desc": "(IIIIIZI)Lcl;",
+          "owner": "r",
+          "name": "cu",
+          "desc": "([Lfa;IIIZI)V",
           "predicate": 159,
           "access": 0
         },
+        "processFrames": {
+          "owner": "client",
+          "name": "g",
+          "desc": "(B)V",
+          "access": 0
+        },
+        "repaintWidget": {
+          "owner": "ai",
+          "name": "ch",
+          "desc": "(Lfa;I)V",
+          "access": 0
+        },
+        "getItemSprite": {
+          "owner": "fb",
+          "name": "n",
+          "desc": "(IIIIIZB)Lca;",
+          "predicate": -63,
+          "access": 0
+        },
         "runScript": {
-          "owner": "t",
-          "name": "v",
-          "desc": "(Lv;II)V",
-          "predicate": 1662547702,
+          "owner": "bi",
+          "name": "r",
+          "desc": "(La;II)V",
+          "predicate": -109513158,
           "access": 0
         },
         "processLogic": {
           "owner": "client",
-          "name": "em",
-          "desc": "()V",
+          "name": "g",
+          "desc": "(B)V",
           "access": 0
         },
         "addMessage": {
-          "owner": "gh",
+          "owner": "a",
           "name": "f",
-          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+          "predicate": -1733232629,
+          "access": 0
+        },
+        "layoutComponent": {
+          "owner": "cu",
+          "name": "cl",
+          "desc": "(Lfa;B)V",
+          "predicate": 1,
           "access": 0
         },
         "getNpcDefinition": {
-          "owner": "aw",
-          "name": "v",
-          "desc": "(II)Lac;",
-          "predicate": -1718516432,
-          "access": 0
-        },
-        "loadImage": {
-          "owner": "av",
-          "name": "i",
-          "desc": "(Lfh;IIB)Lcl;",
-          "predicate": 9,
+          "owner": "w",
+          "name": "r",
+          "desc": "(II)Lar;",
+          "predicate": -207526674,
           "access": 0
         },
         "renderComponent": {
-          "owner": "au",
-          "name": "cu",
-          "desc": "([Lfy;IIIIIIIII)V",
-          "predicate": -1202007065,
-          "access": 0
-        },
-        "layoutWindow": {
-          "owner": "dg",
-          "name": "cv",
-          "desc": "(IIIZI)V",
-          "predicate": 472458631,
+          "owner": "ed",
+          "name": "ct",
+          "desc": "([Lfa;IIIIIIIII)V",
+          "predicate": -1066152994,
           "access": 0
         },
         "loadWorlds": {
-          "owner": "bc",
-          "name": "v",
+          "owner": "e",
+          "name": "a",
           "desc": "(I)Z",
-          "predicate": -1454655502,
-          "access": 9
-        },
-        "buildComponentEvents": {
-          "owner": "aq",
-          "name": "cp",
-          "desc": "([Lfy;IIIIIIII)V",
-          "predicate": -1537505150,
+          "predicate": 1202883034,
           "access": 0
         },
         "layoutContainer": {
-          "owner": "k",
-          "name": "ce",
-          "desc": "([Lfy;Lfy;ZI)V",
-          "predicate": 216510552,
+          "owner": "r",
+          "name": "cv",
+          "desc": "([Lfa;Lfa;ZI)V",
+          "predicate": 600472470,
           "access": 0
         },
         "addMenuRow": {
-          "owner": "ec",
-          "name": "cs",
-          "desc": "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-          "predicate": 1400264514,
+          "owner": "hc",
+          "name": "bm",
+          "desc": "(Ljava/lang/String;Ljava/lang/String;IIIIB)V",
+          "predicate": -64,
           "access": 0
         },
         "processLogin": {
-          "owner": "dm",
-          "name": "x",
+          "owner": "q",
+          "name": "u",
           "desc": "(I)V",
-          "predicate": 1631253286,
-          "access": 1
+          "predicate": 1698843377,
+          "access": 0
         },
         "setWorld": {
-          "owner": "ei",
-          "name": "z",
-          "desc": "(Lg;I)V",
-          "predicate": 159,
+          "owner": "c",
+          "name": "l",
+          "desc": "(Lo;B)V",
+          "predicate": 1,
           "access": 0
         },
         "removeHUD": {
-          "owner": "u",
-          "name": "dr",
-          "desc": "(Ld;ZI)V",
-          "predicate": 1412321501,
+          "owner": "do",
+          "name": "dl",
+          "desc": "(Ls;ZI)V",
+          "predicate": -1065385856,
           "access": 0
         }
       }
     },
     "PacketBuffer": {
-      "name": "dw",
+      "name": "dg",
       "fields": {
         "random": {
-          "owner": "dw",
-          "name": "a",
-          "desc": "Ldi;",
+          "owner": "dg",
+          "name": "j",
+          "desc": "Ldb;",
           "access": 0
         },
         "bitMasks": {
-          "owner": "dw",
-          "name": "y",
+          "owner": "dg",
+          "name": "n",
           "desc": "[I",
-          "access": 0
+          "access": 8
         },
         "bitCaret": {
-          "owner": "dw",
-          "name": "h",
+          "owner": "dg",
+          "name": "l",
           "desc": "I",
-          "decoder": 1845873127,
+          "decoder": -1244073237,
           "access": 24
         }
       },
       "methods": {
         "writeHeader": {
-          "owner": "dw",
-          "name": "ht",
-          "desc": "(IB)V",
+          "owner": "dg",
+          "name": "hy",
+          "desc": "(II)V",
           "access": 0
         },
         "readHeader": {
-          "owner": "dw",
-          "name": "hl",
+          "owner": "dg",
+          "name": "hr",
           "desc": "(I)I",
           "access": 0
         },
         "readBits": {
-          "owner": "dw",
-          "name": "hb",
-          "desc": "(II)I",
-          "predicate": 159,
+          "owner": "dg",
+          "name": "hp",
+          "desc": "(IB)I",
+          "predicate": 70,
           "access": 0
         }
       }
     },
     "Buffer": {
-      "name": "dx",
+      "name": "ds",
       "fields": {
         "caret": {
-          "owner": "dx",
-          "name": "f",
+          "owner": "ds",
+          "name": "r",
           "desc": "I",
-          "decoder": 334524255,
-          "access": 0
+          "decoder": -1446645023,
+          "access": 24
         },
         "payload": {
-          "owner": "dx",
-          "name": "v",
+          "owner": "ds",
+          "name": "a",
           "desc": "[B",
           "access": 1
         },
         "crcTable": {
-          "owner": "dx",
-          "name": "i",
+          "owner": "ds",
+          "name": "f",
           "desc": "[I",
           "access": 8
         }
       },
       "methods": {
         "applyRSA": {
-          "owner": "dx",
-          "name": "az",
+          "owner": "ds",
+          "name": "al",
           "desc": "(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V",
           "access": 0
         },
         "readInt": {
-          "owner": "dx",
-          "name": "b",
+          "owner": "ds",
+          "name": "w",
           "desc": "(I)I",
           "access": 0
         },
         "readByte": {
-          "owner": "dx",
-          "name": "m",
+          "owner": "ds",
+          "name": "x",
           "desc": "(I)B",
           "access": 0
         },
         "readUShort": {
-          "owner": "dx",
-          "name": "e",
+          "owner": "ds",
+          "name": "d",
           "desc": "(I)I",
-          "access": 8
+          "access": 0
         }
       }
     },
     "Player": {
-      "name": "i",
+      "name": "f",
       "fields": {
         "prayerIcon": {
-          "owner": "i",
-          "name": "i",
+          "owner": "f",
+          "name": "s",
           "desc": "I",
-          "decoder": 592587305,
-          "access": 0
+          "decoder": -2019003809,
+          "access": 24
         },
         "skullIcon": {
-          "owner": "i",
-          "name": "d",
+          "owner": "f",
+          "name": "f",
           "desc": "I",
-          "decoder": -141081485,
-          "access": 0
+          "decoder": 259534483,
+          "access": 24
         },
         "totalLevel": {
-          "owner": "i",
-          "name": "j",
+          "owner": "f",
+          "name": "m",
           "desc": "I",
-          "decoder": -718491801,
-          "access": 0
+          "decoder": -1040161273,
+          "access": 25
         },
         "name": {
-          "owner": "i",
-          "name": "v",
+          "owner": "f",
+          "name": "a",
           "desc": "Ljava/lang/String;",
-          "access": 8
+          "access": 24
         },
         "team": {
-          "owner": "i",
-          "name": "e",
+          "owner": "f",
+          "name": "d",
           "desc": "I",
-          "decoder": 874877929,
-          "access": 8
+          "decoder": -100224169,
+          "access": 24
         },
         "combatLevel": {
-          "owner": "i",
-          "name": "p",
+          "owner": "f",
+          "name": "g",
           "desc": "I",
-          "decoder": -44605131,
-          "access": 1
+          "decoder": 10726615,
+          "access": 0
         },
         "config": {
-          "owner": "i",
-          "name": "f",
-          "desc": "Lfg;",
+          "owner": "f",
+          "name": "r",
+          "desc": "Lfd;",
           "access": 0
         }
       }
     },
     "Parameters": {
-      "name": "gj",
+      "name": "gv",
       "fields": {
         "key": {
-          "owner": "gj",
-          "name": "x",
+          "owner": "gv",
+          "name": "u",
           "desc": "Ljava/lang/String;",
           "access": 9
         }
       }
     },
     "Landscape": {
-      "name": "cm",
+      "name": "cz",
       "fields": {
         "tiles": {
-          "owner": "cm",
-          "name": "c",
-          "desc": "[[[Lci;",
+          "owner": "cz",
+          "name": "e",
+          "desc": "[[[Lcd;",
           "access": 0
         },
         "tempEntityMarkers": {
-          "owner": "cm",
-          "name": "a",
-          "desc": "[Lcz;",
+          "owner": "cz",
+          "name": "j",
+          "desc": "[Lco;",
           "access": 0
         },
         "visibilityMap": {
-          "owner": "cm",
-          "name": "bn",
+          "owner": "cz",
+          "name": "bt",
           "desc": "[[[[Z",
           "access": 0
         }
       },
       "methods": {
         "addEntityMarker": {
-          "owner": "cm",
-          "name": "l",
-          "desc": "(IIIIIIIILck;IZII)Z",
+          "owner": "cz",
+          "name": "v",
+          "desc": "(IIIIIIIILcr;IZII)Z",
           "access": 0
         },
         "addBoundary": {
-          "owner": "cm",
-          "name": "a",
-          "desc": "(IIIILck;Lck;IIII)V",
+          "owner": "cz",
+          "name": "j",
+          "desc": "(IIIILcr;Lcr;IIII)V",
           "access": 0
         },
         "addTileDecoration": {
-          "owner": "cm",
-          "name": "p",
-          "desc": "(IIIILck;II)V",
+          "owner": "cz",
+          "name": "g",
+          "desc": "(IIIILcr;II)V",
           "access": 0
         },
         "addBoundaryDecoration": {
-          "owner": "cm",
-          "name": "y",
-          "desc": "(IIIILck;Lck;IIIIII)V",
+          "owner": "cz",
+          "name": "n",
+          "desc": "(IIIILcr;Lcr;IIIIII)V",
           "access": 0
         },
         "addObject": {
-          "owner": "cm",
-          "name": "h",
-          "desc": "(IIIIIILck;III)Z",
+          "owner": "cz",
+          "name": "l",
+          "desc": "(IIIIIILcr;III)Z",
           "access": 0
         },
         "addItemPile": {
-          "owner": "cm",
-          "name": "j",
-          "desc": "(IIIILck;ILck;Lck;)V",
+          "owner": "cz",
+          "name": "m",
+          "desc": "(IIIILcr;ILcr;Lcr;)V",
           "access": 0
         },
         "render": {
-          "owner": "cm",
-          "name": "az",
+          "owner": "cz",
+          "name": "al",
           "desc": "(IIIIII)V",
           "access": 0
         },
         "addTempEntity": {
-          "owner": "cm",
-          "name": "z",
-          "desc": "(IIIIILck;IIZ)Z",
+          "owner": "cz",
+          "name": "h",
+          "desc": "(IIIIILcr;IIZ)Z",
           "access": 0
         }
       }
     },
     "Character": {
-      "name": "ay",
+      "name": "ab",
       "fields": {
         "getNextAnimation": {
-          "owner": "ay",
-          "name": "at",
+          "owner": "ab",
+          "name": "as",
           "desc": "I",
-          "decoder": -194135383,
+          "decoder": 1901812615,
           "access": 8
         },
         "unknown7": {
-          "owner": "ay",
-          "name": "al",
+          "owner": "ab",
+          "name": "ao",
           "desc": "I",
-          "decoder": 2116196439,
+          "decoder": 501343401,
           "access": 8
         },
         "npcTurnAround": {
-          "owner": "ay",
-          "name": "ag",
+          "owner": "ab",
+          "name": "ai",
           "desc": "I",
-          "decoder": 1032828051,
+          "decoder": -624276723,
           "access": 9
         },
-        "targetIndex": {
-          "owner": "ay",
-          "name": "bt",
-          "desc": "I",
-          "decoder": -1873213265,
-          "access": 24
-        },
         "npcBoundDim": {
-          "owner": "ay",
-          "name": "ar",
+          "owner": "ab",
+          "name": "ah",
           "desc": "I",
-          "decoder": 64049856,
+          "decoder": -678567104,
           "access": 8
         },
         "hitpoints": {
-          "owner": "ay",
-          "name": "aq",
+          "owner": "ab",
+          "name": "ae",
           "desc": "I",
-          "decoder": -1320827749,
+          "decoder": -1769667477,
           "access": 25
         },
         "npcDegToTurn": {
-          "owner": "ay",
-          "name": "cs",
+          "owner": "ab",
+          "name": "cj",
           "desc": "I",
-          "decoder": 273643895,
-          "access": 24
+          "decoder": 1536019683,
+          "access": 25
         },
         "npcTurnLeft": {
-          "owner": "ay",
-          "name": "az",
+          "owner": "ab",
+          "name": "al",
           "desc": "I",
-          "decoder": 1799699837,
+          "decoder": 1525623299,
           "access": 1
         },
         "hitsplatDamages": {
-          "owner": "ay",
-          "name": "ab",
+          "owner": "ab",
+          "name": "ay",
           "desc": "[I",
           "access": 24
         },
         "interAnimFrameId": {
-          "owner": "ay",
-          "name": "bp",
+          "owner": "ab",
+          "name": "bv",
           "desc": "I",
-          "decoder": -202425665,
+          "decoder": -402659319,
           "access": 1
         },
         "maxHitpoints": {
-          "owner": "ay",
-          "name": "bw",
+          "owner": "ab",
+          "name": "bd",
           "desc": "I",
-          "decoder": -1815854925,
+          "decoder": 1918271229,
           "access": 24
         },
         "orientation": {
-          "owner": "ay",
-          "name": "cs",
+          "owner": "ab",
+          "name": "cj",
           "desc": "I",
-          "decoder": 273643895,
-          "access": 24
+          "decoder": 1536019683,
+          "access": 25
         },
         "overheadText": {
-          "owner": "ay",
+          "owner": "ab",
           "name": "aa",
           "desc": "Ljava/lang/String;",
           "access": 8
         },
         "queueSize": {
-          "owner": "ay",
-          "name": "ch",
+          "owner": "ab",
+          "name": "cc",
           "desc": "I",
-          "decoder": 961309197,
+          "decoder": 715594795,
           "access": 24
         },
         "idleAnimation": {
-          "owner": "ay",
-          "name": "aw",
+          "owner": "ab",
+          "name": "ac",
           "desc": "I",
-          "decoder": 2117542747,
+          "decoder": -133877279,
           "access": 8
         },
         "strictY": {
-          "owner": "ay",
-          "name": "ak",
+          "owner": "ab",
+          "name": "aw",
           "desc": "I",
-          "decoder": -763748175,
+          "decoder": 1879086531,
           "access": 8
         },
         "hitsplatTypes": {
-          "owner": "ay",
-          "name": "ax",
+          "owner": "ab",
+          "name": "af",
           "desc": "[I",
           "access": 24
         },
         "npcTurnRight": {
-          "owner": "ay",
-          "name": "ay",
+          "owner": "ab",
+          "name": "ab",
           "desc": "I",
-          "decoder": -1138575405,
+          "decoder": 336359717,
           "access": 24
         },
         "healthBarCycle": {
-          "owner": "ay",
-          "name": "ah",
+          "owner": "ab",
+          "name": "az",
           "desc": "I",
-          "decoder": -214514729,
+          "decoder": 778636455,
           "access": 24
         },
         "animation": {
-          "owner": "ay",
-          "name": "bm",
+          "owner": "ab",
+          "name": "bu",
           "desc": "I",
-          "decoder": -328192667,
+          "decoder": -1443845,
           "access": 1
         },
         "runAnimation": {
-          "owner": "ay",
-          "name": "ac",
+          "owner": "ab",
+          "name": "ar",
           "desc": "I",
-          "decoder": 1433962317,
+          "decoder": -525120517,
           "access": 1
         },
         "hitsplatCycles": {
-          "owner": "ay",
-          "name": "as",
+          "owner": "ab",
+          "name": "au",
           "desc": "[I",
           "access": 24
         },
         "modelHeight": {
-          "owner": "ay",
-          "name": "bo",
+          "owner": "ab",
+          "name": "bh",
           "desc": "I",
-          "decoder": -1062427759,
+          "decoder": 224576875,
           "access": 24
         },
         "strictX": {
-          "owner": "ay",
-          "name": "ad",
+          "owner": "ab",
+          "name": "at",
           "desc": "I",
-          "decoder": 850935525,
-          "access": 8
+          "decoder": -236632999,
+          "access": 24
         },
         "walkAnimation": {
-          "owner": "ay",
-          "name": "aj",
+          "owner": "ab",
+          "name": "am",
           "desc": "I",
-          "decoder": -656386329,
+          "decoder": 1079673353,
           "access": 9
         },
         "animFrameId": {
-          "owner": "ay",
-          "name": "ba",
+          "owner": "ab",
+          "name": "bo",
           "desc": "I",
-          "decoder": 1167084543,
+          "decoder": -1104965854,
           "access": 1
         }
       }
     },
     "IsaacRandom": {
-      "name": "di",
+      "name": "db",
       "fields": {
-        "count": {
-          "owner": "di",
-          "name": "d",
+        "b": {
+          "owner": "db",
+          "name": "a",
           "desc": "I",
-          "decoder": -518068009,
-          "access": 0
+          "decoder": 1757377535,
+          "access": 24
+        },
+        "c": {
+          "owner": "db",
+          "name": "j",
+          "desc": "I",
+          "access": 8
+        },
+        "count": {
+          "owner": "db",
+          "name": "y",
+          "desc": "I",
+          "decoder": 1632862178,
+          "access": 24
         }
       },
       "methods": {
         "val": {
-          "owner": "di",
-          "name": "v",
-          "desc": "(S)I",
-          "predicate": 16473,
-          "access": 0
+          "owner": "db",
+          "name": "a",
+          "desc": "(I)I",
+          "predicate": 986064939,
+          "access": 1
         },
         "isaac": {
-          "owner": "di",
-          "name": "f",
+          "owner": "db",
+          "name": "r",
           "desc": "(I)V",
-          "predicate": -1641523253,
+          "predicate": 437848355,
           "access": 1
         }
       }
@@ -2214,1148 +2225,1147 @@
       "fields": {
         "varp32Index": {
           "owner": "aa",
-          "name": "an",
+          "name": "aj",
           "desc": "I",
-          "decoder": -1380758079,
-          "access": 8
+          "decoder": 844074625,
+          "access": 24
         },
         "colors": {
           "owner": "aa",
-          "name": "w",
+          "name": "i",
           "desc": "[S",
           "access": 0
         },
         "clipped": {
           "owner": "aa",
-          "name": "aw",
+          "name": "ac",
           "desc": "Z",
           "access": 0
         },
         "sizeX": {
           "owner": "aa",
-          "name": "s",
+          "name": "b",
           "desc": "I",
-          "decoder": -1351772359,
+          "decoder": -2094329729,
           "access": 8
         },
         "modelClipped": {
           "owner": "aa",
-          "name": "aw",
+          "name": "w",
           "desc": "Z",
           "access": 0
         },
         "varpIndex": {
           "owner": "aa",
-          "name": "am",
+          "name": "av",
           "desc": "I",
-          "decoder": 923645955,
+          "decoder": -348176159,
           "access": 24
         },
         "modifiedColors": {
           "owner": "aa",
-          "name": "l",
+          "name": "v",
           "desc": "[S",
           "access": 0
         },
         "name": {
           "owner": "aa",
-          "name": "z",
+          "name": "h",
           "desc": "Ljava/lang/String;",
           "access": 9
         },
         "mapFunction": {
           "owner": "aa",
-          "name": "ai",
+          "name": "ax",
           "desc": "I",
-          "decoder": -854824943,
+          "decoder": -122418777,
           "access": 1
         },
         "transformIds": {
           "owner": "aa",
-          "name": "av",
+          "name": "an",
           "desc": "[I",
           "access": 8
         },
         "id": {
           "owner": "aa",
-          "name": "a",
+          "name": "j",
           "desc": "I",
-          "decoder": -794075063,
-          "access": 0
+          "decoder": 2008846663,
+          "access": 8
         },
         "actions": {
           "owner": "aa",
-          "name": "ak",
+          "name": "aw",
           "desc": "[Ljava/lang/String;",
           "access": 8
         },
         "sizeY": {
           "owner": "aa",
-          "name": "n",
+          "name": "t",
           "desc": "I",
-          "decoder": 1534682799,
+          "decoder": -1790266409,
           "access": 8
         },
         "clipType": {
           "owner": "aa",
-          "name": "k",
+          "name": "p",
           "desc": "I",
-          "decoder": -652499099,
-          "access": 25
+          "decoder": -1371080783,
+          "access": 24
         }
       },
       "methods": {
         "transform": {
           "owner": "aa",
-          "name": "z",
+          "name": "l",
           "desc": "(I)Laa;",
-          "predicate": -1070189486,
+          "predicate": 656439726,
           "access": 0
         }
       }
     },
     "AbstractFont": {
-      "name": "hz"
+      "name": "hs"
     },
     "ImageProduct": {
-      "name": "fh"
+      "name": "fz"
     },
     "TileDecorationStub": {
-      "name": "ce",
+      "name": "ck",
       "fields": {
         "uid": {
-          "owner": "ce",
-          "name": "o",
+          "owner": "ck",
+          "name": "y",
           "desc": "I",
-          "decoder": 763865297,
+          "decoder": -943911581,
           "access": 24
         },
         "strictY": {
-          "owner": "ce",
-          "name": "i",
-          "desc": "I",
-          "decoder": -1859907745,
-          "access": 0
-        },
-        "strictX": {
-          "owner": "ce",
+          "owner": "ck",
           "name": "f",
           "desc": "I",
-          "decoder": 1051453727,
-          "access": 0
+          "decoder": -1719752105,
+          "access": 24
+        },
+        "strictX": {
+          "owner": "ck",
+          "name": "r",
+          "desc": "I",
+          "decoder": -1519621921,
+          "access": 24
         },
         "config": {
-          "owner": "ce",
-          "name": "c",
+          "owner": "ck",
+          "name": "e",
           "desc": "I",
-          "decoder": 849535077,
+          "decoder": -1499608827,
           "access": 1
         },
         "entity": {
-          "owner": "ce",
-          "name": "d",
-          "desc": "Lck;",
+          "owner": "ck",
+          "name": "s",
+          "desc": "Lcr;",
           "access": 0
         },
         "height": {
-          "owner": "ce",
-          "name": "v",
+          "owner": "ck",
+          "name": "a",
           "desc": "I",
-          "decoder": -245659529,
+          "decoder": -1335548949,
           "access": 24
         }
       }
     },
     "Npc": {
-      "name": "al",
+      "name": "ao",
       "fields": {
         "definition": {
-          "owner": "al",
-          "name": "v",
-          "desc": "Lac;",
+          "owner": "ao",
+          "name": "a",
+          "desc": "Lar;",
           "access": 0
         }
       }
     },
     "Message": {
-      "name": "aj",
+      "name": "am",
       "fields": {
         "sender": {
-          "owner": "aj",
-          "name": "d",
+          "owner": "am",
+          "name": "s",
           "desc": "Ljava/lang/String;",
           "access": 8
         },
         "channel": {
-          "owner": "aj",
-          "name": "o",
+          "owner": "am",
+          "name": "y",
           "desc": "Ljava/lang/String;",
-          "access": 1
+          "access": 0
         },
         "index": {
-          "owner": "aj",
-          "name": "v",
+          "owner": "am",
+          "name": "f",
           "desc": "I",
-          "decoder": -1538029289,
+          "decoder": 214591365,
           "access": 24
         },
         "message": {
-          "owner": "aj",
-          "name": "c",
+          "owner": "am",
+          "name": "e",
           "desc": "Ljava/lang/String;",
           "access": 8
         },
         "type": {
-          "owner": "aj",
-          "name": "i",
-          "desc": "I",
-          "decoder": 1973741243,
-          "access": 0
-        },
-        "cycle": {
-          "owner": "aj",
+          "owner": "am",
           "name": "f",
           "desc": "I",
-          "decoder": 2113305757,
-          "access": 0
+          "decoder": 214591365,
+          "access": 24
+        },
+        "cycle": {
+          "owner": "am",
+          "name": "a",
+          "desc": "I",
+          "decoder": -1795494341,
+          "access": 24
         }
       }
     },
     "BoundaryDecorationStub": {
-      "name": "cv",
+      "name": "cp",
       "fields": {
         "entityA": {
-          "owner": "cv",
-          "name": "j",
-          "desc": "Lck;",
+          "owner": "cp",
+          "name": "m",
+          "desc": "Lcr;",
           "access": 0
         },
         "uid": {
-          "owner": "cv",
-          "name": "y",
+          "owner": "cp",
+          "name": "n",
           "desc": "I",
-          "decoder": -573035545,
-          "access": 0
+          "decoder": -316885593,
+          "access": 25
         },
         "entityB": {
-          "owner": "cv",
-          "name": "a",
-          "desc": "Lck;",
+          "owner": "cp",
+          "name": "j",
+          "desc": "Lcr;",
           "access": 0
         },
         "strictY": {
-          "owner": "cv",
-          "name": "i",
+          "owner": "cp",
+          "name": "f",
           "desc": "I",
-          "decoder": 902883011,
-          "access": 0
+          "decoder": 1403017975,
+          "access": 24
         },
         "orientationB": {
-          "owner": "cv",
-          "name": "o",
+          "owner": "cp",
+          "name": "y",
           "desc": "I",
-          "decoder": -1711180177,
+          "decoder": 304511389,
           "access": 24
         },
         "strictX": {
-          "owner": "cv",
-          "name": "f",
+          "owner": "cp",
+          "name": "r",
           "desc": "I",
-          "decoder": -205745469,
-          "access": 0
+          "decoder": -1898743395,
+          "access": 24
         },
         "orientationA": {
-          "owner": "cv",
-          "name": "d",
+          "owner": "cp",
+          "name": "s",
           "desc": "I",
-          "decoder": -824481397,
-          "access": 0
+          "decoder": 1895479415,
+          "access": 24
         },
         "insetX": {
-          "owner": "cv",
-          "name": "c",
+          "owner": "cp",
+          "name": "e",
           "desc": "I",
-          "decoder": -643586073,
+          "decoder": 406322495,
           "access": 1
         },
         "insetY": {
-          "owner": "cv",
-          "name": "p",
+          "owner": "cp",
+          "name": "g",
           "desc": "I",
-          "decoder": -1250896823,
-          "access": 1
+          "decoder": -1612193253,
+          "access": 0
         },
         "config": {
-          "owner": "cv",
-          "name": "h",
+          "owner": "cp",
+          "name": "l",
           "desc": "I",
-          "decoder": 343583867,
+          "decoder": 1430743955,
           "access": 24
         },
         "height": {
-          "owner": "cv",
-          "name": "v",
+          "owner": "cp",
+          "name": "a",
           "desc": "I",
-          "decoder": -1660394267,
+          "decoder": -2137982489,
           "access": 24
         }
       }
     },
     "ExchangeOffer": {
-      "name": "hy",
+      "name": "hp",
       "fields": {
         "itemId": {
-          "owner": "hy",
-          "name": "f",
+          "owner": "hp",
+          "name": "r",
           "desc": "I",
-          "decoder": 1743657529,
-          "access": 0
+          "decoder": 648329009,
+          "access": 24
         },
         "transferred": {
-          "owner": "hy",
-          "name": "o",
+          "owner": "hp",
+          "name": "y",
           "desc": "I",
-          "decoder": -1692579637,
+          "decoder": -1021142605,
           "access": 24
         },
         "itemQuantity": {
-          "owner": "hy",
-          "name": "d",
+          "owner": "hp",
+          "name": "s",
           "desc": "I",
-          "decoder": -1904724531,
-          "access": 0
+          "decoder": 757875425,
+          "access": 24
         },
         "price": {
-          "owner": "hy",
-          "name": "i",
+          "owner": "hp",
+          "name": "f",
           "desc": "I",
-          "decoder": 1194063493,
-          "access": 0
+          "decoder": -1396237507,
+          "access": 24
         },
         "spent": {
-          "owner": "hy",
-          "name": "c",
+          "owner": "hp",
+          "name": "e",
           "desc": "I",
-          "decoder": 1196320857,
+          "decoder": -731012833,
           "access": 1
         },
         "status": {
-          "owner": "hy",
-          "name": "v",
+          "owner": "hp",
+          "name": "a",
           "desc": "B",
           "access": 25
         }
       }
     },
     "GraphicsStub": {
-      "name": "ai",
+      "name": "ax",
       "fields": {
         "floorLevel": {
-          "owner": "ai",
-          "name": "i",
-          "desc": "I",
-          "decoder": -187167669,
-          "access": 0
-        },
-        "startCycle": {
-          "owner": "ai",
+          "owner": "ax",
           "name": "f",
           "desc": "I",
-          "decoder": -1366165455,
-          "access": 0
-        },
-        "regionX": {
-          "owner": "ai",
-          "name": "d",
-          "desc": "I",
-          "decoder": 974426311,
-          "access": 0
-        },
-        "regionY": {
-          "owner": "ai",
-          "name": "o",
-          "desc": "I",
-          "decoder": 451042115,
+          "decoder": 784156809,
           "access": 24
         },
+        "startCycle": {
+          "owner": "ax",
+          "name": "r",
+          "desc": "I",
+          "decoder": -1490281367,
+          "access": 24
+        },
+        "regionX": {
+          "owner": "ax",
+          "name": "s",
+          "desc": "I",
+          "decoder": 1558973499,
+          "access": 24
+        },
+        "regionY": {
+          "owner": "ax",
+          "name": "e",
+          "desc": "I",
+          "decoder": -750230793,
+          "access": 1
+        },
         "finished": {
-          "owner": "ai",
-          "name": "y",
+          "owner": "ax",
+          "name": "n",
           "desc": "Z",
           "access": 0
         },
         "id": {
-          "owner": "ai",
-          "name": "v",
+          "owner": "ax",
+          "name": "a",
           "desc": "I",
-          "decoder": 1394390567,
+          "decoder": 1373096569,
           "access": 24
         },
         "height": {
-          "owner": "ai",
-          "name": "c",
+          "owner": "ax",
+          "name": "g",
           "desc": "I",
-          "decoder": 959896903,
-          "access": 1
+          "decoder": 477353393,
+          "access": 0
         }
       }
     },
     "Bitmap": {
-      "name": "bo",
+      "name": "bh",
       "fields": {
         "bitmap": {
-          "owner": "bo",
-          "name": "c",
+          "owner": "bh",
+          "name": "e",
           "desc": "Ljava/awt/Image;",
           "access": 0
         }
       }
     },
     "ClanMate": {
-      "name": "t",
+      "name": "k",
       "fields": {
         "world": {
-          "owner": "t",
-          "name": "i",
+          "owner": "k",
+          "name": "f",
           "desc": "I",
-          "decoder": -650305333,
-          "access": 0
+          "decoder": -459488297,
+          "access": 24
         },
         "displayName": {
-          "owner": "t",
-          "name": "v",
+          "owner": "k",
+          "name": "a",
           "desc": "Ljava/lang/String;",
-          "access": 8
+          "access": 24
         },
         "rank": {
-          "owner": "t",
-          "name": "d",
+          "owner": "k",
+          "name": "s",
           "desc": "B",
           "access": 0
         }
       }
     },
     "FriendedPlayer": {
-      "name": "n",
+      "name": "b",
       "fields": {
         "world": {
-          "owner": "n",
-          "name": "i",
+          "owner": "b",
+          "name": "f",
           "desc": "I",
-          "decoder": 1311344281,
-          "access": 0
+          "decoder": 1246044911,
+          "access": 24
         },
         "displayName": {
-          "owner": "n",
-          "name": "v",
+          "owner": "b",
+          "name": "a",
           "desc": "Ljava/lang/String;",
-          "access": 8
+          "access": 24
         },
         "previousName": {
-          "owner": "n",
-          "name": "f",
+          "owner": "b",
+          "name": "r",
           "desc": "Ljava/lang/String;",
           "access": 0
         }
       }
     },
     "EntityMarker": {
-      "name": "cz",
+      "name": "co",
       "fields": {
         "uid": {
-          "owner": "cz",
-          "name": "w",
+          "owner": "co",
+          "name": "i",
           "desc": "I",
-          "decoder": -5492195,
+          "decoder": 1282112201,
           "access": 24
         },
         "orientation": {
-          "owner": "cz",
-          "name": "c",
+          "owner": "co",
+          "name": "e",
           "desc": "I",
-          "decoder": 1748108673,
+          "decoder": -193714387,
           "access": 1
         },
         "strictY": {
-          "owner": "cz",
-          "name": "d",
+          "owner": "co",
+          "name": "s",
           "desc": "I",
-          "decoder": 63361753,
-          "access": 0
+          "decoder": -1902285057,
+          "access": 24
         },
         "maxY": {
-          "owner": "cz",
-          "name": "y",
+          "owner": "co",
+          "name": "n",
           "desc": "I",
-          "decoder": 104624439,
-          "access": 0
+          "decoder": -1990596615,
+          "access": 25
         },
         "floorLevel": {
-          "owner": "cz",
-          "name": "v",
+          "owner": "co",
+          "name": "a",
           "desc": "I",
-          "decoder": -595713923,
+          "decoder": -1330274781,
           "access": 24
         },
         "maxX": {
-          "owner": "cz",
-          "name": "j",
+          "owner": "co",
+          "name": "m",
           "desc": "I",
-          "decoder": -1056124447,
-          "access": 0
+          "decoder": 470862905,
+          "access": 25
         },
         "regionX": {
-          "owner": "cz",
-          "name": "p",
+          "owner": "co",
+          "name": "g",
           "desc": "I",
-          "decoder": 2082310487,
-          "access": 1
+          "decoder": -475625613,
+          "access": 0
         },
         "strictX": {
-          "owner": "cz",
-          "name": "i",
+          "owner": "co",
+          "name": "f",
           "desc": "I",
-          "decoder": -140235499,
-          "access": 0
+          "decoder": -1618181379,
+          "access": 24
         },
         "regionY": {
-          "owner": "cz",
-          "name": "a",
+          "owner": "co",
+          "name": "j",
           "desc": "I",
-          "decoder": -1004197203,
-          "access": 0
+          "decoder": 398697699,
+          "access": 8
         },
         "config": {
-          "owner": "cz",
-          "name": "l",
+          "owner": "co",
+          "name": "v",
           "desc": "I",
-          "decoder": -1451143503,
+          "decoder": -1454343935,
           "access": 24
         },
         "entity": {
-          "owner": "cz",
-          "name": "o",
-          "desc": "Lck;",
+          "owner": "co",
+          "name": "y",
+          "desc": "Lcr;",
           "access": 0
         },
         "height": {
-          "owner": "cz",
-          "name": "f",
+          "owner": "co",
+          "name": "r",
           "desc": "I",
-          "decoder": 1808461783,
-          "access": 0
+          "decoder": -1333066751,
+          "access": 24
         }
       }
     },
     "GroundItem": {
-      "name": "ak",
+      "name": "aw",
       "fields": {
         "quantity": {
-          "owner": "ak",
-          "name": "f",
+          "owner": "aw",
+          "name": "r",
           "desc": "I",
-          "decoder": -379243413,
-          "access": 0
+          "decoder": -1652614887,
+          "access": 24
         },
         "id": {
-          "owner": "ak",
-          "name": "v",
+          "owner": "aw",
+          "name": "a",
           "desc": "I",
-          "decoder": -328489329,
+          "decoder": -1746317977,
           "access": 24
         }
       }
     },
     "GameStrings": {
-      "name": "ft"
+      "name": "fg"
     },
     "NodeTable": {
-      "name": "gv",
+      "name": "go",
       "fields": {
         "size": {
-          "owner": "gv",
-          "name": "o",
+          "owner": "go",
+          "name": "y",
           "desc": "I",
           "access": 24
         },
         "buckets": {
-          "owner": "gv",
-          "name": "f",
-          "desc": "[Lgq;",
+          "owner": "go",
+          "name": "r",
+          "desc": "[Lgs;",
           "access": 0
         },
         "index": {
-          "owner": "gv",
-          "name": "v",
+          "owner": "go",
+          "name": "a",
           "desc": "I",
           "access": 24
         }
       }
     },
     "BoundaryStub": {
-      "name": "cg",
+      "name": "cl",
       "fields": {
         "entityA": {
-          "owner": "cg",
-          "name": "c",
-          "desc": "Lck;",
+          "owner": "cl",
+          "name": "e",
+          "desc": "Lcr;",
           "access": 0
         },
         "uid": {
-          "owner": "cg",
-          "name": "j",
+          "owner": "cl",
+          "name": "m",
           "desc": "I",
-          "decoder": -1812935073,
-          "access": 0
+          "decoder": -1631169153,
+          "access": 25
         },
         "entityB": {
-          "owner": "cg",
-          "name": "p",
-          "desc": "Lck;",
+          "owner": "cl",
+          "name": "g",
+          "desc": "Lcr;",
           "access": 0
         },
         "strictY": {
-          "owner": "cg",
-          "name": "i",
-          "desc": "I",
-          "decoder": 2137582751,
-          "access": 0
-        },
-        "strictX": {
-          "owner": "cg",
+          "owner": "cl",
           "name": "f",
           "desc": "I",
-          "decoder": -2045484377,
-          "access": 0
+          "decoder": -283611497,
+          "access": 24
+        },
+        "strictX": {
+          "owner": "cl",
+          "name": "r",
+          "desc": "I",
+          "decoder": -1507720617,
+          "access": 24
         },
         "orientationB": {
-          "owner": "cg",
-          "name": "o",
+          "owner": "cl",
+          "name": "y",
           "desc": "I",
-          "decoder": -769255619,
+          "decoder": -1156565751,
           "access": 24
         },
         "orientationA": {
-          "owner": "cg",
-          "name": "d",
+          "owner": "cl",
+          "name": "s",
           "desc": "I",
-          "decoder": -284458363,
-          "access": 0
+          "decoder": 382788943,
+          "access": 24
         },
         "config": {
-          "owner": "cg",
-          "name": "a",
+          "owner": "cl",
+          "name": "j",
           "desc": "I",
-          "decoder": -1517505161,
-          "access": 0
+          "decoder": -1071725039,
+          "access": 8
         },
         "height": {
-          "owner": "cg",
-          "name": "v",
+          "owner": "cl",
+          "name": "a",
           "desc": "I",
-          "decoder": 1222684837,
+          "decoder": -81560817,
           "access": 24
         }
       }
     },
     "Sprite": {
-      "name": "cl",
+      "name": "ca",
       "fields": {
         "paddingX": {
-          "owner": "cl",
-          "name": "d",
+          "owner": "ca",
+          "name": "s",
           "desc": "I",
-          "access": 0
+          "access": 24
         },
         "pixels": {
-          "owner": "cl",
-          "name": "v",
+          "owner": "ca",
+          "name": "a",
           "desc": "[I",
           "access": 24
         },
         "maxY": {
-          "owner": "cl",
-          "name": "p",
+          "owner": "ca",
+          "name": "g",
           "desc": "I",
-          "access": 1
+          "access": 0
         },
         "maxX": {
-          "owner": "cl",
-          "name": "c",
+          "owner": "ca",
+          "name": "e",
           "desc": "I",
           "access": 1
         },
         "width": {
-          "owner": "cl",
-          "name": "f",
+          "owner": "ca",
+          "name": "r",
           "desc": "I",
-          "access": 0
+          "access": 24
         },
         "height": {
-          "owner": "cl",
-          "name": "i",
+          "owner": "ca",
+          "name": "f",
           "desc": "I",
-          "access": 0
+          "access": 24
         },
         "paddingY": {
-          "owner": "cl",
-          "name": "o",
+          "owner": "ca",
+          "name": "y",
           "desc": "I",
           "access": 24
         }
       }
     },
     "InterfaceNode": {
-      "name": "d",
+      "name": "s",
       "fields": {
         "owner": {
-          "owner": "d",
-          "name": "v",
+          "owner": "s",
+          "name": "r",
           "desc": "I",
-          "decoder": -711450013,
+          "decoder": -2132755355,
           "access": 24
         },
         "type": {
-          "owner": "d",
-          "name": "f",
+          "owner": "s",
+          "name": "a",
           "desc": "I",
-          "decoder": -1277369941,
-          "access": 0
+          "decoder": 163613459,
+          "access": 24
         }
       }
     },
     "IgnoredPlayer": {
-      "name": "j",
+      "name": "m",
       "fields": {
         "displayName": {
-          "owner": "j",
-          "name": "v",
+          "owner": "m",
+          "name": "a",
           "desc": "Ljava/lang/String;",
-          "access": 8
+          "access": 24
         },
         "previousName": {
-          "owner": "j",
-          "name": "f",
+          "owner": "m",
+          "name": "r",
           "desc": "Ljava/lang/String;",
           "access": 0
         }
       }
     },
     "CacheTable": {
-      "name": "gr",
+      "name": "gb",
       "methods": {
         "get": {
-          "owner": "gr",
-          "name": "v",
-          "desc": "(J)Lgk;",
+          "owner": "gb",
+          "name": "a",
+          "desc": "(J)Lgq;",
           "access": 0
         }
       }
     },
     "LandscapeTile": {
-      "name": "ci",
+      "name": "cd",
       "fields": {
         "entityMarkers": {
-          "owner": "ci",
-          "name": "z",
-          "desc": "[Lcz;",
+          "owner": "cd",
+          "name": "h",
+          "desc": "[Lco;",
           "access": 0
         },
         "boundaryStub": {
-          "owner": "ci",
-          "name": "p",
-          "desc": "Lcg;",
+          "owner": "cd",
+          "name": "g",
+          "desc": "Lcl;",
           "access": 0
         },
         "floorLevel": {
-          "owner": "ci",
-          "name": "v",
+          "owner": "cd",
+          "name": "a",
           "desc": "I",
-          "decoder": -987997023,
+          "decoder": -2023492897,
           "access": 24
         },
         "itemPile": {
-          "owner": "ci",
-          "name": "y",
+          "owner": "cd",
+          "name": "n",
           "desc": "Lcn;",
           "access": 0
         },
         "regionX": {
-          "owner": "ci",
-          "name": "f",
+          "owner": "cd",
+          "name": "r",
           "desc": "I",
-          "decoder": 1573429321,
-          "access": 0
+          "decoder": -670078155,
+          "access": 24
         },
         "regionY": {
-          "owner": "ci",
-          "name": "i",
+          "owner": "cd",
+          "name": "f",
           "desc": "I",
-          "decoder": -481153711,
-          "access": 0
+          "decoder": 64231303,
+          "access": 24
         },
         "boundaryDecorationStub": {
-          "owner": "ci",
-          "name": "j",
-          "desc": "Lcv;",
+          "owner": "cd",
+          "name": "m",
+          "desc": "Lcp;",
           "access": 0
         },
         "tileDecorationStub": {
-          "owner": "ci",
-          "name": "a",
-          "desc": "Lce;",
+          "owner": "cd",
+          "name": "j",
+          "desc": "Lck;",
           "access": 0
         }
       }
     },
     "GameCanvas": {
-      "name": "er",
+      "name": "ew",
       "fields": {
         "component": {
-          "owner": "er",
-          "name": "v",
+          "owner": "ew",
+          "name": "a",
           "desc": "Ljava/awt/Component;",
           "access": 0
         }
       }
     },
     "RuneScript": {
-      "name": "r",
+      "name": "q",
       "fields": {
         "intArgCount": {
-          "owner": "r",
-          "name": "c",
+          "owner": "q",
+          "name": "g",
           "desc": "I",
-          "decoder": 1695580995,
-          "access": 1
+          "decoder": -749249273,
+          "access": 0
         },
         "stringArgCount": {
-          "owner": "r",
-          "name": "p",
+          "owner": "q",
+          "name": "y",
           "desc": "I",
-          "decoder": -2091940875,
-          "access": 1
+          "decoder": -248173183,
+          "access": 24
         },
         "intOperands": {
-          "owner": "r",
-          "name": "i",
+          "owner": "q",
+          "name": "r",
+          "desc": "[I",
+          "access": 0
+        },
+        "opcodes": {
+          "owner": "q",
+          "name": "f",
           "desc": "[I",
           "access": 8
         },
-        "opcodes": {
-          "owner": "r",
-          "name": "f",
-          "desc": "[I",
-          "access": 0
-        },
         "intStackCount": {
-          "owner": "r",
-          "name": "j",
+          "owner": "q",
+          "name": "e",
           "desc": "I",
-          "decoder": -315018095,
-          "access": 0
+          "decoder": 1075817171,
+          "access": 1
         },
         "stringStackCount": {
-          "owner": "r",
-          "name": "o",
+          "owner": "q",
+          "name": "m",
           "desc": "I",
-          "decoder": 1866387855,
-          "access": 24
+          "decoder": 1613856137,
+          "access": 25
         },
         "stringOperands": {
-          "owner": "r",
-          "name": "d",
+          "owner": "q",
+          "name": "s",
           "desc": "[Ljava/lang/String;",
           "access": 8
         }
       }
     },
     "Deque": {
-      "name": "gs",
+      "name": "gd",
       "fields": {
         "head": {
-          "owner": "gs",
-          "name": "v",
-          "desc": "Lgq;",
+          "owner": "gd",
+          "name": "a",
+          "desc": "Lgs;",
           "access": 0
         },
         "tail": {
-          "owner": "gs",
-          "name": "f",
-          "desc": "Lgq;",
+          "owner": "gd",
+          "name": "r",
+          "desc": "Lgs;",
           "access": 0
         }
       }
     },
     "Projectile": {
-      "name": "p",
+      "name": "g",
       "fields": {
         "startDistance": {
-          "owner": "p",
-          "name": "y",
+          "owner": "g",
+          "name": "n",
           "desc": "I",
-          "decoder": 922285215,
-          "access": 0
+          "decoder": 65688007,
+          "access": 25
         },
         "strictY": {
-          "owner": "p",
-          "name": "d",
+          "owner": "g",
+          "name": "s",
           "desc": "I",
-          "decoder": -1661102929,
-          "access": 0
+          "decoder": -1720193345,
+          "access": 24
         },
         "targetIndex": {
-          "owner": "p",
-          "name": "h",
+          "owner": "g",
+          "name": "l",
           "desc": "I",
-          "decoder": 1942403755,
+          "decoder": -1630742193,
           "access": 24
         },
         "strictX": {
-          "owner": "p",
-          "name": "i",
+          "owner": "g",
+          "name": "f",
           "desc": "I",
-          "decoder": -1145979407,
-          "access": 0
+          "decoder": -29034959,
+          "access": 24
         },
         "id": {
-          "owner": "p",
-          "name": "v",
+          "owner": "g",
+          "name": "a",
           "desc": "I",
-          "decoder": 946559685,
+          "decoder": 1008031675,
           "access": 24
         },
         "slope": {
-          "owner": "p",
-          "name": "a",
+          "owner": "g",
+          "name": "j",
           "desc": "I",
-          "decoder": 309085717,
-          "access": 0
+          "decoder": -1782806111,
+          "access": 8
         },
         "startHeight": {
-          "owner": "p",
-          "name": "o",
+          "owner": "g",
+          "name": "y",
           "desc": "I",
-          "decoder": -554213201,
+          "decoder": 1536592207,
           "access": 24
         },
         "loopCycle": {
-          "owner": "p",
-          "name": "j",
+          "owner": "g",
+          "name": "m",
           "desc": "I",
-          "decoder": 1777182759,
-          "access": 0
+          "decoder": 946552733,
+          "access": 25
         },
         "endHeight": {
-          "owner": "p",
-          "name": "c",
+          "owner": "g",
+          "name": "e",
           "desc": "I",
-          "decoder": 570938865,
+          "decoder": 1310636229,
           "access": 1
         }
       }
     },
     "Graphics": {
-      "name": "cf",
+      "name": "cs",
       "fields": {
         "rasterWidth": {
-          "owner": "cf",
-          "name": "l",
+          "owner": "cs",
+          "name": "v",
           "desc": "I",
           "access": 24
         },
         "raster": {
-          "owner": "cf",
-          "name": "w",
+          "owner": "cs",
+          "name": "i",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "rasterHeight": {
-          "owner": "cf",
-          "name": "q",
+          "owner": "cs",
+          "name": "z",
           "desc": "I",
           "access": 8
         }
       }
     },
     "DynamicObject": {
-      "name": "w",
+      "name": "i",
       "fields": {
         "orientation": {
-          "owner": "w",
-          "name": "i",
+          "owner": "i",
+          "name": "f",
           "desc": "I",
-          "decoder": 1812854747,
-          "access": 0
+          "decoder": 1527020079,
+          "access": 24
         },
         "floorLevel": {
-          "owner": "w",
-          "name": "d",
+          "owner": "i",
+          "name": "s",
           "desc": "I",
-          "decoder": 269853297,
-          "access": 0
+          "decoder": -1600377333,
+          "access": 24
         },
         "regionX": {
-          "owner": "w",
-          "name": "o",
+          "owner": "i",
+          "name": "y",
           "desc": "I",
-          "decoder": -711442109,
+          "decoder": 1280624945,
           "access": 24
         },
         "regionY": {
-          "owner": "w",
-          "name": "c",
+          "owner": "i",
+          "name": "e",
           "desc": "I",
-          "decoder": -1723737123,
+          "decoder": 648069501,
           "access": 1
         },
         "id": {
-          "owner": "w",
-          "name": "v",
+          "owner": "i",
+          "name": "a",
           "desc": "I",
-          "decoder": 952114427,
+          "decoder": 7057401,
           "access": 24
         },
         "type": {
-          "owner": "w",
-          "name": "f",
+          "owner": "i",
+          "name": "r",
           "desc": "I",
-          "decoder": 733629229,
-          "access": 0
+          "decoder": 1787814531,
+          "access": 24
         }
       }
     },
     "MessageChannel": {
-      "name": "ad",
+      "name": "at",
       "fields": {
         "messages": {
-          "owner": "ad",
-          "name": "f",
-          "desc": "[Laj;",
+          "owner": "at",
+          "name": "r",
+          "desc": "[Lam;",
           "access": 0
         },
         "index": {
-          "owner": "ad",
-          "name": "i",
+          "owner": "at",
+          "name": "f",
           "desc": "I",
-          "decoder": -1890709399,
-          "access": 0
+          "decoder": 1427435169,
+          "access": 24
         }
       },
       "methods": {
         "getMessage": {
-          "owner": "ad",
-          "name": "f",
-          "desc": "(II)Laj;",
-          "predicate": 159,
+          "owner": "at",
+          "name": "r",
+          "desc": "(IB)Lam;",
           "access": 0
         },
         "createMessage": {
-          "owner": "ad",
-          "name": "v",
-          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Laj;",
+          "owner": "at",
+          "name": "a",
+          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lam;",
           "predicate": 159,
           "access": 0
         }
       }
     },
     "ItemTable": {
-      "name": "x",
+      "name": "u",
       "fields": {
         "quantities": {
-          "owner": "x",
-          "name": "f",
+          "owner": "u",
+          "name": "r",
           "desc": "[I",
           "access": 0
         },
         "ids": {
-          "owner": "x",
-          "name": "i",
+          "owner": "u",
+          "name": "f",
           "desc": "[I",
           "access": 8
         }
       }
     },
     "Model": {
-      "name": "dq",
+      "name": "dn",
       "fields": {
         "verticesY": {
-          "owner": "dq",
-          "name": "p",
+          "owner": "dn",
+          "name": "g",
           "desc": "[I",
           "access": 8
         },
         "XYZMag": {
-          "owner": "dq",
-          "name": "ai",
+          "owner": "dn",
+          "name": "ax",
           "desc": "I",
           "access": 1
         },
         "allowClickBounds": {
-          "owner": "dq",
-          "name": "af",
+          "owner": "dn",
+          "name": "ad",
           "desc": "Z",
           "access": 1
         },
         "verticesZ": {
-          "owner": "dq",
-          "name": "j",
+          "owner": "dn",
+          "name": "m",
           "desc": "[I",
           "access": 1
         },
         "verticesX": {
-          "owner": "dq",
-          "name": "c",
+          "owner": "dn",
+          "name": "e",
           "desc": "[I",
           "access": 0
         }
       }
     },
     "Varpbit": {
-      "name": "ax",
+      "name": "af",
       "fields": {
         "lowBit": {
-          "owner": "ax",
-          "name": "d",
+          "owner": "af",
+          "name": "s",
           "desc": "I",
-          "decoder": -1844830197,
-          "access": 0
+          "decoder": 547662923,
+          "access": 24
         },
         "highBit": {
-          "owner": "ax",
-          "name": "o",
+          "owner": "af",
+          "name": "y",
           "desc": "I",
-          "decoder": -2097678691,
+          "decoder": -1174161195,
           "access": 24
         },
         "varp": {
-          "owner": "ax",
-          "name": "i",
+          "owner": "af",
+          "name": "f",
           "desc": "I",
-          "decoder": 1484076037,
-          "access": 0
+          "decoder": -298597243,
+          "access": 24
         }
       }
     },
     "ScriptEvent": {
-      "name": "v",
+      "name": "a",
       "fields": {
         "args": {
-          "owner": "v",
-          "name": "v",
+          "owner": "a",
+          "name": "a",
           "desc": "[Ljava/lang/Object;",
           "access": 0
         },
         "opbase": {
-          "owner": "v",
-          "name": "y",
+          "owner": "a",
+          "name": "n",
           "desc": "Ljava/lang/String;",
-          "access": 24
+          "access": 25
         }
       }
     },
     "KeyFocusListener": {
-      "name": "el"
+      "name": "eh"
     }
   }
 }

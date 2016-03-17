@@ -1,0 +1,17 @@
+map.put("11", "");
+map.put("12", "330");
+map.put("13", "0");
+map.put("14", "http://www.runescape.com/g=oldscape/slr.ws?order=LPWM");
+map.put("15", "0");
+map.put("initial_jar", "gamepack_9233991.jar");
+map.put("1", "true");
+map.put("2", "true");
+map.put("3", "ElZAIrq5NpKN6D3mDdihco3oPeYN2KFy2DCquj7JMmECPmLrDP3Bnw");
+map.put("4", "false");
+map.put("5", ".runescape.com");
+map.put("6", "0");
+map.put("codebase", "http://oldschool30.runescape.com/");
+map.put("7", "5");
+map.put("8", "45487");
+map.put("9", "1");
+map.put("10", "0");
