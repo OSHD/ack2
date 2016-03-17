@@ -552,7 +552,7 @@ public class Client extends Analyser {
 
                 if (loadCount >= 4 && sCount > 3 && boolCount == 1) {
                     List<AbstractNode> layers = bl.tree().layerAll(Opcodes.INVOKEVIRTUAL, Opcodes.IALOAD, Opcodes.GETSTATIC);
-                    System.out.println(layers.size());
+//                    System.out.println(layers.size());
                     if (layers != null && layers.size() >= 3) {
                         for (int i = 0; i < layers.size(); i++) {
                             switch (i) {

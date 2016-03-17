@@ -53,6 +53,34 @@ public class MarginVisitor extends NodeVisitor implements Opcodes {
 
             add(new OpcodeHook(1115, PUTFIELD, "textShadowed").skip(3));//good
 
+
+            //listeners and shit
+            add(new OpcodeHook(1400, PUTFIELD,Type.getDescriptor(Object[].class), "mousePressListener").skip(0));//good
+            add(new OpcodeHook(1401, PUTFIELD,Type.getDescriptor(Object[].class), "dragOverListener").skip(0));
+            add(new OpcodeHook(1402, PUTFIELD,Type.getDescriptor(Object[].class), "mouseReleaseListener").skip(0));//
+            add(new OpcodeHook(1403, PUTFIELD,Type.getDescriptor(Object[].class), "mouseEnterListener").skip(0));//
+
+            add(new OpcodeHook(1404, PUTFIELD,Type.getDescriptor(Object[].class), "mouseExitListener").skip(0));//
+            add(new OpcodeHook(1405, PUTFIELD,Type.getDescriptor(Object[].class), "compDragListener").skip(0));//
+            add(new OpcodeHook(1406, PUTFIELD,Type.getDescriptor(Object[].class), "spellCastListener").skip(0));//
+
+            add(new OpcodeHook(1408, PUTFIELD,Type.getDescriptor(Object[].class), "cycleListener"));//good
+            add(new OpcodeHook(1409, PUTFIELD,Type.getDescriptor(Object[].class), "actionListener"));//good
+            add(new OpcodeHook(1410, PUTFIELD,Type.getDescriptor(Object[].class), "compDropListener"));//good
+            add(new OpcodeHook(1411, PUTFIELD,Type.getDescriptor(Object[].class), "mouseDragListener"));//good
+
+            add(new OpcodeHook(1412, PUTFIELD,Type.getDescriptor(Object[].class), "mouseHoverListener"));//good
+            add(new OpcodeHook(1416, PUTFIELD,Type.getDescriptor(Object[].class), "spellSelectedListener"));//good
+            add(new OpcodeHook(1417, PUTFIELD,Type.getDescriptor(Object[].class), "scrollListener"));//good
+            add(new OpcodeHook(1418, PUTFIELD,Type.getDescriptor(Object[].class), "messageListener"));//good
+
+            add(new OpcodeHook(1419, PUTFIELD,Type.getDescriptor(Object[].class), "keyListener"));//good
+            add(new OpcodeHook(1423, PUTFIELD,Type.getDescriptor(Object[].class), "windowClosedListener"));//good
+            add(new OpcodeHook(1424, PUTFIELD,Type.getDescriptor(Object[].class), "windowOpenedListener"));//good
+            add(new OpcodeHook(1427, PUTFIELD,Type.getDescriptor(Object[].class), "resizeListener"));//good
+//            add(new OpcodeHook(1418, PUTFIELD,Type.getDescriptor(Object[].class), "messageListener"));//good
+
+
 //            add(new OpcodeHook(3112, PUTSTATIC, "Z", "hideRoofs").skip(0));//good
 
 

@@ -74,11 +74,11 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(1408, PUTFIELD, "[Ljava/lang/Object;", "renderListener"));
             add(new OpcodeHook(1412, PUTFIELD, "[Ljava/lang/Object;", "mouseHoverListener"));
             add(new OpcodeHook(1417, PUTFIELD, "[Ljava/lang/Object;", "scrollListener"));
-            add(new OpcodeHook(1407, PUTFIELD, "[Ljava/lang/Object;", "configListenerArgs"));
+            add(new OpcodeHook(1407, PUTFIELD, "[Ljava/lang/Object;", "varListener"));
             add(new OpcodeHook(1407, PUTFIELD, "[I", "configTriggers"));
-            add(new OpcodeHook(1414, PUTFIELD, "[Ljava/lang/Object;", "tableListenerArgs"));
-            add(new OpcodeHook(1414, PUTFIELD, "[I", "tableModTriggers"));
-            add(new OpcodeHook(1415, PUTFIELD, "[Ljava/lang/Object;", "skillListenerArgs"));
+            add(new OpcodeHook(1414, PUTFIELD, "[Ljava/lang/Object;", "tableListener"));
+            add(new OpcodeHook(1414, PUTFIELD, "[I", "tableTriggers"));
+            add(new OpcodeHook(1415, PUTFIELD, "[Ljava/lang/Object;", "skillListener"));
             add(new OpcodeHook(1415, PUTFIELD, "[I", "skillTriggers"));
             //local info
             add(new OpcodeHook(3321, GETSTATIC, Hook.CLIENT, "energy"));
@@ -99,11 +99,6 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(3307, GETSTATIC,"[I", Hook.CLIENT, "experiences").skip(2));//good
 
             add(new OpcodeHook(3300, GETSTATIC,"I", Hook.CLIENT, "engineCycle").skip(0));//good
-
-//            add(new OpcodeHook(3305, GETSTATIC, Hook.CLIENT, "currentLevels").skip(4));
-//            add(new OpcodeHook(3306, GETSTATIC, Hook.CLIENT, "levels"));
-//            add(new OpcodeHook(3307, GETSTATIC, Hook.CLIENT, "experiences"));
-
 
             add(new OpcodeHook(3614, GETFIELD, "world").container(Hook.CLAN_MATE));
             add(new OpcodeHook(3615, GETFIELD, "B", "rank").container(Hook.CLAN_MATE));

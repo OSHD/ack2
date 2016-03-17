@@ -40,7 +40,7 @@ public class DestinationVisitor2 extends TreeVisitor {
             if (destY == null || !destY.desc().equals("I"))
                 return;
             
-            System.out.println(fmn.method().key());
+//            System.out.println(fmn.method().key());
             
             Hook.CLIENT.put(new RSField(destX, "destinationX"));
             Hook.CLIENT.put(new RSField(destY, "destinationY"));

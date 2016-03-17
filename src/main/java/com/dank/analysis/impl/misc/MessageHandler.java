@@ -36,7 +36,7 @@ public class MessageHandler extends Analyser {
         }
         for(MethodNode methodNode : cn.methods) {
             if(new Wildcard("(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;?)*").matches(methodNode.desc)) {
-                System.out.println(">"+ methodNode.desc);
+//                System.out.println(">"+ methodNode.desc);
                 Hook.MESSAGE_CHANNEL.put(new RSMethod(methodNode, "createMessage"));
 
             }

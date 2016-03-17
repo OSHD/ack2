@@ -50,7 +50,7 @@ public class Npc extends Analyser {
         getClassPath().forEach((name, c) -> c.methods.forEach(methodNode -> getRestOfAnimations(methodNode)));
 
 
-        System.out.println(runAnimation.key());
+//        System.out.println(runAnimation.key());
 
 //        setMultipliers(new MethodNode[]{runAnimation}, new RSMember[]{Hook.CHARACTER.get("runAnimation")});
     }
@@ -61,7 +61,7 @@ public class Npc extends Analyser {
             methods[i].graph().forEach(b -> {
                 FieldInsnNode fin = (FieldInsnNode) b.get(new MemberQuery(Opcodes.PUTFIELD, currentField));
                 if(fin != null) {
-                    System.out.println("Found the instruction");
+//                    System.out.println("Found the instruction");
                 }
             });
         }

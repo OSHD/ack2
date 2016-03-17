@@ -1,5 +1,11 @@
 package com.dank.analysis.impl.misc;
 
+import com.dank.util.Wildcard;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
+import org.objectweb.asm.commons.cfg.tree.node.AbstractNode;
+import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
+import org.objectweb.asm.commons.cfg.tree.node.VariableNode;
 import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -33,6 +39,23 @@ public class RuneScript extends Analyser {
                 if (mn.isStatic() && mn.desc.endsWith(")" + Hook.RUNESCRIPT.getInternalDesc())) {
                     Hook.CLIENT.put(new RSMethod(mn, "getRuneScript"));
                     TreeBuilder.build(mn).accept(new RuneScriptVisitor());
+                }
+                if (new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+//                    System.out.println(TreeBuilder.build(mn));
+                    TreeBuilder.build(mn).accept(new NodeVisitor() {
+                        @Override
+                        public void visitVariable(VariableNode node) {
+                            if (node.opcode() == Opcodes.ALOAD) {
+
+                                if (node.var() == 0) {
+                                    FieldMemberNode fmn = (FieldMemberNode) node.preLayer(Opcodes.GETFIELD);
+                                    if (fmn != null && fmn.owner().equals(Hook.SCRIPT_EVENT.getInternalName())) {
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                 }
             }
         }

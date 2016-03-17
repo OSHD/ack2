@@ -56,7 +56,7 @@ public class Orientation2 {
                         List<? extends BasicValue> args = values;
                         DecodedValue height     = (DecodedValue) args.get(4);
                         DecodedValue orintation = (DecodedValue) args.get(7);
-                        System.out.println(values);
+//                        System.out.println(values);
                         if(height.field.fin.owner.equals(player_clazz)) {
                             Hook.CHARACTER.put(new RSField(character_clazz + "" + orintation.field.fin.name,"I","orientation"));
                             Hook.PLAYER.put(new RSField(height.field.fin,"height"));

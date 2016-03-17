@@ -73,7 +73,7 @@ public class ExchangeOffer extends Analyser {
         @Override
         public void visitMethod(MethodMemberNode mmn) {
             if (mmn.owner().equals(Hook.BUFFER.getInternalName())) {
-                System.out.println(mmn.tree());
+//                System.out.println(mmn.tree());
                 FieldMemberNode byteSet = (FieldMemberNode) mmn.preLayer(PUTFIELD);
                 FieldMemberNode intSet = (FieldMemberNode) mmn.preLayer(IMUL, PUTFIELD);
                 if (intSet != null) {

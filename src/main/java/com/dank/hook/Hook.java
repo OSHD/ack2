@@ -148,9 +148,9 @@ public enum Hook {
             "config::I", "fontId::I", "textShadowed::Z", "borderThickness::I", "shadowColor::I",
             "flippedVertically::Z", "flippedHorizontally::Z", "modelType::I", "mouseEnterListener::[Ljava/lang/Object;",
             "mouseExitListener::[Ljava/lang/Object;", "renderListener::[Ljava/lang/Object;", "scrollListener::[Ljava/lang/Object;",
-            "mouseHoverListener::[Ljava/lang/Object;", "configListenerArgs::[Ljava/lang/Object;",
-            "configTriggers::[I", "tableListenerArgs::[Ljava/lang/Object;", "tableModTriggers::[I",
-            "skillListenerArgs::[Ljava/lang/Object;", "skillTriggers::[I", "modelId::I", "insetX::I", "insetY::I",
+            "mouseHoverListener::[Ljava/lang/Object;", "varListener::[Ljava/lang/Object;",
+            "configTriggers::[I", "tableListener::[Ljava/lang/Object;", "tableTriggers::[I",
+            "skillListener::[Ljava/lang/Object;", "skillTriggers::[I", "modelId::I", "insetX::I", "insetY::I",
             "viewportWidth::I", "viewportHeight::I", "relativeX::I", "relativeY::I", "width::I", "height::I",
             "hidden::Z", "index::I", "parentId::I", "id::I", "modelZoom::I", "rotationX::I", "rotationY::I",
             "rotationZ::I", "itemId::I", "itemQuantity::I", "boundsIndex::I", "loopCycle::I",
@@ -160,7 +160,13 @@ public enum Hook {
             "parent::LWidget;", "children::[LWidget;", "xMargin::[I", "yMargin::[I", "wMargin::[I", "hMargin::[I",
             "xLayout::[I", "yLayout::[I", "hLayout::[I", "wLayout::[I", "enableEvents::Z", "textMode::I", "thickness::I",
             "rotation::I", "repeat::Z", "selectMode::I", "spriteId2::I", "fontId::I", "textSpacing::I", "horizontalMargin::I",
-            "verticalMargin::I", "fill::Z", "perpendicular::Z", "textShadowed::Z", "v2::Z"
+            "verticalMargin::I", "fill::Z", "perpendicular::Z", "textShadowed::Z", "v2::Z", "mousePressListener", "dragOverListener"
+            , "mouseReleaseListener", "mouseEnterListener", "mouseExitListener", "compDragListener", "spellCastListener"
+            , "cycleListener", "actionListener", "compDropListener", "mouseDragListener", "mouseHoverListener"
+            , "spellSelectedListener", "scrollListener", "messageListener", "keyListener", "windowClosedListener"
+            , "windowOpenedListener", "resizeListener"
+
+
     ),
 
     CLIENT("Client", GAME_ENGINE, "myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",

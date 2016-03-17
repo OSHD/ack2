@@ -54,14 +54,14 @@ public class AnimationInterpreter extends FieldInterpreter {
                 FieldInsnNode the_getter = value.theField;
                 FieldInsnNode put_field = (FieldInsnNode) insn; // Where its being put to
 
-                System.out.println("putting " + the_getter.owner + "." + the_getter.name + " into " + put_field.owner + "." + put_field.name + " - " +iterValue );
+//                System.out.println("putting " + the_getter.owner + "." + the_getter.name + " into " + put_field.owner + "." + put_field.name + " - " +iterValue );
 
                 if (iterValue == 1) {  // Character.?? = NPCDEF.?? * LDC
-                    System.out.println(the_getter.owner + "." + the_getter.name + " -> " + names[iterValue - 2]);
+//                    System.out.println(the_getter.owner + "." + the_getter.name + " -> " + names[iterValue - 2]);
                     the_getter.owner = the_getter.owner.replaceAll("[a-z]+", Hook.CHARACTER.getInternalName());
                     Hook.CHARACTER.put(new RSField(names[0], the_getter));
 
-                    System.out.println(put_field.owner + "." + put_field.name + " -> " + names[iterValue - 2]);
+//                    System.out.println(put_field.owner + "." + put_field.name + " -> " + names[iterValue - 2]);
                     put_field.owner = put_field.owner.replaceAll("[a-z]+", Hook.CHARACTER.getInternalName());
                     Hook.CHARACTER.put(new RSField(names[1], put_field));
 
