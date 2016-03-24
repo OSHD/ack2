@@ -2,88 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9317bdf6-7f3b-4934-9bab-e31650159d3e" name="Default" comment="GPatch Fixes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/AbstractFont.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/FontImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/ImageProduct.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/node/CacheTable.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$4$1.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jars/107/deobfuscated.jar" afterPath="$PROJECT_DIR$/jars/107/deobfuscated.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jars/107/remapped.jar" afterPath="$PROJECT_DIR$/jars/107/remapped.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jars/108/deobfuscated.jar" afterPath="$PROJECT_DIR$/jars/108/deobfuscated.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jars/108/remapped.jar" afterPath="$PROJECT_DIR$/jars/108/remapped.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/DankEngine.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/DankEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/Analyser.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/Analyser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/Character.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/Character.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/npc/Npc.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/npc/Npc.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/player/Player.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/player/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/visitor/InterAnimFrameVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/character/visitor/InterAnimFrameVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$1StoreCalcNode.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$1StoreCalcNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$2.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$3.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$4.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$5.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$6.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$7.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$8.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$9.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$ScreenVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client$ScreenVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/DestinationVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/DestinationVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor$OpcodeHook.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor$OpcodeHook.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectedItemIndexVisitor$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectedItemIndexVisitor$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectedItemIndexVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectedItemIndexVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectionVisitor$2.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/client/visitor/SelectionVisitor$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/item/ItemDefinition$ActionVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/item/ItemDefinition$ActionVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/item/ItemDefinition.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/item/ItemDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/npc/NpcDefinition.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/npc/NpcDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/object/ObjectDefinition.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/definition/object/ObjectDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/ExchangeOffer$WhiteNigger.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/ExchangeOffer$WhiteNigger.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GPI$FlagsJumpVisitor.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GPI$FlagsJumpVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GPI.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GPI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GStrings$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GStrings$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GStrings.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GStrings.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GraphicsEngine.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/GraphicsEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/Messages.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/Messages.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/Varpbit.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/misc/Varpbit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/model/Model.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/model/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/Deque.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/Deque.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode$2.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/InterfaceNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/graphics/Graphics.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/node/graphics/Graphics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/widget/Widget$1.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/widget/Widget$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/widget/Widget.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/analysis/impl/widget/Widget.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/hook/Hook$1Thing.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/hook/Hook$1Thing.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/hook/Hook.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/hook/Hook.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/hook/RSMember.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/hook/RSMember.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/dank/hook/RSMethod.class" afterPath="$PROJECT_DIR$/target/classes/com/dank/hook/RSMethod.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dank/stresser/Application.class" afterPath="$PROJECT_DIR$/target/classes/dank/stresser/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/debug/FieldDebug.class" afterPath="$PROJECT_DIR$/target/classes/debug/FieldDebug.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/objectweb/asm/commons/cfg/tree/node/ReferenceNode.class" afterPath="$PROJECT_DIR$/target/classes/org/objectweb/asm/commons/cfg/tree/node/ReferenceNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hooks.gson" afterPath="$PROJECT_DIR$/hooks.gson" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/DankEngine.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/DankEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/VersionChecker.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/VersionChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/character/npc/Npc.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/character/npc/Npc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/client/Client.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/client/visitor/RunescriptOpcodeHandlerVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/ExchangeOffer.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/ExchangeOffer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/node/InterfaceNode.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/node/InterfaceNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/node/graphics/Graphics.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/node/graphics/Graphics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/Widget.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/Widget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/visitor/MarginVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/visitor/MarginVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/visitor/RuneScriptVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/widget/visitor/RuneScriptVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/hook/Hook.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/hook/Hook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/hook/RSMember.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/hook/RSMember.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/hook/RSMethod.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/hook/RSMethod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/dank/util/deob/MultiRemover.java" afterPath="$PROJECT_DIR$/src/main/java/com/dank/util/deob/MultiRemover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/debug/FieldDebug.java" afterPath="$PROJECT_DIR$/src/main/java/debug/FieldDebug.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/objectweb/asm/commons/cfg/tree/node/ReferenceNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/objectweb/asm/commons/cfg/tree/node/ReferenceNode.java" />
     </list>
     <ignored path="Updater.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -136,14 +60,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DankEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DankEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dank/DankEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.799639">
-              <caret line="74" column="39" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hooks.gson" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hooks.gson">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.49097472">
+              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -256,6 +190,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -396,9 +331,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Updater" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Updater" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jars" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Updater" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Updater" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jars" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="109" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -936,6 +902,8 @@
       <workItem from="1457062589305" duration="1911000" />
       <workItem from="1457216453378" duration="8181000" />
       <workItem from="1457284232612" duration="38413000" />
+      <workItem from="1458249169866" duration="689000" />
+      <workItem from="1458838540609" duration="982000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Alpha Race Migration">
       <created>1457062881156</created>
@@ -953,7 +921,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48738000" />
+    <option name="totallyTimeSpent" value="50409000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -971,7 +939,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31712472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -982,6 +949,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31712472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1018,19 +986,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dank/analysis/impl/misc/GraphicsEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26269317">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/debug/FieldDebug.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="78" selection-start-line="65" selection-start-column="78" selection-end-line="65" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,7 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,7 +1011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,7 +1018,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,9 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55016184">
           <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,7 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,7 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="64" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,7 +1057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,7 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="235" column="78" selection-start-line="235" selection-start-column="78" selection-end-line="235" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,7 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1139,7 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,7 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,7 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1174,7 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,7 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1190,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1198,7 +1138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,7 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,7 +1152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25547445">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,7 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,7 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1238,7 +1173,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34124088">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,7 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.100365">
           <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,7 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52737224">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1262,7 +1194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="87" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,7 +1201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.43430656">
           <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,7 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1286,9 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47262773">
           <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1296,7 +1222,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46532845">
           <caret line="19" column="95" selection-start-line="18" selection-start-column="8" selection-end-line="19" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1304,7 +1229,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,7 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1320,7 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0344827">
           <caret line="102" column="68" selection-start-line="102" selection-start-column="68" selection-end-line="102" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1336,7 +1258,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1344,7 +1265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="1" selection-start-line="86" selection-start-column="1" selection-end-line="86" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1352,7 +1272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1368,10 +1287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.69017094">
           <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-          <folding>
-            <element signature="e#852#853#0" expanded="false" />
-            <element signature="e#897#898#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1379,7 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="79" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,11 +1350,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dank/DankEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.799639">
-          <caret line="74" column="39" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hooks.gson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49097472">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -71,7 +71,7 @@ public final class DankEngine implements Opcodes {
     public static FieldCallGraphVisitor fGraph;
     public static CodecResolver resolver;
     private static Manifest manifest;
-    private static int version = 108;
+    private static int version = 110;
     public static boolean fetch = true;
 
     public static boolean auto = true;
