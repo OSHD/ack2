@@ -32,14 +32,12 @@ import com.dank.patch.GMethod;
 import com.dank.patch.Patch;
 import com.dank.util.FieldCallGraphVisitor;
 import com.dank.util.MethodCallGraphVisitor;
-import com.dank.util.deob.MultiRemover;
 import com.dank.util.deob.OpPredicateRemover;
 import com.dank.util.io.Fetcher;
 import com.dank.util.multipliers.Multiplier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dank.tests.HierarchyVisitor;
-//import it.sauronsoftware.ftp4j.FTPClient;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.OpaquePredicateVisitor;
 import org.objectweb.asm.commons.util.CallVisitor;
@@ -50,7 +48,6 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.Analyzer;
-import org.pf.text.Version;
 
 import java.io.*;
 import java.util.Collections;
@@ -60,6 +57,8 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.jar.Manifest;
+
+//import it.sauronsoftware.ftp4j.FTPClient;
 
 public final class DankEngine implements Opcodes {
 
@@ -71,8 +70,9 @@ public final class DankEngine implements Opcodes {
     public static FieldCallGraphVisitor fGraph;
     public static CodecResolver resolver;
     private static Manifest manifest;
-    private static int version = 110;
-    public static boolean fetch = true;
+
+    private static int version = 109;
+    public static boolean fetch = false;
 
     public static boolean auto = true;
 

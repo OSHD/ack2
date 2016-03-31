@@ -22,14 +22,15 @@ public class VersionChecker extends Observable implements Runnable {
     @Override
     public void run() {
         long timeSinceLastCheck = System.currentTimeMillis();
-        int version = 100;
+        int version = 108;
         try {
             System.out.println("... Fetching live version");
             int old = Integer.parseInt((String) DankBuild.instance.get("curRevision"));
-            int now = version = Crawling.getVersion(Crawling.ServerType.OS, 2, old, 0);
+            int now = version = Crawling.getVersion(Crawling.ServerType.OS, 2, old, version);
             DankBuild.instance.set("curRevision", String.valueOf(now));
+            DankBuild.instance.save();
             System.out.println("Version=" + now);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Failed to get live version");
         }
         if (System.currentTimeMillis() > timeSinceLastCheck + 300) {
