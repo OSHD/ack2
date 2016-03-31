@@ -71,8 +71,8 @@ public final class DankEngine implements Opcodes {
     public static CodecResolver resolver;
     private static Manifest manifest;
 
-    private static int version = 109;
-    public static boolean fetch = false;
+    private static int version = 110;
+    public static boolean fetch = true;
 
     public static boolean auto = true;
 
