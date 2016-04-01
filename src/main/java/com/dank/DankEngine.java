@@ -71,8 +71,8 @@ public final class DankEngine implements Opcodes {
     public static CodecResolver resolver;
     private static Manifest manifest;
 
-    private static int version = 110;
-    public static boolean fetch = true;
+    private static int version = 111;
+    public static boolean fetch = false;
 
     public static boolean auto = true;
 
@@ -229,28 +229,48 @@ public final class DankEngine implements Opcodes {
             analyser.execute(classPath);
         }
 
-        // System.out.println("Finding coders...");
-        resolver = new CodecResolver();
-        Analyzer a = new Analyzer<>(resolver);
-        for (ClassNode cn : classPath.getClasses()) {
-            for (MethodNode mn : cn.methods) {
-                a.analyze(cn.name, mn);
+        {
+            // System.out.println("Finding coders...");
+            resolver = new CodecResolver();
+            Analyzer a = new Analyzer<>(resolver);
+            for (ClassNode cn : classPath.getClasses()) {
+                for (MethodNode mn : cn.methods) {
+                    a.analyze(cn.name, mn);
 
 
-                RSMethod add_entity = (RSMethod) Hook.LANDSCAPE.get("addTempEntity");
-                if (add_entity == null) break;
-                for (AbstractInsnNode ain : mn.instructions.toArray()) {
-                    if (ain.opcode() == INVOKEVIRTUAL) {
-                        org.objectweb.asm.tree.MethodInsnNode min = (org.objectweb.asm.tree.MethodInsnNode) ain;
-                        if (add_entity.equals(min.owner, min.name, min.desc)) {
-                            Orientation2.run(mn);
-                            break;
+                    RSMethod add_entity = (RSMethod) Hook.LANDSCAPE.get("addTempEntity");
+                    if (add_entity == null) break;
+                    for (AbstractInsnNode ain : mn.instructions.toArray()) {
+                        if (ain.opcode() == INVOKEVIRTUAL) {
+                            org.objectweb.asm.tree.MethodInsnNode min = (org.objectweb.asm.tree.MethodInsnNode) ain;
+                            if (add_entity.equals(min.owner, min.name, min.desc)) {
+                                Orientation2.run(mn);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
+
         }
+
+
+      /*  {
+            CodecResolver2 r = new CodecResolver2();
+            Analyzer a = new Analyzer<>(r);
+            for (ClassNode cn : classPath.getClasses()) {
+                for (MethodNode mn : cn.methods) {
+                    a.analyze(cn.name, mn);
+                }
+            }
+            r.print();
+        }*/
+
+
+
+
+
         // System.out.println("... Done");
 
         System.out.println();
