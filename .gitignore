@@ -11,3 +11,6 @@ i/hooks.gson
 /.settings
 .classpath
 .project
+
+*.txt
+
