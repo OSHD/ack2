@@ -1,9 +1,0 @@
-target/*
-.idea/*
-Dog.iml
-build.xml
-log.txt
-.classpath
-.settings/*
-.project
-src/test/*
