@@ -4,5 +4,6 @@ Dog.iml
 build.xml
 log.txt
 .classpath
-.settings/
+.settings/*
 .project
+src/test/*
