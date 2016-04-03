@@ -75,6 +75,8 @@ public final class DankEngine implements Opcodes {
     public static boolean fetch = false;
 
     public static boolean auto = true;
+    
+    //Noob
 
 
     public static ClassNode lookupClass(String name) {

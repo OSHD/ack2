@@ -2,7 +2,7 @@
 Server Address: oldschool2.runescape.com
 Version=111
 Server Address: oldschool2.runescape.com
-Removed 2218 unused methods in 0.24 secs
+Removed 2218 unused methods in 0.41 secs
 Deleted 4716 Opaque Predicates!
 Graphed 8048 Method Call(s).
 Graphed 31954 Field Call(s).
