@@ -5,7 +5,8 @@ i/hooks.gson
 /Dog.iml
 /.idea
 /target
-/jars/*
+/jars/**/deobfuscated.jar
+/jars/**/remapped.jar
 
 # Eclipse ignores
 /.settings
