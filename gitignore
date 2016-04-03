@@ -3,3 +3,6 @@ target/*
 Dog.iml
 build.xml
 log.txt
+.classpath
+.settings/
+.project
