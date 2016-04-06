@@ -133,6 +133,14 @@ public abstract class AbstractInsnNode {
     protected int opcode;
 
     /**
+     * Returns the opcode of this instruction.
+     * 
+     * @return the opcode of this instruction.
+     */
+    public int getOpcode() {
+        return opcode;
+    }
+    /**
      * The runtime visible type annotations of this instruction. This field is
      * only used for real instructions (i.e. not for labels, frames, or line
      * number nodes). This list is a list of {@link TypeAnnotationNode} objects.
@@ -209,6 +217,27 @@ public abstract class AbstractInsnNode {
      */
     public abstract int type();
 
+    /**
+     * Returns the previous instruction in the list to which this instruction
+     * belongs, if any.
+     * 
+     * @return the previous instruction in the list to which this instruction
+     *         belongs, if any. May be <tt>null</tt>.
+     */
+    public AbstractInsnNode getPrevious() {
+        return prev;
+    }
+
+    /**
+     * Returns the next instruction in the list to which this instruction
+     * belongs, if any.
+     * 
+     * @return the next instruction in the list to which this instruction
+     *         belongs, if any. May be <tt>null</tt>.
+     */
+    public AbstractInsnNode getNext() {
+        return next;
+    }
     /**
      * Returns the previous instruction in the list to which this instruction
      * belongs, if any.

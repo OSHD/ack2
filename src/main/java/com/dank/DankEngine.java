@@ -37,6 +37,8 @@ import com.dank.util.io.Fetcher;
 import com.dank.util.multipliers.Multiplier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import dank.tests.HierarchyVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.OpaquePredicateVisitor;
@@ -183,9 +185,11 @@ public final class DankEngine implements Opcodes {
             e.printStackTrace();
         }
 
+        
+        
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
-
+        DynaFlowAnalyzer.loadClient(classPath);
         final Analyser[] analysers = {new GStrings(), new GameCanvas(), new Parameters(), new Node(), new DualNode(), new Deque(),
 
                 new HashTable(), new Renderable(), new Buffer(), new PacketBuffer(), new IsaacRandom(), new GPI(), new ScriptEvent(),

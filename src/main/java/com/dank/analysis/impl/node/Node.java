@@ -4,6 +4,9 @@ import java.lang.reflect.Modifier;
 
 import com.dank.analysis.impl.widget.visitor.MarginVisitor;
 import com.dank.util.Wildcard;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
 import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.ClassNode;
@@ -41,6 +44,10 @@ public class Node extends Analyser {
         }
         for (final MethodNode mn : cn.methods) {
             if (!Modifier.isStatic(mn.access) && mn.desc.endsWith("V") && !mn.name.contains("<")) {
+            	MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
+            	if(md!=null){
+            		System.out.println("[Dyna] MethodData retrieved! : "+md.CLASS_NAME+"."+md.METHOD_NAME+md.METHOD_DESC);
+            	}
                 Hook.NODE.put(new RSMethod(mn, "unlink"));
             }
         }
