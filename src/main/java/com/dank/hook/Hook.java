@@ -19,6 +19,7 @@ import java.util.*;
 
 //
 public enum Hook {
+    NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
 
 
     GAME_STRINGS("GameStrings", null),
@@ -29,7 +30,6 @@ public enum Hook {
 
     PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
 
-    NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V"),
 
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
 

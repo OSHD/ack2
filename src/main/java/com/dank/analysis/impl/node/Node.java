@@ -24,45 +24,38 @@ import com.dank.hook.RSMethod;
  * Project: RS3Injector
  * Time: 06:23
  * Date: 07-02-2015
- * Created by Dogerina.
  */
+//All Fields/Methods Identified as of r111
 public class Node extends Analyser {
-
     @Override
     public ClassSpec specify(ClassNode cn) {
         return cn.fieldCount("J") == 1 && cn.fieldCount('L' + cn.name + ';') == 2 && cn.ownerless() ? new ClassSpec(Hook.NODE, cn) : null;
     }
-
     @Override
     public void evaluate(ClassNode cn) {
         for (final FieldNode fn : cn.fields) {
             if (fn.desc.equals("J")) {
                 Hook.NODE.put(new RSField(fn, "key"));
-            } else if (fn.desc.equals(String.format("L%s;", cn.name))) {
+            } else if (fn.desc.equals("L"+cn.name+";")) {
                 Hook.NODE.put(Modifier.isPublic(fn.access) ? new RSField(fn, "next") : new RSField(fn, "previous"));
             }
         }
+        boolean isParentFound=false;
         for (final MethodNode mn : cn.methods) {
-            if (!Modifier.isStatic(mn.access) && mn.desc.endsWith("V") && !mn.name.contains("<")) {
-            	MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
-            	if(md!=null){
-            		System.out.println("[Dyna] MethodData retrieved! : "+md.CLASS_NAME+"."+md.METHOD_NAME+md.METHOD_DESC);
+        	if(Modifier.isStatic(mn.access))
+        		continue;
+            MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
+            if(md!=null){
+            	if (md.referencedFrom.size()>0 && new Wildcard("()V").matches(mn.desc) && !mn.name.contains("<")) {
+            		Hook.NODE.put(new RSMethod(mn, "unlink"));
             	}
-                Hook.NODE.put(new RSMethod(mn, "unlink"));
+            	if(!isParentFound && new Wildcard("()Z").matches(mn.desc) && !mn.name.contains("<")) {
+            		Hook.NODE.put(new RSMethod(mn, "isParent"));
+            		isParentFound=true;
+            	}
+            	else
+            		System.out.println("[Dyna] MethodData retrieved! : "+md.CLASS_NAME+"."+md.METHOD_NAME+md.METHOD_DESC);
             }
         }
-
-//        NodeVisitor rsohv = new RunescriptOpcodeHandlerVisitor();
-//
-//        for (ClassNode c : DankEngine.classPath.getClasses()) {
-//            for (MethodNode mn : c.methods) {
-//                if(new Wildcard("(" + Hook.RUNESCRIPT.getInternalDesc() + "I?)V").matches(mn.desc)) {
-//                    System.out.println("??"+mn.key());
-//                    TreeBuilder.build(mn).accept(new MarginVisitor());
-//                }
-//                TreeBuilder.build(mn).accept(rsohv);
-//
-//            }
-//        }
     }
 }

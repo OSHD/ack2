@@ -190,7 +190,8 @@ public final class DankEngine implements Opcodes {
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
         DynaFlowAnalyzer.loadClient(classPath);
-        final Analyser[] analysers = {new GStrings(), new GameCanvas(), new Parameters(), new Node(), new DualNode(), new Deque(),
+        final Analyser[] analysers = {new Node(), 
+        		new GStrings(), new GameCanvas(), new Parameters(), new DualNode(), new Deque(),
 
                 new HashTable(), new Renderable(), new Buffer(), new PacketBuffer(), new IsaacRandom(), new GPI(), new ScriptEvent(),
                 new InterfaceNode(), new GraphicsStub(), new ItemTable(), new Varpbit(), new Sprite(), new RuneScript(),

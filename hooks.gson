@@ -165,9 +165,15 @@
         }
       },
       "methods": {
+        "isParent": {
+          "owner": "hd",
+          "name": "hp",
+          "desc": "()Z",
+          "access": 0
+        },
         "unlink": {
           "owner": "hd",
-          "name": "he",
+          "name": "ht",
           "desc": "()V",
           "access": 0
         }
