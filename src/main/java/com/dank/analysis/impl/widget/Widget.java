@@ -140,7 +140,7 @@ public class Widget extends Analyser {
         public void visitField(FieldMemberNode fmn) {
 //            System.out.println(Hook.FONT_IMPL.getInternalName());
             if (new Wildcard("(I)" + Hook.FONT_IMPL.getInternalDesc()).matches(fmn.method().desc)) {
-                if (fmn.isStatic() && fmn.desc().equals(Hook.CACHE_TABLE.getInternalDesc())) {
+                if (fmn.isStatic() && fmn.desc().equals(Hook.MEMCACHE.getInternalDesc())) {
                     Hook.CLIENT.put(new RSField(fmn, "fontCache"));
                 }
             }

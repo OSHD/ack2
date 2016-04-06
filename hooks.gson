@@ -1994,6 +1994,67 @@
         }
       }
     },
+    "MemCache": {
+      "name": "gz",
+      "fields": {
+        "head": {
+          "owner": "gz",
+          "name": "e",
+          "desc": "Lgh;",
+          "access": 0
+        },
+        "size": {
+          "owner": "gz",
+          "name": "w",
+          "desc": "I",
+          "access": 0
+        },
+        "remaining": {
+          "owner": "gz",
+          "name": "f",
+          "desc": "I",
+          "access": 0
+        },
+        "table": {
+          "owner": "gz",
+          "name": "s",
+          "desc": "Lgi;",
+          "access": 0
+        },
+        "queue": {
+          "owner": "gz",
+          "name": "p",
+          "desc": "Lgm;",
+          "access": 0
+        }
+      },
+      "methods": {
+        "get": {
+          "owner": "gz",
+          "name": "e",
+          "desc": "(J)Lgh;",
+          "access": 0
+        },
+        "clear": {
+          "owner": "gz",
+          "name": "s",
+          "desc": "()V",
+          "access": 0
+        },
+        "remove": {
+          "owner": "gz",
+          "name": "w",
+          "desc": "(J)V",
+          "access": 1
+        },
+        "put": {
+          "owner": "gz",
+          "name": "f",
+          "desc": "(Lgh;J)V",
+          "access": 0
+        }
+      }
+    },
     "Buffer": {
       "name": "dq",
       "fields": {
@@ -2975,7 +3036,7 @@
     "GameStrings": {
       "name": "ff"
     },
-    "NodeIterator": {
+    "Queue": {
       "name": "gm",
       "fields": {
         "head": {
@@ -3144,17 +3205,6 @@
           "owner": "a",
           "name": "w",
           "desc": "Ljava/lang/String;",
-          "access": 0
-        }
-      }
-    },
-    "CacheTable": {
-      "name": "gz",
-      "methods": {
-        "get": {
-          "owner": "gz",
-          "name": "e",
-          "desc": "(J)Lgh;",
           "access": 0
         }
       }

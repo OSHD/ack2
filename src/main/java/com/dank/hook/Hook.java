@@ -20,14 +20,15 @@ import java.util.*;
 //
 public enum Hook {
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
-    NODE_ITERATOR("NodeIterator", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
+    QUEUE("Queue", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
     BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
     ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getRotatedModel::()LModel;"),
     HUD("HUD", NODE, "owner::I", "type::I", "isMainHud::Z"),
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
+    MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
 
     GAME_STRINGS("GameStrings", null),
 
@@ -200,9 +201,7 @@ public enum Hook {
 
     FONT_IMPL("FontImpl", ABSTRACT_FONT),
 
-    IMAGE_PRODUCT("ImageProduct", null),
-
-    CACHE_TABLE("CacheTable", null, "get");
+    IMAGE_PRODUCT("ImageProduct", null);
 
 
     public final Map<String, RSMember> hooks;
