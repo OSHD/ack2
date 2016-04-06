@@ -20,6 +20,7 @@ import java.util.*;
 //
 public enum Hook {
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
+    NODE_ITERATOR("NodeIterator", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
     BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
@@ -44,7 +45,7 @@ public enum Hook {
 
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random", "bitCaret", "readHeader::(I)I", "writeHeader::(I)V", "readBits::(I)I"),
 
-    GPI("GPI", null, "chatBuffer::LPacketBuffer;", "cachedAppearances::[LPacketBuffer;", "pendingFlagsIndices::[I", "pendingFlagsCount::I",
+    GPI("GPI", null, "chatBuffer::LBuffer;", "cachedAppearances::[LBuffer;", "pendingFlagsIndices::[I", "pendingFlagsCount::I",
             "movementTypes::[B", "skipFlags::[B", "localPlayerCount::I", "localPlayerIndices::[I", "globalPlayerCount::I", "globalPlayerIndices::[I"),
 
     EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I"),

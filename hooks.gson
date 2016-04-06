@@ -2975,6 +2975,49 @@
     "GameStrings": {
       "name": "ff"
     },
+    "NodeIterator": {
+      "name": "gm",
+      "fields": {
+        "head": {
+          "owner": "gm",
+          "name": "e",
+          "desc": "Lgh;",
+          "access": 0
+        }
+      },
+      "methods": {
+        "putLast": {
+          "owner": "gm",
+          "name": "e",
+          "desc": "(Lgh;)V",
+          "access": 0
+        },
+        "getFirst": {
+          "owner": "gm",
+          "name": "s",
+          "desc": "()Lgh;",
+          "access": 0
+        },
+        "reset": {
+          "owner": "gm",
+          "name": "p",
+          "desc": "()V",
+          "access": 1
+        },
+        "putFirst": {
+          "owner": "gm",
+          "name": "w",
+          "desc": "(Lgh;)V",
+          "access": 0
+        },
+        "remove": {
+          "owner": "gm",
+          "name": "f",
+          "desc": "()Lgh;",
+          "access": 0
+        }
+      }
+    },
     "BoundaryStub": {
       "name": "cm",
       "fields": {
