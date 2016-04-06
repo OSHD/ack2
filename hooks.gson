@@ -2716,11 +2716,39 @@
     "Bitmap": {
       "name": "bx",
       "fields": {
-        "bitmap": {
+        "image": {
           "owner": "bx",
           "name": "h",
           "desc": "Ljava/awt/Image;",
           "access": 0
+        },
+        "pixels": {
+          "owner": "bx",
+          "name": "f",
+          "desc": "[I",
+          "access": 8
+        },
+        "width": {
+          "owner": "bx",
+          "name": "s",
+          "desc": "I",
+          "decoder": 309182205,
+          "access": 1
+        },
+        "height": {
+          "owner": "bx",
+          "name": "p",
+          "desc": "I",
+          "decoder": -277444737,
+          "access": 0
+        }
+      },
+      "methods": {
+        "drawGraphics": {
+          "owner": "bx",
+          "name": "ah",
+          "desc": "(I)V",
+          "access": 24
         }
       }
     },

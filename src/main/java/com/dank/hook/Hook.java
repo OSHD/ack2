@@ -22,11 +22,10 @@ public enum Hook {
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
+    BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
 
 
     GAME_STRINGS("GameStrings", null),
-
-    GRAPHICS_ENGINE("Bitmap", null, "engineRastor::[I", "bitmap::Ljava/awt/Image;"),
 
     GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
 

@@ -193,7 +193,7 @@ public final class DankEngine implements Opcodes {
         final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), 
         		new GStrings(), new GameCanvas(), new Parameters(), 
 
-                new HashTable(), new Renderable(), new Buffer(), new PacketBuffer(), new IsaacRandom(), new GPI(), new ScriptEvent(),
+                new HashTable(), new Entity(), new Buffer(), new PacketBuffer(), new IsaacRandom(), new GPI(), new ScriptEvent(),
                 new InterfaceNode(), new GraphicsStub(), new ItemTable(), new Varpbit(), new Sprite(), new RuneScript(),
                 new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct(),
                 new Projectile(), new ItemDefinition(), new Widget(), new ObjectDefinition(), new PlayerConfig(),
@@ -205,7 +205,7 @@ public final class DankEngine implements Opcodes {
                 new Npc(),
                 new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new TileStub(), new GroundItem(),
                 new ItemPile(), new DynamicObject(), new Landscape(), new LandscapeTile(), new Model(),
-                new KeyFocusListener(), new GraphicsEngine(), new Graphics(), new Messages(), new MessageHandler(),
+                new KeyFocusListener(), new Bitmap(), new Graphics(), new Messages(), new MessageHandler(),
 //                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */
         };
