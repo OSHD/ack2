@@ -24,7 +24,7 @@ public class CacheTable extends Analyser {
     public ClassSpec specify(ClassNode cn) {
         return cn.ownerless() &&
                 cn.fieldCount(String.format("L%s;", Hook.DUAL_NODE.getInternalName())) == 1 &&
-                cn.fieldCount(String.format("L%s;", Hook.NODETABLE.getInternalName())) == 1 &&
+                cn.fieldCount(String.format("L%s;", Hook.HASHTABLE.getInternalName())) == 1 &&
                 cn.fieldCount(int.class) == 2 ?
                 new ClassSpec(Hook.CACHE_TABLE, cn) : null;
     }

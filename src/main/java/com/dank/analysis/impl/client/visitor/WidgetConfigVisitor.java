@@ -24,7 +24,7 @@ public class WidgetConfigVisitor extends NodeVisitor {
 
     @Override
     public void visitField(FieldMemberNode fmn) {
-        if (fmn.desc().equals(Hook.NODETABLE.getInternalDesc())) {
+        if (fmn.desc().equals(Hook.HASHTABLE.getInternalDesc())) {
             Hook.CLIENT.put(new RSMethod(mn, "getWidgetConfig"));
         }
     }

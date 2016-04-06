@@ -12,6 +12,20 @@
           "decoder": 754566913,
           "access": 25
         }
+      },
+      "methods": {
+        "getRotatedModel": {
+          "owner": "ch",
+          "name": "f",
+          "desc": "(B)Ldy;",
+          "access": 0
+        },
+        "renderAtPoint": {
+          "owner": "ch",
+          "name": "ap",
+          "desc": "(IIIIIIIII)V",
+          "access": 0
+        }
       }
     },
     "GPI": {
@@ -67,6 +81,73 @@
           "desc": "I",
           "decoder": -2070534951,
           "access": 25
+        }
+      }
+    },
+    "HashTable": {
+      "name": "gi",
+      "fields": {
+        "head": {
+          "owner": "gi",
+          "name": "f",
+          "desc": "Lhd;",
+          "access": 0
+        },
+        "size": {
+          "owner": "gi",
+          "name": "p",
+          "desc": "I",
+          "access": 0
+        },
+        "tail": {
+          "owner": "gi",
+          "name": "s",
+          "desc": "Lhd;",
+          "access": 0
+        },
+        "buckets": {
+          "owner": "gi",
+          "name": "w",
+          "desc": "[Lhd;",
+          "access": 0
+        },
+        "index": {
+          "owner": "gi",
+          "name": "e",
+          "desc": "I",
+          "access": 0
+        }
+      },
+      "methods": {
+        "next": {
+          "owner": "gi",
+          "name": "p",
+          "desc": "()Lhd;",
+          "access": 0
+        },
+        "get": {
+          "owner": "gi",
+          "name": "e",
+          "desc": "(J)Lhd;",
+          "access": 0
+        },
+        "resetIndex": {
+          "owner": "gi",
+          "name": "s",
+          "desc": "()Lhd;",
+          "access": 0
+        },
+        "clear": {
+          "owner": "gi",
+          "name": "f",
+          "desc": "()V",
+          "access": 16
+        },
+        "put": {
+          "owner": "gi",
+          "name": "w",
+          "desc": "(Lhd;J)V",
+          "access": 0
         }
       }
     },
@@ -1369,6 +1450,12 @@
           "decoder": -323117685,
           "access": 25
         },
+        "huds": {
+          "owner": "client",
+          "name": "iz",
+          "desc": "Lgi;",
+          "access": 0
+        },
         "clanChatOwner": {
           "owner": "client",
           "name": "mp",
@@ -1621,12 +1708,6 @@
           "owner": "client",
           "name": "ca",
           "desc": "[Laj;",
-          "access": 0
-        },
-        "interfaceNodes": {
-          "owner": "client",
-          "name": "iz",
-          "desc": "Lgi;",
           "access": 0
         },
         "hideRoofs": {
@@ -2282,47 +2363,6 @@
         }
       }
     },
-    "IsaacRandom": {
-      "name": "dc",
-      "fields": {
-        "b": {
-          "owner": "dc",
-          "name": "a",
-          "desc": "I",
-          "decoder": 2011998533,
-          "access": 0
-        },
-        "c": {
-          "owner": "dc",
-          "name": "r",
-          "desc": "I",
-          "access": 25
-        },
-        "count": {
-          "owner": "dc",
-          "name": "s",
-          "desc": "I",
-          "decoder": -519434421,
-          "access": 1
-        }
-      },
-      "methods": {
-        "val": {
-          "owner": "dc",
-          "name": "e",
-          "desc": "(B)I",
-          "predicate": -60,
-          "access": 0
-        },
-        "isaac": {
-          "owner": "dc",
-          "name": "w",
-          "desc": "(B)V",
-          "predicate": 70,
-          "access": 9
-        }
-      }
-    },
     "ObjectDefinition": {
       "name": "aw",
       "fields": {
@@ -2776,6 +2816,31 @@
         }
       }
     },
+    "HUD": {
+      "name": "s",
+      "fields": {
+        "owner": {
+          "owner": "s",
+          "name": "e",
+          "desc": "I",
+          "decoder": 864085775,
+          "access": 0
+        },
+        "type": {
+          "owner": "s",
+          "name": "w",
+          "desc": "I",
+          "decoder": 1188698353,
+          "access": 0
+        },
+        "isMainHud": {
+          "owner": "s",
+          "name": "f",
+          "desc": "Z",
+          "access": 1
+        }
+      }
+    },
     "FriendedPlayer": {
       "name": "c",
       "fields": {
@@ -2910,29 +2975,6 @@
     "GameStrings": {
       "name": "ff"
     },
-    "NodeTable": {
-      "name": "gi",
-      "fields": {
-        "size": {
-          "owner": "gi",
-          "name": "p",
-          "desc": "I",
-          "access": 0
-        },
-        "buckets": {
-          "owner": "gi",
-          "name": "w",
-          "desc": "[Lhd;",
-          "access": 0
-        },
-        "index": {
-          "owner": "gi",
-          "name": "e",
-          "desc": "I",
-          "access": 0
-        }
-      }
-    },
     "BoundaryStub": {
       "name": "cm",
       "fields": {
@@ -3046,25 +3088,6 @@
         }
       }
     },
-    "InterfaceNode": {
-      "name": "s",
-      "fields": {
-        "owner": {
-          "owner": "s",
-          "name": "e",
-          "desc": "I",
-          "decoder": 864085775,
-          "access": 0
-        },
-        "type": {
-          "owner": "s",
-          "name": "w",
-          "desc": "I",
-          "decoder": 1188698353,
-          "access": 0
-        }
-      }
-    },
     "IgnoredPlayer": {
       "name": "a",
       "fields": {
@@ -3146,6 +3169,73 @@
           "name": "r",
           "desc": "Lcu;",
           "access": 0
+        }
+      }
+    },
+    "IsaacCipher": {
+      "name": "dc",
+      "fields": {
+        "memory": {
+          "owner": "dc",
+          "name": "h",
+          "desc": "[I",
+          "access": 1
+        },
+        "lastResult": {
+          "owner": "dc",
+          "name": "a",
+          "desc": "I",
+          "decoder": 2011998533,
+          "access": 0
+        },
+        "count": {
+          "owner": "dc",
+          "name": "s",
+          "desc": "I",
+          "decoder": -519434421,
+          "access": 1
+        },
+        "accumulator": {
+          "owner": "dc",
+          "name": "g",
+          "desc": "I",
+          "decoder": 593654631,
+          "access": 1
+        },
+        "counter": {
+          "owner": "dc",
+          "name": "r",
+          "desc": "I",
+          "access": 25
+        },
+        "results": {
+          "owner": "dc",
+          "name": "p",
+          "desc": "[I",
+          "access": 8
+        }
+      },
+      "methods": {
+        "next": {
+          "owner": "dc",
+          "name": "e",
+          "desc": "(B)I",
+          "predicate": -60,
+          "access": 0
+        },
+        "initializeKeySet": {
+          "owner": "dc",
+          "name": "f",
+          "desc": "(S)V",
+          "predicate": -16311,
+          "access": 0
+        },
+        "decrypt": {
+          "owner": "dc",
+          "name": "w",
+          "desc": "(B)V",
+          "predicate": 70,
+          "access": 9
         }
       }
     },

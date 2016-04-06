@@ -33,14 +33,12 @@ public class PacketBuffer extends Analyser {
                 Hook.PACKET_BUFFER.put(new RSField(fn, "bitCaret"));
             } else if (fn.desc.equals("[I") && Modifier.isStatic(fn.access)) {
                 Hook.PACKET_BUFFER.put(new RSField(fn, "bitMasks"));
-
                 MethodNode method = DankEngine.fGraph.getCaller(fn, 3);
                 if (method != null)
                     Hook.PACKET_BUFFER.put(new RSMethod(method, "readBits"));
             } else if (!fn.desc.equals("I") && !Modifier.isStatic(fn.access)) {
                 random = fn;
                 Hook.PACKET_BUFFER.put(new RSField(fn, "random"));
-                Hook.ISAAC_RANDOM.setInternalName(fn.type());
                 break;
             }
         }
@@ -55,12 +53,6 @@ public class PacketBuffer extends Analyser {
                         FieldInsnNode fin = (FieldInsnNode) ain;
                         if (fin.owner.equals(cn.name) && fin.name.equals(random.name) && fin.desc.equals(random.desc)) {
                             Hook.PACKET_BUFFER.put(new RSMethod(mn, "writeHeader"));
-
-                            if (fin.next().next().opcode() == Opcodes.INVOKEVIRTUAL) {
-                                MethodInsnNode invoke = (MethodInsnNode) fin.next().next();
-                                MethodNode val = getClassPath().get(invoke.owner).getMethod(invoke.name, invoke.desc);
-                                Hook.ISAAC_RANDOM.put(new RSMethod(val, "val"));
-                            }
                         }
                     }
                 }
@@ -86,19 +78,6 @@ public class PacketBuffer extends Analyser {
                     }
                 }
             }
-            /*if (Modifier.isStatic(mn.access) || !mn.desc.endsWith("V")) continue;
-            if (!Modifier.isPublic(mn.access) || !mn.desc.startsWith("(I")) continue;
-            for (BasicBlock block : mn.graph()) {
-                for (AbstractInsnNode ain : block.instructions) {
-                    if (ain.opcode() != Opcodes.GETFIELD) {
-                        continue;
-                    }
-                    FieldInsnNode fin = (FieldInsnNode) ain;
-                    if (fin.owner.equals(cn.name) && fin.name.equals(random.name) && fin.desc.equals(random.desc)) {
-                        Hook.PACKET_BUFFER.put(new RSMethod(mn, "writeHeader"));
-                    }
-                }
-            }*/
         }
     }
 }

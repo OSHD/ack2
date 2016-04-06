@@ -13,6 +13,10 @@ import com.dank.hook.RSField;
 import com.dank.hook.RSMethod;
 import com.dank.util.MemberKey;
 import com.dank.util.Wildcard;
+import com.marn.asm.FieldData;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.cfg.BasicBlock;
@@ -39,8 +43,6 @@ import java.util.concurrent.atomic.AtomicReference;
  * Project: RS3Injector Time: 06:50 Date: 07-02-2015 Created by Dogerina.
  */
 public class Client extends Analyser {
-
-
     @Override
     public ClassSpec specify(ClassNode cn) {
         if (cn.name.equals("client")) {
@@ -49,10 +51,24 @@ public class Client extends Analyser {
         }
         return null;
     }
-
     @Override
     public void evaluate(ClassNode cn) {
-
+    	for(ClassNode node : getClassPath().getClasses()){
+    		for(FieldNode fn : node.fields){
+    			FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
+    			if(fn.access==8 && fn.desc.equals("L"+Hook.HASHTABLE.getInternalName()+";")){
+    				boolean found=false;
+    				for(MethodData md : fd.referencedFrom){
+    					if(new Wildcard("([L"+Hook.WIDGET.getInternalName()+";L"+Hook.WIDGET.getInternalName()+";Z?)V").matches(md.METHOD_DESC)){
+    						found=true;
+    						break;
+    					}
+    				}
+    				if(found)
+    					Hook.CLIENT.put(new RSField(fn, "huds"));
+    			}
+    		}
+    	}
         for (final ClassNode node : getClassPath().getClasses()) {
             for (final MethodNode mn : node.methods) {
 
@@ -64,11 +80,11 @@ public class Client extends Analyser {
                     Hook.CLIENT.put(new RSMethod(mn, "renderComponent"));
                 }
 
-                if (new Wildcard("(III?)" + Hook.INTERFACE_NODE.getInternalDesc()).matches(mn.desc)) {
+                if (new Wildcard("(III?)" + Hook.HUD.getInternalDesc()).matches(mn.desc)) {
                     Hook.CLIENT.put(new RSMethod(mn, "addHUD"));
                 }
 
-                if (new Wildcard("(" + Hook.INTERFACE_NODE.getInternalDesc() + "Z?)V").matches(mn.desc)) {
+                if (new Wildcard("(" + Hook.HUD.getInternalDesc() + "Z?)V").matches(mn.desc)) {
                     Hook.CLIENT.put(new RSMethod(mn, "removeHUD"));
                 }
 

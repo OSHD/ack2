@@ -46,7 +46,7 @@ public class ItemTable extends Analyser {
                     block.tree().accept(new NodeVisitor() {
                         @Override
                         public void visitMethod(MethodMemberNode mmn) {
-                            if (mmn.owner().equals(Hook.NODETABLE.getInternalName()) && mmn.desc().startsWith("(J")
+                            if (mmn.owner().equals(Hook.HASHTABLE.getInternalName()) && mmn.desc().startsWith("(J")
                                     && mmn.hasChild(I2L) && mmn.hasChild(GETSTATIC) && mmn.nextType() != null
                                     && mmn.nextType().type().equals(Hook.ITEM_TABLE.getInternalName())) {
                                 Hook.CLIENT.put(new RSField(mmn.firstField(), "itemTables"));

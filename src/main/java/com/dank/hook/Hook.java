@@ -23,7 +23,10 @@ public enum Hook {
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
     BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
-
+    ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getRotatedModel::()LModel;"),
+    HUD("HUD", NODE, "owner::I", "type::I", "isMainHud::Z"),
+    HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
+    ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
 
     GAME_STRINGS("GameStrings", null),
 
@@ -31,22 +34,13 @@ public enum Hook {
 
     PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
 
-
-
-    ENTITY("Entity", DUAL_NODE, "modelHeight::I"),
-
     MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
 
     SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
 
-    INTERFACE_NODE("InterfaceNode", NODE, "owner::I", "type::I"),
-
-    NODETABLE("NodeTable", null, "buckets::[LNode;", "index::I", "size::I"),
-
 
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
 
-    ISAAC_RANDOM("IsaacRandom", null, "val::()I", "isaac", "b", "c", "count"),
 
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random", "bitCaret", "readHeader::(I)I", "writeHeader::(I)V", "readBits::(I)I"),
 
@@ -174,7 +168,7 @@ public enum Hook {
             "regionBaseX::I", "regionBaseY::I", "tempVars::[I", "minimapSprite::LSprite;", "engineCycle::I",
             "menuActions::[Ljava/lang/String;", "menuNouns::[Ljava/lang/String;", "menuOpcodes::[I",
             "menuArg0::[I", "menuArg1::[I", "menuArg2::[I", "landscape::LLandscape;", "worldCount::I",
-            "worlds::[LWorld;", "interfaceNodes::LHashTable;", "minimapRotation::I", "minimapScale::I",
+            "worlds::[LWorld;", "huds::LHashTable;", "minimapRotation::I", "minimapScale::I",
             "viewRotation::I", "interfaces::[[LWidget;", "energy::I", "weight::I", "onCursorUids::[I",
             "onCursorCount::I", "cursorState::I", "playerActions::[Ljava/lang/String;", "itemSelectionStatus::I",
             "spellSelected::Z", "selectedItemName::Ljava/lang/String;", "selectedSpellName::Ljava/lang/String;",
@@ -184,7 +178,7 @@ public enum Hook {
             "myRights::I", "connectionState::I", "destinationX::I", "destinationY::I", "engineVars::[I",
             "experiences::[I", "levels::[I", "currentLevels::[I", "fps::I", "groundItemDeque::[[[LDeque;",
             "friendedPlayers::[LFriendedPlayer;", "clanMates::[LClanMate;", "ignoredPlayers::[LIgnoredPlayer;",
-            "graphicsObjectDeque::LDeque;", "projectileDeque::LDeque;", "interfaceNodes::LHashTable;",
+            "graphicsObjectDeque::LDeque;", "projectileDeque::LDeque;",
             "itemTables::LHashTable;", "menuWidth::I", "menuHeight::I", "menuX::I", "menuY::I", "menuOpen::Z",
             "tileHeights::[[[I", "renderRules::[[[B", "screenCenterX::I", "screenCenterY::I", "selectedItemIndex::I",
             "xViewportBuffer::[I", "yViewportBuffer::[I", "worldSelectorDisplayed::Z",
