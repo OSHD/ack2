@@ -253,7 +253,10 @@ public class FieldNode extends FieldVisitor {
         return desc.replace("[", "").replace("L", "").replace(";", "");
     }
 
-    public boolean isStatic() {
-        return Modifier.isStatic(access);
-    }
+	public boolean isStatic(){
+		return (access==8 || access==24 || access==72 || 
+					access==9 || access==25 || access==73 || 
+					access==10 || access==26 || 
+					access==12 || access==28 || access==76);
+	}
 }

@@ -2,29 +2,19 @@ package com.dank.analysis.impl.node;
 
 import java.lang.reflect.Modifier;
 
-import com.dank.analysis.impl.widget.visitor.MarginVisitor;
 import com.dank.util.Wildcard;
 import com.marn.asm.MethodData;
 import com.marn.dynapool.DynaFlowAnalyzer;
 
-import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
-import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
-import com.dank.DankEngine;
 import com.dank.analysis.Analyser;
-import com.dank.analysis.impl.client.visitor.RunescriptOpcodeHandlerVisitor;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.hook.RSMethod;
 
-/**
- * Project: RS3Injector
- * Time: 06:23
- * Date: 07-02-2015
- */
 //All Fields/Methods Identified as of r111
 public class Node extends Analyser {
     @Override
@@ -53,8 +43,6 @@ public class Node extends Analyser {
             		Hook.NODE.put(new RSMethod(mn, "isParent"));
             		isParentFound=true;
             	}
-            	else
-            		System.out.println("[Dyna] MethodData retrieved! : "+md.CLASS_NAME+"."+md.METHOD_NAME+md.METHOD_DESC);
             }
         }
     }

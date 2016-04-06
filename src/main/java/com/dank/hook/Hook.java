@@ -20,6 +20,8 @@ import java.util.*;
 //
 public enum Hook {
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
+    DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
+    DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
 
 
     GAME_STRINGS("GameStrings", null),
@@ -31,7 +33,6 @@ public enum Hook {
     PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
 
 
-    DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
 
     ENTITY("Entity", DUAL_NODE, "modelHeight::I"),
 
@@ -43,7 +44,6 @@ public enum Hook {
 
     NODETABLE("NodeTable", null, "buckets::[LNode;", "index::I", "size::I"),
 
-    DEQUE("Deque", null, "head", "tail"),
 
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
 
