@@ -80,9 +80,8 @@ public class Widget extends Analyser {
                 if (topkek.desc.equals(desc) && (owner == null || owner.equals(topkek.owner))) {
                     if (skipped == skips) {
                         return topkek;
-                    } else {
-                        skipped++;
                     }
+					skipped++;
                 }
             }
         }

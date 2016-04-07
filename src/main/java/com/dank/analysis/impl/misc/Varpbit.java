@@ -6,9 +6,7 @@ import java.util.List;
 
 import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
 import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
-import org.objectweb.asm.commons.cfg.tree.node.MethodMemberNode;
 import org.objectweb.asm.commons.cfg.tree.node.StoreNode;
-import org.objectweb.asm.commons.cfg.tree.node.TypeNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
 
@@ -16,32 +14,36 @@ import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.hook.RSMethod;
+import com.dank.util.Wildcard;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
 
-/**
- * Project: DankWise
- * Date: 20-02-2015
- * Time: 12:16
- * Created by Dogerina.
- * Copyright under GPL license by Dogerina.
- */
+//All fields and methods identified as of r111
 public class Varpbit extends Analyser {
-
     private final List<VarAssignment> vars = new ArrayList<>();
-
     @Override
     public ClassSpec specify(ClassNode cn) {
         return cn.superName.equals(Hook.DUAL_NODE.getInternalName()) && cn.fieldCount() == 3 && cn.fieldCount(int.class) == 3
                 ? new ClassSpec(Hook.VARPBIT, cn) : null;
     }
-
     @Override
     public void evaluate(ClassNode c) {
+    	for(MethodNode mn : c.methods){
+    		if(mn.isStatic())
+    			continue;
+    		MethodData md = DynaFlowAnalyzer.getMethod(c.name, mn.name, mn.desc);
+    		if(md.referencedFrom.size()>0 && new Wildcard("(L"+Hook.BUFFER.getInternalName()+";?)V").matches(mn.desc)){
+                Hook.VARPBIT.put(new RSMethod(mn, "unpackConfig"));
+    		}
+    		if(md.referencedFrom.size()>0 && new Wildcard("(L"+Hook.BUFFER.getInternalName()+";I?)V").matches(mn.desc)){
+                Hook.VARPBIT.put(new RSMethod(mn, "readValues"));
+    		}
+    	}
         for (final ClassNode cn : super.getClassPath()) {
             for (final MethodNode mn : cn.methods) {
                 if (mn.isStatic()) {
                     mn.graph().forEach(b -> {
                         b.tree().accept(new GenericVisitor(c.name));
-                        b.tree().accept(new Test(c.name));
                     });
                 }
             }
@@ -62,37 +64,15 @@ public class Varpbit extends Analyser {
             }
         }
     }
-
-    private final class Test extends NodeVisitor {
-
-        private final String name;
-
-        private Test(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public void visitType(final TypeNode tn) {
-            if (Hook.CLIENT.get("getVarpbit") == null && tn.isOpcode(CHECKCAST) && tn.type().equals(name)
-                    && !tn.method().desc.contains(Hook.SCRIPT_EVENT.getInternalDesc())) {
-                Hook.CLIENT.put(new RSMethod(tn.method(), "getVarpbit"));
-            }
-        }
-    }
-
     private final class VarAssignment {
         private StoreNode istore;
         private FieldMemberNode getfield;
     }
-
     private final class GenericVisitor extends NodeVisitor {
-
         private final String owner;
-
         private GenericVisitor(String owner) {
             this.owner = owner;
         }
-
         @Override
         public void visitStore(StoreNode sn) {
             if (sn.opcode() == ISTORE) {
@@ -103,22 +83,10 @@ public class Varpbit extends Analyser {
                     var.getfield = fmn;
                     if (canAdd(var)) {
                         vars.add(var);
-                        sn.tree().accept(new NodeVisitor() {
-                            @Override
-                            public void visitStore(StoreNode sn) {
-                                if (sn.opcode() == ASTORE) {
-                                    final MethodMemberNode invokestadik = sn.firstMethod();
-                                    if (invokestadik != null && invokestadik.desc().contains("I")) {
-                                        Hook.CLIENT.put(new RSMethod(invokestadik, "getVarpbit"));
-                                    }
-                                }
-                            }
-                        });
                     }
                 }
             }
         }
-
         private boolean canAdd(VarAssignment var) {
             for (final VarAssignment var0 : vars) {
                 if (var0.getfield.key().equals(var.getfield.key())) {

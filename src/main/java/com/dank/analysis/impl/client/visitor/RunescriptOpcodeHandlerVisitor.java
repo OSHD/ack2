@@ -115,11 +115,12 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(3622, GETFIELD, "Ljava/lang/String;", "previousName")
                     .container(Hook.IGNORED_PLAYER).skip(1));
 
-            add(new OpcodeHook(3904, GETFIELD, "I", "itemId").container(Hook.EXCHANGE_OFFER));
-            add(new OpcodeHook(3905, GETFIELD, "I", "price").container(Hook.EXCHANGE_OFFER));
-            add(new OpcodeHook(3906, GETFIELD, "I", "itemQuantity").container(Hook.EXCHANGE_OFFER));
-            add(new OpcodeHook(3907, GETFIELD, "I", "transferred").container(Hook.EXCHANGE_OFFER));
-            add(new OpcodeHook(3908, GETFIELD, "I", "spent").container(Hook.EXCHANGE_OFFER));
+            //These are properly hooked inside ExchangeOffer analyzer
+            //add(new OpcodeHook(3904, GETFIELD, "I", "itemId").container(Hook.EXCHANGE_OFFER));
+            //add(new OpcodeHook(3905, GETFIELD, "I", "price").container(Hook.EXCHANGE_OFFER));
+            //add(new OpcodeHook(3906, GETFIELD, "I", "itemQuantity").container(Hook.EXCHANGE_OFFER));
+            //add(new OpcodeHook(3907, GETFIELD, "I", "transferred").container(Hook.EXCHANGE_OFFER));
+            //add(new OpcodeHook(3908, GETFIELD, "I", "spent").container(Hook.EXCHANGE_OFFER));
         }
     };
 
@@ -133,9 +134,8 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
                     if (skipped == skips) {
 //                        System.out.println("test: " + from.method().key());
                         return topkek;
-                    } else {
-                        skipped++;
                     }
+					skipped++;
                 }
             }
         }

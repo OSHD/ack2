@@ -984,6 +984,38 @@
         }
       }
     },
+    "MouseWheelListener": {
+      "name": "eb",
+      "fields": {
+        "rotation": {
+          "owner": "eb",
+          "name": "e",
+          "desc": "I",
+          "decoder": 588487907,
+          "access": 0
+        }
+      },
+      "methods": {
+        "addMouseWheelListener": {
+          "owner": "eb",
+          "name": "w",
+          "desc": "(Ljava/awt/Component;I)V",
+          "access": 0
+        },
+        "popRotation": {
+          "owner": "eb",
+          "name": "s",
+          "desc": "(I)I",
+          "access": 16
+        },
+        "removeMouseWheelListener": {
+          "owner": "eb",
+          "name": "f",
+          "desc": "(Ljava/awt/Component;B)V",
+          "access": 0
+        }
+      }
+    },
     "World": {
       "name": "v",
       "fields": {
@@ -1371,12 +1403,6 @@
           "owner": "client",
           "name": "hm",
           "desc": "Z",
-          "access": 0
-        },
-        "localExchangeOffers": {
-          "owner": "client",
-          "name": "pq",
-          "desc": "[Lhb;",
           "access": 0
         },
         "friendListSize": {
@@ -2084,70 +2110,17 @@
           "name": "av",
           "desc": "(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V",
           "access": 0
-        },
-        "readInt": {
-          "owner": "dq",
-          "name": "t",
-          "desc": "(I)I",
-          "access": 0
-        },
-        "readByte": {
-          "owner": "dq",
-          "name": "x",
-          "desc": "(I)B",
-          "access": 0
-        },
-        "readUShort": {
-          "owner": "dq",
-          "name": "b",
-          "desc": "(B)I",
-          "access": 0
         }
       }
     },
     "Player": {
       "name": "f",
       "fields": {
-        "prayerIcon": {
-          "owner": "f",
-          "name": "f",
-          "desc": "I",
-          "decoder": -1375067971,
-          "access": 0
-        },
-        "skullIcon": {
-          "owner": "f",
-          "name": "s",
-          "desc": "I",
-          "decoder": 1745286075,
-          "access": 1
-        },
-        "totalLevel": {
-          "owner": "f",
-          "name": "a",
-          "desc": "I",
-          "decoder": -2039669101,
-          "access": 0
-        },
         "name": {
           "owner": "f",
           "name": "e",
           "desc": "Ljava/lang/String;",
           "access": 24
-        },
-        "team": {
-          "owner": "f",
-          "name": "q",
-          "desc": "I",
-          "decoder": 1151384389,
-          "access": 8
-        },
-        "combatLevel": {
-          "owner": "f",
-          "name": "g",
-          "desc": "I",
-          "decoder": -1839855925,
-          "access": 1
         },
         "config": {
           "owner": "f",
@@ -2251,11 +2224,31 @@
           "decoder": 59521537,
           "access": 8
         },
+        "maxHitpoints": {
+          "owner": "av",
+          "name": "bj",
+          "desc": "I",
+          "decoder": 1371401369,
+          "access": 24
+        },
         "unknown7": {
           "owner": "av",
           "name": "aj",
           "desc": "I",
           "decoder": 1772828793,
+          "access": 8
+        },
+        "orientation": {
+          "owner": "av",
+          "name": "cz",
+          "desc": "I",
+          "decoder": 1184702081,
+          "access": 24
+        },
+        "overheadText": {
+          "owner": "av",
+          "name": "aw",
+          "desc": "Ljava/lang/String;",
           "access": 8
         },
         "npcTurnAround": {
@@ -2265,11 +2258,38 @@
           "decoder": 689035139,
           "access": 9
         },
+        "idleAnimation": {
+          "owner": "av",
+          "name": "ar",
+          "desc": "I",
+          "decoder": 2054342807,
+          "access": 8
+        },
         "targetIndex": {
           "owner": "av",
           "name": "bq",
           "desc": "I",
           "decoder": 225309953,
+          "access": 24
+        },
+        "strictY": {
+          "owner": "av",
+          "name": "ai",
+          "desc": "I",
+          "decoder": -642161361,
+          "access": 8
+        },
+        "hitsplatTypes": {
+          "owner": "av",
+          "name": "at",
+          "desc": "[I",
+          "access": 24
+        },
+        "npcTurnRight": {
+          "owner": "av",
+          "name": "av",
+          "desc": "I",
+          "decoder": -13091515,
           "access": 24
         },
         "npcBoundDim": {
@@ -2278,6 +2298,13 @@
           "desc": "I",
           "decoder": 1086569664,
           "access": 8
+        },
+        "healthBarCycle": {
+          "owner": "av",
+          "name": "ak",
+          "desc": "I",
+          "decoder": 1559656017,
+          "access": 24
         },
         "hitpoints": {
           "owner": "av",
@@ -2305,88 +2332,6 @@
           "name": "ao",
           "desc": "[I",
           "access": 24
-        },
-        "interAnimFrameId": {
-          "owner": "av",
-          "name": "bd",
-          "desc": "I",
-          "decoder": 1636354899,
-          "access": 0
-        },
-        "maxHitpoints": {
-          "owner": "av",
-          "name": "bj",
-          "desc": "I",
-          "decoder": 1371401369,
-          "access": 24
-        },
-        "orientation": {
-          "owner": "av",
-          "name": "cz",
-          "desc": "I",
-          "decoder": 1184702081,
-          "access": 24
-        },
-        "overheadText": {
-          "owner": "av",
-          "name": "aw",
-          "desc": "Ljava/lang/String;",
-          "access": 8
-        },
-        "queueSize": {
-          "owner": "av",
-          "name": "ce",
-          "desc": "I",
-          "decoder": 542663523,
-          "access": 24
-        },
-        "idleAnimation": {
-          "owner": "av",
-          "name": "ar",
-          "desc": "I",
-          "decoder": 2054342807,
-          "access": 8
-        },
-        "strictY": {
-          "owner": "av",
-          "name": "ai",
-          "desc": "I",
-          "decoder": -642161361,
-          "access": 8
-        },
-        "hitsplatTypes": {
-          "owner": "av",
-          "name": "at",
-          "desc": "[I",
-          "access": 24
-        },
-        "npcTurnRight": {
-          "owner": "av",
-          "name": "av",
-          "desc": "I",
-          "decoder": -13091515,
-          "access": 24
-        },
-        "healthBarCycle": {
-          "owner": "av",
-          "name": "ak",
-          "desc": "I",
-          "decoder": 1559656017,
-          "access": 24
-        },
-        "animation": {
-          "owner": "av",
-          "name": "bw",
-          "desc": "I",
-          "decoder": 1421896535,
-          "access": 1
-        },
-        "runAnimation": {
-          "owner": "av",
-          "name": "am",
-          "desc": "I",
-          "decoder": -1513764011,
-          "access": 1
         },
         "hitsplatCycles": {
           "owner": "av",
@@ -2421,6 +2366,36 @@
           "desc": "I",
           "decoder": 1868511077,
           "access": 1
+        },
+        "interAnimFrameId": {
+          "owner": "av",
+          "name": "bd",
+          "desc": "I",
+          "decoder": 1636354899,
+          "access": 0
+        }
+      }
+    },
+    "AbstractMouseWheelListener": {
+      "name": "eh",
+      "methods": {
+        "addMouseWheelListener": {
+          "owner": "eh",
+          "name": "w",
+          "desc": "(Ljava/awt/Component;I)V",
+          "access": 0
+        },
+        "popRotation": {
+          "owner": "eh",
+          "name": "s",
+          "desc": "(I)I",
+          "access": 16
+        },
+        "removeMouseWheelListener": {
+          "owner": "eh",
+          "name": "f",
+          "desc": "(Ljava/awt/Component;B)V",
+          "access": 0
         }
       }
     },
@@ -2759,6 +2734,21 @@
           "desc": "B",
           "access": 25
         }
+      },
+      "methods": {
+        "getStatus": {
+          "owner": "hb",
+          "name": "f",
+          "desc": "(B)I",
+          "access": 0
+        },
+        "isCompleted": {
+          "owner": "hb",
+          "name": "s",
+          "desc": "(B)I",
+          "predicate": 2,
+          "access": 0
+        }
       }
     },
     "GraphicsStub": {
@@ -2876,6 +2866,9 @@
           "access": 0
         }
       }
+    },
+    "MouseListener": {
+      "name": "en"
     },
     "HUD": {
       "name": "s",
@@ -3659,6 +3652,21 @@
           "decoder": -329397491,
           "access": 0
         }
+      },
+      "methods": {
+        "readValues": {
+          "owner": "at",
+          "name": "w",
+          "desc": "(Ldq;II)V",
+          "predicate": 964322312,
+          "access": 0
+        },
+        "unpackConfig": {
+          "owner": "at",
+          "name": "e",
+          "desc": "(Ldq;B)V",
+          "access": 0
+        }
       }
     },
     "ScriptEvent": {
@@ -3675,6 +3683,12 @@
           "name": "k",
           "desc": "Ljava/lang/String;",
           "access": 24
+        },
+        "hasRan": {
+          "owner": "e",
+          "name": "w",
+          "desc": "Z",
+          "access": 64
         }
       }
     },

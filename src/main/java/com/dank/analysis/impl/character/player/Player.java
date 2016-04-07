@@ -43,58 +43,5 @@ public class Player extends Analyser {
                 }
             }
         }
-        for (final MethodNode mn : cn.methods) { //pull all the fields set in the buffer first
-            if (!mn.isStatic()) {
-                if (mn.desc.startsWith("(" + Hook.BUFFER.getInternalDesc()) && mn.isVoid()) {
-                    mn.graph().forEach(b -> {
-                        final NodeTree tree = b.tree();
-                        tree.accept(new BufferVisitor(b));
-                        tree.accept(new TeamVisitor());
-                    });
-                } else if (mn.desc.startsWith("(IIB")) {
-                    mn.graph().forEach(b -> b.tree().accept(new Animation()));
-                    mn.graph().forEach(b -> b.tree().accept(new QueueSize()));
-                }
-            }
-        }
-        //find the fields
-        getClassPath().forEach((name, c) -> c.methods.forEach(m -> m.graph().forEach(b -> {
-            b.tree().accept(new CombatLevelVisitor(b));
-            b.tree().accept(new TotalLevelVisitor());
-        })));
-    }
-
-    private class Animation extends NodeVisitor {
-
-        @Override
-        public void visitJump(JumpNode jn) {
-            if (jn.isOpcode(IF_ICMPEQ) && jn.layer(ICONST_M1) != null) {
-                FieldMemberNode fmn = (FieldMemberNode) jn.layer(IMUL, GETFIELD);
-                if (fmn != null) {
-                    ClassNode cn = getClassPath().get(spec.getName());
-                    if (cn != null) {
-                        RSField rsf = new RSField(new MemberKey(cn.superName, fmn.name(), fmn.desc()), "animation");
-                        Hook.CHARACTER.put(rsf);
-                    }
-                }
-            }
-        }
-    }
-
-    private class QueueSize extends NodeVisitor {
-
-        @Override
-        public void visitNumber(final NumberNode nn) {
-            if (nn.hasParent() && nn.parent() instanceof JumpNode) {
-                FieldMemberNode fmn = (FieldMemberNode) nn.parent().layer(IMUL, GETFIELD);
-                if (fmn != null && nn.number() == 9) {
-                    ClassNode cn = getClassPath().get(spec.getName());
-                    if (cn != null) {
-                        RSField rsf = new RSField(new MemberKey(cn.superName, fmn.name(), fmn.desc()), "queueSize");
-                        Hook.CHARACTER.put(rsf);
-                    }
-                }
-            }
-        }
     }
 }

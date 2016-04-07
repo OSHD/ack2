@@ -10,7 +10,10 @@ import com.dank.analysis.impl.client.Client;
 import com.dank.analysis.impl.definition.item.ItemDefinition;
 import com.dank.analysis.impl.definition.npc.NpcDefinition;
 import com.dank.analysis.impl.definition.object.ObjectDefinition;
+import com.dank.analysis.impl.focus.AbstractMouseWheelListener;
 import com.dank.analysis.impl.focus.KeyFocusListener;
+import com.dank.analysis.impl.focus.MouseListener;
+import com.dank.analysis.impl.focus.MouseWheelListener;
 import com.dank.analysis.impl.landscape.*;
 import com.dank.analysis.impl.misc.*;
 import com.dank.analysis.impl.model.Model;
@@ -192,15 +195,20 @@ public final class DankEngine implements Opcodes {
         DynaFlowAnalyzer.loadClient(classPath);
         final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), new Entity(), new HUD(),
         		new HashTable(), new MemCache(), 
-        		new GStrings(), new GameCanvas(), new Parameters(), 
+        		new GameCanvas(), new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
+        		new GStrings(), new Parameters(), 
         		new IsaacCipher(), 
         		
                 new Buffer(), //AKA Stream
-                new PacketBuffer(), new GPI(), new ScriptEvent(),
-                new GraphicsStub(), new ItemTable(), new Varpbit(), new Sprite(), new RuneScript(),
+                new PacketBuffer(), 
+                new Varpbit(), 
+                new ScriptEvent(),
+                new ExchangeOffer(),
+                
+                new GPI(), 
+                new GraphicsStub(), new ItemTable(), new Sprite(), new RuneScript(),
                 new AbstractFont(), new FontImpl(), new ImageProduct(),
                 new Projectile(), new ItemDefinition(), new Widget(), new ObjectDefinition(), new PlayerConfig(),
-                new ExchangeOffer(),
                 new Player(),
                 new Client(),
                 new Character(),
@@ -208,7 +216,7 @@ public final class DankEngine implements Opcodes {
                 new Npc(),
                 new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new TileStub(), new GroundItem(),
                 new ItemPile(), new DynamicObject(), new Landscape(), new LandscapeTile(), new Model(),
-                new KeyFocusListener(), new Bitmap(), new Graphics(), new Messages(), new MessageHandler(),
+                new Bitmap(), new Graphics(), new Messages(), new MessageHandler(),
 //                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */
         };
@@ -285,22 +293,34 @@ public final class DankEngine implements Opcodes {
 
         System.out.println();
 
-        int found_hooks = 0;
-        int found_classes = 0;
-        int total_hooks = 0;
-        int total_classes = 0;
-        int warnings = 0;
-        for (final Hook hook : Hook.values()) {
-            String raw = hook.toString();
-            System.out.println(raw);
-            total_hooks += hook.hooks.size();
-            total_classes += 1;
-            found_hooks += hook.getIdentifiedSet().size();
-            if (hook.getInternalName() != null) found_classes++;
-            hook.verify();
-            warnings += hook.getWarnings().size();
-        }
-        System.out.println("  Found " + found_hooks + "/" + total_hooks + " hooks, " + found_classes + "/" + total_classes + " classes!");
+            int found_hooks = 0;
+            int found_methods = 0;
+            int found_classes = 0;
+            int total_hooks = 0;
+            int total_methods = 0;
+            int total_classes = 0;
+            int warnings = 0;
+            for (final Hook hook : Hook.values()) {
+	            String raw = hook.toString();
+	            System.out.println(raw);
+            	for(RSMember rsm : hook.hooks.values()){
+            		if(rsm instanceof RSMethod)
+            			total_methods++;
+            		if(rsm instanceof RSField)
+            			total_hooks++;
+            	}
+                total_classes += 1;
+                for(RSMember rsm : hook.getIdentifiedSet()){
+            		if(rsm instanceof RSMethod)
+            			found_methods++;
+            		if(rsm instanceof RSField)
+            			found_hooks++;
+                }
+                found_classes++;
+                hook.verify();
+                warnings += hook.getWarnings().size();
+            }
+            System.out.println("  Found " + found_hooks + "/" + total_hooks + " fields, " + found_methods + "/" + total_methods +" methods, "+ found_classes + "/" + total_classes + " classes!");
 
         System.out.flush();
 

@@ -12,6 +12,7 @@ import com.dank.util.Wildcard;
 import com.marn.asm.MethodData;
 import com.marn.dynapool.DynaFlowAnalyzer;
 
+//All fields and methods identified as of r111
 public class Queue extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {

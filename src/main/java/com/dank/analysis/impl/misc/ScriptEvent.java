@@ -6,13 +6,9 @@ import org.objectweb.asm.tree.FieldNode;
 import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import com.marn.asm.FieldData;
+import com.marn.dynapool.DynaFlowAnalyzer;
 
-/**
- * Project: DankWise
- * Time: 23:35
- * Date: 15-02-2015
- * Created by Dogerina.
- */
 public class ScriptEvent extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {
@@ -23,11 +19,14 @@ public class ScriptEvent extends Analyser {
     @Override
     public void evaluate(ClassNode cn) {
         for (final FieldNode fn : cn.fields) {
+        	FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
             if (!fn.isStatic()) {
                 if (fn.desc.equals("[Ljava/lang/Object;")) {
                     Hook.SCRIPT_EVENT.put(new RSField(fn, "args"));
-                } else if (fn.desc.equals("Ljava/lang/String;")) {
+                }else if (fn.desc.equals("Ljava/lang/String;")) {
                     Hook.SCRIPT_EVENT.put(new RSField(fn, "opbase"));
+                }else if (fn.desc.equals("Z")) {
+                    Hook.SCRIPT_EVENT.put(new RSField(fn, "hasRan"));
                 }
             }
         }

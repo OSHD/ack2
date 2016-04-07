@@ -22,37 +22,31 @@ public enum Hook {
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
-    QUEUE("Queue", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
+    QUEUE("Queue", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::()LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
     BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
     ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getRotatedModel::()LModel;"),
     HUD("HUD", NODE, "owner::I", "type::I", "isMainHud::Z"),
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
     MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
-
-    GAME_STRINGS("GameStrings", null),
-
-    GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
-
-    PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
-
-    MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
-
-    SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
-
+    VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;)V", "unpackConfig::(LBuffer;)V"),
+    SCRIPT_EVENT("ScriptEvent", NODE, "args::[java/lang/Object;", "opbase::Ljava/lang/String;", "hasRan::Z"),
+    EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::()I"),
 
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
-
-
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random", "bitCaret", "readHeader::(I)I", "writeHeader::(I)V", "readBits::(I)I"),
 
+    
+    GAME_STRINGS("GameStrings", null),
+    GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
+    PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
+    MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
+    SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
+    
     GPI("GPI", null, "chatBuffer::LBuffer;", "cachedAppearances::[LBuffer;", "pendingFlagsIndices::[I", "pendingFlagsCount::I",
             "movementTypes::[B", "skipFlags::[B", "localPlayerCount::I", "localPlayerIndices::[I", "globalPlayerCount::I", "globalPlayerIndices::[I"),
 
-    EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I"),
-
-    VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I"),
-
+    
     CLAN_MATE("ClanMate", null, "displayName::Ljava/lang/String;", "rank::B", "world::I"),
 
     FRIENDED_PLAYER("FriendedPlayer", null, "displayName::Ljava/lang/String;", "previousName::Ljava/lang/String;", "world::I"),
@@ -131,9 +125,11 @@ public enum Hook {
 
     MESSAGE_CHANNEL("MessageChannel", null, "messages::LMessage;", "index::I", "getMessage", "createMessage"),
 
-    SCRIPT_EVENT("ScriptEvent", NODE, "args::[I", "opbase::Ljava/lang/String;"),
 
     KEY_FOCUS_LISTENER("KeyFocusListener", null),
+    MOUSE_LISTENER("MouseListener", null),
+    ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
+    MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
 
     RUNESCRIPT("RuneScript", DUAL_NODE, "intArgCount::I", "stringArgCount::I", "intStackCount::I",
             "stringStackCount::I", "opcodes::[[I", "intOperands::[I", "stringOperands::[Ljava/lang/String;"),
@@ -187,7 +183,7 @@ public enum Hook {
             "localExchangeOffers::[LExchangeOffer;", "packet::LPacket;", "menuItemCount::I", "focused::Z",
             "screenZoom::I", "screenWidth::I", "screenHeight::I", "getObjectDefinition::(I)LObjectDefinition;",
             "getItemDefinition::(I)LItemDefinition;", "getNpcDefinition::(I)LNpcDefinition;", "addMenuRow",
-            "setWorld::(I)V", "loadWorlds::()V", "getRuneScript::(I)LRuneScript;", "getVarpbit::(I)LVarpbit;",
+            "setWorld::(I)V", "loadWorlds::()V", "getRuneScript::(I)LRuneScript;", "getVarpbit::(I)I",
             "getWidgetConfig::(I)I", "getItemSprite", "bootState::I", "cacheDirectory::Ljava/io/File;",
             "cacheLocation::Ljava/io/File;", "processFrames::()V", "processLogin::()V", "processLogic::()V",
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",

@@ -4,7 +4,6 @@ import com.dank.analysis.Analyser;
 import com.dank.asm.Mask;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
-import com.dank.hook.RSMember;
 import com.dank.hook.RSMethod;
 import com.dank.util.Wildcard;
 import com.marn.asm.Assembly;
@@ -12,24 +11,16 @@ import com.marn.asm.FieldData;
 import com.marn.asm.MethodData;
 import com.marn.dynapool.DynaFlowAnalyzer;
 
-import org.objectweb.asm.commons.cfg.BasicBlock;
-import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
-import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-/**
- * @author Septron
- * @since February 12, 2015
- */
+//All fields and methods identified as of r111
 public class MemCache extends Analyser {
-
     @Override
     public ClassSpec specify(ClassNode cn) {
         return cn.ownerless() &&
@@ -38,7 +29,6 @@ public class MemCache extends Analyser {
                 cn.fieldCount(int.class) == 2 ?
                 new ClassSpec(Hook.MEMCACHE, cn) : null;
     }
-
     @Override
     public void evaluate(ClassNode cn) {
     	for(MethodNode mn : cn.methods){
