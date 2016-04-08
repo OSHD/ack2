@@ -177,6 +177,8 @@ public final class DankEngine implements Opcodes {
         } catch (Exception e) {
             //I don't want to listen to your CNF bullshit
         }
+        
+        
         new OpaquePredicateVisitor(classPath);
 
         DankBuild.instance.set("build", String.valueOf(Integer.parseInt((String) DankBuild.instance.get("build")) + 1));

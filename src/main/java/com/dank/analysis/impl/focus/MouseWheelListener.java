@@ -32,6 +32,8 @@ public class MouseWheelListener extends Analyser {
     	for(MethodNode mn : cn.methods){
     		MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
     		MethodData supermd = DynaFlowAnalyzer.getMethod(Hook.ABSTRACT_MOUSE_WHEEL_LISTENER.getInternalName(), mn.name, mn.desc);
+    		if(md==null || supermd==null)
+    			continue;
     		if(supermd.referencedFrom.size()>0 && new Wildcard("(Ljava/awt/Component;?)V").matches(mn.desc)){
     			List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
 						Mask.INVOKEVIRTUAL.describe("(Ljava/awt/event/MouseWheelListener;)V")
