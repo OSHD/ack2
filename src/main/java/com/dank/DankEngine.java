@@ -17,6 +17,7 @@ import com.dank.analysis.impl.focus.MouseWheelListener;
 import com.dank.analysis.impl.landscape.*;
 import com.dank.analysis.impl.misc.*;
 import com.dank.analysis.impl.model.Model;
+import com.dank.analysis.impl.model.StillModel;
 import com.dank.analysis.impl.node.*;
 import com.dank.analysis.impl.node.graphics.Graphics;
 import com.dank.analysis.impl.widget.Widget;
@@ -195,17 +196,15 @@ public final class DankEngine implements Opcodes {
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
         DynaFlowAnalyzer.loadClient(classPath);
-        final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), new Entity(), new HUD(),
-        		new HashTable(), new MemCache(), 
-        		new GameCanvas(), new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
-        		new GStrings(), new Parameters(), 
-        		new IsaacCipher(), 
+        final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), new Bitmap(), new Entity(), new HUD(),
+        		new HashTable(), new IsaacCipher(), new MemCache(), new Varpbit(), new ScriptEvent(), new ExchangeOffer(),
+        		new Messages(), new MessageChannel(), new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
+        		new StillModel(), new Model(),
         		
+        		new GameCanvas(), 
+        		new GStrings(), new Parameters(), 
                 new Buffer(), //AKA Stream
                 new PacketBuffer(), 
-                new Varpbit(), 
-                new ScriptEvent(),
-                new ExchangeOffer(),
                 
                 new GPI(), 
                 new GraphicsStub(), new ItemTable(), new Sprite(), new RuneScript(),
@@ -216,9 +215,12 @@ public final class DankEngine implements Opcodes {
                 new Character(),
                 new NpcDefinition(),
                 new Npc(),
-                new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new TileStub(), new GroundItem(),
-                new ItemPile(), new DynamicObject(), new Landscape(), new LandscapeTile(), new Model(),
-                new Bitmap(), new Graphics(), new Messages(), new MessageHandler(),
+                new TileStub(), 
+                new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new GroundItem(),
+                new ItemPile(), new DynamicObject(), 
+                new PlainTile(), new ShapedTile(), 
+                new LandscapeTile(), new Landscape(), 
+                new Graphics(), 
 //                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */
         };

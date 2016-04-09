@@ -11,21 +11,15 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 
-/**
- * Created by RSynapse on 2/20/2016.
- */
-public class MessageHandler extends Analyser {
-
+//All fields and methods identified as of r111
+public class MessageChannel extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {
         return cn.fieldCount(Hook.MESSAGES.getInternalArrayDesc()) == 1 && cn.fieldCount(int.class, true) == 1 ?
                 new ClassSpec(Hook.MESSAGE_CHANNEL, cn) : null;
     }
-
-    //ak.l getMessage
     @Override
     public void evaluate(ClassNode cn) {
-
         for (FieldNode fn : cn.fields) {
             if (fn.desc.equals(Hook.MESSAGES.getInternalArrayDesc())) {
                 Hook.MESSAGE_CHANNEL.put(new RSField(fn, "messages"));
@@ -36,13 +30,10 @@ public class MessageHandler extends Analyser {
         }
         for(MethodNode methodNode : cn.methods) {
             if(new Wildcard("(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;?)*").matches(methodNode.desc)) {
-//                System.out.println(">"+ methodNode.desc);
                 Hook.MESSAGE_CHANNEL.put(new RSMethod(methodNode, "createMessage"));
-
             }
             if(new Wildcard("(I?)*").matches(methodNode.desc)) {
                 Hook.MESSAGE_CHANNEL.put(new RSMethod(methodNode, "getMessage"));
-
             }
         }
     }

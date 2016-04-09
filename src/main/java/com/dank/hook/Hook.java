@@ -32,6 +32,13 @@ public enum Hook {
     VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;)V", "unpackConfig::(LBuffer;)V"),
     SCRIPT_EVENT("ScriptEvent", NODE, "args::[java/lang/Object;", "opbase::Ljava/lang/String;", "hasRan::Z"),
     EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::()I"),
+    MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
+            "type::I", "cycle::I", "index::I", "setMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"),
+    MESSAGE_CHANNEL("MessageChannel", null, "messages::LMessage;", "index::I", "getMessage", "createMessage"),
+    KEY_FOCUS_LISTENER("KeyFocusListener", null),
+    MOUSE_LISTENER("MouseListener", null),
+    ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
+    MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
 
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random", "bitCaret", "readHeader::(I)I", "writeHeader::(I)V", "readBits::(I)I"),
@@ -40,6 +47,7 @@ public enum Hook {
     GAME_STRINGS("GameStrings", null),
     GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
     PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
+    STILL_MODEL("StillModel", ENTITY),
     MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
     SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
     
@@ -54,28 +62,6 @@ public enum Hook {
     IGNORED_PLAYER("IgnoredPlayer", null, "displayName::Ljava/lang/String;", "previousName::Ljava/lang/String;"),
 
     ITEM_TABLE("ItemTable", NODE, "ids::[I", "quantities::[I"),
-
-    LANDSCAPE("Landscape", null, "tiles::[[[LLandscapeTile;", "tempEntityMarkers::[LEntityMarker;", "addEntityMarker::null",
-            "addBoundary::null", "addBoundaryDecoration::null", "addItemPile::null", "addTileDecoration::null",
-            "render", "addTempEntity", "visibilityMap", "addObject", "removeObject"),
-
-    LANDSCAPE_TILE("LandscapeTile", null, "entityMarkers::[LEntityMarker;", "boundaryStub::LBoundaryStub;",
-            "boundaryDecorationStub::LBoundaryDecorationStub;", "tileDecorationStub::LTileDecorationStub;",
-            "itemPile::LItemPile;", "regionX::I", "regionY::I", "floorLevel::I"),
-
-    BOUNDARY_STUB("BoundaryStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entityA::LRenderable;", "entityB::LRenderable;",
-            "orientationA::I", "orientationB::I", "height::I"),
-
-    BOUNDARY_DECORATION_STUB("BoundaryDecorationStub", null, "uid::I", "config::I", "height::I", "insetX::I", "insetY::I",
-            "orientationA::I", "orientationB::I", "entityA::LRenderable;", "entityB::LRenderable;", "strictX::I", "strictY::I"),
-
-    TILE_STUB("TileDecorationStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;", "height::I"),
-
-    ITEM_PILE("ItemPile", null, "uid::I", "bottom::LRenderable;", "middle::LRenderable;", "top::LRenderable;",
-            "counterHeight::I", "height::I", "strictX::I", "strictY::I"),
-
-    ENTITY_MARKER("EntityMarker", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;",
-            "floorLevel::I", "height::I", "regionX::I", "regionY::I", "maxX::I", "maxY::I", "orientation::I"),
 
     GRAPHICS_STUB("GraphicsStub", ENTITY, "finished::Z", "id::I", "floorLevel::I", "regionX::I", "regionY::I", "height::I", "startCycle::I"),
 
@@ -96,7 +82,6 @@ public enum Hook {
     PLAYER("Player", CHARACTER, "combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
             "team::I", "config::LPlayerConfig;", "totalLevel::I", "height::I"),
 
-    GROUND_ITEM("GroundItem", ENTITY, "id::I", "quantity::I"),
 
     NPC_DEFINITION("NpcDefinition", DUAL_NODE, "varpIndex::I", "varp32Index::I", "transformIds::[I",
             "transform::()LNpcDefinition;", "combatLevel::I", "id::I", "colors::[S", "modifiedColors::[S",
@@ -120,16 +105,41 @@ public enum Hook {
 
     GRAPHICS("Graphics", DUAL_NODE, "raster::[I", "rasterWidth::I", "rasterHeight::I"),
 
-    MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
-            "type::I", "cycle::I", "index::I"),
+    GROUND_ITEM("GroundItem", ENTITY, "id::I", "quantity::I"),
 
-    MESSAGE_CHANNEL("MessageChannel", null, "messages::LMessage;", "index::I", "getMessage", "createMessage"),
+    PLAIN_TILE("PlainTile", null),
+    SHAPED_TILE("ShapedTile", null),
+    
+    BOUNDARY_STUB("BoundaryStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entityA::LRenderable;", "entityB::LRenderable;",
+            "orientationA::I", "orientationB::I", "height::I"),
 
+    BOUNDARY_DECORATION_STUB("BoundaryDecorationStub", null, "uid::I", "config::I", "height::I", "insetX::I", "insetY::I",
+            "orientationA::I", "orientationB::I", "entityA::LRenderable;", "entityB::LRenderable;", "strictX::I", "strictY::I"),
 
-    KEY_FOCUS_LISTENER("KeyFocusListener", null),
-    MOUSE_LISTENER("MouseListener", null),
-    ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
-    MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
+    TILE_DECORATION_STUB("TileDecorationStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;", "height::I"),
+
+    ITEM_PILE("ItemPile", null, "uid::I", "bottom::LRenderable;", "middle::LRenderable;", "top::LRenderable;",
+            "counterHeight::I", "height::I", "strictX::I", "strictY::I"),
+
+    ENTITY_MARKER("EntityMarker", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;",
+            "floorLevel::I", "height::I", "regionX::I", "regionY::I", "maxX::I", "maxY::I", "orientation::I"),
+
+    LANDSCAPE_TILE("LandscapeTile", null, "entityMarkers::[LEntityMarker;", "boundaryStub::LBoundaryStub;",
+            "boundaryDecorationStub::LBoundaryDecorationStub;", "tileDecorationStub::LTileDecorationStub;",
+            "itemPile::LItemPile;", "regionX::I", "regionY::I", "floorLevel::I"),
+
+    LANDSCAPE("Landscape", null, "tiles::[[[LLandscapeTile;", "tempEntityMarkers::[LEntityMarker;", "visibilityMap::[[[[Z", "heightmap::[[[I", "renderableTiles::[[[I", 
+    		"tileShapePoints::[[I", "tileShapeIndices::[[I", "entityCachePosition::I", "currentHeightLevel::I", "zMapSize::I", "yMapSize::I", "xMapSize::I",
+            "render::(IIIIII)V", "renderTile::(LLandscapeTile;Z)V", "removeObject::(LEntityMarker;)V", "setTileLogicHeight::(IIII)V", 
+            "isMouseWithinTriangle::(IIIIIIII)Z", "applyBridgeMode::(II)V", "processBoundaries::()V", "clearEntityMarkerCache::()V", "initToNull::()V",
+            "setHeightLevel::(I)V", "addTile::(IIIIIIIIIIIIIIIIIIII)V", "removeEntityMarker::(III)V", "drawMinimapTile::([IIIIII)V", "visibleInViewport::(III)Z",
+            "updateViewportVisibility::(III)Z", "renderPlainTile::(LPlainTile;IIIIIII)V", "renderShapedTile::(LShapedTile;IIIIII)V", "getIDTagForXYZ::(IIII)I",
+            "requestTrace::(III)V", "updateViewport::(IIIIII)Z", "snapBoundaryModels::(IIII)V", "shadeModels::(III)V", "shadeModel::(LStillModel;IIIII)V",
+            "offsetModelVertexs::(LStillModel;III)V", "visibilityBlocked::(IIII)Z", "isRenderable::(IIII)Z",
+    		"addEntityMarker::(IIIIIIIILEntity;IZII)Z", "addTileDecoration::(IIIILEntity;II)V", "addBoundaryDecoration::(IIIILEntity;LEntity;IIIIII)V", "addItemPile::(IIIILEntity;ILEntity;LEntity;)V", "addBoundary::(IIIILEntity;LEntity;IIII)V", "addEntity::(IIIIILEntity;IIIIII)Z", "addTempEntity::(IIIIILEntity;IIZ)Z", "addObject::(IIIIIILEntity;III)Z",
+            "removeTileDecorationStub::(III)V", "removeBoundaryStub::(III)V", "removeBoundaryDecorationStub::(III)V", "removeItemPile::(III)V", 
+            "getTileDecorationStub::(III)LTileDecorationStub;", "getBoundaryStub::(III)LBoundaryStub;", "getBoundaryDecorationStub::(III)LBoundaryDecorationStub;", "getEntityMarker::(III)LEntityMarker;",
+            "getTileDecorationStubUID::(III)I", "getBoundaryStubUID::(III)I", "getBoundaryDecorationStubUID::(III)I", "getEntityMarkerUID::(III)I"),
 
     RUNESCRIPT("RuneScript", DUAL_NODE, "intArgCount::I", "stringArgCount::I", "intStackCount::I",
             "stringStackCount::I", "opcodes::[[I", "intOperands::[I", "stringOperands::[Ljava/lang/String;"),

@@ -967,23 +967,6 @@
         }
       }
     },
-    "GameEngine": {
-      "name": "ec",
-      "fields": {
-        "shell": {
-          "owner": "ec",
-          "name": "pl",
-          "desc": "Lec;",
-          "access": 0
-        },
-        "focused": {
-          "owner": "ec",
-          "name": "rr",
-          "desc": "Z",
-          "access": 0
-        }
-      }
-    },
     "MouseWheelListener": {
       "name": "eb",
       "fields": {
@@ -1015,6 +998,26 @@
           "access": 0
         }
       }
+    },
+    "GameEngine": {
+      "name": "ec",
+      "fields": {
+        "shell": {
+          "owner": "ec",
+          "name": "pl",
+          "desc": "Lec;",
+          "access": 0
+        },
+        "focused": {
+          "owner": "ec",
+          "name": "rr",
+          "desc": "Z",
+          "access": 0
+        }
+      }
+    },
+    "StillModel": {
+      "name": "cp"
     },
     "World": {
       "name": "v",
@@ -1114,14 +1117,14 @@
           "name": "w",
           "desc": "I",
           "decoder": -538901565,
-          "access": 0
+          "access": 24
         },
         "height": {
           "owner": "cj",
           "name": "a",
           "desc": "I",
           "decoder": 219272133,
-          "access": 0
+          "access": 24
         }
       }
     },
@@ -2032,7 +2035,7 @@
           "owner": "gz",
           "name": "w",
           "desc": "I",
-          "access": 0
+          "access": 24
         },
         "remaining": {
           "owner": "gz",
@@ -2088,7 +2091,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -143176743,
-          "access": 0
+          "access": 24
         },
         "payload": {
           "owner": "dq",
@@ -2143,11 +2146,65 @@
     "Landscape": {
       "name": "cr",
       "fields": {
+        "heightmap": {
+          "owner": "cr",
+          "name": "p",
+          "desc": "[[[I",
+          "access": 0
+        },
+        "tileShapeIndices": {
+          "owner": "cr",
+          "name": "bq",
+          "desc": "[[I",
+          "access": 0
+        },
         "tiles": {
           "owner": "cr",
           "name": "h",
           "desc": "[[[Lct;",
           "access": 0
+        },
+        "yMapSize": {
+          "owner": "cr",
+          "name": "s",
+          "desc": "I",
+          "access": 1
+        },
+        "xMapSize": {
+          "owner": "cr",
+          "name": "f",
+          "desc": "I",
+          "access": 0
+        },
+        "tileShapePoints": {
+          "owner": "cr",
+          "name": "bj",
+          "desc": "[[I",
+          "access": 0
+        },
+        "zMapSize": {
+          "owner": "cr",
+          "name": "w",
+          "desc": "I",
+          "access": 24
+        },
+        "currentHeightLevel": {
+          "owner": "cr",
+          "name": "g",
+          "desc": "I",
+          "access": 1
+        },
+        "renderableTiles": {
+          "owner": "cr",
+          "name": "k",
+          "desc": "[[[I",
+          "access": 0
+        },
+        "entityCachePosition": {
+          "owner": "cr",
+          "name": "a",
+          "desc": "I",
+          "access": 24
         },
         "tempEntityMarkers": {
           "owner": "cr",
@@ -2169,10 +2226,22 @@
           "desc": "(IIIIIIIILch;IZII)Z",
           "access": 0
         },
-        "addBoundary": {
+        "getEntityMarker": {
           "owner": "cr",
-          "name": "r",
-          "desc": "(IIIILch;Lch;IIII)V",
+          "name": "z",
+          "desc": "(III)Lco;",
+          "access": 0
+        },
+        "getBoundaryDecorationStubUID": {
+          "owner": "cr",
+          "name": "ap",
+          "desc": "(III)I",
+          "access": 0
+        },
+        "removeBoundaryStub": {
+          "owner": "cr",
+          "name": "c",
+          "desc": "(III)V",
           "access": 0
         },
         "addTileDecoration": {
@@ -2181,10 +2250,202 @@
           "desc": "(IIIILch;II)V",
           "access": 0
         },
+        "clearEntityMarkerCache": {
+          "owner": "cr",
+          "name": "j",
+          "desc": "()V",
+          "access": 9
+        },
+        "getEntityMarkerUID": {
+          "owner": "cr",
+          "name": "ai",
+          "desc": "(III)I",
+          "access": 0
+        },
+        "renderTile": {
+          "owner": "cr",
+          "name": "am",
+          "desc": "(Lct;Z)V",
+          "access": 0
+        },
+        "getIDTagForXYZ": {
+          "owner": "cr",
+          "name": "az",
+          "desc": "(IIII)I",
+          "access": 0
+        },
+        "getBoundaryStubUID": {
+          "owner": "cr",
+          "name": "aq",
+          "desc": "(III)I",
+          "access": 0
+        },
+        "shadeModels": {
+          "owner": "cr",
+          "name": "ah",
+          "desc": "(III)V",
+          "access": 0
+        },
+        "getBoundaryDecorationStub": {
+          "owner": "cr",
+          "name": "d",
+          "desc": "(III)Lcs;",
+          "access": 0
+        },
+        "addTempEntity": {
+          "owner": "cr",
+          "name": "n",
+          "desc": "(IIIIILch;IIZ)Z",
+          "access": 0
+        },
+        "getBoundaryStub": {
+          "owner": "cr",
+          "name": "t",
+          "desc": "(III)Lcm;",
+          "access": 0
+        },
+        "removeEntityMarker": {
+          "owner": "cr",
+          "name": "b",
+          "desc": "(III)V",
+          "access": 1
+        },
+        "visibilityBlocked": {
+          "owner": "cr",
+          "name": "au",
+          "desc": "(IIII)Z",
+          "access": 0
+        },
+        "setTileLogicHeight": {
+          "owner": "cr",
+          "name": "p",
+          "desc": "(IIII)V",
+          "access": 0
+        },
         "addBoundaryDecoration": {
           "owner": "cr",
           "name": "k",
           "desc": "(IIIILch;Lch;IIIIII)V",
+          "access": 0
+        },
+        "isMouseWithinTriangle": {
+          "owner": "cr",
+          "name": "ac",
+          "desc": "(IIIIIIII)Z",
+          "access": 0
+        },
+        "processBoundaries": {
+          "owner": "cr",
+          "name": "an",
+          "desc": "()V",
+          "access": 0
+        },
+        "removeTileDecorationStub": {
+          "owner": "cr",
+          "name": "q",
+          "desc": "(III)V",
+          "access": 33
+        },
+        "render": {
+          "owner": "cr",
+          "name": "af",
+          "desc": "(IIIIII)V",
+          "access": 0
+        },
+        "initToNull": {
+          "owner": "cr",
+          "name": "e",
+          "desc": "()V",
+          "access": 1
+        },
+        "requestTrace": {
+          "owner": "cr",
+          "name": "av",
+          "desc": "(III)V",
+          "access": 0
+        },
+        "addTile": {
+          "owner": "cr",
+          "name": "h",
+          "desc": "(IIIIIIIIIIIIIIIIIIII)V",
+          "access": 0
+        },
+        "isRenderable": {
+          "owner": "cr",
+          "name": "at",
+          "desc": "(IIII)Z",
+          "access": 0
+        },
+        "applyBridgeMode": {
+          "owner": "cr",
+          "name": "f",
+          "desc": "(II)V",
+          "access": 1
+        },
+        "getTileDecorationStubUID": {
+          "owner": "cr",
+          "name": "ae",
+          "desc": "(III)I",
+          "access": 0
+        },
+        "shadeModel": {
+          "owner": "cr",
+          "name": "ab",
+          "desc": "(Lcp;IIIII)V",
+          "access": 0
+        },
+        "offsetModelVertexs": {
+          "owner": "cr",
+          "name": "ar",
+          "desc": "(Lcp;III)V",
+          "access": 0
+        },
+        "removeItemPile": {
+          "owner": "cr",
+          "name": "u",
+          "desc": "(III)V",
+          "access": 0
+        },
+        "removeBoundaryDecorationStub": {
+          "owner": "cr",
+          "name": "x",
+          "desc": "(III)V",
+          "access": 1
+        },
+        "removeObject": {
+          "owner": "cr",
+          "name": "l",
+          "desc": "(Lco;)V",
+          "access": 0
+        },
+        "getTileDecorationStub": {
+          "owner": "cr",
+          "name": "v",
+          "desc": "(III)Lcu;",
+          "access": 0
+        },
+        "drawMinimapTile": {
+          "owner": "cr",
+          "name": "aj",
+          "desc": "([IIIIII)V",
+          "access": 0
+        },
+        "addEntity": {
+          "owner": "cr",
+          "name": "y",
+          "desc": "(IIIIILch;IIIIII)Z",
+          "access": 0
+        },
+        "addBoundary": {
+          "owner": "cr",
+          "name": "r",
+          "desc": "(IIIILch;Lch;IIII)V",
+          "access": 0
+        },
+        "renderPlainTile": {
+          "owner": "cr",
+          "name": "aw",
+          "desc": "(Lcw;IIIIIII)V",
           "access": 0
         },
         "addObject": {
@@ -2193,22 +2454,46 @@
           "desc": "(IIIIIILch;III)Z",
           "access": 0
         },
+        "visibleInViewport": {
+          "owner": "cr",
+          "name": "ax",
+          "desc": "(III)Z",
+          "access": 0
+        },
+        "setHeightLevel": {
+          "owner": "cr",
+          "name": "w",
+          "desc": "(I)V",
+          "access": 0
+        },
+        "snapBoundaryModels": {
+          "owner": "cr",
+          "name": "o",
+          "desc": "(IIII)V",
+          "access": 1
+        },
         "addItemPile": {
           "owner": "cr",
           "name": "a",
           "desc": "(IIIILch;ILch;Lch;)V",
           "access": 0
         },
-        "render": {
+        "updateViewport": {
           "owner": "cr",
-          "name": "af",
-          "desc": "(IIIIII)V",
+          "name": "ao",
+          "desc": "(IIIIII)Z",
           "access": 0
         },
-        "addTempEntity": {
+        "renderShapedTile": {
           "owner": "cr",
-          "name": "n",
-          "desc": "(IIIIILch;IIZ)Z",
+          "name": "ad",
+          "desc": "(Lcv;IIIIII)V",
+          "access": 0
+        },
+        "updateViewportVisibility": {
+          "owner": "cr",
+          "name": "al",
+          "desc": "(III)Z",
           "access": 0
         }
       }
@@ -2463,7 +2748,7 @@
           "owner": "aw",
           "name": "aa",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "id": {
           "owner": "aw",
@@ -2531,7 +2816,7 @@
           "name": "w",
           "desc": "I",
           "decoder": 1479662219,
-          "access": 0
+          "access": 24
         },
         "config": {
           "owner": "cu",
@@ -2583,9 +2868,10 @@
         },
         "index": {
           "owner": "ay",
-          "name": "s",
-          "desc": "Ljava/lang/String;",
-          "access": 8
+          "name": "e",
+          "desc": "I",
+          "decoder": -1573990479,
+          "access": 0
         },
         "message": {
           "owner": "ay",
@@ -2605,6 +2891,14 @@
           "name": "w",
           "desc": "I",
           "decoder": 734728103,
+          "access": 24
+        }
+      },
+      "methods": {
+        "setMessage": {
+          "owner": "ay",
+          "name": "e",
+          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
           "access": 0
         }
       }
@@ -2650,7 +2944,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -2061448231,
-          "access": 0
+          "access": 24
         },
         "orientationA": {
           "owner": "cs",
@@ -2697,7 +2991,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -1104544609,
-          "access": 0
+          "access": 24
         },
         "transferred": {
           "owner": "hb",
@@ -2765,7 +3059,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -1918785457,
-          "access": 0
+          "access": 24
         },
         "regionX": {
           "owner": "ae",
@@ -2842,6 +3136,9 @@
         }
       }
     },
+    "MouseListener": {
+      "name": "en"
+    },
     "ClanMate": {
       "name": "z",
       "fields": {
@@ -2866,9 +3163,6 @@
         }
       }
     },
-    "MouseListener": {
-      "name": "en"
-    },
     "HUD": {
       "name": "s",
       "fields": {
@@ -2884,7 +3178,7 @@
           "name": "w",
           "desc": "I",
           "decoder": 1188698353,
-          "access": 0
+          "access": 24
         },
         "isMainHud": {
           "owner": "s",
@@ -2914,6 +3208,25 @@
           "owner": "c",
           "name": "w",
           "desc": "Ljava/lang/String;",
+          "access": 0
+        }
+      }
+    },
+    "GroundItem": {
+      "name": "ai",
+      "fields": {
+        "quantity": {
+          "owner": "ai",
+          "name": "w",
+          "desc": "I",
+          "decoder": 410872193,
+          "access": 24
+        },
+        "id": {
+          "owner": "ai",
+          "name": "e",
+          "desc": "I",
+          "decoder": -758528635,
           "access": 0
         }
       }
@@ -2961,7 +3274,7 @@
           "name": "a",
           "desc": "I",
           "decoder": 534015205,
-          "access": 0
+          "access": 24
         },
         "regionX": {
           "owner": "co",
@@ -3002,26 +3315,7 @@
           "name": "w",
           "desc": "I",
           "decoder": 1204053613,
-          "access": 0
-        }
-      }
-    },
-    "GroundItem": {
-      "name": "ai",
-      "fields": {
-        "quantity": {
-          "owner": "ai",
-          "name": "w",
-          "desc": "I",
-          "decoder": 410872193,
-          "access": 0
-        },
-        "id": {
-          "owner": "ai",
-          "name": "e",
-          "desc": "I",
-          "decoder": -758528635,
-          "access": 0
+          "access": 24
         }
       }
     },
@@ -3085,7 +3379,7 @@
           "name": "a",
           "desc": "I",
           "decoder": 532232861,
-          "access": 0
+          "access": 24
         },
         "entityB": {
           "owner": "cm",
@@ -3105,7 +3399,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -202373353,
-          "access": 0
+          "access": 24
         },
         "orientationB": {
           "owner": "cm",
@@ -3168,7 +3462,7 @@
           "owner": "cb",
           "name": "w",
           "desc": "I",
-          "access": 0
+          "access": 24
         },
         "height": {
           "owner": "cb",
@@ -3234,7 +3528,7 @@
           "name": "w",
           "desc": "I",
           "decoder": -180059923,
-          "access": 0
+          "access": 24
         },
         "regionY": {
           "owner": "ct",
@@ -3271,7 +3565,7 @@
           "name": "a",
           "desc": "I",
           "decoder": 2011998533,
-          "access": 0
+          "access": 24
         },
         "count": {
           "owner": "dc",
@@ -3376,7 +3670,7 @@
           "name": "a",
           "desc": "I",
           "decoder": 1338065599,
-          "access": 0
+          "access": 24
         },
         "stringOperands": {
           "owner": "t",
@@ -3460,7 +3754,7 @@
           "name": "a",
           "desc": "I",
           "decoder": 1906901581,
-          "access": 0
+          "access": 24
         },
         "endHeight": {
           "owner": "g",
@@ -3491,6 +3785,40 @@
           "name": "j",
           "desc": "I",
           "access": 1
+        }
+      }
+    },
+    "MessageChannel": {
+      "name": "ap",
+      "fields": {
+        "messages": {
+          "owner": "ap",
+          "name": "w",
+          "desc": "[Lay;",
+          "access": 0
+        },
+        "index": {
+          "owner": "ap",
+          "name": "f",
+          "desc": "I",
+          "decoder": -1767104731,
+          "access": 0
+        }
+      },
+      "methods": {
+        "getMessage": {
+          "owner": "ap",
+          "name": "w",
+          "desc": "(II)Lay;",
+          "predicate": 500543353,
+          "access": 0
+        },
+        "createMessage": {
+          "owner": "ap",
+          "name": "e",
+          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lay;",
+          "predicate": 63,
+          "access": 0
         }
       }
     },
@@ -3537,41 +3865,7 @@
           "name": "w",
           "desc": "I",
           "decoder": 469805473,
-          "access": 0
-        }
-      }
-    },
-    "MessageChannel": {
-      "name": "ap",
-      "fields": {
-        "messages": {
-          "owner": "ap",
-          "name": "w",
-          "desc": "[Lay;",
-          "access": 0
-        },
-        "index": {
-          "owner": "ap",
-          "name": "f",
-          "desc": "I",
-          "decoder": -1767104731,
-          "access": 0
-        }
-      },
-      "methods": {
-        "getMessage": {
-          "owner": "ap",
-          "name": "w",
-          "desc": "(II)Lay;",
-          "predicate": 500543353,
-          "access": 0
-        },
-        "createMessage": {
-          "owner": "ap",
-          "name": "e",
-          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lay;",
-          "predicate": 63,
-          "access": 0
+          "access": 24
         }
       }
     },
@@ -3627,6 +3921,12 @@
         }
       }
     },
+    "PlainTile": {
+      "name": "cw"
+    },
+    "ShapedTile": {
+      "name": "cv"
+    },
     "Varpbit": {
       "name": "at",
       "fields": {
@@ -3649,21 +3949,6 @@
           "name": "f",
           "desc": "I",
           "decoder": -329397491,
-          "access": 0
-        }
-      },
-      "methods": {
-        "readValues": {
-          "owner": "at",
-          "name": "w",
-          "desc": "(Ldq;II)V",
-          "predicate": 964322312,
-          "access": 0
-        },
-        "unpackConfig": {
-          "owner": "at",
-          "name": "e",
-          "desc": "(Ldq;B)V",
           "access": 0
         }
       }

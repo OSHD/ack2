@@ -1,8 +1,14 @@
 package com.dank.analysis.impl.misc;
 
 import com.dank.analysis.Analyser;
+import com.dank.asm.Mask;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import com.dank.hook.RSMethod;
+import com.marn.asm.Assembly;
+import com.marn.asm.FieldData;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.BasicBlock;
 import org.objectweb.asm.commons.cfg.BlockVisitor;
@@ -11,29 +17,28 @@ import org.objectweb.asm.tree.*;
 
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-/**
- * Created by RSynapse on 2/20/2016.
- */
+//All fields and methods identified as of r111
 public class Messages extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {
         return (cn.fieldCount(String.class, true) == 3 && cn.fieldCount(int.class, true) == 3) ?
                 new ClassSpec(Hook.MESSAGES, cn) : null;
     }
-
     @Override
     public void evaluate(ClassNode cn) {
         for (MethodNode methodNode : cn.methods) {
             if (!Modifier.isStatic(methodNode.access) && methodNode.desc.contains("Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;") &&
                     Hook.MESSAGES.get("index") == null) {
-                Hook.MESSAGES.put(new RSField(load(methodNode, Opcodes.ILOAD, 1), "type"));
+            	Hook.MESSAGES.put(new RSField(load(methodNode, Opcodes.ILOAD, 1), "type"));
                 Hook.MESSAGES.put(new RSField(load(methodNode, Opcodes.ALOAD, 2), "sender"));
                 Hook.MESSAGES.put(new RSField(load(methodNode, Opcodes.ALOAD, 3), "channel"));
                 Hook.MESSAGES.put(new RSField(load(methodNode, Opcodes.ALOAD, 4), "message"));
                 hookCycle(methodNode);
                 hookIndex(methodNode);
+                Hook.MESSAGES.put(new RSMethod(methodNode, "setMessage"));
             }
         }
     }
@@ -46,21 +51,15 @@ public class Messages extends Analyser {
      * @param methodNode
      */
     public void hookIndex(MethodNode methodNode) {
-        Map<String, String> hooks = new HashMap<String, String>();
-
-        Hook.MESSAGES.getIdentifiedSet().stream().filter(test -> test.isField()).forEach(test -> {
-            hooks.put(test.owner, test.name);
-        });
-
-        for (AbstractInsnNode ain : methodNode.instructions) {
-            if (ain instanceof FieldInsnNode) {
-                FieldInsnNode current = (FieldInsnNode) ain;
-                if (current.opcode() == Opcodes.PUTFIELD) {
-                    if (!hooks.containsValue(current.name))
-                        Hook.MESSAGES.put(new RSField(current, "index"));
-                }
-            }
-        }
+    	List<AbstractInsnNode> pattern = Assembly.find(methodNode,
+				Mask.INVOKESTATIC.describe("(I)I").or(Mask.INVOKESTATIC.describe("(B)I")).or(Mask.INVOKESTATIC.describe("(S)I")),
+				Mask.PUTFIELD.distance(3).describe("I")
+				);
+		if (pattern != null) {
+			FieldInsnNode fin = (FieldInsnNode)pattern.get(1);
+			FieldData fd = DynaFlowAnalyzer.getField(fin.owner, fin.name);
+			Hook.MESSAGES.put(new RSField(fd.bytecodeField, "index"));
+		}
     }
 
 

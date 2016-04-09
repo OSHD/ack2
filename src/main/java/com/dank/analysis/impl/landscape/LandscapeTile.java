@@ -14,16 +14,30 @@ import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 
-/**
- * Project: DankWise
- * Time: 21:14
- * Date: 12-02-2015
- * Created by Dogerina.
- */
+//No instance methods as of r111
 public class LandscapeTile extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {
-        return cn.name.equals(Hook.LANDSCAPE_TILE.getInternalName()) ? new ClassSpec(Hook.LANDSCAPE_TILE, cn) : null;
+    	if(cn.access!=49)
+    		return null;
+    	if(!cn.superName.equals(Hook.NODE.getInternalName()))
+    		return null;
+    	int check=0;
+    	for(FieldNode fn : cn.fields){
+    		if(fn.isStatic())
+    			continue;
+    		if(fn.desc.equals("L"+Hook.ITEM_PILE.getInternalName()+";"))
+    			check++;
+    		if(fn.desc.equals("L"+Hook.TILE_DECORATION_STUB.getInternalName()+";"))
+    			check++;
+    		if(fn.desc.equals("L"+Hook.BOUNDARY_STUB.getInternalName()+";"))
+    			check++;
+    		if(fn.desc.equals("L"+Hook.BOUNDARY_DECORATION_STUB.getInternalName()+";"))
+    			check++;
+    	}
+    	if(check==4)
+    		return new ClassSpec(Hook.LANDSCAPE_TILE, cn);
+        return null;
     }
 
     @Override
@@ -32,7 +46,7 @@ public class LandscapeTile extends Analyser {
             if (Modifier.isStatic(fn.access)) continue;
             if (fn.desc.equals(Hook.ENTITY_MARKER.getInternalArrayDesc())) {
                 Hook.LANDSCAPE_TILE.put(new RSField(fn, "entityMarkers"));
-            } else if (fn.desc.equals(Hook.TILE_STUB.getInternalDesc())) {
+            } else if (fn.desc.equals(Hook.TILE_DECORATION_STUB.getInternalDesc())) {
                 Hook.LANDSCAPE_TILE.put(new RSField(fn, "tileDecorationStub"));
             } else if (fn.desc.equals(Hook.BOUNDARY_DECORATION_STUB.getInternalDesc())) {
                 Hook.LANDSCAPE_TILE.put(new RSField(fn, "boundaryDecorationStub"));

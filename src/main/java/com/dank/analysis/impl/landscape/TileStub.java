@@ -18,7 +18,7 @@ public class TileStub extends Analyser {
         return cn.fieldCount(Hook.ENTITY) == 1
                 && cn.fieldCount(int.class) == 5
                 && cn.fieldCount() == 6
-                ? new ClassSpec(Hook.TILE_STUB, cn) : null;
+                ? new ClassSpec(Hook.TILE_DECORATION_STUB, cn) : null;
     }
 
     @Override
