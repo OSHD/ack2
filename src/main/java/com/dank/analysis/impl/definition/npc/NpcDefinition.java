@@ -22,21 +22,31 @@ import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.hook.RSMethod;
 
-/**
- * Project: RS3Injector
- * Time: 21:59
- * Date: 09-02-2015
- * Created by Dogerina.
- */
 public class NpcDefinition extends Analyser {
-
     @Override
     public ClassSpec specify(ClassNode cn) {
-        for (final FieldNode fn : getClassPath().get(Hook.NPC.getInternalName()).fields) {
-            if (!Modifier.isStatic(fn.access) && fn.type().equals(cn.name)) {
-                return new ClassSpec(Hook.NPC_DEFINITION, cn);
-            }
-        }
+    	if(cn.access!=33)
+    		return null;
+    	if(!cn.superName.equals(Hook.DUAL_NODE.getInternalName()))
+    		return null;
+    	int nonstatic=0, stringArray=0, strings=0, shortArray=0, intArray=0, bools=0;
+    	for(FieldNode fn : cn.fields){
+    		if(fn.isStatic())
+    			continue;
+    		nonstatic++;
+    		if(fn.desc.equals("[Ljava/lang/String;"))
+    			stringArray++;
+    		if(fn.desc.equals("Ljava/lang/String;"))
+    			strings++;
+    		if(fn.desc.equals("[S"))
+    			shortArray++;
+    		if(fn.desc.equals("[I"))
+    			intArray++;
+    		if(fn.desc.equals("Z"))
+    			bools++;
+    	}
+    	if(nonstatic==33 && stringArray==1 && strings==1 && shortArray==4 && intArray==3 && bools==5)
+    		return new ClassSpec(Hook.NPC_DEFINITION, cn);
         return null;
     }
 

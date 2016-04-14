@@ -196,31 +196,32 @@ public final class DankEngine implements Opcodes {
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
         DynaFlowAnalyzer.loadClient(classPath);
-        final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), new Bitmap(), new Entity(), new HUD(),
-        		new HashTable(), new IsaacCipher(), new MemCache(), new Varpbit(), new ScriptEvent(), new ExchangeOffer(),
-        		new Messages(), new MessageChannel(), new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
-        		new StillModel(), new Model(),
-        		
-        		new GameCanvas(), 
-        		new GStrings(), new Parameters(), 
-                new Buffer(), //AKA Stream
+        final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), 
+        		new HashTable(), new IsaacCipher(), new MemCache(), 
+        		new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
+        		new Buffer(), //AKA Stream
                 new PacketBuffer(), 
-                
-                new GPI(), 
-                new GraphicsStub(), new ItemTable(), new Sprite(), new RuneScript(),
-                new AbstractFont(), new FontImpl(), new ImageProduct(),
-                new Projectile(), new ItemDefinition(), new Widget(), new ObjectDefinition(), new PlayerConfig(),
-                new Player(),
-                new Client(),
+                new Entity(), 
+                new StillModel(), new Model(),
+                new Varpbit(), 
+                new NpcDefinition(), new ItemDefinition(), new ObjectDefinition(), new PlayerConfig(),
+                new GraphicsStub(), new ItemTable(), new Sprite(), 
+                new Projectile(), 
                 new Character(),
-                new NpcDefinition(),
+                new Player(),
                 new Npc(),
-                new TileStub(), 
+                new RuneScript(), new ScriptEvent(), 
+                new PlainTile(), new ShapedTile(), new TileStub(), 
                 new EntityMarker(), new BoundaryDecorationStub(), new BoundaryStub(), new GroundItem(),
                 new ItemPile(), new DynamicObject(), 
-                new PlainTile(), new ShapedTile(), 
                 new LandscapeTile(), new Landscape(), 
-                new Graphics(), 
+                new Widget(), new HUD(),
+        		new ExchangeOffer(),
+        		new Messages(), new MessageChannel(), 
+                new AbstractFont(), new FontImpl(), new ImageProduct(),
+                new Graphics(), new GameCanvas(), new Bitmap(), 
+                new GPI(), new GStrings(), new Parameters(), 
+                new Client(),
 //                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */
         };
@@ -252,7 +253,7 @@ public final class DankEngine implements Opcodes {
         }
 
         {
-            // System.out.println("Finding coders...");
+            System.out.println("Finding coders...");
             resolver = new CodecResolver();
             Analyzer a = new Analyzer<>(resolver);
             for (ClassNode cn : classPath.getClasses()) {
@@ -260,7 +261,7 @@ public final class DankEngine implements Opcodes {
                     a.analyze(cn.name, mn);
 
 
-                    RSMethod add_entity = (RSMethod) Hook.LANDSCAPE.get("addTempEntity");
+                    /*RSMethod add_entity = (RSMethod) Hook.LANDSCAPE.get("addTempEntity");
                     if (add_entity == null) break;
                     for (AbstractInsnNode ain : mn.instructions.toArray()) {
                         if (ain.opcode() == INVOKEVIRTUAL) {
@@ -270,7 +271,7 @@ public final class DankEngine implements Opcodes {
                                 break;
                             }
                         }
-                    }
+                    }*/
 
                 }
             }

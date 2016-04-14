@@ -29,20 +29,22 @@ public enum Hook {
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
     MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
+    
+    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
+    PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
+    
     VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;)V", "unpackConfig::(LBuffer;)V"),
-    SCRIPT_EVENT("ScriptEvent", NODE, "args::[java/lang/Object;", "opbase::Ljava/lang/String;", "hasRan::Z"),
+    SCRIPT_EVENT("ScriptEvent", NODE, "args::[Ljava/lang/Object;", "opbase::Ljava/lang/String;", "hasRan::Z"),
     EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::()I"),
     MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
             "type::I", "cycle::I", "index::I", "setMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"),
-    MESSAGE_CHANNEL("MessageChannel", null, "messages::LMessage;", "index::I", "getMessage", "createMessage"),
+    MESSAGE_CHANNEL("MessageChannel", null, "messages::[LMessage;", "index::I", "getMessage::(I)LMessage;", "createMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)LMessage;"),
     KEY_FOCUS_LISTENER("KeyFocusListener", null),
     MOUSE_LISTENER("MouseListener", null),
     ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
     MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
 
-    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
-    PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random", "bitCaret", "readHeader::(I)I", "writeHeader::(I)V", "readBits::(I)I"),
-
+    
     
     GAME_STRINGS("GameStrings", null),
     GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
@@ -70,22 +72,26 @@ public enum Hook {
     PROJECTILE("Projectile", ENTITY, "id::I", "strictX::I", "strictY::I", "startHeight::I", "loopCycle::I",
             "slope::I", "startDistance::I", "targetIndex::I", "endHeight::I"),
 
-    CHARACTER("Character", ENTITY, "strictX::I", "strictY::I", "healthBarCycle::I", "hitpoints::I", "maxHitpoints::I",
-            "animation::I", "targetIndex::I", "hitsplatCycles::[I", "hitsplatDamages::[I", "hitsplatTypes::[I",
-            "orientation::I", "overheadText::Ljava/lang/String;", "queueSize::I", "npcBoundDim::I",
+    CHARACTER("Character", ENTITY, "resetPathQueue::()V", "updateHitData::(III)V", "isVisible::()Z",
+            "hitsplatCycles::[I", "hitsplatDamages::[I", "hitsplatTypes::[I",
+    		"queueSize::I", "currentQueueIndex::I",
+    		"strictX::I", "strictY::I", 
+    		"healthBarCycle::I", "hitpoints::I", "maxHitpoints::I",
+            "animation::I", "targetIndex::I", 
+            "orientation::I", "overheadText::Ljava/lang/String;", "npcBoundDim::I",
             "npcDegToTurn::I", "walkAnimation::I", "npcTurnAround::I", "npcTurnRight::I", "npcTurnLeft::I",
-            "idleAnimation::I", "getNextAnimation::I", "unknown7::I", "modelHeight::I", "runAnimation::I",
+            "idleAnimation::I", "getNextAnimation::I", "standTurnAnimIndex::I", "modelHeight::I", "runAnimation::I",
             "animFrameId::I", "interAnimFrameId::I", "interAnimId::I"),
+
+    NPC_DEFINITION("NpcDefinition", DUAL_NODE, "varpIndex::I", "varp32Index::I", "transformIds::[I",
+            "transform::()LNpcDefinition;", "combatLevel::I", "id::I", "colors::[S", "modifiedColors::[S",
+            "name::Ljava/lang/String;", "actions::[Ljava/lang/String;"),
 
     NPC("Npc", CHARACTER, "definition::LNpcDefinition;"),
 
     PLAYER("Player", CHARACTER, "combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
             "team::I", "config::LPlayerConfig;", "totalLevel::I", "height::I"),
 
-
-    NPC_DEFINITION("NpcDefinition", DUAL_NODE, "varpIndex::I", "varp32Index::I", "transformIds::[I",
-            "transform::()LNpcDefinition;", "combatLevel::I", "id::I", "colors::[S", "modifiedColors::[S",
-            "name::Ljava/lang/String;", "actions::[Ljava/lang/String;"),
 
     OBJECT_DEFINITION("ObjectDefinition", DUAL_NODE, "name::Ljava/lang/String;", "actions::[Ljava/lang/String;",
             "transformIds::[I", "transform::()LObjectDefinition;", "id::I", "varpIndex::I", "varp32Index::I",
@@ -110,18 +116,18 @@ public enum Hook {
     PLAIN_TILE("PlainTile", null),
     SHAPED_TILE("ShapedTile", null),
     
-    BOUNDARY_STUB("BoundaryStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entityA::LRenderable;", "entityB::LRenderable;",
+    BOUNDARY_STUB("BoundaryStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entityA::LEntity;", "entityB::LEntity;",
             "orientationA::I", "orientationB::I", "height::I"),
 
     BOUNDARY_DECORATION_STUB("BoundaryDecorationStub", null, "uid::I", "config::I", "height::I", "insetX::I", "insetY::I",
-            "orientationA::I", "orientationB::I", "entityA::LRenderable;", "entityB::LRenderable;", "strictX::I", "strictY::I"),
+            "orientationA::I", "orientationB::I", "entityA::LEntity;", "entityB::LEntity;", "strictX::I", "strictY::I"),
 
     TILE_DECORATION_STUB("TileDecorationStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;", "height::I"),
 
-    ITEM_PILE("ItemPile", null, "uid::I", "bottom::LRenderable;", "middle::LRenderable;", "top::LRenderable;",
+    ITEM_PILE("ItemPile", null, "uid::I", "bottom::LEntity;", "middle::LEntity;", "top::LEntity;",
             "counterHeight::I", "height::I", "strictX::I", "strictY::I"),
 
-    ENTITY_MARKER("EntityMarker", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;",
+    ENTITY_MARKER("EntityMarker", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LEntity;",
             "floorLevel::I", "height::I", "regionX::I", "regionY::I", "maxX::I", "maxY::I", "orientation::I"),
 
     LANDSCAPE_TILE("LandscapeTile", null, "entityMarkers::[LEntityMarker;", "boundaryStub::LBoundaryStub;",
@@ -170,7 +176,8 @@ public enum Hook {
 
     ),
 
-    CLIENT("Client", GAME_ENGINE, "myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
+    CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII?)V", "updateEntities::(IIII?)V",
+    		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
             "npcArray::[LNpc;", "playerArray::[LPlayer;", "myPlayer::LPlayer;",
             "regionBaseX::I", "regionBaseY::I", "tempVars::[I", "minimapSprite::LSprite;", "engineCycle::I",

@@ -82,6 +82,15 @@ public class Client extends Analyser {
 						Hook.CLIENT.put(new RSMethod(mn, "getVarpbit"));
 					}
 				}
+				if (new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";IIIII?)V").matches(mn.desc)) {
+					Hook.CLIENT.put(new RSMethod(mn, "updateEntity"));
+					for(MethodData md2 : md.referencedFrom){
+						if(new Wildcard("(IIII?)V").matches(md2.METHOD_DESC)){
+							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "updateEntities"));
+							break;
+						}
+					}
+				}
 				if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "buildComponentEvents"));
 				}
@@ -146,10 +155,10 @@ public class Client extends Analyser {
 					getWidgetPositions(mn);
 					for (final BasicBlock block : mn.graph()) {
 						final NodeTree tree = block.tree();
-						tree.accept(new OrientationVisitor(block));
+//						tree.accept(new OrientationVisitor(block));
 						tree.accept(new AudioEffectCountVisitor(block));
 						tree.accept(new PlayerIndexVisitor(block));
-						tree.accept(new CharacterArrayVisitor(block));
+//						tree.accept(new CharacterArrayVisitor(block));
 						tree.accept(new MapSpriteVisitor(block));
 						tree.accept(new FloorLevelVisitor(block));
 						tree.accept(new WorldLoadVisitor(block));
@@ -182,7 +191,7 @@ public class Client extends Analyser {
 					for (final BasicBlock block : mn.graph()) {
 						final NodeTree tree = block.tree();
 						// dependant on previous
-						tree.accept(new HitpointsVisitor(block));
+						//tree.accept(new HitpointsVisitor(block));
 						tree.accept(new WorldCountVisitor(block));
 						tree.accept(new MenuBoundsVisitor(block));
 						tree.accept(new RegionOffsetVisitor(block));
@@ -279,9 +288,9 @@ public class Client extends Analyser {
 		if (mn.desc.startsWith("(Ljava/lang/String;Ljava/lang/String;IIII")) {
 			tree.accept(new MenuActionVisitor());
 		} else if (mn.name.equals("<clinit>")) {
-		} else if (mn.desc.startsWith("(" + Hook.CHARACTER.getInternalDesc())) {
+		} /*else if (mn.desc.startsWith("(" + Hook.CHARACTER.getInternalDesc())) {
 			tree.accept(new CharacterTargetIndexVisitor());
-		} else if (mn.isStatic() && mn.desc.startsWith("(I")) {
+		}*/ else if (mn.isStatic() && mn.desc.startsWith("(I")) {
 			if (mn.desc.endsWith(Hook.ITEM_DEFINITION.getInternalDesc())) {
 				Hook.CLIENT.put(new RSMethod(mn, "getItemDefinition"));
 			} else if (mn.desc.endsWith(Hook.OBJECT_DEFINITION.getInternalDesc())) {
