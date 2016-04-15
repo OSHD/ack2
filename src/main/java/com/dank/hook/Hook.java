@@ -67,7 +67,8 @@ public enum Hook {
 
     GRAPHICS_STUB("GraphicsStub", ENTITY, "finished::Z", "id::I", "floorLevel::I", "regionX::I", "regionY::I", "height::I", "startCycle::I"),
 
-    DYNAMIC_OBJECT("DynamicObject", ENTITY, "regionX::I", "regionY::I", "floorLevel::I", "id::I", "type::I", "orientation::I"),
+    DYNAMIC_OBJECT("DynamicObject", ENTITY, "getRotatedModel::()LModel;",
+    		"regionX::I", "regionY::I", "floorLevel::I", "id::I", "type::I", "orientation::I"),
 
     PROJECTILE("Projectile", ENTITY, "id::I", "strictX::I", "strictY::I", "startHeight::I", "loopCycle::I",
             "slope::I", "startDistance::I", "targetIndex::I", "endHeight::I"),

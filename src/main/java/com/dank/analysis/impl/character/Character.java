@@ -1,8 +1,6 @@
 package com.dank.analysis.impl.character;
 
 import com.dank.analysis.Analyser;
-import com.dank.analysis.impl.character.visitor.*;
-import com.dank.analysis.visitor.TreeVisitor;
 import com.dank.asm.Mask;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
@@ -15,24 +13,18 @@ import com.marn.dynapool.DynaFlowAnalyzer;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.BasicBlock;
-import org.objectweb.asm.commons.cfg.query.NumberQuery;
-import org.objectweb.asm.commons.cfg.tree.NodeTree;
-import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
-import org.objectweb.asm.commons.cfg.tree.node.JumpNode;
-import org.objectweb.asm.commons.cfg.tree.util.TreeBuilder;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.IntInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//All methods identified as of r111
 public class Character extends Analyser {
 	@Override
 	public ClassSpec specify(ClassNode cn) {
@@ -77,14 +69,58 @@ public class Character extends Analyser {
 		MethodData resetPathData = DynaFlowAnalyzer.getMethod(resetPathQueue.owner, resetPathQueue.name, resetPathQueue.desc);
 		for(FieldData fd : resetPathData.fieldReferences){
 			boolean isIndex=false;
+			boolean isSize=false;
 			for(MethodData md : fd.referencedFrom){
-				if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";I?)V").matches(md.METHOD_DESC))
+				if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";I?)V").matches(md.METHOD_DESC)){
+					List<ArrayList<AbstractInsnNode>> patterns = Assembly.findAll(md.bytecodeMethod,
+							Mask.GETFIELD.describe("[I").own(cn.name)
+							);
+					if(patterns!=null){
+						for(ArrayList<AbstractInsnNode> pattern : patterns){
+							AbstractInsnNode node = pattern.get(0);
+							//find sipush 128 for placement verification
+							AbstractInsnNode verify = node;
+							AbstractInsnNode verify2 = node;
+							boolean verifiedSize=false;
+							for(int i=0;i<9;++i){
+								if(verify.getOpcode()==Opcodes.SIPUSH){//Next
+									IntInsnNode var = (IntInsnNode)verify;
+									if(var.operand==128){
+										verifiedSize=true;
+										break;
+									}
+								}
+								verify=verify.getNext();
+								if(verify2.getOpcode()==Opcodes.SIPUSH){//Previous
+									IntInsnNode var = (IntInsnNode)verify2;
+									if(var.operand==128){
+										verifiedSize=true;
+										break;
+									}
+								}
+								verify2=verify2.getPrevious();
+							}
+							if(verifiedSize){
+								AbstractInsnNode want = node;
+								for(int i=0;i<4;++i){
+									if(want.getOpcode()==Opcodes.GETFIELD){
+										FieldInsnNode fin = (FieldInsnNode)want;
+										if(fin.desc.equals("I") && fin.name.equals(fd.FIELD_NAME) && fin.owner.equals(fd.CLASS_NAME)){
+											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "queueSize"));
+											isSize=true;
+											break;
+										}
+									}
+									want=want.getNext();
+								}
+							}
+						}
+					}
 					isIndex=true;
+				}
 			}
-			if(isIndex)
+			if(isIndex && !isSize)
 				Hook.CHARACTER.put(new RSField(fd.bytecodeField, "currentQueueIndex"));
-			else
-				Hook.CHARACTER.put(new RSField(fd.bytecodeField, "queueSize"));
 		}
 		for(FieldNode fn : cn.fields){
 			if(fn.isStatic())
@@ -193,6 +229,7 @@ public class Character extends Analyser {
 										verify++;
 								}
 								if(verify==38){
+									//r112; ax.al
 									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "npcBoundDim"));
 									break;
 								}
@@ -260,8 +297,7 @@ public class Character extends Analyser {
 					if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";?)V").matches(md.METHOD_DESC)){
 
 						outer:for (final BasicBlock block : md.bytecodeMethod.graph()) {
-							final NodeTree tree = block.tree();//Unsure if this method works
-							for(AbstractInsnNode insn : block.instructions){
+							for(AbstractInsnNode insn : block.instructions){//Unsure if this method works
 								if(insn.getOpcode()==Opcodes.GETFIELD || insn.getOpcode()==Opcodes.PUTFIELD){
 									FieldInsnNode fin = (FieldInsnNode)insn;
 									if(fin.owner.equals(cn.name) && fin.name.equals(fn.name)){
@@ -427,7 +463,7 @@ public class Character extends Analyser {
 											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "hitsplatDamages"));
 											break;
 										}
-										if(ain.getOpcode()==Opcodes.GETSTATIC){
+										if(ain.getOpcode()==Opcodes.GETSTATIC || (ain.getOpcode()==Opcodes.LDC && ain.getNext().getOpcode()==Opcodes.GETSTATIC)){
 											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "hitsplatCycles"));
 											break;
 										}

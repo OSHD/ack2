@@ -10,6 +10,9 @@ import org.objectweb.asm.tree.VarInsnNode;
 import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import com.dank.hook.RSMethod;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
 
 /**
  * Project: DankWise
@@ -28,6 +31,12 @@ public class DynamicObject extends Analyser {
 
     @Override
     public void evaluate(ClassNode cn) {
+    	RSMethod rotatedModel = (RSMethod)Hook.ENTITY.get("getRotatedModel");//Inherited method from Entity
+    	if(rotatedModel!=null){
+    		MethodData sub = DynaFlowAnalyzer.getMethod(cn.name, rotatedModel.name, rotatedModel.desc);
+    		if(sub!=null)
+    			Hook.DYNAMIC_OBJECT.put(new RSMethod(sub.bytecodeMethod, "getRotatedModel"));
+    	}
         final MethodNode mn = cn.getMethodByName("<init>");
         if (mn != null) {
             final int[] indexes = {1, 2, 3, 4, 5, 6};
