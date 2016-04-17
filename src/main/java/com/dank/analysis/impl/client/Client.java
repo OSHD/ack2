@@ -91,7 +91,7 @@ public class Client extends Analyser {
 						}
 					}
 				}
-				if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII)V").matches(mn.desc)) {
+				if (md.referencedFrom.size()>0 && new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIII?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "buildComponentEvents"));
 				}
 				if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII?)V").matches(mn.desc)) {

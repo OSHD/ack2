@@ -41,6 +41,7 @@ import com.dank.util.io.Fetcher;
 import com.dank.util.multipliers.Multiplier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.marn.asm.DeadCodeRemover;
 import com.marn.dynapool.DynaFlowAnalyzer;
 
 import dank.tests.HierarchyVisitor;
@@ -178,7 +179,7 @@ public final class DankEngine implements Opcodes {
         } catch (Exception e) {
             //I don't want to listen to your CNF bullshit
         }
-        
+        DeadCodeRemover.removeDeadCode(classPath);
         
         new OpaquePredicateVisitor(classPath);
 
@@ -195,10 +196,11 @@ public final class DankEngine implements Opcodes {
         
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
-        DynaFlowAnalyzer.loadClient(classPath);
+        DynaFlowAnalyzer.loadClient(classPath);//Will also sort method blocks
         final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), 
         		new HashTable(), new IsaacCipher(), new MemCache(), 
         		new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
+        		new FileOnDisk(),
         		new Buffer(), //AKA Stream
                 new PacketBuffer(), 
                 new Entity(), 

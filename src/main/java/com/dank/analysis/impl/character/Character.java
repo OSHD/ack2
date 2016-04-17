@@ -172,9 +172,10 @@ public class Character extends Analyser {
 											if(fd2.CLASS_NAME.equals(fd.CLASS_NAME) && fd2.FIELD_NAME.equals(fd.FIELD_NAME))
 												count++;
 										}
-										if(count==3)
-											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "interAnimId"));
-										if(count==9)
+										System.out.println(count+"::"+fd.CLASS_NAME+"."+fd.FIELD_NAME);
+										//if(count==3)
+											//Hook.CHARACTER.put(new RSField(fd.bytecodeField, "interAnimId"));
+										if(count>5 && count<10)
 											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "animation"));
 										break;
 									}
@@ -302,6 +303,7 @@ public class Character extends Analyser {
 									FieldInsnNode fin = (FieldInsnNode)insn;
 									if(fin.owner.equals(cn.name) && fin.name.equals(fn.name)){
 										int index=block.getIndex();
+										//System.out.println(";; "+index+":"+fin.owner+"."+fin.name);
 										if(index==99)
 											Hook.CHARACTER.put(new RSField(fd.bytecodeField, "npcTurnAround"));
 										if(index==125)
@@ -396,6 +398,7 @@ public class Character extends Analyser {
 										count++;
 									}
 								}
+								//System.out.println(":: "+fd.CLASS_NAME+"."+fd.FIELD_NAME+" "+count);
 								if(count==2){
 									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "runAnimation"));
 								}

@@ -236,6 +236,8 @@ public class FlowVisitor extends MethodVisitor {
         }
         for (int i = 0; i < blocks.size(); i++) {
             final BasicBlock block = blocks.get(i);
+            if(block.instructions==null || block.instructions.size()==0)
+            	continue;
             AbstractInsnNode end = block.instructions.get(block.instructions.size() - 1);
             if (end.type() == AbstractInsnNode.JUMP_INSN) {
                 block.succs.add(getTarget((JumpInsnNode) end));

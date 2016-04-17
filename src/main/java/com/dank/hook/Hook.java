@@ -29,7 +29,7 @@ public enum Hook {
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
     MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
-    
+    FILE_ON_DISK("FileOnDisk", null, "read::([BII)I", "write::([BII)V", "close::()V", "getLength::()J", "seek::(J)V", "length::J", "position::J", "file::Ljava/io/RandomAccessFile;"),
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
     

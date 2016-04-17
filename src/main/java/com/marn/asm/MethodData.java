@@ -2,6 +2,7 @@ package com.marn.asm;
 
 import java.util.ArrayList;
 
+import org.objectweb.asm.commons.cfg.BasicBlock;
 import org.objectweb.asm.tree.MethodNode;
 
 public class MethodData {
@@ -25,6 +26,11 @@ public class MethodData {
         METHOD_DESC = node.desc;
         bytecodeMethod = node;
         ACCESS = node.access;
+        sortInstructions();
+    }
+    public void sortInstructions(){
+    	//bytecodeMethod.flowVisitor.visitEnd();//doesnt reorder -___-
+    	
     }
     public void addReferenceFrom(MethodData mn) {
     	timesInvoked++;
