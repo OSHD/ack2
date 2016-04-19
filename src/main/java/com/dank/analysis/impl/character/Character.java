@@ -65,6 +65,8 @@ public class Character extends Analyser {
 				Hook.CHARACTER.put(new RSMethod(mn, "isVisible"));
 			}
 		}
+		//shit forgot were i was going w that; continue
+		//i wanted to find subclass of this class, then run anim interp here
 		RSMethod resetPathQueue = (RSMethod)Hook.CHARACTER.get("resetPathQueue");
 		MethodData resetPathData = DynaFlowAnalyzer.getMethod(resetPathQueue.owner, resetPathQueue.name, resetPathQueue.desc);
 		for(FieldData fd : resetPathData.fieldReferences){
@@ -379,7 +381,7 @@ public class Character extends Analyser {
 									found=false;
 							}
 							if(found && verify==1){
-								Hook.CHARACTER.put(new RSField(fd.bytecodeField, "walkAnimation"));
+								//Hook.CHARACTER.put(new RSField(fd.bytecodeField, "walkAnimation"));
 								break;
 							}
 						}
@@ -400,7 +402,7 @@ public class Character extends Analyser {
 								}
 								//System.out.println(":: "+fd.CLASS_NAME+"."+fd.FIELD_NAME+" "+count);
 								if(count==2){
-									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "runAnimation"));
+								//	Hook.CHARACTER.put(new RSField(fd.bytecodeField, "runAnimation"));
 								}
 								else if(count==7){
 									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "getNextAnimation"));
@@ -432,7 +434,7 @@ public class Character extends Analyser {
 								}
 							}
 							if(verify==20){
-								Hook.CHARACTER.put(new RSField(fd.bytecodeField, "idleAnimation"));
+							//	Hook.CHARACTER.put(new RSField(fd.bytecodeField, "idleAnimation"));
 							}
 						}
 					}

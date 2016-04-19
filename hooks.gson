@@ -57,16 +57,16 @@
         },
         "pendingFlagsCount": {
           "owner": "ai",
-          "name": "k",
+          "name": "p",
           "desc": "I",
-          "decoder": 1130934390,
-          "access": 24
+          "decoder": 462978115,
+          "access": 1
         },
         "localPlayerCount": {
           "owner": "ai",
-          "name": "z",
+          "name": "k",
           "desc": "I",
-          "decoder": -1052963963,
+          "decoder": 1130934390,
           "access": 24
         },
         "localPlayerIndices": {
@@ -77,10 +77,10 @@
         },
         "globalPlayerCount": {
           "owner": "ai",
-          "name": "p",
+          "name": "z",
           "desc": "I",
-          "decoder": 462978115,
-          "access": 1
+          "decoder": -1052963963,
+          "access": 24
         }
       }
     },
@@ -801,7 +801,7 @@
           "owner": "fa",
           "name": "ai",
           "desc": "Z",
-          "access": 0
+          "access": 1
         },
         "wLayout": {
           "owner": "fa",
@@ -1907,7 +1907,7 @@
         },
         "processLogic": {
           "owner": "client",
-          "name": "es",
+          "name": "eu",
           "desc": "()V",
           "access": 0
         },
@@ -2584,6 +2584,13 @@
           "desc": "Ljava/lang/String;",
           "access": 8
         },
+        "idleAnimation": {
+          "owner": "ax",
+          "name": "ai",
+          "desc": "I",
+          "decoder": 2142674681,
+          "access": 24
+        },
         "targetIndex": {
           "owner": "ax",
           "name": "bh",
@@ -2627,10 +2634,10 @@
         },
         "runAnimation": {
           "owner": "ax",
-          "name": "an",
+          "name": "ab",
           "desc": "I",
-          "decoder": 804055433,
-          "access": 8
+          "decoder": 1116220777,
+          "access": 1
         },
         "npcDegToTurn": {
           "owner": "ax",
@@ -2667,10 +2674,10 @@
         },
         "walkAnimation": {
           "owner": "ax",
-          "name": "bd",
+          "name": "ac",
           "desc": "I",
-          "decoder": -532087905,
-          "access": 25
+          "decoder": 1630794789,
+          "access": 9
         },
         "currentQueueIndex": {
           "owner": "ax",
@@ -2743,7 +2750,7 @@
         },
         "clipped": {
           "owner": "ae",
-          "name": "ai",
+          "name": "l",
           "desc": "Z",
           "access": 0
         },

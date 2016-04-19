@@ -1,22 +1,12 @@
 package com.dank.analysis.impl.character.player;
 
-import org.objectweb.asm.commons.cfg.tree.NodeTree;
-import org.objectweb.asm.commons.cfg.tree.NodeVisitor;
-import org.objectweb.asm.commons.cfg.tree.node.FieldMemberNode;
-import org.objectweb.asm.commons.cfg.tree.node.JumpNode;
-import org.objectweb.asm.commons.cfg.tree.node.NumberNode;
+import com.dank.analysis.Analyser;
+import com.dank.analysis.impl.character.AnimInterp2;
+import com.dank.hook.Hook;
+import com.dank.hook.RSField;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
-
-import com.dank.analysis.Analyser;
-import com.dank.analysis.impl.character.player.visitor.BufferVisitor;
-import com.dank.analysis.impl.character.player.visitor.CombatLevelVisitor;
-import com.dank.analysis.impl.character.player.visitor.TeamVisitor;
-import com.dank.analysis.impl.character.player.visitor.TotalLevelVisitor;
-import com.dank.hook.Hook;
-import com.dank.hook.RSField;
-import com.dank.util.MemberKey;
 
 /**
  * Project: DankWise
@@ -34,6 +24,13 @@ public class Player extends Analyser {
 
     @Override
     public void evaluate(ClassNode cn) {
+
+        for(MethodNode mn : cn.methods) {
+            if(mn.equals("a","(Ldx;B)V")) { //TODO r112
+                AnimInterp2.run(cn.name,mn);
+            }
+        }
+
         for (final FieldNode fn : cn.fields) {
             if (!fn.isStatic()) {
                 if (fn.desc.equals(Hook.PLAYER_CONFIG.getInternalDesc())) {
@@ -44,4 +41,6 @@ public class Player extends Analyser {
             }
         }
     }
+
+
 }
