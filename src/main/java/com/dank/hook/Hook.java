@@ -19,6 +19,8 @@ import java.util.*;
 
 //
 public enum Hook {
+	CLIENT_ERROR("ClientError", null, "message::Ljava/lang/String;", "source::Ljava/lang/Throwable;"),
+	RUNNABLE_TASK("RunnableTask", null, "active::Z", "thread::Ljava/lang/Thread;", "eventQueue::Ljava/awt/EventQueue;"),
     NODE("Node", null, "key::J", "next::LNode;", "previous::LNode;", "unlink::()V", "isParent::()Z"),
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
@@ -105,7 +107,6 @@ public enum Hook {
 
     PLAYER_CONFIG("PlayerConfig", null, "appearance::[I", "appearanceColors::[I", "female::Z", "npcId::I"),
 
-    GAME_ENGINE("GameEngine", null, "shell::LGameEngine;", "focused::Z"),
 
     WORLD("World", null, "world::I", "index::I", "mask::I", "location::I", "domain::Ljava/lang/String;",
             "activity::Ljava/lang/String;", "population::I"),
@@ -177,7 +178,13 @@ public enum Hook {
 
     ),
 
-    CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII?)V", "updateEntities::(IIII?)V",
+    GAME_ENGINE("GameEngine", null, "getGameContainer::()Ljava/awt/Container;", "isHostValid::()Z", "displayError::(Ljava/lang/String;)V",
+    		"gameEngineDumpProcessed::Z"),
+    
+    CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII?)V", "updateEntities::(IIII?)V", 
+    		"newClientError::(Ljava/lang/Throwable;Ljava/lang/String;)LClientError;", "attemptThreadSleep::(J)V",
+    		"threadSleep::(J)V", "bootClient::()V", "buildComponentEvents::([LWidget;IIIIII)V",
+    		"shell::LGameEngine;", "focused::Z", "clearScreenRequest::Z", "gameFrame::Ljava/awt/Frame;",
     		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
             "npcArray::[LNpc;", "playerArray::[LPlayer;", "myPlayer::LPlayer;",
@@ -207,7 +214,7 @@ public enum Hook {
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",
             "getKeyFocusListener::LKeyFocusListener;", "canvas::Ljava/awt/Canvas;", "widgetsHeight::[I",
             "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "runScript", "messageChannels",
-            "currentLoginName::Ljava/lang/String;", "runScript", "hideRoofs::I", "buildComponentEvents",
+            "currentLoginName::Ljava/lang/String;", "runScript", "hideRoofs::I", 
             "renderComponent", "addHUD", "removeHUD", "repaintWidget", "layoutContainer", "addMessage",
             "layoutContainer2", "layoutComponent", "layoutWindow", "drawMenu", "chunkIds::[I", "loadedWindows",
             "loadImage", "fontCache"),

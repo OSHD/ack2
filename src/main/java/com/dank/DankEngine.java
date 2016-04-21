@@ -68,18 +68,16 @@ import java.util.jar.Manifest;
 //import it.sauronsoftware.ftp4j.FTPClient;
 
 public final class DankEngine implements Opcodes {
-
     private static final ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
 
-    private static int localRevision = 0;
     public static ClassPath classPath;
     public static MethodCallGraphVisitor mGraph;
     public static FieldCallGraphVisitor fGraph;
     public static CodecResolver resolver;
     private static Manifest manifest;
 
-    private static int version = 112;
-    public static boolean fetch = false;
+    private static int version = 113;
+    public static boolean fetch = true;
 
     public static boolean auto = true;
     
@@ -161,29 +159,31 @@ public final class DankEngine implements Opcodes {
             System.out.println(from.getParent());
             deob = new File(from.getParent() + "/deobfuscated.jar");
             remap = new File(from.getParent() + "/remapped.jar");
+	        VersionChecker checker = new VersionChecker();
+	        checker.run();
         } else {
+            System.out.println("Local : "+version);
             from = new File("./jars/" + version + "/gamepack.jar");
             deob = new File("./jars/" + version + "/deobfuscated.jar");
             remap = new File("./jars/" + version + "/remapped.jar");
         }
 
-        VersionChecker checker = new VersionChecker();
-        checker.run();
-
+        System.out.println("Generating class path...");
         classPath = new ClassPath();
-
+        System.out.println("Generating jar manifest...");
         manifest = classPath.addJar(from.getAbsolutePath());
-
+        System.out.println("Running call visitor...");
         try {
             new CallVisitor(classPath);
         } catch (Exception e) {
             //I don't want to listen to your CNF bullshit
         }
         DeadCodeRemover.removeDeadCode(classPath);
-        
         new OpaquePredicateVisitor(classPath);
 
         DankBuild.instance.set("build", String.valueOf(Integer.parseInt((String) DankBuild.instance.get("build")) + 1));
+
+        System.out.println("Dumping deobbed jar...");
         classPath.dump(deob.getAbsolutePath());
 
         try {
@@ -193,11 +193,15 @@ public final class DankEngine implements Opcodes {
         }
 
         
-        
+
+        System.out.println("Removing predicates...");
         OpPredicateRemover.run(classPath.getMap());
         // MultiRemover.run(classPath.getMap());
         DynaFlowAnalyzer.loadClient(classPath);//Will also sort method blocks
-        final Analyser[] analysers = {new Node(), new Deque(), new DualNode(), new Queue(), 
+        final Analyser[] analysers = {
+        		new ClientError(),
+        		new RunnableTask(),
+        		new Node(), new Deque(), new DualNode(), new Queue(), 
         		new HashTable(), new IsaacCipher(), new MemCache(), 
         		new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
         		new FileOnDisk(),
@@ -223,6 +227,7 @@ public final class DankEngine implements Opcodes {
                 new AbstractFont(), new FontImpl(), new ImageProduct(),
                 new Graphics(), new GameCanvas(), new Bitmap(), 
                 new GPI(), new GStrings(), new Parameters(), 
+                new GameEngine(),
                 new Client(),
 //                new AbstractFont(), new FontImpl(), new CacheTable(), new ImageProduct()
                 /* new PacketVisitor() */

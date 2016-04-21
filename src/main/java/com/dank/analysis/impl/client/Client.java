@@ -10,10 +10,12 @@ import com.dank.analysis.impl.widget.Widget;
 import com.dank.asm.Mask;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import com.dank.hook.RSMember;
 import com.dank.hook.RSMethod;
 import com.dank.util.MemberKey;
 import com.dank.util.Wildcard;
 import com.marn.asm.Assembly;
+import com.marn.asm.ClassData;
 import com.marn.asm.FieldData;
 import com.marn.asm.MethodData;
 import com.marn.dynapool.DynaFlowAnalyzer;
@@ -47,13 +49,37 @@ public class Client extends Analyser {
 	@Override
 	public ClassSpec specify(ClassNode cn) {
 		if (cn.name.equals("client")) {
-			Hook.GAME_ENGINE.setInternalName(cn.superName);
+			//Hook.GAME_ENGINE.setInternalName(cn.superName);
 			return new ClassSpec(Hook.CLIENT, cn);
 		}
 		return null;
 	}
 	@Override
 	public void evaluate(ClassNode cn) {
+		Hook gameEngine = Hook.GAME_ENGINE;
+		if(gameEngine!=null){
+			RSMember tempMethod = gameEngine.get("getGameContainer");
+			if(tempMethod!=null){
+				RSMethod m = (RSMethod)tempMethod;
+				MethodData md = DynaFlowAnalyzer.getMethod(m.owner, m.name, m.desc);
+				if(md!=null){
+					for(FieldData fd : md.fieldReferences){
+						if(fd.bytecodeField.desc.equals("Ljava/awt/Frame;")){
+							Hook.CLIENT.put(new RSField(fd.bytecodeField, "gameFrame"));
+							break;
+						}
+					}
+				}
+			}
+			ClassData cd = DynaFlowAnalyzer.getClass(gameEngine.getInternalName());
+			if(cd!=null){
+				for(MethodData md : cd.methods){
+					if(md.METHOD_NAME.equals("destroy")){
+						
+					}
+				}
+			}
+		}
 		for(ClassNode node : getClassPath().getClasses()){
 			for(FieldNode fn : node.fields){
 				FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
@@ -73,6 +99,36 @@ public class Client extends Analyser {
 		for (final ClassNode node : getClassPath().getClasses()) {
 			for (final MethodNode mn : node.methods) {
 				MethodData md = DynaFlowAnalyzer.getMethod(node.name, mn.name, mn.desc);
+				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(J)V").matches(mn.desc)) { 
+					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+							Mask.LLOAD,
+							Mask.INVOKESTATIC.describe("(J)V").own("java/lang/Thread")
+							);
+					if (pattern != null) {
+						Hook.CLIENT.put(new RSMethod(mn, "attemptThreadSleep"));
+						for(MethodData md2 : md.referencedFrom){
+							if(md2.METHOD_DESC.equals(md.METHOD_DESC)){
+								Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "threadSleep"));
+								break;
+							}
+						}
+					}
+				}
+				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(?)V").matches(mn.desc)) {
+					boolean isBoot=false;
+					for(MethodData md2 : md.methodReferences){
+						if(new Wildcard("(L"+Hook.RUNNABLE_TASK.getInternalName()+";Ljava/awt/Component;II?)L*;").matches(md2.METHOD_DESC))
+							isBoot=true;
+					}
+					if(isBoot)
+						Hook.CLIENT.put(new RSMethod(mn, "bootClient"));
+					else{
+						
+					}
+				}
+				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(Ljava/lang/Throwable;Ljava/lang/String;)L"+Hook.CLIENT_ERROR.getInternalName()+";").matches(mn.desc)) { 
+					Hook.CLIENT.put(new RSMethod(mn, "newClientError"));
+				}
 				if (mn.isStatic() && new Wildcard("(I?)I").matches(mn.desc)) { 
 					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
 							Mask.INVOKEVIRTUAL.describe("(J)L"+Hook.DUAL_NODE.getInternalName()+";"),
@@ -319,7 +375,21 @@ public class Client extends Analyser {
 					@Override
 					public void visitField(FieldMemberNode fmn) {
 						if (fmn.putting() && fmn.desc().equals("Z")) {
-							Hook.GAME_ENGINE.put(new RSField(fmn, "focused"));
+							Hook.CLIENT.put(new RSField(fmn, "focused"));
+							FieldData fd = DynaFlowAnalyzer.getField(fmn.owner(), fmn.name());
+							if(fd!=null){
+								for(MethodData md : fd.referencedFrom){
+									if(md.METHOD_NAME.equals("focusGained")){
+										for(FieldData fd2 : md.fieldReferences){
+											if(!fd2.FIELD_NAME.equals(fd.FIELD_NAME)){
+												Hook.CLIENT.put(new RSField(fmn, "clearScreenRequest"));
+												break;
+											}
+										}
+										break;
+									}
+								}
+							}
 						}
 					}
 				});
@@ -429,7 +499,7 @@ public class Client extends Analyser {
 		} else if (fn.desc.equals(String.format("[[[L%s;", Hook.DEQUE.getInternalName()))) {
 			Hook.CLIENT.put(new RSField(fn, "groundItemDeque"));
 		} else if (fn.desc.equals(Hook.GAME_ENGINE.getInternalDesc())) {
-			Hook.GAME_ENGINE.put(new RSField(fn, "shell"));
+			Hook.CLIENT.put(new RSField(fn, "shell"));
 		} else if (fn.desc.equals(String.format("L%s;", "java/awt/Canvas"))) {
 			Hook.CLIENT.put(new RSField(fn, "canvas"));
 		}
