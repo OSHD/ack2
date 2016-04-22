@@ -101,16 +101,15 @@ public class Client extends Analyser {
 				MethodData md = DynaFlowAnalyzer.getMethod(node.name, mn.name, mn.desc);
 				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(J)V").matches(mn.desc)) { 
 					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
-							Mask.LLOAD,
-							Mask.INVOKESTATIC.describe("(J)V").own("java/lang/Thread")
+							Mask.LCONST_1,
+							Mask.INVOKESTATIC
 							);
 					if (pattern != null) {
-						Hook.CLIENT.put(new RSMethod(mn, "attemptThreadSleep"));
-						for(MethodData md2 : md.referencedFrom){
-							if(md2.METHOD_DESC.equals(md.METHOD_DESC)){
-								Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "threadSleep"));
-								break;
-							}
+						Hook.CLIENT.put(new RSMethod(mn, "threadSleep"));
+						MethodInsnNode min = (MethodInsnNode)pattern.get(1);
+						MethodData md2 = DynaFlowAnalyzer.getMethod(min.owner, min.name, min.desc);
+						if(md2!=null){
+							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "inlinedThreadSleep"));
 						}
 					}
 				}

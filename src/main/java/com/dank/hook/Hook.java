@@ -182,8 +182,8 @@ public enum Hook {
     		"gameEngineDumpProcessed::Z"),
     
     CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII?)V", "updateEntities::(IIII?)V", 
-    		"newClientError::(Ljava/lang/Throwable;Ljava/lang/String;)LClientError;", "attemptThreadSleep::(J)V",
-    		"threadSleep::(J)V", "bootClient::()V", "buildComponentEvents::([LWidget;IIIIII)V",
+    		"newClientError::(Ljava/lang/Throwable;Ljava/lang/String;)LClientError;",
+    		"threadSleep::(J)V", "inlinedThreadSleep::(J)V", "bootClient::()V", "buildComponentEvents::([LWidget;IIIIII)V",
     		"shell::LGameEngine;", "focused::Z", "clearScreenRequest::Z", "gameFrame::Ljava/awt/Frame;",
     		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",

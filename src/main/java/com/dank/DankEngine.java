@@ -77,7 +77,7 @@ public final class DankEngine implements Opcodes {
     private static Manifest manifest;
 
     private static int version = 113;
-    public static boolean fetch = true;
+    public static boolean fetch = false;
 
     public static boolean auto = true;
     

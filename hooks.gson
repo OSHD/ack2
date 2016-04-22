@@ -45,9 +45,9 @@
         },
         "pendingFlagsIndices": {
           "owner": "ay",
-          "name": "l",
+          "name": "i",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "cachedAppearances": {
           "owner": "ay",
@@ -64,14 +64,14 @@
         },
         "localPlayerCount": {
           "owner": "aj",
-          "name": "an",
+          "name": "bx",
           "desc": "I",
-          "decoder": -2072542597,
-          "access": 1
+          "decoder": -568209787,
+          "access": 24
         },
         "localPlayerIndices": {
           "owner": "ay",
-          "name": "r",
+          "name": "l",
           "desc": "[I",
           "access": 8
         },
@@ -272,16 +272,16 @@
         },
         "notedId": {
           "owner": "ak",
-          "name": "ar",
+          "name": "bx",
           "desc": "I",
-          "decoder": 1720947565,
-          "access": 1
+          "decoder": 1787900975,
+          "access": 24
         },
         "unnotedId": {
           "owner": "ak",
-          "name": "at",
+          "name": "bd",
           "desc": "I",
-          "decoder": 1878554173,
+          "decoder": -219880679,
           "access": 24
         },
         "modifiedColors": {
@@ -305,10 +305,10 @@
         },
         "storeValue": {
           "owner": "ak",
-          "name": "av",
+          "name": "ax",
           "desc": "I",
-          "decoder": 728941289,
-          "access": 24
+          "decoder": 1925863449,
+          "access": 1
         },
         "colors": {
           "owner": "ak",
@@ -464,7 +464,7 @@
           "name": "bx",
           "desc": "I",
           "decoder": 592853619,
-          "access": 8
+          "access": 24
         },
         "itemId": {
           "owner": "fb",
@@ -801,7 +801,7 @@
           "owner": "fb",
           "name": "ay",
           "desc": "Z",
-          "access": 1
+          "access": 0
         },
         "wLayout": {
           "owner": "fb",
@@ -1208,10 +1208,10 @@
           "access": 0
         },
         "worldSelectorDisplayed": {
-          "owner": "client",
-          "name": "ab",
+          "owner": "ee",
+          "name": "aa",
           "desc": "Z",
-          "access": 0
+          "access": 1
         },
         "destinationY": {
           "owner": "client",
@@ -1446,7 +1446,7 @@
         },
         "spellSelected": {
           "owner": "client",
-          "name": "g",
+          "name": "eo",
           "desc": "Z",
           "access": 0
         },
@@ -1821,6 +1821,12 @@
         }
       },
       "methods": {
+        "threadSleep": {
+          "owner": "p",
+          "name": "j",
+          "desc": "(J)V",
+          "access": 0
+        },
         "getItemDefinition": {
           "owner": "cp",
           "name": "j",
@@ -1900,12 +1906,6 @@
           "name": "j",
           "desc": "(B)Z",
           "predicate": 67,
-          "access": 0
-        },
-        "attemptThreadSleep": {
-          "owner": "p",
-          "name": "j",
-          "desc": "(J)V",
           "access": 0
         },
         "addHUD": {
@@ -2804,20 +2804,20 @@
         },
         "clipped": {
           "owner": "ah",
-          "name": "o",
+          "name": "ay",
           "desc": "Z",
           "access": 0
         },
         "sizeX": {
           "owner": "ah",
-          "name": "b",
+          "name": "t",
           "desc": "I",
-          "decoder": 925756969,
+          "decoder": -348908079,
           "access": 8
         },
         "modelClipped": {
           "owner": "ah",
-          "name": "o",
+          "name": "ay",
           "desc": "Z",
           "access": 0
         },
@@ -2868,9 +2868,9 @@
         },
         "sizeY": {
           "owner": "ah",
-          "name": "t",
+          "name": "b",
           "desc": "I",
-          "decoder": -348908079,
+          "decoder": 925756969,
           "access": 8
         },
         "clipType": {
@@ -2992,6 +2992,13 @@
           "desc": "Ljava/lang/String;",
           "access": 1
         },
+        "index": {
+          "owner": "as",
+          "name": "j",
+          "desc": "I",
+          "decoder": 151385875,
+          "access": 0
+        },
         "message": {
           "owner": "as",
           "name": "e",
@@ -3016,8 +3023,8 @@
       "methods": {
         "setMessage": {
           "owner": "as",
-          "name": "\u003cinit\u003e",
-          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+          "name": "j",
+          "desc": "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
           "access": 0
         }
       }
