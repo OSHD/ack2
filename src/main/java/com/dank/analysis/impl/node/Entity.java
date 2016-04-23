@@ -35,7 +35,7 @@ public class Entity extends Analyser {
         		Hook.ENTITY.put(new RSMethod(mn, "renderAtPoint"));
         		for(MethodData md2 : md.methodReferences){
                 	if(md.CLASS_NAME.equals(cn.name)){
-                		Hook.ENTITY.put(new RSMethod(md2.bytecodeMethod, "getRotatedModel"));
+                		Hook.ENTITY.put(new RSMethod(md2.bytecodeMethod, "getAnimatedModel"));
                 		break;
                 	}
         		}

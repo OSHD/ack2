@@ -51,6 +51,8 @@ public class Character extends Analyser {
 	}
 	@Override
 	public void evaluate(ClassNode cn) {
+		//See AnimInterp2 for idleAnimation, walkAnimation, runAnimation
+		//See Player.setPosition for queueX, queueY, and queueRun
 		for(MethodNode mn : cn.methods){
 			if(mn.isStatic())
 				continue;
@@ -65,8 +67,6 @@ public class Character extends Analyser {
 				Hook.CHARACTER.put(new RSMethod(mn, "isVisible"));
 			}
 		}
-		//shit forgot were i was going w that; continue
-		//i wanted to find subclass of this class, then run anim interp here
 		RSMethod resetPathQueue = (RSMethod)Hook.CHARACTER.get("resetPathQueue");
 		MethodData resetPathData = DynaFlowAnalyzer.getMethod(resetPathQueue.owner, resetPathQueue.name, resetPathQueue.desc);
 		for(FieldData fd : resetPathData.fieldReferences){
@@ -361,80 +361,6 @@ public class Character extends Analyser {
 							if(fin1.name.equals(fn.name)){
 								Hook.CHARACTER.put(new RSField(fd.bytecodeField, "animFrameId"));
 								break;
-							}
-						}
-
-						int count=0;
-						for(FieldData fd2 : md.fieldReferences){
-							if(fd2.CLASS_NAME.equals(fd.CLASS_NAME) && fd2.FIELD_NAME.equals(fd.FIELD_NAME))
-								count++;
-						}
-						if(count==3){
-							boolean found=true;
-							int verify=0;
-							for(MethodData md2 : fd.referencedFrom){
-								if(md2.referencedFrom.size()==0)
-									continue;
-								if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";?)V").matches(md2.METHOD_DESC))
-									verify++;
-								if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";I?)V").matches(md2.METHOD_DESC))
-									found=false;
-							}
-							if(found && verify==1){
-								//Hook.CHARACTER.put(new RSField(fd.bytecodeField, "walkAnimation"));
-								break;
-							}
-						}
-						if(count==2){
-							List<ArrayList<AbstractInsnNode>> patterns = Assembly.findAll(md.bytecodeMethod,
-									Mask.ALOAD,
-									Mask.GETFIELD.describe("I").distance(2),
-									Mask.IMUL.distance(2),
-									Mask.PUTFIELD.describe("I")
-									);
-							if (patterns != null) {
-								count=0;
-								for(ArrayList<AbstractInsnNode> p : patterns){
-									FieldInsnNode fin1 = (FieldInsnNode) p.get(1);
-									if(fin1.name.equals(fn.name)){
-										count++;
-									}
-								}
-								//System.out.println(":: "+fd.CLASS_NAME+"."+fd.FIELD_NAME+" "+count);
-								if(count==2){
-								//	Hook.CHARACTER.put(new RSField(fd.bytecodeField, "runAnimation"));
-								}
-								else if(count==7){
-									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "getNextAnimation"));
-								}
-								else if(count==8){
-								}
-								else if(count==11){//unknown7 aka standTurnAnimIndex
-									Hook.CHARACTER.put(new RSField(fd.bytecodeField, "standTurnAnimIndex"));
-								}
-							}
-						}
-						if(count==1){
-							int verify=0;
-							for(MethodData md2 : fd.referencedFrom){
-								if(md2.referencedFrom.size()==0)
-									continue;
-								if(new Wildcard("(L"+Hook.CHARACTER.getInternalName()+";?)V").matches(md2.METHOD_DESC) &&
-										!md2.METHOD_NAME.equals(md.METHOD_NAME)){
-									List<ArrayList<AbstractInsnNode>> patterns = Assembly.findAll(md2.bytecodeMethod,
-											Mask.GETFIELD.or(Mask.PUTFIELD)
-											);
-									if (patterns != null) {
-										for(ArrayList<AbstractInsnNode> p : patterns){
-											FieldInsnNode fin=(FieldInsnNode)p.get(0);
-											if(fin.name.equals(fn.name) && fin.owner.equals(fn.owner.name))
-												verify++;
-										}
-									}
-								}
-							}
-							if(verify==20){
-							//	Hook.CHARACTER.put(new RSField(fd.bytecodeField, "idleAnimation"));
 							}
 						}
 					}

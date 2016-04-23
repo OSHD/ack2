@@ -26,7 +26,7 @@ public enum Hook {
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
     QUEUE("Queue", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::()LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
     BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
-    ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getRotatedModel::()LModel;"),
+    ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getAnimatedModel::()LModel;"),
     HUD("HUD", NODE, "owner::I", "type::I", "isMainHud::Z"),
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
@@ -40,7 +40,7 @@ public enum Hook {
     EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::()I"),
     MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
             "type::I", "cycle::I", "index::I", "setMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"),
-    MESSAGE_CHANNEL("MessageChannel", null, "messages::[LMessage;", "index::I", "getMessage::(I)LMessage;", "createMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)LMessage;"),
+    MESSAGE_CHANNEL("MessageChannel", null, "messages::[LMessage;", "index::I", "getMessage::(I)LMessage;", "createMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)LMessage;", "getIndex::()I"),
     KEY_FOCUS_LISTENER("KeyFocusListener", null),
     MOUSE_LISTENER("MouseListener", null),
     ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
@@ -77,7 +77,7 @@ public enum Hook {
 
     CHARACTER("Character", ENTITY, "resetPathQueue::()V", "updateHitData::(III)V", "isVisible::()Z",
             "hitsplatCycles::[I", "hitsplatDamages::[I", "hitsplatTypes::[I",
-    		"queueSize::I", "currentQueueIndex::I",
+    		"queueSize::I", "currentQueueIndex::I", "queueX::[I", "queueY::[I", "queueRun::[B",
     		"strictX::I", "strictY::I", 
     		"healthBarCycle::I", "hitpoints::I", "maxHitpoints::I",
             "animation::I", "targetIndex::I", 
@@ -92,7 +92,9 @@ public enum Hook {
 
     NPC("Npc", CHARACTER, "definition::LNpcDefinition;"),
 
-    PLAYER("Player", CHARACTER, "combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
+    PLAYER("Player", CHARACTER, "updatePlayer::(LBuffer;)V", "getAnimatedModel::()LModel;", "setPosition::(IIB)V",
+    		"updateMovement::(IIB)V", "getConfigId::()I",
+    		"combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
             "team::I", "config::LPlayerConfig;", "totalLevel::I", "height::I"),
 
 

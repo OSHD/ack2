@@ -14,16 +14,16 @@
         }
       },
       "methods": {
-        "getRotatedModel": {
-          "owner": "cs",
-          "name": "m",
-          "desc": "(I)Ldf;",
-          "access": 0
-        },
         "renderAtPoint": {
           "owner": "cs",
           "name": "au",
           "desc": "(IIIIIIIII)V",
+          "access": 0
+        },
+        "getAnimatedModel": {
+          "owner": "cs",
+          "name": "m",
+          "desc": "(I)Ldf;",
           "access": 0
         }
       }
@@ -2240,6 +2240,43 @@
           "desc": "Lff;",
           "access": 0
         }
+      },
+      "methods": {
+        "updatePlayer": {
+          "owner": "m",
+          "name": "j",
+          "desc": "(Ldx;B)V",
+          "predicate": 8,
+          "access": 0
+        },
+        "getConfigId": {
+          "owner": "m",
+          "name": "h",
+          "desc": "(I)I",
+          "predicate": -1918075948,
+          "access": 1
+        },
+        "updateMovement": {
+          "owner": "m",
+          "name": "z",
+          "desc": "(IIBB)V",
+          "predicate": 126,
+          "access": 0
+        },
+        "setPosition": {
+          "owner": "m",
+          "name": "e",
+          "desc": "(IIBB)V",
+          "predicate": 159,
+          "access": 0
+        },
+        "getAnimatedModel": {
+          "owner": "m",
+          "name": "m",
+          "desc": "(I)Ldf;",
+          "predicate": -1960455252,
+          "access": 0
+        }
       }
     },
     "Parameters": {
@@ -2625,13 +2662,6 @@
           "decoder": 323813731,
           "access": 24
         },
-        "standTurnAnimIndex": {
-          "owner": "av",
-          "name": "ag",
-          "desc": "I",
-          "decoder": 1407515991,
-          "access": 8
-        },
         "queueSize": {
           "owner": "av",
           "name": "ca",
@@ -2643,6 +2673,13 @@
           "owner": "av",
           "name": "ah",
           "desc": "Ljava/lang/String;",
+          "access": 8
+        },
+        "idleAnimation": {
+          "owner": "av",
+          "name": "ay",
+          "desc": "I",
+          "decoder": 1006004321,
           "access": 8
         },
         "targetIndex": {
@@ -2672,6 +2709,12 @@
           "decoder": 1679474929,
           "access": 24
         },
+        "queueRun": {
+          "owner": "av",
+          "name": "ck",
+          "desc": "[B",
+          "access": 0
+        },
         "animation": {
           "owner": "av",
           "name": "be",
@@ -2685,6 +2728,19 @@
           "desc": "I",
           "decoder": -777566291,
           "access": 25
+        },
+        "queueX": {
+          "owner": "av",
+          "name": "cu",
+          "desc": "[I",
+          "access": 1
+        },
+        "runAnimation": {
+          "owner": "av",
+          "name": "aa",
+          "desc": "I",
+          "decoder": 1494059257,
+          "access": 1
         },
         "npcDegToTurn": {
           "owner": "av",
@@ -2719,6 +2775,13 @@
           "decoder": -1072872579,
           "access": 8
         },
+        "walkAnimation": {
+          "owner": "av",
+          "name": "as",
+          "desc": "I",
+          "decoder": 2146927058,
+          "access": 9
+        },
         "animFrameId": {
           "owner": "av",
           "name": "ba",
@@ -2739,6 +2802,12 @@
           "desc": "I",
           "decoder": 1904916056,
           "access": 0
+        },
+        "queueY": {
+          "owner": "av",
+          "name": "cf",
+          "desc": "[I",
+          "access": 8
         }
       },
       "methods": {
@@ -3166,7 +3235,7 @@
           "name": "m",
           "desc": "(I)I",
           "predicate": 927916133,
-          "access": 0
+          "access": 1
         }
       }
     },
@@ -3932,6 +4001,12 @@
         }
       },
       "methods": {
+        "getIndex": {
+          "owner": "aq",
+          "name": "m",
+          "desc": "(I)I",
+          "access": 1
+        },
         "getMessage": {
           "owner": "aq",
           "name": "h",
@@ -3991,14 +4066,6 @@
           "name": "h",
           "desc": "I",
           "decoder": 1500266515,
-          "access": 0
-        }
-      },
-      "methods": {
-        "getRotatedModel": {
-          "owner": "a",
-          "name": "m",
-          "desc": "(I)Ldf;",
           "access": 0
         }
       }

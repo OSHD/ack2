@@ -35,6 +35,9 @@ public class MessageChannel extends Analyser {
             if(new Wildcard("(I?)*").matches(methodNode.desc)) {
                 Hook.MESSAGE_CHANNEL.put(new RSMethod(methodNode, "getMessage"));
             }
+            if(new Wildcard("(?)I").matches(methodNode.desc)) {
+                Hook.MESSAGE_CHANNEL.put(new RSMethod(methodNode, "getIndex"));
+            }
         }
     }
 }

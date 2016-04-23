@@ -3,6 +3,8 @@ package com.dank.analysis.impl.character;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.util.MemberKey;
+import com.dank.util.Wildcard;
+
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.tree.analysis.Analyzer;
@@ -53,7 +55,8 @@ public final class AnimInterp2 extends BasicInterpreter {
             throws AnalyzerException {
         if(insn.getOpcode()==INVOKEVIRTUAL) {
             MethodInsnNode min = (MethodInsnNode) insn;
-            if(min.equals("dx","s","(B)I")) { //TODO 112
+            //if(min.equals("dx","s","(B)I")) { //TODO 112 "Buffer.readXXX"
+            if(new Wildcard("(?)I").matches(min.desc)){//Buffer.readInt?
                 BasicValue ref = values.get(0);
                 if(ref instanceof BufferArg) {
                     return new BufferReturnValue(Type.INT_TYPE);
