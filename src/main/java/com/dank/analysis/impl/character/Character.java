@@ -51,7 +51,7 @@ public class Character extends Analyser {
 	}
 	@Override
 	public void evaluate(ClassNode cn) {
-		//See AnimInterp2 for idleAnimation, walkAnimation, runAnimation
+		//See Player.updatePlayer -> AnimInterp2 for idleAnimation, walkAnimation, runAnimation
 		//See Player.setPosition for queueX, queueY, and queueRun
 		for(MethodNode mn : cn.methods){
 			if(mn.isStatic())

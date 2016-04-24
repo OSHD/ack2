@@ -44,7 +44,8 @@ public class Player extends Analyser {
                 AnimInterp2.run(cn.name,mn);//Character idle/walk/runAnimation hooks
             }
             if(new Wildcard("(?)L"+Hook.MODEL.getInternalName()+";").matches(mn.desc) && rotatedModel!=null && mn.name.equals(rotatedModel.name)) {
-            	Hook.PLAYER.put(new RSMethod(mn, "getAnimatedModel"));
+            	rotatedModel=new RSMethod(mn, "getAnimatedModel");
+            	Hook.PLAYER.put(rotatedModel);
             }
             if(new Wildcard("(IIB?)V").matches(mn.desc)) {
             	boolean isSetPos=true;
@@ -94,10 +95,46 @@ public class Player extends Analyser {
         }
         for (final FieldNode fn : cn.fields) {
             if (!fn.isStatic()) {
+            	FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
                 if (fn.desc.equals(Hook.PLAYER_CONFIG.getInternalDesc())) {
                     Hook.PLAYER.put(new RSField(fn, "config"));
+                } else if (fn.desc.equals(Hook.MODEL.getInternalDesc())) {
+                    Hook.PLAYER.put(new RSField(fn, "model"));
                 } else if (fn.desc.equals("Ljava/lang/String;")) {
                     Hook.PLAYER.put(new RSField(fn, "name"));
+                } else if (fn.desc.equals("I")) {
+                	boolean isCmbLvl=false;
+                	for(MethodData md : fd.referencedFrom){
+                		if(new Wildcard("(L"+Hook.NPC_DEFINITION.getInternalName()+";III?)V").matches(md.METHOD_DESC)){
+                			isCmbLvl=true;
+                			break;
+                		}
+                	}
+                	if(isCmbLvl)
+                		Hook.PLAYER.put(new RSField(fn, "combatLevel"));
+                	else{
+                		System.out.println(":: "+fd.CLASS_NAME+"."+fd.FIELD_NAME);
+                		boolean isTeam=false;
+                    	for(MethodData md : fd.referencedFrom){
+                    		if(new Wildcard("([L*;IIIIIIII?)V").matches(md.METHOD_DESC)){
+                    			isTeam=true;
+                    			break;
+                    		}
+                    	}
+                    	if(isTeam)
+                    		Hook.PLAYER.put(new RSField(fn, "team"));
+                	}
+                } else if(fn.desc.equals("Z")){
+                	boolean isVisible=false;
+                	for(MethodData md : fd.referencedFrom){
+                		if(md.CLASS_NAME.equals(rotatedModel.owner) && md.METHOD_NAME.equals(rotatedModel.name) && md.METHOD_DESC.equals(rotatedModel.desc)){
+                			isVisible=true;
+                			break;
+                		}
+                	}
+                	if(isVisible){
+                		Hook.PLAYER.put(new RSField(fn, "visible"));
+                	}
                 }
             }
         }

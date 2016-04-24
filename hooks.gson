@@ -2228,11 +2228,37 @@
     "Player": {
       "name": "m",
       "fields": {
+        "visible": {
+          "owner": "m",
+          "name": "w",
+          "desc": "Z",
+          "access": 1
+        },
         "name": {
           "owner": "m",
           "name": "j",
           "desc": "Ljava/lang/String;",
           "access": 8
+        },
+        "model": {
+          "owner": "m",
+          "name": "p",
+          "desc": "Ldf;",
+          "access": 0
+        },
+        "team": {
+          "owner": "m",
+          "name": "g",
+          "desc": "I",
+          "decoder": -5436303,
+          "access": 8
+        },
+        "combatLevel": {
+          "owner": "m",
+          "name": "i",
+          "desc": "I",
+          "decoder": -1591891547,
+          "access": 1
         },
         "config": {
           "owner": "m",

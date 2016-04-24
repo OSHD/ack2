@@ -94,6 +94,7 @@ public enum Hook {
 
     PLAYER("Player", CHARACTER, "updatePlayer::(LBuffer;)V", "getAnimatedModel::()LModel;", "setPosition::(IIB)V",
     		"updateMovement::(IIB)V", "getConfigId::()I",
+    		"visible::Z", "model::LModel;",
     		"combatLevel::I", "name::Ljava/lang/String;", "prayerIcon::I", "skullIcon::I",
             "team::I", "config::LPlayerConfig;", "totalLevel::I", "height::I"),
 
