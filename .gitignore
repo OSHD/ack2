@@ -1,17 +1,18 @@
-i/hooks.gson
-/log.txt
-/build.xml
-# Created by .ignore support plugin (hsz.mobi)
-/Dog.iml
+# InteliJ ignores
+*.iml
 /.idea
 /target
-/jars/*/deobfuscated.jar
-/jars/*/remapped.jar
 
 # Eclipse ignores
 /.settings
 .classpath
 .project
 
+#Misc
+/jars/*/deobfuscated.jar
+/jars/*/remapped.jar
+/hooks.gson
+/log.txt
+/build.xml
+/*.jar
 *.txt
-
