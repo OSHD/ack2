@@ -71,12 +71,13 @@ public class Client extends Analyser {
 					}
 				}
 			}
-			ClassData cd = DynaFlowAnalyzer.getClass(gameEngine.getInternalName());
-			if(cd!=null){
-				for(MethodData md : cd.methods){
-					if(md.METHOD_NAME.equals("destroy")){
-						
-					}
+			//Inherited methods from GameEngine
+			tempMethod = gameEngine.get("renderGame");
+			if(tempMethod!=null){
+				RSMethod m = (RSMethod)tempMethod;
+				MethodData md = DynaFlowAnalyzer.getMethod(cn.name, m.name, m.desc);
+				if(md!=null){
+					Hook.CLIENT.put(new RSMethod(md.bytecodeMethod, "renderGame"));
 				}
 			}
 		}
@@ -99,6 +100,28 @@ public class Client extends Analyser {
 		for (final ClassNode node : getClassPath().getClasses()) {
 			for (final MethodNode mn : node.methods) {
 				MethodData md = DynaFlowAnalyzer.getMethod(node.name, mn.name, mn.desc);
+				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(Ljava/lang/String;Ljava/lang/Throwable;?)V").matches(mn.desc)) { 
+					Hook.CLIENT.put(new RSMethod(mn, "logError"));
+				}
+				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(L"+Hook.WORLD.getInternalName()+";?)V").matches(mn.desc)) { 
+					Hook.CLIENT.put(new RSMethod(mn, "setWorld"));
+					for(MethodData md2 : md.referencedFrom){
+						if(new Wildcard("(?)V").matches(md2.METHOD_DESC)){//processLogic
+							//Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "processLogic"));
+							List<AbstractInsnNode> pattern = Assembly.find(md2.bytecodeMethod,
+									Mask.BIPUSH.operand(45),
+									Mask.INVOKESTATIC.distance(2)
+									);
+							if (pattern != null) {
+								MethodInsnNode min = (MethodInsnNode)pattern.get(1);
+								if(new Wildcard("(I?)V").matches(min.desc)){
+									Hook.CLIENT.put(new RSMethod(min, "resetConnection"));
+								}
+							}
+							break;
+						}
+					}
+				}
 				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(J)V").matches(mn.desc)) { 
 					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
 							Mask.LCONST_1,
@@ -148,12 +171,24 @@ public class Client extends Analyser {
 				}
 				if (md.referencedFrom.size()>0 && new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIII?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "buildComponentEvents"));
+					for(MethodData md2 : md.methodReferences){
+						if(new Wildcard("(L"+Hook.PLAYER.getInternalName()+";III?)V").matches(md2.METHOD_DESC)){
+							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "buildPlayerMenu"));
+							break;
+						}
+					}
 				}
 				if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + "IIIIIIII?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "renderComponent"));
 				}
 				if (new Wildcard("(III?)" + Hook.HUD.getInternalDesc()).matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "addHUD"));
+					for(MethodData md2 : md.methodReferences){
+						if(new Wildcard("(I?)Z").matches(md2.METHOD_DESC)){
+							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "loadWindow"));
+							break;
+						}
+					}
 				}
 				if (new Wildcard("(" + Hook.HUD.getInternalDesc() + "Z?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "removeHUD"));
@@ -182,7 +217,8 @@ public class Client extends Analyser {
 						@Override
 						public void visitMethod(MethodMemberNode mmn) {
 							if (mmn.opcode() == Opcodes.INVOKESTATIC) {
-								Hook.CLIENT.put(new RSMethod(mmn, "addMessage"));
+								if (new Wildcard("(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;?)V").matches(mmn.desc()))
+									Hook.CLIENT.put(new RSMethod(mmn, "addMessage"));
 							}
 						}
 					});
@@ -199,6 +235,18 @@ public class Client extends Analyser {
 									if (Hook.CLIENT.get("layoutComponent") == null &&
 											!Hook.CLIENT.get("repaintWidget").name.equals(mmn.name())) {
 										Hook.CLIENT.put(new RSMethod(mmn, "layoutComponent"));
+										MethodData layoutComponent = DynaFlowAnalyzer.getMethod(mmn.owner(), mmn.name(), mmn.desc());
+										if(layoutComponent!=null){
+											for(MethodData md2 : layoutComponent.methodReferences){
+												if(new Wildcard("(I?)"+Hook.WIDGET.getInternalDesc()+"").matches(md2.METHOD_DESC)){
+													Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "getWidgetChild"));
+												}else if(new Wildcard("("+Hook.WIDGET.getInternalDesc()+"IIZ?)V").matches(md2.METHOD_DESC)){
+													Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "layoutDimensions"));
+												}else if(new Wildcard("("+Hook.WIDGET.getInternalDesc()+"II?)V").matches(md2.METHOD_DESC)){
+													Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "layoutPositions"));
+												}
+											}
+										}
 									}
 								}
 							}
@@ -273,14 +321,6 @@ public class Client extends Analyser {
 			}
 			for (FieldNode fn : node.fields) {
 				visitFields(fn);
-			}
-		}
-		for (ClassNode node : getClassPath().getClasses()) {
-			for (MethodNode mn : node.methods) {
-				if (Modifier.isStatic(mn.access) && mn.desc.startsWith("(L" + Hook.WORLD.getInternalName() + ";")
-						&& mn.desc.endsWith("V")) {
-					Hook.CLIENT.put(new RSMethod(mn, "setWorld"));
-				}
 			}
 		}
 		// all the hacky ones here

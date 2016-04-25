@@ -44,6 +44,13 @@ public class GraphicsStub extends Analyser {
                 }
             }
         }
+        for(FieldNode fn : cn.fields){
+        	if(fn.isStatic())
+        		continue;
+        	if(fn.desc.equals("L"+Hook.ANIMATION_SEQUENCE.getInternalName()+";")){
+	            Hook.GRAPHICS_STUB.put(new RSField(fn, "animationSequence"));
+        	}
+        }
     }
 
     private FieldInsnNode load(final MethodNode mn, final int opcode, final int index, final Hook owner) {

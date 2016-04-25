@@ -3,6 +3,11 @@ package com.dank.analysis.impl.character.player.config;
 import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
+import com.dank.util.Wildcard;
+import com.marn.asm.FieldData;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.cfg.BasicBlock;
 import org.objectweb.asm.commons.cfg.query.MemberQuery;
@@ -20,66 +25,79 @@ import org.objectweb.asm.tree.MethodNode;
  */
 public class PlayerConfig extends Analyser {
 
-    @Override
-    public ClassSpec specify(ClassNode cn) {
-        return cn.fieldCount(int[].class) == 2 && cn.fieldCount(long.class) == 2 && cn.ownerless()
-                && cn.fieldCount(boolean.class) == 1 && cn.fieldCount() == 6
-                ? new ClassSpec(Hook.PLAYER_CONFIG, cn) : null;
-    }
-//103
-//    ✓ colorsToFind..................fz.u
-//    ✕ colorsToFind1.................ft.e
-//    ✓ colorsToReplace...............fz.a
-//    ✕ colorsToReplace1..............fl.b
-// 102
-//    ✓ colorsToFind..................bh.m [S
-//    ✓ colorsToFind1.................ap.u [S
-//    ✓ colorsToReplace...............fl.p [[S
-//    ✓ colorsToReplace1..............r.c  [[S
+	@Override
+	public ClassSpec specify(ClassNode cn) {
+		return cn.fieldCount(int[].class) == 2 && cn.fieldCount(long.class) == 2 && cn.ownerless()
+				&& cn.fieldCount(boolean.class) == 1 && cn.fieldCount() == 6
+				? new ClassSpec(Hook.PLAYER_CONFIG, cn) : null;
+	}
+	//103
+	//    ✓ colorsToFind..................fz.u
+	//    ✕ colorsToFind1.................ft.e
+	//    ✓ colorsToReplace...............fz.a
+	//    ✕ colorsToReplace1..............fl.b
+	// 102
+	//    ✓ colorsToFind..................bh.m [S
+	//    ✓ colorsToFind1.................ap.u [S
+	//    ✓ colorsToReplace...............fl.p [[S
+	//    ✓ colorsToReplace1..............r.c  [[S
 
-    @Override
-    public void evaluate(ClassNode cn) {
-        for (final MethodNode mn : cn.methods) {
-//            if (mn.desc.endsWith("()V")) {
-//                for (final BasicBlock block : mn.graph()) {
-//                    if (block.count(new MemberQuery(Opcodes.PUTSTATIC, "[S")) == 2 && block.count(new MemberQuery(Opcodes.PUTSTATIC, "[[S")) == 2 &&
-//                            block.count(new MemberQuery(Opcodes.GETSTATIC, "[S")) == 2 && block.count(new MemberQuery(Opcodes.GETSTATIC, "[[S")) == 2) {
-//                            System.out.println(cn.name + "." + mn.name);
-//                            FieldInsnNode fin = (FieldInsnNode) block.get(new MemberQuery(Opcodes.PUTSTATIC, "[S"));
-//                            Hook.CLIENT.put(new RSField(fin, "colorsToFind"));
-//
-//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 1);
-//                            Hook.CLIENT.put(new RSField(fin, "colorsToReplace"));
-//
-//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 2);
-//                            Hook.CLIENT.put(new RSField(fin, "colorsToFind1"));
-//
-//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 3);
-//                            Hook.CLIENT.put(new RSField(fin, "colorsToReplace1"));
-//
-//                    }
-//                }
-//            }
-            if (!mn.isStatic() && !mn.desc.endsWith("V")) {
-                for (final BasicBlock block : mn.graph()) {
-                    if (block.count(Opcodes.ILOAD) == 3 && block.count(FieldInsnNode.class) == 3) {
-                        final FieldInsnNode fin = (FieldInsnNode) block.get(new MemberQuery(Opcodes.GETFIELD, "[I"));
-                        if (fin == null) continue;
-                        Hook.PLAYER_CONFIG.put(new RSField(fin, "appearanceColors"));
-                    }
-                }
-            }
-        }
-        for (final FieldNode fn : cn.fields) {
-            if (!fn.isStatic()) {
-                if (fn.desc.equals("Z")) {
-                    Hook.PLAYER_CONFIG.put(new RSField(fn, "female"));
-                } else if (fn.desc.equals("I")) {
-                    Hook.PLAYER_CONFIG.put(new RSField(fn, "npcId"));
-                } else if (fn.desc.equals("[I") && !fn.name.equals(Hook.PLAYER_CONFIG.get("appearanceColors").name)) {
-                    Hook.PLAYER_CONFIG.put(new RSField(fn, "appearance"));
-                }
-            }
-        }
-    }
+	@Override
+	public void evaluate(ClassNode cn) {
+		for (final MethodNode mn : cn.methods) {
+			//            if (mn.desc.endsWith("()V")) {
+			//                for (final BasicBlock block : mn.graph()) {
+			//                    if (block.count(new MemberQuery(Opcodes.PUTSTATIC, "[S")) == 2 && block.count(new MemberQuery(Opcodes.PUTSTATIC, "[[S")) == 2 &&
+			//                            block.count(new MemberQuery(Opcodes.GETSTATIC, "[S")) == 2 && block.count(new MemberQuery(Opcodes.GETSTATIC, "[[S")) == 2) {
+			//                            System.out.println(cn.name + "." + mn.name);
+			//                            FieldInsnNode fin = (FieldInsnNode) block.get(new MemberQuery(Opcodes.PUTSTATIC, "[S"));
+			//                            Hook.CLIENT.put(new RSField(fin, "colorsToFind"));
+			//
+			//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 1);
+			//                            Hook.CLIENT.put(new RSField(fin, "colorsToReplace"));
+			//
+			//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 2);
+			//                            Hook.CLIENT.put(new RSField(fin, "colorsToFind1"));
+			//
+			//                            fin = (FieldInsnNode) block.get(Opcodes.PUTSTATIC, 3);
+			//                            Hook.CLIENT.put(new RSField(fin, "colorsToReplace1"));
+			//
+			//                    }
+			//                }
+			//            }
+			if (!mn.isStatic() && !mn.desc.endsWith("V")) {
+				for (final BasicBlock block : mn.graph()) {
+					if (block.count(Opcodes.ILOAD) == 3 && block.count(FieldInsnNode.class) == 3) {
+						final FieldInsnNode fin = (FieldInsnNode) block.get(new MemberQuery(Opcodes.GETFIELD, "[I"));
+						if (fin == null) continue;
+						Hook.PLAYER_CONFIG.put(new RSField(fin, "appearanceColors"));
+					}
+				}
+			}
+		}
+		for (final FieldNode fn : cn.fields) {
+			if (!fn.isStatic()) {
+				FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
+				if (fn.desc.equals("Z")) {
+					Hook.PLAYER_CONFIG.put(new RSField(fn, "female"));
+				} else if (fn.desc.equals("I")) {
+					Hook.PLAYER_CONFIG.put(new RSField(fn, "npcId"));
+				} else if (fn.desc.equals("[I") && !fn.name.equals(Hook.PLAYER_CONFIG.get("appearanceColors").name)) {
+					Hook.PLAYER_CONFIG.put(new RSField(fn, "appearance"));
+				} else if(fn.desc.equals("J")){
+					boolean isAnimated=false;
+					for(MethodData md : fd.referencedFrom){
+						if(new Wildcard("(?)V").matches(md.METHOD_DESC)){
+							isAnimated=true;
+							break;
+						}
+					}
+					if(isAnimated)
+						Hook.PLAYER_CONFIG.put(new RSField(fn, "animatedModelId"));
+					else
+						Hook.PLAYER_CONFIG.put(new RSField(fn, "baseModelId"));
+				}
+			}
+		}
+	}
 }

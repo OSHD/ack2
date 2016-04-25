@@ -41,38 +41,10 @@ public class WorldLoadVisitor extends TreeVisitor {
     @Override
     public void visitField(FieldMemberNode fmn) {
         if (fmn.isStatic() && fmn.desc().startsWith("[L") && fmn.next().child(0).child(0).opcode() != SIPUSH) {
-            Hook.WORLD.setInternalName(fmn.type());
             Hook.CLIENT.put(new RSField(fmn, "worlds"));
             Hook.CLIENT.put(new RSMethod(fmn.method(), "loadWorlds"));
         }
         if (Hook.WORLD.getInternalName() != null && fmn.owner().equals(Hook.WORLD.getInternalName())) {
-            switch (index.getAndIncrement()) {
-                case 0:
-                    Hook.WORLD.put(new RSField(fmn, "world"));
-                    break;
-                case 1:
-                    Hook.WORLD.put(new RSField(fmn, "mask"));
-                    break;
-                case 2:
-                    Hook.WORLD.put(new RSField(fmn, "domain"));
-                    break;
-                case 3:
-                    Hook.WORLD.put(new RSField(fmn, "activity"));
-                    break;
-                case 4:
-                    Hook.WORLD.put(new RSField(fmn, "location"));
-                    break;
-                case 5:
-                    Hook.WORLD.put(new RSField(fmn, "population"));
-                    break;
-                case 6:
-                    Hook.WORLD.put(new RSField(fmn, "index"));
-                    break;
-                default: {
-                    break;
-                }
-            }
-
             MethodNode method = DankEngine.mGraph.getCaller(fmn.tree().method());
             if (method != null) {
             	for (BasicBlock block0 : method.graph()) {

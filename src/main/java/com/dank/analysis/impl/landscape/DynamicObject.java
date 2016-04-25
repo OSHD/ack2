@@ -4,6 +4,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
@@ -36,6 +37,13 @@ public class DynamicObject extends Analyser {
     		MethodData sub = DynaFlowAnalyzer.getMethod(cn.name, rotatedModel.name, rotatedModel.desc);
     		if(sub!=null)
     			Hook.DYNAMIC_OBJECT.put(new RSMethod(sub.bytecodeMethod, "getRotatedModel"));
+    	}
+    	for(FieldNode fn : cn.fields){
+    		if(fn.isStatic())
+    			continue;
+        	if(fn.desc.equals("L"+Hook.ANIMATION_SEQUENCE.getInternalName()+";")){
+	            Hook.DYNAMIC_OBJECT.put(new RSField(fn, "animationSequence"));
+        	}
     	}
         final MethodNode mn = cn.getMethodByName("<init>");
         if (mn != null) {

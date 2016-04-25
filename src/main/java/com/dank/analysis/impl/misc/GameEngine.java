@@ -28,8 +28,20 @@ public class GameEngine extends Analyser {
     		if(mn.isStatic())
     			continue;
     		MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
-    		if(md.referencedFrom.size()>0 && new Wildcard("(?)Ljava/awt/Container;").matches(mn.desc)){
-				Hook.GAME_ENGINE.put(new RSMethod(mn, "getGameContainer"));
+    		if(mn.access==1028 && md.referencedFrom.size()>0 && new Wildcard("(?)V").matches(mn.desc)){
+    			for(MethodData md2 : md.referencedFrom){
+    				if(new Wildcard("(?)V").matches(md2.METHOD_DESC)){//render
+    					for(MethodData md3 : md2.methodReferences){
+    	    				if(new Wildcard("(?)Ljava/awt/Container;").matches(md3.METHOD_DESC)){//getGameContainer
+    	        				Hook.GAME_ENGINE.put(new RSMethod(md.bytecodeMethod, "renderGame"));
+    	        				Hook.GAME_ENGINE.put(new RSMethod(md2.bytecodeMethod, "render"));
+    	        				Hook.GAME_ENGINE.put(new RSMethod(md3.bytecodeMethod, "getGameContainer"));
+    	    					break;
+    	    				}
+    					}
+    					break;
+    				}
+    			}
     		}
     		if(new Wildcard("(?)Z").matches(mn.desc)){
 				Hook.GAME_ENGINE.put(new RSMethod(mn, "isHostValid"));

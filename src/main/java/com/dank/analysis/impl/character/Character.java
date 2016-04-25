@@ -174,7 +174,7 @@ public class Character extends Analyser {
 											if(fd2.CLASS_NAME.equals(fd.CLASS_NAME) && fd2.FIELD_NAME.equals(fd.FIELD_NAME))
 												count++;
 										}
-										System.out.println(count+"::"+fd.CLASS_NAME+"."+fd.FIELD_NAME);
+										//System.out.println(count+"::"+fd.CLASS_NAME+"."+fd.FIELD_NAME);
 										//if(count==3)
 											//Hook.CHARACTER.put(new RSField(fd.bytecodeField, "interAnimId"));
 										if(count>5 && count<10)

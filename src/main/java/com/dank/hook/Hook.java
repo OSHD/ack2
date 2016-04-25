@@ -3,6 +3,7 @@ package com.dank.hook;
 
 import com.dank.DankEngine;
 import com.dank.util.LockableHashMap;
+import com.dank.util.Wildcard;
 import com.dank.util.deob.OpPredicateRemover;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.Remapper;
@@ -16,8 +17,6 @@ import java.util.*;
  * Date: 07-02-2015
  * Created by Dogerina.
  */
-
-//
 public enum Hook {
 	CLIENT_ERROR("ClientError", null, "message::Ljava/lang/String;", "source::Ljava/lang/Throwable;"),
 	RUNNABLE_TASK("RunnableTask", null, "active::Z", "thread::Ljava/lang/Thread;", "eventQueue::Ljava/awt/EventQueue;"),
@@ -25,32 +24,40 @@ public enum Hook {
     DEQUE("Deque", null, "head::LNode;", "tail::LNode;"),
     DUAL_NODE("DualNode", NODE, "dualNext::LDualNode;", "dualPrevious::LDualNode;", "unlinkDual::()V"),
     QUEUE("Queue", null, "head::LDualNode;", "remove::()LDualNode;", "getFirst::()LDualNode;", "reset::()V", "putFirst::(LDualNode;)V", "putLast::(LDualNode;)V"),
-    BITMAP("Bitmap", null, "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;", "drawGraphics::()V"),
-    ENTITY("Entity", DUAL_NODE, "modelHeight::I", "renderAtPoint::(IIIIIIIII)V", "getAnimatedModel::()LModel;"),
+    BITMAP("Bitmap", null, "drawGraphics::(?)V", "width::I", "height::I", "pixels::[I", "image::Ljava/awt/Image;"),
+    ENTITY("Entity", DUAL_NODE, "getAnimatedModel::(?)LModel;", "renderAtPoint::(IIIIIIIII)V", "modelHeight::I"),
     HUD("HUD", NODE, "owner::I", "type::I", "isMainHud::Z"),
     HASHTABLE("HashTable", null, "buckets::[LNode;", "index::I", "size::I", "head::LNode;", "tail::LNode;", "put::(LNode;J)V", "get::(J)LNode;", "next::()LNode;", "resetIndex::()LNode;", "clear::()V"),
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
+    LOOKUP_TABLE("LookupTable", null, "lookupIdentifier::(?)I", "identityTable::[I"),
+    REFERENCE_TABLE("ReferenceTable", null, "prepareChildBuffers::(I[I)Z", "unpackTable::([B)V", "filesCompleted::()Z",
+    		"clearChildBuffer::(I)V", "clearChildBuffers::()V",
+    		"getFile::(I)[B", "getFile2::(II)[B", "getFile3::(II[I)[B",
+    		"childIdentifiers::[[I", "entryCrcs::[I", "entryIndices::[I", "entryChildCounts::[I", "entryIdentifiers::[I",
+    		"childIndexCounts::[I", "entryIndexCounts::[I", "childBuffers::[[Ljava/lang/Object;", "entryBuffers::[Ljava/lang/Object;",
+    		"childIdentityTables::[LLookupTable;", "entryIdentityTable::LLookupTable;", "childIndices::[[I", "discardUnpacked::I",
+    		"discardEntryBuffers::Z", "encrypted::Z"),
     MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
-    FILE_ON_DISK("FileOnDisk", null, "read::([BII)I", "write::([BII)V", "close::()V", "getLength::()J", "seek::(J)V", "length::J", "position::J", "file::Ljava/io/RandomAccessFile;"),
-    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;)V"),
+    FILE_ON_DISK("FileOnDisk", null, "read::([BII)I", "write::([BII)V", "close::()V", "getLength::(?)J", "seek::(J)V", "length::J", "position::J", "file::Ljava/io/RandomAccessFile;"),
+    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;?)V"),
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
     
-    VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;)V", "unpackConfig::(LBuffer;)V"),
-    SCRIPT_EVENT("ScriptEvent", NODE, "args::[Ljava/lang/Object;", "opbase::Ljava/lang/String;", "hasRan::Z"),
-    EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::()I"),
+    VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;I?)V", "unpackConfig::(LBuffer;)V"),
+    EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::(?)I"),
     MESSAGES("Message", DUAL_NODE, "message::Ljava/lang/String;", "sender::Ljava/lang/String;", "channel::Ljava/lang/String;",
-            "type::I", "cycle::I", "index::I", "setMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"),
-    MESSAGE_CHANNEL("MessageChannel", null, "messages::[LMessage;", "index::I", "getMessage::(I)LMessage;", "createMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)LMessage;", "getIndex::()I"),
+            "type::I", "cycle::I", "index::I", "setMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;?)V"),
+    MESSAGE_CHANNEL("MessageChannel", null, "messages::[LMessage;", "index::I", "getMessage::(I)LMessage;", "createMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)LMessage;", "getIndex::(?)I"),
     KEY_FOCUS_LISTENER("KeyFocusListener", null),
     MOUSE_LISTENER("MouseListener", null),
-    ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
-    MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::()I", "addMouseWheelListener::(Ljava/awt/Component;)V", "removeMouseWheelListener::(Ljava/awt/Component;)V"),
+    ABSTRACT_MOUSE_WHEEL_LISTENER("AbstractMouseWheelListener", null, "popRotation::(?)I", "addMouseWheelListener::(Ljava/awt/Component;?)V", "removeMouseWheelListener::(Ljava/awt/Component;?)V"),
+    MOUSE_WHEEL_LISTENER("MouseWheelListener", null, "rotation::I", "popRotation::(?)I", "addMouseWheelListener::(Ljava/awt/Component;?)V", "removeMouseWheelListener::(Ljava/awt/Component;?)V"),
 
     
     
     GAME_STRINGS("GameStrings", null),
     GAME_CANVAS("GameCanvas", null, "component::Ljava/awt/Component;"),
     PARAMETERS("Parameters", null, "key::Ljava/lang/String;"),
+    ANIMATION_SEQUENCE("AnimationSequence", null),
     STILL_MODEL("StillModel", ENTITY),
     MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
     SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
@@ -67,15 +74,18 @@ public enum Hook {
 
     ITEM_TABLE("ItemTable", NODE, "ids::[I", "quantities::[I"),
 
-    GRAPHICS_STUB("GraphicsStub", ENTITY, "finished::Z", "id::I", "floorLevel::I", "regionX::I", "regionY::I", "height::I", "startCycle::I"),
+    GRAPHICS_STUB("GraphicsStub", ENTITY, "animationSequence::LAnimationSequence;",
+    		"finished::Z", "id::I", "floorLevel::I", "regionX::I", "regionY::I", "height::I", "startCycle::I"),
 
     DYNAMIC_OBJECT("DynamicObject", ENTITY, "getRotatedModel::()LModel;",
+    		"animationSequence::LAnimationSequence;",
     		"regionX::I", "regionY::I", "floorLevel::I", "id::I", "type::I", "orientation::I"),
 
-    PROJECTILE("Projectile", ENTITY, "id::I", "strictX::I", "strictY::I", "startHeight::I", "loopCycle::I",
-            "slope::I", "startDistance::I", "targetIndex::I", "endHeight::I"),
+    PROJECTILE("Projectile", ENTITY, "updatePosition::(IIII)V", "updateAnimation::(I)V", "getAnimatedModel::(?)LModel;",
+    		"id::I", "strictX::I", "strictY::I", "startHeight::I", "loopCycle::I", "animationSequence::LAnimationSequence;",
+            "slope::I", "startDistance::I", "targetIndex::I", "endHeight::I", "currStrictX::D", "currStrictY::D", "currZ::D"),
 
-    CHARACTER("Character", ENTITY, "resetPathQueue::()V", "updateHitData::(III)V", "isVisible::()Z",
+    CHARACTER("Character", ENTITY, "resetPathQueue::(?)V", "updateHitData::(III)V", "isVisible::(?)Z",
             "hitsplatCycles::[I", "hitsplatDamages::[I", "hitsplatTypes::[I",
     		"queueSize::I", "currentQueueIndex::I", "queueX::[I", "queueY::[I", "queueRun::[B",
     		"strictX::I", "strictY::I", 
@@ -108,7 +118,8 @@ public enum Hook {
             "groundActions::[Ljava/lang/String;", "id::I", "notedId::I", "unnotedId::I", "storeValue::I",
             "stackable::I", "colors::[S", "modifiedColors::[S"),
 
-    PLAYER_CONFIG("PlayerConfig", null, "appearance::[I", "appearanceColors::[I", "female::Z", "npcId::I"),
+    PLAYER_CONFIG("PlayerConfig", null, "appearance::[I", "appearanceColors::[I", "female::Z", "npcId::I",
+    		"baseModelId::J", "animatedModelId::J"),
 
 
     WORLD("World", null, "world::I", "index::I", "mask::I", "location::I", "domain::Ljava/lang/String;",
@@ -152,9 +163,6 @@ public enum Hook {
             "getTileDecorationStub::(III)LTileDecorationStub;", "getBoundaryStub::(III)LBoundaryStub;", "getBoundaryDecorationStub::(III)LBoundaryDecorationStub;", "getEntityMarker::(III)LEntityMarker;",
             "getTileDecorationStubUID::(III)I", "getBoundaryStubUID::(III)I", "getBoundaryDecorationStubUID::(III)I", "getEntityMarkerUID::(III)I"),
 
-    RUNESCRIPT("RuneScript", DUAL_NODE, "intArgCount::I", "stringArgCount::I", "intStackCount::I",
-            "stringStackCount::I", "opcodes::[[I", "intOperands::[I", "stringOperands::[Ljava/lang/String;"),
-
     WIDGET("Widget", null, "actions::[Ljava/lang/String;", "name::Ljava/lang/String;", "text::Ljava/lang/String;",
             "textColor::I", "alpha::I", "textureId::I", "spriteId::I", "selectedAction::Ljava/lang/String;",
             "config::I", "fontId::I", "textShadowed::Z", "borderThickness::I", "shadowColor::I",
@@ -181,12 +189,28 @@ public enum Hook {
 
     ),
 
+    SCRIPT_EVENT("ScriptEvent", NODE, "mouseX::I", "mouseY::I", "keyCode::I", "keyChar::I",
+    		"args::[Ljava/lang/Object;", "opbase::Ljava/lang/String;", "consumable::Z", "src::LWidget;", "target::LWidget;"),
+
+    RUNESCRIPT("RuneScript", DUAL_NODE, "intArgCount::I", "stringArgCount::I", "intStackCount::I",
+            "stringStackCount::I", "opcodes::[[I", "intOperands::[I", "stringOperands::[Ljava/lang/String;"),
+
     GAME_ENGINE("GameEngine", null, "getGameContainer::()Ljava/awt/Container;", "isHostValid::()Z", "displayError::(Ljava/lang/String;)V",
+    		"render::()V", "renderGame::(?)V",
     		"gameEngineDumpProcessed::Z"),
     
-    CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII?)V", "updateEntities::(IIII?)V", 
+    CLIENT("Client", GAME_ENGINE, "updateEntity::(LCharacter;IIIII)V", "updateEntities::(IIII)V", 
     		"newClientError::(Ljava/lang/Throwable;Ljava/lang/String;)LClientError;",
-    		"threadSleep::(J)V", "inlinedThreadSleep::(J)V", "bootClient::()V", "buildComponentEvents::([LWidget;IIIIII)V",
+    		"threadSleep::(J)V", "inlinedThreadSleep::(J)V", "bootClient::()V", "buildComponentEvents::([LWidget;IIIIII?)V",
+    		"getWidgetChild::(I)LWidget;", "layoutDimensions::(LWidget;IIZ)V", "layoutPositions::(LWidget;II)V",
+    		"logError::(Ljava/lang/String;Ljava/lang/Throwable;)V", "addMessage::(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+    		"addMenuRow::(Ljava/lang/String;Ljava/lang/String;III?)V", "getItemSprite::(IIIIIZ)LSprite;", "repaintWidget::(LWidget;)V", 
+    		"resetConnection::(I)V", "addHUD::(II?)LHUD;", "removeHUD::(LHUD;Z)V", "runScript::(LScriptEvent;?)V", 
+    		"setWorld::(LWorld;)V", "getWidgetConfig::(LWidget;)I", "layoutContainer::([LWidget;LWidget;Z)V", 
+    		"layoutContainer2::([LWidget;IIIZ)V", "layoutWindow::(IIIZ)V", "loadImage::(LImageProduct;II)LSprite;", 
+    		"processFrames::(?)V", "processLogic::(?)V", "renderComponent::([LWidget;IIIIIIII)V", "runScript::(LScriptEvent;?)V", 
+    		"layoutComponent::(LWidget;)V", "loadWindow::(I)Z", "renderGame::(?)V", "buildPlayerMenu::(LPlayer;III)V",
+    		
     		"shell::LGameEngine;", "focused::Z", "clearScreenRequest::Z", "gameFrame::Ljava/awt/Frame;",
     		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
@@ -208,24 +232,21 @@ public enum Hook {
             "itemTables::LHashTable;", "menuWidth::I", "menuHeight::I", "menuX::I", "menuY::I", "menuOpen::Z",
             "tileHeights::[[[I", "renderRules::[[[B", "screenCenterX::I", "screenCenterY::I", "selectedItemIndex::I",
             "xViewportBuffer::[I", "yViewportBuffer::[I", "worldSelectorDisplayed::Z",
-            "localExchangeOffers::[LExchangeOffer;", "packet::LPacket;", "menuItemCount::I", "focused::Z",
+            "localExchangeOffers::[LExchangeOffer;", "packet::LPacketBuffer;", "menuItemCount::I", "focused::Z",
             "screenZoom::I", "screenWidth::I", "screenHeight::I", "getObjectDefinition::(I)LObjectDefinition;",
-            "getItemDefinition::(I)LItemDefinition;", "getNpcDefinition::(I)LNpcDefinition;", "addMenuRow",
-            "setWorld::(I)V", "loadWorlds::()V", "getRuneScript::(I)LRuneScript;", "getVarpbit::(I)I",
-            "getWidgetConfig::(I)I", "getItemSprite", "bootState::I", "cacheDirectory::Ljava/io/File;",
-            "cacheLocation::Ljava/io/File;", "processFrames::()V", "processLogin::()V", "processLogic::()V",
+            "getItemDefinition::(I)LItemDefinition;", "getNpcDefinition::(I)LNpcDefinition;", 
+            "loadWorlds::()V", "getRuneScript::(I)LRuneScript;", "getVarpbit::(I)I",
+            "bootState::I", "cacheDirectory::Ljava/io/File;",
+            "cacheLocation::Ljava/io/File;", "processLogin::()V", 
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",
             "getKeyFocusListener::LKeyFocusListener;", "canvas::Ljava/awt/Canvas;", "widgetsHeight::[I",
-            "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "runScript", "messageChannels",
-            "currentLoginName::Ljava/lang/String;", "runScript", "hideRoofs::I", 
-            "renderComponent", "addHUD", "removeHUD", "repaintWidget", "layoutContainer", "addMessage",
-            "layoutContainer2", "layoutComponent", "layoutWindow", "drawMenu", "chunkIds::[I", "loadedWindows",
-            "loadImage", "fontCache"),
+            "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "messageChannels::Ljava/util/Map;",
+            "currentLoginName::Ljava/lang/String;", "hideRoofs::I", 
+            "drawMenu", "chunkIds::[I", "loadedWindows::[Z",
+            "fontCache"),
     ABSTRACT_FONT("AbstractFont", GRAPHICS),
 
-    FONT_IMPL("FontImpl", ABSTRACT_FONT),
-
-    IMAGE_PRODUCT("ImageProduct", null);
+    FONT_IMPL("FontImpl", ABSTRACT_FONT);
 
 
     public final Map<String, RSMember> hooks;
@@ -322,7 +343,7 @@ public enum Hook {
                 boolean has_pred = OpPredicateRemover.hasPred(mem.owner, mem.name, mem.desc);
                 if (has_pred) desc0 = popPred(desc0);
             }
-            if (!desc.equals(desc0)) {
+            if (!new Wildcard(desc).matches(desc0)) {
                 String h = mem.isField() ? "Field" : "Method";
                 warn(h + " '" + mem.mnemonic + "' has a unexpected descriptor " + "(defined=" + desc + ",resolved=" + desc0 + ")");
             }

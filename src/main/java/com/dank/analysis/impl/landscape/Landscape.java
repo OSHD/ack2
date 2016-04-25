@@ -189,14 +189,6 @@ public class Landscape extends Analyser implements Opcodes {
 			}
 			if(md.referencedFrom.size()>0 && new Wildcard("(IIIIL"+Hook.ENTITY.getInternalName()+";IL"+Hook.ENTITY.getInternalName()+";L"+Hook.ENTITY.getInternalName()+";)V").matches(md.METHOD_DESC)){
 				Hook.LANDSCAPE.put(new RSMethod(mn, "addItemPile"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ILOAD, 2, Hook.ITEM_PILE), "strictX"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ILOAD, 3, Hook.ITEM_PILE), "strictY"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ILOAD, 4, Hook.ITEM_PILE), "counterHeight"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ILOAD, 6, Hook.ITEM_PILE), "uid"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ILOAD, 10, Hook.ITEM_PILE), "height"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ALOAD, 5, Hook.ITEM_PILE), "bottom"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ALOAD, 7, Hook.ITEM_PILE), "middle"));
-				Hook.ITEM_PILE.put(new RSField(load(mn, ALOAD, 8, Hook.ITEM_PILE), "top"));
 			}
 			if(md.referencedFrom.size()>0 && new Wildcard("(IIIIIIIIL"+Hook.ENTITY.getInternalName()+";IZII)Z").matches(md.METHOD_DESC)){
 				Hook.LANDSCAPE.put(new RSMethod(mn, "addEntityMarker"));
