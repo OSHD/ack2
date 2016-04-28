@@ -31,14 +31,24 @@ public enum Hook {
     ISAAC_CIPHER("IsaacCipher", null, "count::I", "counter::I", "lastResult::I", "accumulator::I", "results::[I", "memory::[I", "next::()I", "initializeKeySet::()V", "decrypt::()V"),
     LOOKUP_TABLE("LookupTable", null, "lookupIdentifier::(?)I", "identityTable::[I"),
     REFERENCE_TABLE("ReferenceTable", null, "prepareChildBuffers::(I[I)Z", "unpackTable::([B)V", "filesCompleted::()Z",
-    		"clearChildBuffer::(I)V", "clearChildBuffers::()V",
-    		"getFile::(I)[B", "getFile2::(II)[B", "getFile3::(II[I)[B",
+    		"clearChildBuffer::(I)V", "clearChildBuffers::()V", "getChildBufferLengthAtIndex::(I?)I", "getChildBufferLength::(?)I",
+    		"getFile::(I)[B", "getFile2::(II)[B", "getFile3::(II[I)[B", "getFile4::(II?)[B", "getFile5::(I)[B",
+    		"hasFileLoaded::(Ljava/lang/String;Ljava/lang/String;?)Z", "getChildIndices::(I?)[I",
+    		"getFileBytes::(Ljava/lang/String;Ljava/lang/String;?)[B", "getEntryIdentifier::(Ljava/lang/String;?)I", "getChildIdentifier::(ILjava/lang/String;?)I",
+    		"hasFileBuffer::(I)Z", "hasEntryBuffer::(II)Z", "loadBuffer::(I?)V",
     		"childIdentifiers::[[I", "entryCrcs::[I", "entryIndices::[I", "entryChildCounts::[I", "entryIdentifiers::[I",
-    		"childIndexCounts::[I", "entryIndexCounts::[I", "childBuffers::[[Ljava/lang/Object;", "entryBuffers::[Ljava/lang/Object;",
+    		"childIndexCounts::[I", "entryIndexCount::I", "childBuffers::[[Ljava/lang/Object;", "entryBuffers::[Ljava/lang/Object;",
     		"childIdentityTables::[LLookupTable;", "entryIdentityTable::LLookupTable;", "childIndices::[[I", "discardUnpacked::I",
     		"discardEntryBuffers::Z", "encrypted::Z"),
-    MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
     FILE_ON_DISK("FileOnDisk", null, "read::([BII)I", "write::([BII)V", "close::()V", "getLength::(?)J", "seek::(J)V", "length::J", "position::J", "file::Ljava/io/RandomAccessFile;"),
+    SEEKABLE_FILE("SeekableFile", null, "getFileLength::(?)J", "setPosition::(J)V", "readBytes::([B?)V", "readSection::([BII)V", "writeBytes::([BII)V",
+    		"close::(?)V", "finalizeWrite::()V", "finalizeRead::()V",
+    		"fileLength::J", "position::J", "file::LFileOnDisk;"),
+    CACHE_FILE("CacheFile", null, "writeFile::(I[BI)Z", "writeFileParts::(I[BIZ)Z", "readFile::(I)[B", 
+    		"indexFile::LSeekableFile;", "dataFile::LSeekableFile;", "length::I", "cacheId::I"),
+    REMOTE_FILE_TABLE("RemoteFileTable", REFERENCE_TABLE, "loadBuffer::(I?)V", "processChildRequests::()V",
+    		"index::I", "cacheFile::LCacheFile;", "referenceFile::LCacheFile;", "requestingChildren::Z"),
+    MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
     BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;?)V"),
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
     
@@ -194,6 +204,9 @@ public enum Hook {
 
     RUNESCRIPT("RuneScript", DUAL_NODE, "intArgCount::I", "stringArgCount::I", "intStackCount::I",
             "stringStackCount::I", "opcodes::[[I", "intOperands::[I", "stringOperands::[Ljava/lang/String;"),
+    
+    ABSTRACT_FONT("AbstractFont", GRAPHICS),
+    FONT_IMPL("FontImpl", ABSTRACT_FONT),
 
     GAME_ENGINE("GameEngine", null, "getGameContainer::()Ljava/awt/Container;", "isHostValid::()Z", "displayError::(Ljava/lang/String;)V",
     		"render::()V", "renderGame::(?)V",
@@ -207,10 +220,12 @@ public enum Hook {
     		"addMenuRow::(Ljava/lang/String;Ljava/lang/String;III?)V", "getItemSprite::(IIIIIZ)LSprite;", "repaintWidget::(LWidget;)V", 
     		"resetConnection::(I)V", "addHUD::(II?)LHUD;", "removeHUD::(LHUD;Z)V", "runScript::(LScriptEvent;?)V", 
     		"setWorld::(LWorld;)V", "getWidgetConfig::(LWidget;)I", "layoutContainer::([LWidget;LWidget;Z)V", 
-    		"layoutContainer2::([LWidget;IIIZ)V", "layoutWindow::(IIIZ)V", "loadImage::(LImageProduct;II)LSprite;", 
+    		"layoutContainer2::([LWidget;IIIZ)V", "layoutWindow::(IIIZ)V", "loadImage::(LReferenceTable;II)LSprite;", 
     		"processFrames::(?)V", "processLogic::(?)V", "renderComponent::([LWidget;IIIIIIII)V", "runScript::(LScriptEvent;?)V", 
     		"layoutComponent::(LWidget;)V", "loadWindow::(I)Z", "renderGame::(?)V", "buildPlayerMenu::(LPlayer;III)V",
-    		
+    		"messageCacheLength::I", "bootStatus::Ljava/lang/String;", "XTEAKeys::[[I", "RSVMIntStack::[I",
+    		"RSVMStringStack::[Ljava/lang/String;", "repaintWidgets::[Z", "b12_full::LFontImpl;",
+    		"mouseX::I", "mouseY::I",
     		"shell::LGameEngine;", "focused::Z", "clearScreenRequest::Z", "gameFrame::Ljava/awt/Frame;",
     		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
@@ -243,10 +258,7 @@ public enum Hook {
             "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "messageChannels::Ljava/util/Map;",
             "currentLoginName::Ljava/lang/String;", "hideRoofs::I", 
             "drawMenu", "chunkIds::[I", "loadedWindows::[Z",
-            "fontCache"),
-    ABSTRACT_FONT("AbstractFont", GRAPHICS),
-
-    FONT_IMPL("FontImpl", ABSTRACT_FONT);
+            "fontCache::LMemCache;");
 
 
     public final Map<String, RSMember> hooks;

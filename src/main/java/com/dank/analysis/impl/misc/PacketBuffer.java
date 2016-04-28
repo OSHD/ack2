@@ -72,8 +72,8 @@ public class PacketBuffer extends Analyser {
                             MethodNode login = DankEngine.mGraph.getCaller(mn, 5);
                             if (login != null) Hook.CLIENT.put(new RSMethod(login, "processLogin"));
 
-                            MethodNode logic = DankEngine.mGraph.getCaller(login);
-                            if (logic != null) Hook.CLIENT.put(new RSMethod(logic, "processLogic"));
+                            //MethodNode logic = DankEngine.mGraph.getCaller(login);
+                           // if (logic != null) Hook.CLIENT.put(new RSMethod(logic, "processLogic"));
                         }
                     }
                 }

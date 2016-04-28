@@ -4,7 +4,6 @@ import com.dank.DankEngine;
 import com.dank.analysis.Analyser;
 import com.dank.analysis.impl.character.visitor.HitpointsVisitor;
 import com.dank.analysis.impl.character.visitor.OrientationVisitor;
-import com.dank.analysis.impl.client.interpret.LoadState;
 import com.dank.analysis.impl.client.visitor.*;
 import com.dank.analysis.impl.widget.Widget;
 import com.dank.asm.Mask;
@@ -39,6 +38,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -56,6 +56,7 @@ public class Client extends Analyser {
 	}
 	@Override
 	public void evaluate(ClassNode cn) {
+		//Inherited methods from GameEngine
 		Hook gameEngine = Hook.GAME_ENGINE;
 		if(gameEngine!=null){
 			RSMember tempMethod = gameEngine.get("getGameContainer");
@@ -71,13 +72,56 @@ public class Client extends Analyser {
 					}
 				}
 			}
-			//Inherited methods from GameEngine
 			tempMethod = gameEngine.get("renderGame");
 			if(tempMethod!=null){
 				RSMethod m = (RSMethod)tempMethod;
 				MethodData md = DynaFlowAnalyzer.getMethod(cn.name, m.name, m.desc);
 				if(md!=null){
 					Hook.CLIENT.put(new RSMethod(md.bytecodeMethod, "renderGame"));
+					for(FieldData fd : md.fieldReferences){
+						if(fd.bytecodeField.desc.equals("[Z")){
+							boolean isRepaintWidgets=false;
+							for(MethodData md2 : fd.referencedFrom){
+								if(new Wildcard("(L"+Hook.WIDGET.getInternalName()+";?)V").matches(md2.METHOD_DESC)){
+									isRepaintWidgets=true;
+									break;
+								}
+							}
+							if(isRepaintWidgets){
+								Hook.CLIENT.put(new RSField(fd.bytecodeField, "repaintWidgets"));
+							}
+						}
+					}
+				}
+			}
+		}
+		//Find engineCycle; easily found in Message.<init>
+		ClassData messageData = DynaFlowAnalyzer.getClass(Hook.MESSAGES.getInternalName());
+		if(messageData!=null){
+			for(MethodData md : messageData.methods){
+				if(md.bytecodeMethod.isStatic())
+					continue;
+				if(md.METHOD_NAME.equals("<init>")){
+					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+							Mask.GETSTATIC.describe("I"),
+							Mask.IMUL.distance(2),
+							Mask.PUTFIELD.describe("I")
+							);
+					if (pattern != null) {
+						FieldInsnNode fin = (FieldInsnNode) pattern.get(0);
+						Hook.CLIENT.put(new RSField(fin, "engineCycle"));
+					}
+					pattern = Assembly.find(md.bytecodeMethod,
+							Mask.GETSTATIC.describe("I"),
+							Mask.IADD.distance(2),
+							Mask.DUP,
+							Mask.PUTSTATIC.describe("I")
+							);
+					if (pattern != null) {
+						FieldInsnNode fin = (FieldInsnNode) pattern.get(0);
+						Hook.CLIENT.put(new RSField(fin, "messageCacheLength"));
+					}
+					break;
 				}
 			}
 		}
@@ -100,14 +144,69 @@ public class Client extends Analyser {
 		for (final ClassNode node : getClassPath().getClasses()) {
 			for (final MethodNode mn : node.methods) {
 				MethodData md = DynaFlowAnalyzer.getMethod(node.name, mn.name, mn.desc);
+				if (new Wildcard("("+Hook.FONT_IMPL.getInternalDesc()+Hook.FONT_IMPL.getInternalDesc()+"?)V").matches(mn.desc)) {
+					//TODO name hooked method
+					List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+							Mask.GETSTATIC.describe("I"),
+							Mask.GETSTATIC.describe("I").distance(8),
+							Mask.INVOKESTATIC.distance(8)
+							);
+					if (pattern != null) {
+						FieldInsnNode mX = (FieldInsnNode)pattern.get(0);
+						FieldInsnNode mY = (FieldInsnNode)pattern.get(1);
+						Hook.CLIENT.put(new RSField(mX, "mouseX"));
+						Hook.CLIENT.put(new RSField(mY, "mouseY"));
+					}
+				}
+				if (new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
+					Hook.CLIENT.put(new RSMethod(mn, "runScript"));
+							/**RSVMIntStack is referenced like 500 something times, nothing comes close
+							in this method in reference count for int[]**/
+					HashMap<String, Integer> counts = new HashMap<String, Integer>();
+					HashMap<String, FieldData> datas = new HashMap<String, FieldData>();
+					for(FieldData fd : md.fieldReferences){
+						if(fd.bytecodeField.desc.equals("[I")){
+							if(!counts.containsKey(fd.CLASS_NAME+"."+fd.FIELD_NAME)){
+								counts.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, 0);
+								datas.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, fd);
+							}
+							counts.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, counts.get(fd.CLASS_NAME+"."+fd.FIELD_NAME)+1);
+						}
+					}
+					for(String key : counts.keySet()){
+						if(counts.get(key)>100){
+							FieldData fd = datas.get(key);
+							Hook.CLIENT.put(new RSField(fd.bytecodeField, "RSVMIntStack"));
+						}
+					}
+					/**RSVMStringStack is referenced like 140 something times, nothing comes close
+					in this method in reference count for String[]**/
+					counts.clear();
+					datas.clear();
+					for(FieldData fd : md.fieldReferences){
+						if(fd.bytecodeField.desc.equals("[Ljava/lang/String;")){
+							if(!counts.containsKey(fd.CLASS_NAME+"."+fd.FIELD_NAME)){
+								counts.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, 0);
+								datas.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, fd);
+							}
+							counts.put(fd.CLASS_NAME+"."+fd.FIELD_NAME, counts.get(fd.CLASS_NAME+"."+fd.FIELD_NAME)+1);
+						}
+					}
+					for(String key : counts.keySet()){
+						if(counts.get(key)>100){
+							FieldData fd = datas.get(key);
+							Hook.CLIENT.put(new RSField(fd.bytecodeField, "RSVMStringStack"));
+						}
+					}
+				}
 				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(Ljava/lang/String;Ljava/lang/Throwable;?)V").matches(mn.desc)) { 
 					Hook.CLIENT.put(new RSMethod(mn, "logError"));
 				}
 				if (md.referencedFrom.size()>0 && mn.isStatic() && new Wildcard("(L"+Hook.WORLD.getInternalName()+";?)V").matches(mn.desc)) { 
 					Hook.CLIENT.put(new RSMethod(mn, "setWorld"));
 					for(MethodData md2 : md.referencedFrom){
-						if(new Wildcard("(?)V").matches(md2.METHOD_DESC)){//processLogic
-							//Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "processLogic"));
+						if(new Wildcard("(?)V").matches(md2.METHOD_DESC)){
+							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "processLogic"));
 							List<AbstractInsnNode> pattern = Assembly.find(md2.bytecodeMethod,
 									Mask.BIPUSH.operand(45),
 									Mask.INVOKESTATIC.distance(2)
@@ -117,6 +216,23 @@ public class Client extends Analyser {
 								if(new Wildcard("(I?)V").matches(min.desc)){
 									Hook.CLIENT.put(new RSMethod(min, "resetConnection"));
 								}
+							}
+							pattern = Assembly.find(md2.bytecodeMethod,
+									Mask.GETSTATIC.describe("[[I"),
+									Mask.INVOKEVIRTUAL.distance(5)
+									);
+							if (pattern != null) {
+								FieldInsnNode fin = (FieldInsnNode)pattern.get(0);
+								Hook.CLIENT.put(new RSField(fin, "XTEAKeys"));
+							}
+							pattern = Assembly.find(md2.bytecodeMethod,
+									Mask.GETSTATIC.describe("[I"),
+									Mask.ARRAYLENGTH
+									);
+							if (pattern != null) {
+								FieldInsnNode fin = (FieldInsnNode)pattern.get(0);
+								Hook.CLIENT.put(new RSField(fin, "chunkIds"));
+								
 							}
 							break;
 						}
@@ -142,8 +258,31 @@ public class Client extends Analyser {
 						if(new Wildcard("(L"+Hook.RUNNABLE_TASK.getInternalName()+";Ljava/awt/Component;II?)L*;").matches(md2.METHOD_DESC))
 							isBoot=true;
 					}
-					if(isBoot)
+					if(isBoot){
 						Hook.CLIENT.put(new RSMethod(mn, "bootClient"));
+						List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+								Mask.BIPUSH.operand(20).or(Mask.BIPUSH.operand(30)).or(Mask.GETSTATIC.describe("I")),
+								Mask.BIPUSH.operand(20).or(Mask.BIPUSH.operand(30)).or(Mask.GETSTATIC.describe("I")).distance(2),
+								Mask.IMUL.distance(2)
+								);
+						if (pattern != null) {
+							AbstractInsnNode ain = pattern.get(0);
+							if(ain.getOpcode()!=Opcodes.GETSTATIC)
+								ain = pattern.get(1);
+							FieldInsnNode fin = (FieldInsnNode)ain;
+							Hook.CLIENT.put(new RSField(fin, "bootState"));
+						}
+						pattern = Assembly.find(md.bytecodeMethod,
+								Mask.LDC.cst("%"),
+								Mask.INVOKEVIRTUAL.describe("(Ljava/lang/String;)Ljava/lang/StringBuilder;"),
+								Mask.INVOKEVIRTUAL.describe("()Ljava/lang/String;"),
+								Mask.PUTSTATIC.describe("Ljava/lang/String;")
+								);
+						if (pattern != null) {
+							FieldInsnNode fin = (FieldInsnNode)pattern.get(3);
+							Hook.CLIENT.put(new RSField(fin, "bootStatus"));
+						}
+					}
 					else{
 						
 					}
@@ -165,6 +304,12 @@ public class Client extends Analyser {
 					for(MethodData md2 : md.referencedFrom){
 						if(new Wildcard("(IIII?)V").matches(md2.METHOD_DESC)){
 							Hook.CLIENT.put(new RSMethod(md2.bytecodeMethod, "updateEntities"));
+							for(FieldData fd : md2.fieldReferences){
+								if(fd.bytecodeField.desc.equals("L"+Hook.FONT_IMPL.getInternalName()+";")){
+									Hook.CLIENT.put(new RSField(fd.bytecodeField, "b12_full"));
+									break;
+								}
+							}
 							break;
 						}
 					}
@@ -192,6 +337,12 @@ public class Client extends Analyser {
 				}
 				if (new Wildcard("(" + Hook.HUD.getInternalDesc() + "Z?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "removeHUD"));
+					for(FieldData fd : md.fieldReferences){
+						if(fd.bytecodeField.desc.equals("[Z")){
+							Hook.CLIENT.put(new RSField(fd.bytecodeField, "loadedWindows"));
+							break;
+						}
+					}
 				}
 				if (new Wildcard("([" + Hook.WIDGET.getInternalDesc() + Hook.WIDGET.getInternalDesc() + "Z?)V").matches(mn.desc)) {
 					Hook.CLIENT.put(new RSMethod(mn, "layoutContainer"));
@@ -258,10 +409,8 @@ public class Client extends Analyser {
 					getWidgetPositions(mn);
 					for (final BasicBlock block : mn.graph()) {
 						final NodeTree tree = block.tree();
-//						tree.accept(new OrientationVisitor(block));
 						tree.accept(new AudioEffectCountVisitor(block));
 						tree.accept(new PlayerIndexVisitor(block));
-//						tree.accept(new CharacterArrayVisitor(block));
 						tree.accept(new MapSpriteVisitor(block));
 						tree.accept(new FloorLevelVisitor(block));
 						tree.accept(new WorldLoadVisitor(block));
@@ -289,13 +438,10 @@ public class Client extends Analyser {
 		}
 		for (final ClassNode node : getClassPath().getClasses()) {
 			for (final MethodNode mn : node.methods) {
-				findRunScript(mn);
 				if (Modifier.isStatic(mn.access)) {
 					for (final BasicBlock block : mn.graph()) {
 						final NodeTree tree = block.tree();
 						// dependant on previous
-						//tree.accept(new HitpointsVisitor(block));
-						tree.accept(new WorldCountVisitor(block));
 						tree.accept(new MenuBoundsVisitor(block));
 						tree.accept(new RegionOffsetVisitor(block));
 						tree.accept(new SelectedNameVisitor(block));
@@ -349,30 +495,6 @@ public class Client extends Analyser {
 				Hook.CLIENT.put(new RSField(fin.get(), "focused"));
 			}
 		}
-		interpret();
-	}
-	private void findRunScript(MethodNode mn) {
-		if (new Wildcard("(" + Hook.SCRIPT_EVENT.getInternalDesc() + "I?)V").matches(mn.desc)) {
-			Hook.CLIENT.put(new RSMethod(mn, "runScript"));
-		}
-	}
-	void interpret() {
-		LoadState ls = new LoadState();
-		Analyzer<BasicValue> aa = new Analyzer<>(ls);
-		for (final ClassNode node : getClassPath().getClasses()) {
-			for (final MethodNode mn : node.methods) {
-				try {
-					aa.analyze(node.name, mn);
-					MemberKey key = ls.get();
-					if (key != null) {
-						Hook.CLIENT.put(new RSField(key, "bootState"));
-					}
-					ls.clear();
-				} catch (AnalyzerException ignored) {
-					ignored.printStackTrace();
-				}
-			}
-		}
 	}
 	private void visitMethods(final MethodNode mn) {
 		findCameraVars(mn);
@@ -383,9 +505,7 @@ public class Client extends Analyser {
 		if (mn.desc.startsWith("(Ljava/lang/String;Ljava/lang/String;IIII")) {
 			tree.accept(new MenuActionVisitor());
 		} else if (mn.name.equals("<clinit>")) {
-		} /*else if (mn.desc.startsWith("(" + Hook.CHARACTER.getInternalDesc())) {
-			tree.accept(new CharacterTargetIndexVisitor());
-		}*/ else if (mn.isStatic() && mn.desc.startsWith("(I")) {
+		} else if (mn.isStatic() && mn.desc.startsWith("(I")) {
 			if (mn.desc.endsWith(Hook.ITEM_DEFINITION.getInternalDesc())) {
 				Hook.CLIENT.put(new RSMethod(mn, "getItemDefinition"));
 			} else if (mn.desc.endsWith(Hook.OBJECT_DEFINITION.getInternalDesc())) {
@@ -531,8 +651,11 @@ public class Client extends Analyser {
 		}
 	}
 	private void visitFields(final FieldNode fn) {
+		FieldData fd = DynaFlowAnalyzer.getField(fn.owner.name, fn.name);
 		if (fn.desc.equals(String.format("[[L%s;", Hook.WIDGET.getInternalName()))) {
 			Hook.CLIENT.put(new RSField(fn, "interfaces"));
+		} else if (fn.desc.equals(String.format("[L%s;", Hook.NPC.getInternalName()))) {
+			Hook.CLIENT.put(new RSField(fn, "npcArray"));
 		} else if (fn.desc.equals(String.format("L%s;", Hook.PLAYER.getInternalName()))) {
 			Hook.CLIENT.put(new RSField(fn, "myPlayer"));
 		} else if (fn.desc.equals(String.format("[[[L%s;", Hook.DEQUE.getInternalName()))) {
@@ -541,6 +664,15 @@ public class Client extends Analyser {
 			Hook.CLIENT.put(new RSField(fn, "shell"));
 		} else if (fn.desc.equals(String.format("L%s;", "java/awt/Canvas"))) {
 			Hook.CLIENT.put(new RSField(fn, "canvas"));
+		} else if (fn.desc.equals(String.format("L%s;", Hook.MEMCACHE.getInternalName()))) {
+			boolean isFontCache=false;
+			for(MethodData md : fd.referencedFrom){
+				if(new Wildcard("(?)L"+Hook.FONT_IMPL.getInternalName()+";").matches(md.METHOD_DESC)){
+					isFontCache=true;
+				}
+			}
+			if(isFontCache)
+				Hook.CLIENT.put(new RSField(fn, "fontCache"));
 		}
 	}
 	private void visitFields2(final FieldNode fn) {

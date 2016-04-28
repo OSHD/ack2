@@ -1,5 +1,13 @@
+<<<<<<< Updated upstream
 # InteliJ ignores
 *.iml
+=======
+i/hooks.gson
+/log.txt
+build.xml
+# Created by .ignore support plugin (hsz.mobi)
+/Dog.iml
+>>>>>>> Stashed changes
 /.idea
 /target
 

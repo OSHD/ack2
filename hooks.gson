@@ -30,13 +30,6 @@
           "desc": "[[Ljava/lang/Object;",
           "access": 0
         },
-        "entryIndexCounts": {
-          "owner": "fy",
-          "name": "j",
-          "desc": "I",
-          "decoder": -1579706807,
-          "access": 0
-        },
         "discardEntryBuffers": {
           "owner": "fy",
           "name": "p",
@@ -61,6 +54,13 @@
           "desc": "Lgg;",
           "access": 0
         },
+        "entryIndexCount": {
+          "owner": "fy",
+          "name": "j",
+          "desc": "I",
+          "decoder": -1579706807,
+          "access": 0
+        },
         "entryCrcs": {
           "owner": "fy",
           "name": "x",
@@ -77,7 +77,7 @@
           "owner": "fy",
           "name": "i",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "childIdentityTables": {
           "owner": "fy",
@@ -99,6 +99,19 @@
         }
       },
       "methods": {
+        "hasFileLoaded": {
+          "owner": "fy",
+          "name": "g",
+          "desc": "(Ljava/lang/String;Ljava/lang/String;B)Z",
+          "access": 0
+        },
+        "hasEntryBuffer": {
+          "owner": "fy",
+          "name": "x",
+          "desc": "(IIB)Z",
+          "predicate": 13,
+          "access": 0
+        },
         "clearChildBuffer": {
           "owner": "fy",
           "name": "p",
@@ -106,18 +119,23 @@
           "predicate": -1050293469,
           "access": 1
         },
-        "clearChildBuffers": {
+        "getChildBufferLength": {
           "owner": "fy",
-          "name": "q",
-          "desc": "(I)V",
-          "predicate": -1683968156,
-          "access": 1
+          "name": "d",
+          "desc": "(I)I",
+          "access": 1025
         },
         "prepareChildBuffers": {
           "owner": "fy",
           "name": "b",
           "desc": "(I[II)Z",
           "predicate": 159,
+          "access": 0
+        },
+        "getEntryIdentifier": {
+          "owner": "fy",
+          "name": "t",
+          "desc": "(Ljava/lang/String;I)I",
           "access": 0
         },
         "getFile2": {
@@ -146,6 +164,63 @@
           "name": "z",
           "desc": "(II[II)[B",
           "predicate": 912971342,
+          "access": 0
+        },
+        "getFile4": {
+          "owner": "fy",
+          "name": "m",
+          "desc": "(IIB)[B",
+          "access": 0
+        },
+        "getFile5": {
+          "owner": "fy",
+          "name": "c",
+          "desc": "(II)[B",
+          "predicate": 308134138,
+          "access": 0
+        },
+        "loadBuffer": {
+          "owner": "fy",
+          "name": "u",
+          "desc": "(IB)V",
+          "access": 0
+        },
+        "getChildIndices": {
+          "owner": "fy",
+          "name": "r",
+          "desc": "(II)[I",
+          "access": 0
+        },
+        "clearChildBuffers": {
+          "owner": "fy",
+          "name": "q",
+          "desc": "(I)V",
+          "predicate": -1683968156,
+          "access": 1
+        },
+        "hasFileBuffer": {
+          "owner": "fy",
+          "name": "e",
+          "desc": "(II)Z",
+          "predicate": 751724262,
+          "access": 0
+        },
+        "getChildBufferLengthAtIndex": {
+          "owner": "fy",
+          "name": "a",
+          "desc": "(II)I",
+          "access": 0
+        },
+        "getChildIdentifier": {
+          "owner": "fy",
+          "name": "y",
+          "desc": "(ILjava/lang/String;I)I",
+          "access": 0
+        },
+        "getFileBytes": {
+          "owner": "fy",
+          "name": "w",
+          "desc": "(Ljava/lang/String;Ljava/lang/String;S)[B",
           "access": 0
         },
         "unpackTable": {
@@ -202,7 +277,7 @@
           "owner": "ay",
           "name": "i",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "cachedAppearances": {
           "owner": "ay",
@@ -1129,6 +1204,60 @@
     "FontImpl": {
       "name": "hf"
     },
+    "CacheFile": {
+      "name": "et",
+      "fields": {
+        "length": {
+          "owner": "et",
+          "name": "x",
+          "desc": "I",
+          "decoder": -788405465,
+          "access": 1
+        },
+        "indexFile": {
+          "owner": "et",
+          "name": "m",
+          "desc": "Lhd;",
+          "access": 0
+        },
+        "dataFile": {
+          "owner": "et",
+          "name": "h",
+          "desc": "Lhd;",
+          "access": 0
+        },
+        "cacheId": {
+          "owner": "et",
+          "name": "z",
+          "desc": "I",
+          "decoder": -1930398907,
+          "access": 1
+        }
+      },
+      "methods": {
+        "readFile": {
+          "owner": "et",
+          "name": "j",
+          "desc": "(II)[B",
+          "predicate": 159,
+          "access": 40
+        },
+        "writeFile": {
+          "owner": "et",
+          "name": "h",
+          "desc": "(I[BIB)Z",
+          "predicate": 63,
+          "access": 0
+        },
+        "writeFileParts": {
+          "owner": "et",
+          "name": "m",
+          "desc": "(I[BIZI)Z",
+          "predicate": 2111373386,
+          "access": 0
+        }
+      }
+    },
     "DualNode": {
       "name": "gt",
       "fields": {
@@ -1157,12 +1286,26 @@
     "Client": {
       "name": "client",
       "fields": {
+        "mouseX": {
+          "owner": "ek",
+          "name": "c",
+          "desc": "I",
+          "decoder": 2145018244,
+          "access": 1
+        },
         "myPlayerIndex": {
           "owner": "client",
           "name": "gf",
           "desc": "I",
           "decoder": -2046181907,
           "access": 0
+        },
+        "mouseY": {
+          "owner": "ek",
+          "name": "x",
+          "desc": "I",
+          "decoder": 1796508582,
+          "access": 1
         },
         "destinationX": {
           "owner": "client",
@@ -1262,13 +1405,6 @@
           "decoder": -635264127,
           "access": 0
         },
-        "worldCount": {
-          "owner": "ek",
-          "name": "x",
-          "desc": "I",
-          "decoder": 1796508582,
-          "access": 1
-        },
         "canvas": {
           "owner": "z",
           "name": "qu",
@@ -1332,6 +1468,12 @@
           "decoder": 81892227,
           "access": 0
         },
+        "RSVMStringStack": {
+          "owner": "az",
+          "name": "c",
+          "desc": "[Ljava/lang/String;",
+          "access": 0
+        },
         "screenWidth": {
           "owner": "client",
           "name": "ok",
@@ -1355,6 +1497,12 @@
           "owner": "client",
           "name": "hi",
           "desc": "Z",
+          "access": 0
+        },
+        "b12_full": {
+          "owner": "cb",
+          "name": "cz",
+          "desc": "Lhf;",
           "access": 0
         },
         "friendListSize": {
@@ -1440,6 +1588,12 @@
           "desc": "Ljava/lang/String;",
           "access": 0
         },
+        "bootStatus": {
+          "owner": "aj",
+          "name": "ao",
+          "desc": "Ljava/lang/String;",
+          "access": 9
+        },
         "playerArray": {
           "owner": "client",
           "name": "gm",
@@ -1451,6 +1605,12 @@
           "name": "is",
           "desc": "[Ljava/lang/String;",
           "access": 0
+        },
+        "messageCacheLength": {
+          "owner": "r",
+          "name": "z",
+          "desc": "I",
+          "access": 1
         },
         "screenZoom": {
           "owner": "client",
@@ -1475,6 +1635,12 @@
           "owner": "q",
           "name": "j",
           "desc": "Lgc;",
+          "access": 0
+        },
+        "chunkIds": {
+          "owner": "ci",
+          "name": "dl",
+          "desc": "[I",
           "access": 0
         },
         "clanMates": {
@@ -1544,6 +1710,12 @@
           "desc": "I",
           "access": 1
         },
+        "RSVMIntStack": {
+          "owner": "az",
+          "name": "i",
+          "desc": "[I",
+          "access": 0
+        },
         "colorsToReplace": {
           "owner": "cp",
           "name": "c",
@@ -1562,6 +1734,12 @@
           "name": "ie",
           "desc": "I",
           "decoder": -1725013631,
+          "access": 0
+        },
+        "repaintWidgets": {
+          "owner": "client",
+          "name": "ll",
+          "desc": "[Z",
           "access": 0
         },
         "connectionState": {
@@ -1669,6 +1847,18 @@
           "decoder": -1200786401,
           "access": 0
         },
+        "XTEAKeys": {
+          "owner": "c",
+          "name": "db",
+          "desc": "[[I",
+          "access": 0
+        },
+        "npcArray": {
+          "owner": "client",
+          "name": "cn",
+          "desc": "[Lag;",
+          "access": 0
+        },
         "gameFrame": {
           "owner": "x",
           "name": "qz",
@@ -1686,6 +1876,12 @@
           "owner": "client",
           "name": "hs",
           "desc": "[[[Lgk;",
+          "access": 0
+        },
+        "fontCache": {
+          "owner": "fb",
+          "name": "n",
+          "desc": "Lgw;",
           "access": 0
         },
         "bootState": {
@@ -2091,6 +2287,66 @@
         }
       }
     },
+    "FileOnDisk": {
+      "name": "hz",
+      "fields": {
+        "file": {
+          "owner": "hz",
+          "name": "j",
+          "desc": "Ljava/io/RandomAccessFile;",
+          "access": 0
+        },
+        "length": {
+          "owner": "hz",
+          "name": "h",
+          "desc": "J",
+          "decoder": -5622887488644793999,
+          "access": 8
+        },
+        "position": {
+          "owner": "hz",
+          "name": "m",
+          "desc": "J",
+          "decoder": 8373317572098110985,
+          "access": 0
+        }
+      },
+      "methods": {
+        "read": {
+          "owner": "hz",
+          "name": "x",
+          "desc": "([BIII)I",
+          "predicate": 719448357,
+          "access": 0
+        },
+        "getLength": {
+          "owner": "hz",
+          "name": "z",
+          "desc": "(I)J",
+          "access": 0
+        },
+        "write": {
+          "owner": "hz",
+          "name": "h",
+          "desc": "([BIII)V",
+          "predicate": -627350522,
+          "access": 0
+        },
+        "close": {
+          "owner": "hz",
+          "name": "m",
+          "desc": "(B)V",
+          "predicate": 0,
+          "access": 1
+        },
+        "seek": {
+          "owner": "hz",
+          "name": "j",
+          "desc": "(J)V",
+          "access": 0
+        }
+      }
+    },
     "MemCache": {
       "name": "gw",
       "fields": {
@@ -2142,72 +2398,12 @@
           "owner": "gw",
           "name": "h",
           "desc": "(J)V",
-          "access": 1
+          "access": 0
         },
         "put": {
           "owner": "gw",
           "name": "m",
           "desc": "(Lgt;J)V",
-          "access": 0
-        }
-      }
-    },
-    "FileOnDisk": {
-      "name": "hz",
-      "fields": {
-        "file": {
-          "owner": "hz",
-          "name": "j",
-          "desc": "Ljava/io/RandomAccessFile;",
-          "access": 0
-        },
-        "length": {
-          "owner": "hz",
-          "name": "h",
-          "desc": "J",
-          "decoder": -5622887488644793999,
-          "access": 8
-        },
-        "position": {
-          "owner": "hz",
-          "name": "m",
-          "desc": "J",
-          "decoder": 8373317572098110985,
-          "access": 9
-        }
-      },
-      "methods": {
-        "read": {
-          "owner": "hz",
-          "name": "x",
-          "desc": "([BIII)I",
-          "predicate": 719448357,
-          "access": 0
-        },
-        "getLength": {
-          "owner": "hz",
-          "name": "z",
-          "desc": "(I)J",
-          "access": 0
-        },
-        "write": {
-          "owner": "hz",
-          "name": "h",
-          "desc": "([BIII)V",
-          "predicate": -627350522,
-          "access": 0
-        },
-        "close": {
-          "owner": "hz",
-          "name": "m",
-          "desc": "(B)V",
-          "predicate": 0,
-          "access": 1
-        },
-        "seek": {
-          "owner": "hz",
-          "name": "j",
-          "desc": "(J)V",
           "access": 0
         }
       }
@@ -3555,6 +3751,85 @@
         }
       }
     },
+    "SeekableFile": {
+      "name": "hd",
+      "fields": {
+        "file": {
+          "owner": "hd",
+          "name": "j",
+          "desc": "Lhz;",
+          "access": 0
+        },
+        "position": {
+          "owner": "hd",
+          "name": "c",
+          "desc": "J",
+          "decoder": 1761298927870619411,
+          "access": 0
+        },
+        "fileLength": {
+          "owner": "hd",
+          "name": "l",
+          "desc": "J",
+          "decoder": -1959727452819372833,
+          "access": 0
+        }
+      },
+      "methods": {
+        "finalizeRead": {
+          "owner": "hd",
+          "name": "e",
+          "desc": "(I)V",
+          "predicate": 1152158337,
+          "access": 0
+        },
+        "readSection": {
+          "owner": "hd",
+          "name": "x",
+          "desc": "([BIII)V",
+          "predicate": 159,
+          "access": 0
+        },
+        "writeBytes": {
+          "owner": "hd",
+          "name": "i",
+          "desc": "([BIII)V",
+          "predicate": 1470150570,
+          "access": 1
+        },
+        "getFileLength": {
+          "owner": "hd",
+          "name": "m",
+          "desc": "(B)J",
+          "access": 0
+        },
+        "finalizeWrite": {
+          "owner": "hd",
+          "name": "c",
+          "desc": "(I)V",
+          "predicate": 1413158703,
+          "access": 0
+        },
+        "readBytes": {
+          "owner": "hd",
+          "name": "z",
+          "desc": "([BI)V",
+          "access": 0
+        },
+        "close": {
+          "owner": "hd",
+          "name": "j",
+          "desc": "(B)V",
+          "access": 9
+        },
+        "setPosition": {
+          "owner": "hd",
+          "name": "h",
+          "desc": "(J)V",
+          "access": 0
+        }
+      }
+    },
     "GameStrings": {
       "name": "fz"
     },
@@ -3597,6 +3872,51 @@
           "owner": "gn",
           "name": "m",
           "desc": "()Lgt;",
+          "access": 0
+        }
+      }
+    },
+    "RemoteFileTable": {
+      "name": "fm",
+      "fields": {
+        "referenceFile": {
+          "owner": "fm",
+          "name": "g",
+          "desc": "Let;",
+          "access": 0
+        },
+        "cacheFile": {
+          "owner": "fm",
+          "name": "w",
+          "desc": "Let;",
+          "access": 0
+        },
+        "requestingChildren": {
+          "owner": "fm",
+          "name": "k",
+          "desc": "Z",
+          "access": 0
+        },
+        "index": {
+          "owner": "fm",
+          "name": "s",
+          "desc": "I",
+          "decoder": 1089210309,
+          "access": 1
+        }
+      },
+      "methods": {
+        "processChildRequests": {
+          "owner": "fm",
+          "name": "ck",
+          "desc": "(I)V",
+          "predicate": -140655396,
+          "access": 0
+        },
+        "loadBuffer": {
+          "owner": "fm",
+          "name": "u",
+          "desc": "(IB)V",
           "access": 0
         }
       }
@@ -4206,7 +4526,7 @@
           "owner": "df",
           "name": "i",
           "desc": "[I",
-          "access": 8
+          "access": 0
         },
         "XYZMag": {
           "owner": "df",

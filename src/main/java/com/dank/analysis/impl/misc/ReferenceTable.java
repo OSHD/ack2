@@ -20,7 +20,7 @@ import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
-//All fields identified as of r113
+//All fields and methods identified as of r113
 public class ReferenceTable extends Analyser {
 	@Override
 	public ClassSpec specify(ClassNode cn) {
@@ -44,11 +44,24 @@ public class ReferenceTable extends Analyser {
 				for(MethodData md2 : md.referencedFrom){
 					if(new Wildcard("(I?)[B").matches(md2.METHOD_DESC)){
 						Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "getFile"));
+						break;
 					}
 				}
 			}
 			if(new Wildcard("(II[I?)[B").matches(mn.desc)){
 				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "getFile3"));
+				for(MethodData md2 : md.referencedFrom){
+					if(new Wildcard("(II?)[B").matches(md2.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "getFile4"));
+						for(MethodData md3 : md2.referencedFrom){
+							if(md3.CLASS_NAME.equals(cn.name) && new Wildcard("(I?)[B").matches(md3.METHOD_DESC)){
+								Hook.REFERENCE_TABLE.put(new RSMethod(md3.bytecodeMethod, "getFile5"));
+								break;
+							}
+						}
+						break;
+					}
+				}
 			}
 			if(new Wildcard("([B?)V").matches(mn.desc)){
 				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "unpackTable"));
@@ -73,9 +86,6 @@ public class ReferenceTable extends Analyser {
 				else{
 					
 				}
-			}
-			if(new Wildcard("(I?)V").matches(mn.desc)){
-				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "clearChildBuffer"));
 			}
 		}
 		if(filesCompleted!=null){
@@ -135,21 +145,93 @@ public class ReferenceTable extends Analyser {
 					Hook.REFERENCE_TABLE.put(new RSField(fd.bytecodeField, "entryChildCounts"));
 				if(fd.CLASS_NAME.equals(cn.name) && fd.bytecodeField.desc.equals("I"))
 					Hook.REFERENCE_TABLE.put(new RSField(fd.bytecodeField, "discardUnpacked"));
-				if(fd.CLASS_NAME.equals(cn.name) && fd.bytecodeField.desc.equals("[[I"))
+				if(fd.CLASS_NAME.equals(cn.name) && fd.bytecodeField.desc.equals("[[I")){
 					Hook.REFERENCE_TABLE.put(new RSField(fd.bytecodeField, "childIndices"));
+					for(MethodData md : fd.referencedFrom){
+						if(new Wildcard("(I?)[I").matches(md.METHOD_DESC)){
+							Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getChildIndices"));
+							break;
+						}
+					}
+				}
 			}
 		}
 		for(FieldNode fn : cn.fields){
 			if(fn.isStatic())
 				continue;
-			if(fn.desc.equals("[L"+Hook.LOOKUP_TABLE.getInternalName()+";"))
+			FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
+			if(fn.desc.equals("[L"+Hook.LOOKUP_TABLE.getInternalName()+";")){
 				Hook.REFERENCE_TABLE.put(new RSField(fn, "childIdentityTables"));
-			if(fn.desc.equals("L"+Hook.LOOKUP_TABLE.getInternalName()+";"))
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(Ljava/lang/String;Ljava/lang/String;?)[B").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getFileBytes"));
+						break;
+					}
+				}
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(ILjava/lang/String;?)I").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getChildIdentifier"));
+						break;
+					}
+				}
+			}
+			if(fn.desc.equals("L"+Hook.LOOKUP_TABLE.getInternalName()+";")){
 				Hook.REFERENCE_TABLE.put(new RSField(fn, "entryIdentityTable"));
-			if(fn.desc.equals("[[Ljava/lang/Object;"))
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(Ljava/lang/String;?)I").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getEntryIdentifier"));
+						break;
+					}
+				}
+			}
+			if(fn.desc.equals("[[Ljava/lang/Object;")){
 				Hook.REFERENCE_TABLE.put(new RSField(fn, "childBuffers"));
-			if(fn.desc.equals("[Ljava/lang/Object;"))
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(I?)I").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getChildBufferLengthAtIndex"));
+						break;
+					}
+				}
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(?)I").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getChildBufferLength"));
+						break;
+					}
+				}
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(I?)V").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "clearChildBuffer"));
+						break;
+					}
+				}
+			}
+			if(fn.desc.equals("[Ljava/lang/Object;")){
 				Hook.REFERENCE_TABLE.put(new RSField(fn, "entryBuffers"));
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(I?)Z").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "hasFileBuffer"));
+						break;
+					}
+				}
+				for(MethodData md : fd.referencedFrom){
+					if(new Wildcard("(II?)Z").matches(md.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "hasEntryBuffer"));
+						for(MethodData md2 : md.methodReferences){
+							if(new Wildcard("(I?)V").matches(md2.METHOD_DESC)){
+								Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "loadBuffer"));
+								break;
+							}
+						}
+						for(MethodData md2 : md.referencedFrom){
+							if(new Wildcard("(Ljava/lang/String;Ljava/lang/String;?)Z").matches(md2.METHOD_DESC)){
+								Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "hasFileLoaded"));
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
 		}
 
 		RSMember entryChildCounts = Hook.REFERENCE_TABLE.get("entryChildCounts");
@@ -163,7 +245,7 @@ public class ReferenceTable extends Analyser {
 				if(fd.bytecodeField.desc.equals("I")){
 					if(fd.FIELD_NAME.equals(discardUnpacked.name))
 						continue;
-					Hook.REFERENCE_TABLE.put(new RSField(fd.bytecodeField, "entryIndexCounts"));
+					Hook.REFERENCE_TABLE.put(new RSField(fd.bytecodeField, "entryIndexCount"));
 				}
 				if(fd.bytecodeField.desc.equals("[I")){
 					if(fd.FIELD_NAME.equals(entryChildCounts.name) || fd.FIELD_NAME.equals(entryIdentifiers.name) || 

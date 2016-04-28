@@ -110,10 +110,6 @@ public class Widget extends Analyser {
                 } else if (fn.desc.equals(Hook.WIDGET.getInternalDesc())) {
                     Hook.WIDGET.put(new RSField(fn, "parent"));
                 }
-            } else if (fn.isStatic()) {
-                if (fn.desc.equals(Type.getDescriptor(boolean[].class))) {
-                    Hook.CLIENT.put(new RSField(fn, "loadedWindows"));
-                }
             }
         }
 

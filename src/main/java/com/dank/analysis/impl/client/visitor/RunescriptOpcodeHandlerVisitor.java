@@ -25,11 +25,6 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
     //should've used Map<Integer, OpcodeHook> instead, but cbf now
     private final Set<OpcodeHook> hooks = new HashSet<OpcodeHook>() {
         {
-
-//            if (add(new OpcodeHook(1000, PUTFIELD, "xMargin").skip(0))) {
-//
-//            }
-
             //bounds and positioning
             add(new OpcodeHook(1100, GETFIELD, "insetX"));
             add(new OpcodeHook(1601, GETFIELD, "insetY"));
@@ -98,7 +93,7 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
             add(new OpcodeHook(3305, GETSTATIC,"[I",Hook.CLIENT, "currentLevels").skip(2));//good
             add(new OpcodeHook(3307, GETSTATIC,"[I", Hook.CLIENT, "experiences").skip(2));//good
 
-            add(new OpcodeHook(3300, GETSTATIC,"I", Hook.CLIENT, "engineCycle").skip(0));//good
+            //add(new OpcodeHook(3300, GETSTATIC,"I", Hook.CLIENT, "engineCycle").skip(0));//good
 
             add(new OpcodeHook(3614, GETFIELD, "world").container(Hook.CLAN_MATE));
             add(new OpcodeHook(3615, GETFIELD, "B", "rank").container(Hook.CLAN_MATE));

@@ -205,10 +205,9 @@ public final class DankEngine implements Opcodes {
         		new HashTable(), 
         		new IsaacCipher(), 
         		new LookupTable(),
-        		new ReferenceTable(),
+        		new ReferenceTable(), new FileOnDisk(), new SeekableFile(), new CacheFile(), new RemoteFileTable(),
         		new MemCache(), 
         		new KeyFocusListener(), new MouseListener(), new AbstractMouseWheelListener(), new MouseWheelListener(),
-        		new FileOnDisk(),
         		new Buffer(), //AKA Stream
                 new PacketBuffer(), 
                 new Entity(), 
