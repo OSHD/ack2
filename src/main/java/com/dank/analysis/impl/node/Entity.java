@@ -31,6 +31,9 @@ public class Entity extends Analyser {
         	if(mn.isStatic())
         		continue;
         	MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
+        	if(md.referencedFrom.size()>0 && new Wildcard("()L"+Hook.MODEL.getInternalName()+";").matches(mn.desc)){
+        		Hook.ENTITY.put(new RSMethod(mn, "getRotatedModel"));
+        	}
         	if(md.referencedFrom.size()>0 && new Wildcard("(IIIIIIIII)V").matches(mn.desc)){
         		Hook.ENTITY.put(new RSMethod(mn, "renderAtPoint"));
         		for(MethodData md2 : md.methodReferences){

@@ -1505,6 +1505,12 @@
           "desc": "Lhf;",
           "access": 0
         },
+        "runeScriptFileSystem": {
+          "owner": "dn",
+          "name": "bq",
+          "desc": "Lfm;",
+          "access": 0
+        },
         "friendListSize": {
           "owner": "client",
           "name": "oj",
@@ -1831,6 +1837,12 @@
           "owner": "client",
           "name": "hq",
           "desc": "[I",
+          "access": 0
+        },
+        "runeScriptCache": {
+          "owner": "k",
+          "name": "j",
+          "desc": "Lgw;",
           "access": 0
         },
         "currentSpellTargets": {
@@ -2432,10 +2444,81 @@
         }
       },
       "methods": {
+        "writeInt": {
+          "owner": "dx",
+          "name": "x",
+          "desc": "(IB)V",
+          "access": 0
+        },
+        "compareCrcs": {
+          "owner": "dx",
+          "name": "aa",
+          "desc": "(I)Z",
+          "predicate": -852778594,
+          "access": 0
+        },
+        "writeByte": {
+          "owner": "dx",
+          "name": "m",
+          "desc": "(II)V",
+          "access": 8
+        },
+        "writeLong": {
+          "owner": "dx",
+          "name": "i",
+          "desc": "(J)V",
+          "access": 0
+        },
+        "decodeXTEA": {
+          "owner": "dx",
+          "name": "az",
+          "desc": "([IIII)V",
+          "predicate": 2113540917,
+          "access": 0
+        },
+        "writeBytes": {
+          "owner": "dx",
+          "name": "ab",
+          "desc": "([BIIS)V",
+          "predicate": 254,
+          "access": 0
+        },
+        "readLong": {
+          "owner": "dx",
+          "name": "o",
+          "desc": "(I)J",
+          "access": 0
+        },
+        "writeCrc": {
+          "owner": "dx",
+          "name": "ax",
+          "desc": "(II)I",
+          "predicate": 175273567,
+          "access": 0
+        },
         "applyRSA": {
           "owner": "dx",
           "name": "av",
           "desc": "(Ljava/math/BigInteger;Ljava/math/BigInteger;S)V",
+          "access": 0
+        },
+        "encodeXTEA": {
+          "owner": "dx",
+          "name": "ao",
+          "desc": "([II)V",
+          "predicate": -1441702734,
+          "access": 0
+        },
+        "readBytes": {
+          "owner": "dx",
+          "name": "r",
+          "desc": "([BIII)V",
+          "access": 0
+        },
+        "readInt": {
+          "owner": "dx",
+          "name": "k",
+          "desc": "(I)I",
           "access": 0
         }
       }
@@ -3447,6 +3530,41 @@
     "ExchangeOffer": {
       "name": "hv",
       "fields": {
+        "itemId": {
+          "owner": "hv",
+          "name": "h",
+          "desc": "I",
+          "decoder": -2083637273,
+          "access": 0
+        },
+        "transferred": {
+          "owner": "hv",
+          "name": "x",
+          "desc": "I",
+          "decoder": -563237145,
+          "access": 1
+        },
+        "itemQuantity": {
+          "owner": "hv",
+          "name": "z",
+          "desc": "I",
+          "decoder": -725045011,
+          "access": 1
+        },
+        "price": {
+          "owner": "hv",
+          "name": "m",
+          "desc": "I",
+          "decoder": 1416949157,
+          "access": 1
+        },
+        "spent": {
+          "owner": "hv",
+          "name": "e",
+          "desc": "I",
+          "decoder": -1905891119,
+          "access": 1
+        },
         "status": {
           "owner": "hv",
           "name": "j",

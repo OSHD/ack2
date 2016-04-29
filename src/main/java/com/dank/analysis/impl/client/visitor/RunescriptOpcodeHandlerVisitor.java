@@ -111,11 +111,11 @@ public class RunescriptOpcodeHandlerVisitor extends NodeVisitor implements Opcod
                     .container(Hook.IGNORED_PLAYER).skip(1));
 
             //These are properly hooked inside ExchangeOffer analyzer
-            //add(new OpcodeHook(3904, GETFIELD, "I", "itemId").container(Hook.EXCHANGE_OFFER));
-            //add(new OpcodeHook(3905, GETFIELD, "I", "price").container(Hook.EXCHANGE_OFFER));
-            //add(new OpcodeHook(3906, GETFIELD, "I", "itemQuantity").container(Hook.EXCHANGE_OFFER));
-            //add(new OpcodeHook(3907, GETFIELD, "I", "transferred").container(Hook.EXCHANGE_OFFER));
-            //add(new OpcodeHook(3908, GETFIELD, "I", "spent").container(Hook.EXCHANGE_OFFER));
+            add(new OpcodeHook(3904, GETFIELD, "I", "itemId").container(Hook.EXCHANGE_OFFER));
+            add(new OpcodeHook(3905, GETFIELD, "I", "price").container(Hook.EXCHANGE_OFFER));
+            add(new OpcodeHook(3906, GETFIELD, "I", "itemQuantity").container(Hook.EXCHANGE_OFFER));
+            add(new OpcodeHook(3907, GETFIELD, "I", "transferred").container(Hook.EXCHANGE_OFFER));
+            add(new OpcodeHook(3908, GETFIELD, "I", "spent").container(Hook.EXCHANGE_OFFER));
         }
     };
 

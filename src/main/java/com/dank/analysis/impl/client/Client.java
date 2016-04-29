@@ -125,6 +125,22 @@ public class Client extends Analyser {
 				}
 			}
 		}
+		RSMember runeScript = Hook.CLIENT.get("getRuneScript");
+		if(runeScript!=null){
+			MethodData getRuneScript = DynaFlowAnalyzer.getMethod(runeScript.owner, runeScript.name, runeScript.desc);
+			for(FieldData fd : getRuneScript.fieldReferences){
+				if(fd.bytecodeField.desc.equals("L"+Hook.MEMCACHE.getInternalName()+";")){
+					Hook.CLIENT.put(new RSField(fd.bytecodeField, "runeScriptCache"));
+					break;
+				}
+			}
+			for(FieldData fd : getRuneScript.fieldReferences){
+				if(fd.bytecodeField.desc.equals("L"+Hook.REMOTE_FILE_TABLE.getInternalName()+";")){
+					Hook.CLIENT.put(new RSField(fd.bytecodeField, "runeScriptFileSystem"));
+					break;
+				}
+			}
+		}
 		for(ClassNode node : getClassPath().getClasses()){
 			for(FieldNode fn : node.fields){
 				FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);

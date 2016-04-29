@@ -32,6 +32,8 @@ public class ReferenceTable extends Analyser {
 		MethodData prepareChildBuffers = null;
 		MethodData unpack = null;
 		MethodData filesCompleted = null;
+		MethodData getFile4=null;
+		MethodData getFile5=null;
 		for(MethodNode mn : cn.methods){
 			if(mn.isStatic())
 				continue;
@@ -39,23 +41,16 @@ public class ReferenceTable extends Analyser {
 			if(new Wildcard("(II?)Z").matches(mn.desc)){
 				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "hasEntryBuffer"));
 			}
-			if(new Wildcard("(II?)[B").matches(mn.desc)){
-				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "getFile2"));
-				for(MethodData md2 : md.referencedFrom){
-					if(new Wildcard("(I?)[B").matches(md2.METHOD_DESC)){
-						Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "getFile"));
-						break;
-					}
-				}
-			}
 			if(new Wildcard("(II[I?)[B").matches(mn.desc)){
 				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "getFile3"));
 				for(MethodData md2 : md.referencedFrom){
 					if(new Wildcard("(II?)[B").matches(md2.METHOD_DESC)){
 						Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "getFile4"));
+						getFile4=md2;
 						for(MethodData md3 : md2.referencedFrom){
 							if(md3.CLASS_NAME.equals(cn.name) && new Wildcard("(I?)[B").matches(md3.METHOD_DESC)){
 								Hook.REFERENCE_TABLE.put(new RSMethod(md3.bytecodeMethod, "getFile5"));
+								getFile5=md3;
 								break;
 							}
 						}
@@ -152,6 +147,20 @@ public class ReferenceTable extends Analyser {
 							Hook.REFERENCE_TABLE.put(new RSMethod(md.bytecodeMethod, "getChildIndices"));
 							break;
 						}
+					}
+				}
+			}
+		}
+		for(MethodNode mn : cn.methods){
+			if(mn.isStatic())
+				continue;
+			MethodData md = DynaFlowAnalyzer.getMethod(cn.name, mn.name, mn.desc);
+			if(new Wildcard("(II?)[B").matches(mn.desc) && getFile4!=null && !mn.name.equals(getFile4.METHOD_NAME)){
+				Hook.REFERENCE_TABLE.put(new RSMethod(mn, "getFile2"));
+				for(MethodData md2 : md.referencedFrom){
+					if(new Wildcard("(I?)[B").matches(md2.METHOD_DESC)){
+						Hook.REFERENCE_TABLE.put(new RSMethod(md2.bytecodeMethod, "getFile"));
+						break;
 					}
 				}
 			}

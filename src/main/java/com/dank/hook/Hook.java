@@ -49,7 +49,11 @@ public enum Hook {
     REMOTE_FILE_TABLE("RemoteFileTable", REFERENCE_TABLE, "loadBuffer::(I?)V", "processChildRequests::()V",
     		"index::I", "cacheFile::LCacheFile;", "referenceFile::LCacheFile;", "requestingChildren::Z"),
     MEMCACHE("MemCache", null, "size::I", "remaining::I", "table::LHashTable;", "queue::LQueue;", "head::LDualNode;", "get::(J)LDualNode;", "remove::(J)V", "put::(LDualNode;J)V", "clear::()V"),
-    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", "readInt::()I", "readUShort::()I", "readByte::()B", "applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;?)V"),
+    BUFFER("Buffer", NODE, "payload::[B", "caret::I", "crcTable::[I", 
+    		"applyRSA::(Ljava/math/BigInteger;Ljava/math/BigInteger;?)V", "decodeXTEA::([III)V", "readInt::(?)I", "writeInt::(I?)V",
+    		"writeByte::(I?)V", "writeBytes::([BII)V", "readBytes::([BII?)V", "encodeXTEA::([I)V", "writeCrc::(I)I", "writeLong::(J)V",
+    		"readLong::(?)J", "compareCrcs::()Z",
+    		"readUShort::()I", "readByte::()B"),
     PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
     
     VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;I?)V", "unpackConfig::(LBuffer;)V"),
@@ -86,10 +90,6 @@ public enum Hook {
 
     GRAPHICS_STUB("GraphicsStub", ENTITY, "animationSequence::LAnimationSequence;",
     		"finished::Z", "id::I", "floorLevel::I", "regionX::I", "regionY::I", "height::I", "startCycle::I"),
-
-    DYNAMIC_OBJECT("DynamicObject", ENTITY, "getRotatedModel::()LModel;",
-    		"animationSequence::LAnimationSequence;",
-    		"regionX::I", "regionY::I", "floorLevel::I", "id::I", "type::I", "orientation::I"),
 
     PROJECTILE("Projectile", ENTITY, "updatePosition::(IIII)V", "updateAnimation::(I)V", "getAnimatedModel::(?)LModel;",
     		"id::I", "strictX::I", "strictY::I", "startHeight::I", "loopCycle::I", "animationSequence::LAnimationSequence;",
@@ -141,14 +141,18 @@ public enum Hook {
 
     PLAIN_TILE("PlainTile", null),
     SHAPED_TILE("ShapedTile", null),
-    
+
+    DYNAMIC_OBJECT("DynamicObject", ENTITY, "getRotatedModel::()LModel;",
+    		"animationSequence::LAnimationSequence;",
+    		"regionX::I", "regionY::I", "floorLevel::I", "id::I", "type::I", "orientation::I"),
+
     BOUNDARY_STUB("BoundaryStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entityA::LEntity;", "entityB::LEntity;",
             "orientationA::I", "orientationB::I", "height::I"),
 
     BOUNDARY_DECORATION_STUB("BoundaryDecorationStub", null, "uid::I", "config::I", "height::I", "insetX::I", "insetY::I",
             "orientationA::I", "orientationB::I", "entityA::LEntity;", "entityB::LEntity;", "strictX::I", "strictY::I"),
 
-    TILE_DECORATION_STUB("TileDecorationStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LRenderable;", "height::I"),
+    TILE_DECORATION_STUB("TileDecorationStub", null, "uid::I", "config::I", "strictX::I", "strictY::I", "entity::LEntity;", "height::I"),
 
     ITEM_PILE("ItemPile", null, "uid::I", "bottom::LEntity;", "middle::LEntity;", "top::LEntity;",
             "counterHeight::I", "height::I", "strictX::I", "strictY::I"),
@@ -225,7 +229,7 @@ public enum Hook {
     		"layoutComponent::(LWidget;)V", "loadWindow::(I)Z", "renderGame::(?)V", "buildPlayerMenu::(LPlayer;III)V",
     		"messageCacheLength::I", "bootStatus::Ljava/lang/String;", "XTEAKeys::[[I", "RSVMIntStack::[I",
     		"RSVMStringStack::[Ljava/lang/String;", "repaintWidgets::[Z", "b12_full::LFontImpl;",
-    		"mouseX::I", "mouseY::I",
+    		"mouseX::I", "mouseY::I", "runeScriptCache::LMemCache;", "runeScriptFileSystem::LRemoteFileTable;",
     		"shell::LGameEngine;", "focused::Z", "clearScreenRequest::Z", "gameFrame::Ljava/awt/Frame;",
     		"myPlayerIndex::I", "audioEffectCount::I", "cameraX::I", "cameraY::I",
             "cameraZ::I", "cameraYaw::I", "cameraPitch::I", "floorLevel::I", "npcIndices::[I",
