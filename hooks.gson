@@ -117,7 +117,7 @@
           "name": "p",
           "desc": "(II)V",
           "predicate": -1050293469,
-          "access": 1
+          "access": 0
         },
         "getChildBufferLength": {
           "owner": "fy",
@@ -2444,51 +2444,6 @@
         }
       },
       "methods": {
-        "writeInt": {
-          "owner": "dx",
-          "name": "x",
-          "desc": "(IB)V",
-          "access": 0
-        },
-        "compareCrcs": {
-          "owner": "dx",
-          "name": "aa",
-          "desc": "(I)Z",
-          "predicate": -852778594,
-          "access": 0
-        },
-        "writeByte": {
-          "owner": "dx",
-          "name": "m",
-          "desc": "(II)V",
-          "access": 8
-        },
-        "writeLong": {
-          "owner": "dx",
-          "name": "i",
-          "desc": "(J)V",
-          "access": 0
-        },
-        "decodeXTEA": {
-          "owner": "dx",
-          "name": "az",
-          "desc": "([IIII)V",
-          "predicate": 2113540917,
-          "access": 0
-        },
-        "writeBytes": {
-          "owner": "dx",
-          "name": "ab",
-          "desc": "([BIIS)V",
-          "predicate": 254,
-          "access": 0
-        },
-        "readLong": {
-          "owner": "dx",
-          "name": "o",
-          "desc": "(I)J",
-          "access": 0
-        },
         "writeCrc": {
           "owner": "dx",
           "name": "ax",
@@ -2496,10 +2451,10 @@
           "predicate": 175273567,
           "access": 0
         },
-        "applyRSA": {
+        "writeShortA": {
           "owner": "dx",
-          "name": "av",
-          "desc": "(Ljava/math/BigInteger;Ljava/math/BigInteger;S)V",
+          "name": "ad",
+          "desc": "(II)V",
           "access": 0
         },
         "encodeXTEA": {
@@ -2509,16 +2464,376 @@
           "predicate": -1441702734,
           "access": 0
         },
-        "readBytes": {
+        "readShortShift": {
           "owner": "dx",
-          "name": "r",
-          "desc": "([BIII)V",
+          "name": "ay",
+          "desc": "(I)I",
+          "predicate": -513927910,
+          "access": 0
+        },
+        "readCheckedString": {
+          "owner": "dx",
+          "name": "v",
+          "desc": "(I)Ljava/lang/String;",
+          "predicate": -559937650,
+          "access": 0
+        },
+        "writeMediumInt": {
+          "owner": "dx",
+          "name": "z",
+          "desc": "(II)V",
+          "access": 25
+        },
+        "readUShortA": {
+          "owner": "dx",
+          "name": "bt",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeSizeShort": {
+          "owner": "dx",
+          "name": "d",
+          "desc": "(II)V",
+          "access": 32
+        },
+        "writeJString": {
+          "owner": "dx",
+          "name": "n",
+          "desc": "(Ljava/lang/String;I)V",
+          "predicate": 159,
           "access": 0
         },
         "readInt": {
           "owner": "dx",
           "name": "k",
           "desc": "(I)I",
+          "access": 0
+        },
+        "writeByte": {
+          "owner": "dx",
+          "name": "h",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readLEShort": {
+          "owner": "dx",
+          "name": "bx",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "applyRSA": {
+          "owner": "dx",
+          "name": "av",
+          "desc": "(Ljava/math/BigInteger;Ljava/math/BigInteger;S)V",
+          "access": 0
+        },
+        "readJString2": {
+          "owner": "dx",
+          "name": "aq",
+          "desc": "(I)Ljava/lang/String;",
+          "predicate": -431802676,
+          "access": 0
+        },
+        "readSmart": {
+          "owner": "dx",
+          "name": "an",
+          "desc": "(B)I",
+          "predicate": 2,
+          "access": 0
+        },
+        "readUByteA": {
+          "owner": "dx",
+          "name": "at",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeLELong": {
+          "owner": "dx",
+          "name": "e",
+          "desc": "(J)V",
+          "access": 0
+        },
+        "readSmallSmart": {
+          "owner": "dx",
+          "name": "am",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeBytes": {
+          "owner": "dx",
+          "name": "ab",
+          "desc": "([BIIS)V",
+          "predicate": 254,
+          "access": 0
+        },
+        "readMediumInt": {
+          "owner": "dx",
+          "name": "s",
+          "desc": "(B)I",
+          "access": 0
+        },
+        "readMEInt2": {
+          "owner": "dx",
+          "name": "bc",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "readMEInt1": {
+          "owner": "dx",
+          "name": "bs",
+          "desc": "(B)I",
+          "access": 0
+        },
+        "writeShort": {
+          "owner": "dx",
+          "name": "m",
+          "desc": "(II)V",
+          "access": 8
+        },
+        "writeMEInt2": {
+          "owner": "dx",
+          "name": "bm",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readNegByte": {
+          "owner": "dx",
+          "name": "ap",
+          "desc": "(B)B",
+          "access": 0
+        },
+        "writeMEInt1": {
+          "owner": "dx",
+          "name": "ba",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "compareCrcs": {
+          "owner": "dx",
+          "name": "aa",
+          "desc": "(I)Z",
+          "predicate": -852778594,
+          "access": 0
+        },
+        "writeEncodedString": {
+          "owner": "dx",
+          "name": "u",
+          "desc": "(Ljava/lang/CharSequence;I)V",
+          "predicate": 1423291641,
+          "access": 0
+        },
+        "readLEUShortA": {
+          "owner": "dx",
+          "name": "bd",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeSmart": {
+          "owner": "dx",
+          "name": "q",
+          "desc": "(IB)V",
+          "predicate": 1,
+          "access": 0
+        },
+        "writeLEInt": {
+          "owner": "dx",
+          "name": "bn",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readNegUByte": {
+          "owner": "dx",
+          "name": "ar",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "readMIUShort": {
+          "owner": "dx",
+          "name": "aj",
+          "desc": "(I)I",
+          "predicate": -506705609,
+          "access": 0
+        },
+        "writeSizeByte": {
+          "owner": "dx",
+          "name": "p",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readByteA": {
+          "owner": "dx",
+          "name": "ac",
+          "desc": "(I)B",
+          "access": 0
+        },
+        "readUByteS": {
+          "owner": "dx",
+          "name": "aw",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeLong": {
+          "owner": "dx",
+          "name": "i",
+          "desc": "(J)V",
+          "access": 0
+        },
+        "writeByteS": {
+          "owner": "dx",
+          "name": "ae",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "writeSizeInt": {
+          "owner": "dx",
+          "name": "a",
+          "desc": "(IB)V",
+          "access": 0
+        },
+        "readJString": {
+          "owner": "dx",
+          "name": "au",
+          "desc": "(B)Ljava/lang/String;",
+          "predicate": 159,
+          "access": 0
+        },
+        "writeFlags": {
+          "owner": "dx",
+          "name": "b",
+          "desc": "(II)V",
+          "predicate": 159,
+          "access": 8
+        },
+        "readUByte": {
+          "owner": "dx",
+          "name": "t",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "readByteS": {
+          "owner": "dx",
+          "name": "af",
+          "desc": "(B)B",
+          "access": 0
+        },
+        "decodeXTEA2": {
+          "owner": "dx",
+          "name": "as",
+          "desc": "([IIII)V",
+          "predicate": -1187566195,
+          "access": 0
+        },
+        "writeInt": {
+          "owner": "dx",
+          "name": "x",
+          "desc": "(IB)V",
+          "access": 0
+        },
+        "readLEInt": {
+          "owner": "dx",
+          "name": "bq",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "writeByteA": {
+          "owner": "dx",
+          "name": "ah",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readString": {
+          "owner": "dx",
+          "name": "f",
+          "desc": "(B)Ljava/lang/String;",
+          "predicate": 65,
+          "access": 0
+        },
+        "readLEUShort": {
+          "owner": "dx",
+          "name": "bb",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "encodeXTEA2": {
+          "owner": "dx",
+          "name": "ag",
+          "desc": "([IB)V",
+          "predicate": 64,
+          "access": 0
+        },
+        "writeLEShortA": {
+          "owner": "dx",
+          "name": "ak",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "decodeXTEA": {
+          "owner": "dx",
+          "name": "az",
+          "desc": "([IIII)V",
+          "predicate": 2113540917,
+          "access": 0
+        },
+        "readLong": {
+          "owner": "dx",
+          "name": "o",
+          "desc": "(I)J",
+          "access": 0
+        },
+        "readShort": {
+          "owner": "dx",
+          "name": "g",
+          "desc": "(I)I",
+          "predicate": -673027666,
+          "access": 0
+        },
+        "writeNegByte": {
+          "owner": "dx",
+          "name": "ai",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "readBytes": {
+          "owner": "dx",
+          "name": "r",
+          "desc": "([BIII)V",
+          "access": 0
+        },
+        "writeLEShort": {
+          "owner": "dx",
+          "name": "al",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "writeMediumIntA": {
+          "owner": "dx",
+          "name": "bo",
+          "desc": "(IB)V",
+          "access": 0
+        },
+        "readByte": {
+          "owner": "dx",
+          "name": "y",
+          "desc": "(I)B",
+          "access": 0
+        },
+        "writeString": {
+          "owner": "dx",
+          "name": "l",
+          "desc": "(Ljava/lang/String;I)V",
+          "access": 0
+        },
+        "readUShort": {
+          "owner": "dx",
+          "name": "w",
+          "desc": "(I)I",
+          "access": 0
+        },
+        "readShortA": {
+          "owner": "dx",
+          "name": "be",
+          "desc": "(S)I",
+          "predicate": 129,
           "access": 0
         }
       }
