@@ -1,83 +1,74 @@
 package com.dank.analysis.impl.misc;
 
-import com.dank.DankEngine;
 import com.dank.analysis.Analyser;
+import com.dank.asm.Mask;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 import com.dank.hook.RSMethod;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.commons.cfg.BasicBlock;
+import com.dank.util.Wildcard;
+import com.marn.asm.Assembly;
+import com.marn.asm.FieldData;
+import com.marn.asm.MethodData;
+import com.marn.dynapool.DynaFlowAnalyzer;
+
 import org.objectweb.asm.tree.*;
 
-import java.lang.reflect.Modifier;
+import java.util.List;
 
-/**
- * Project: DankWise
- * Date: 17-02-2015
- * Time: 03:42
- * Created by Dogerina.
- * Copyright under GPL license by Dogerina.
- */
+//All fields and methods identified as of r113
 public class PacketBuffer extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {
         return cn.superName(Hook.BUFFER.getInternalName()) && cn.fieldCount() > 1
                 ? new ClassSpec(Hook.PACKET_BUFFER, cn) : null;
     }
-
     @Override
     public void evaluate(ClassNode cn) {
-        FieldNode random = null;
         for (FieldNode fn : cn.fields) {
-            if (fn.desc.equals("I") && !Modifier.isStatic(fn.access)) {
-                Hook.PACKET_BUFFER.put(new RSField(fn, "bitCaret"));
-            } else if (fn.desc.equals("[I") && Modifier.isStatic(fn.access)) {
-                Hook.PACKET_BUFFER.put(new RSField(fn, "bitMasks"));
-                MethodNode method = DankEngine.fGraph.getCaller(fn, 3);
-                if (method != null)
-                    Hook.PACKET_BUFFER.put(new RSMethod(method, "readBits"));
-            } else if (!fn.desc.equals("I") && !Modifier.isStatic(fn.access)) {
-                random = fn;
-                Hook.PACKET_BUFFER.put(new RSField(fn, "random"));
-                break;
-            }
-        }
-
-        for (MethodNode mn : cn.methods) {
-            if (mn.desc.endsWith("V") && mn.desc.startsWith("(I") && !Modifier.isStatic(mn.access)) {
-                for (BasicBlock block : mn.graph()) {
-                    for (AbstractInsnNode ain : block.instructions) {
-                        if (ain.opcode() != Opcodes.GETFIELD) {
-                            continue;
-                        }
-                        FieldInsnNode fin = (FieldInsnNode) ain;
-                        if (fin.owner.equals(cn.name) && fin.name.equals(random.name) && fin.desc.equals(random.desc)) {
-                            Hook.PACKET_BUFFER.put(new RSMethod(mn, "writeHeader"));
-                        }
-                    }
+        	if(fn.isStatic())
+        		continue;
+        	FieldData fd = DynaFlowAnalyzer.getField(cn.name, fn.name);
+        	if(fn.desc.equals("I")){
+                Hook.PACKET_BUFFER.put(new RSField(fn, "bitOffset"));
+                for(MethodData md : fd.referencedFrom){
+                	if(new Wildcard("(?)V").matches(md.METHOD_DESC)){
+                		List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+            					Mask.BIPUSH.operand(7)
+            					);
+                		if(pattern!=null){
+                            Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "endBitAccess"));
+                		}
+                		else{
+                            Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "startBitAccess"));
+                		}
+                	}
+                	if(new Wildcard("(I?)I").matches(md.METHOD_DESC)){
+                		List<AbstractInsnNode> pattern = Assembly.find(md.bytecodeMethod,
+            					Mask.GETFIELD.describe("[B")
+            					);
+                		if(pattern!=null){
+                            Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "getBits"));
+                		}
+                		else{
+                            Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "getBitsLeft"));
+                		}
+                	}
                 }
-            } else if (mn.desc.endsWith("I")) {
-                for (BasicBlock block : mn.graph()) {
-                    for (AbstractInsnNode ain : block.instructions) {
-                        if (ain.opcode() != Opcodes.GETFIELD) {
-                            continue;
-                        }
-                        FieldInsnNode fin = (FieldInsnNode) ain;
-                        if (fin.owner.equals(cn.name) && fin.name.equals(random.name) && fin.desc.equals(random.desc)) {
-                            Hook.PACKET_BUFFER.put(new RSMethod(mn, "readHeader"));
-
-                            MethodNode frames = DankEngine.mGraph.getCaller(mn, 3);
-                            if (frames != null) Hook.CLIENT.put(new RSMethod(frames, "processFrames"));
-
-                            MethodNode login = DankEngine.mGraph.getCaller(mn, 5);
-                            if (login != null) Hook.CLIENT.put(new RSMethod(login, "processLogin"));
-
-                            //MethodNode logic = DankEngine.mGraph.getCaller(login);
-                           // if (logic != null) Hook.CLIENT.put(new RSMethod(logic, "processLogic"));
-                        }
-                    }
+        	}
+        	else if(fn.desc.equals("L"+Hook.ISAAC_CIPHER.getInternalName()+";")){
+                Hook.PACKET_BUFFER.put(new RSField(fn, "cipher"));
+                for(MethodData md : fd.referencedFrom){
+                	if(new Wildcard("(?)I").matches(md.METHOD_DESC)){
+                        Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "readHeader"));
+                	}
+                	if(new Wildcard("(I?)V").matches(md.METHOD_DESC)){
+                        Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "writeHeader"));
+                	}
+                	if(new Wildcard("([I?)V").matches(md.METHOD_DESC)){
+                        Hook.PACKET_BUFFER.put(new RSMethod(md.bytecodeMethod, "initCipher"));
+                	}
                 }
-            }
+        	}
         }
     }
 }

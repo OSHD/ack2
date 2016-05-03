@@ -62,7 +62,11 @@ public enum Hook {
     		"readLEUShortA::(?)I", "readUShortA::(?)I", "readLEUShort::(?)I", "readShortShift::()I", "readMediumInt::(?)I", "readMEInt1::(?)I",
     		"readMEInt2::(?)I", "readLEInt::(?)I", "encodeXTEA2::([I)V", "decodeXTEA2::([III)V"
     		),
-    PACKET_BUFFER("PacketBuffer", BUFFER, "bitMasks", "random::LIsaacCipher;", "bitCaret", "readHeader::()I", "writeHeader::(I)V", "readBits::(I)I"),
+    PACKET_BUFFER("PacketBuffer", BUFFER, "cipher::LIsaacCipher;", "bitOffset::I", 
+    		"readHeader::(?)I", "writeHeader::(I?)V", 
+    		"startBitAccess::(?)V", "endBitAccess::(?)V",
+    		"getBits::(I)I", "getBitsLeft::(I?)I",
+    		"initCipher::([I?)V"),
     
     VARPBIT("Varpbit", DUAL_NODE, "highBit::I", "lowBit::I", "varp::I", "readValues::(LBuffer;I?)V", "unpackConfig::(LBuffer;)V"),
     EXCHANGE_OFFER("ExchangeOffer", null, "status::B", "itemId::I", "price::I", "itemQuantity::I", "transferred::I", "spent::I", "isCompleted::()I", "getStatus::(?)I"),
@@ -270,7 +274,7 @@ public enum Hook {
             "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "messageChannels::Ljava/util/Map;",
             "currentLoginName::Ljava/lang/String;", "hideRoofs::I", 
             "drawMenu", "chunkIds::[I", "loadedWindows::[Z",
-            "fontCache::LMemCache;");
+            "fontCache::LMemCache;", "packetBitMasks");
 
 
     public final Map<String, RSMember> hooks;

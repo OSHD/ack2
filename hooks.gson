@@ -2033,12 +2033,6 @@
           "predicate": 2,
           "access": 0
         },
-        "processFrames": {
-          "owner": "client",
-          "name": "e",
-          "desc": "(I)V",
-          "access": 0
-        },
         "repaintWidget": {
           "owner": "m",
           "name": "cm",
@@ -2231,13 +2225,6 @@
           "desc": "(Ljava/lang/String;Ljava/lang/String;IIII)V",
           "access": 0
         },
-        "processLogin": {
-          "owner": "ag",
-          "name": "p",
-          "desc": "(B)V",
-          "predicate": -60,
-          "access": 0
-        },
         "removeHUD": {
           "owner": "eg",
           "name": "cz",
@@ -2257,19 +2244,13 @@
     "PacketBuffer": {
       "name": "dc",
       "fields": {
-        "random": {
+        "cipher": {
           "owner": "dc",
           "name": "n",
           "desc": "Ldr;",
           "access": 0
         },
-        "bitMasks": {
-          "owner": "dc",
-          "name": "l",
-          "desc": "[I",
-          "access": 8
-        },
-        "bitCaret": {
+        "bitOffset": {
           "owner": "dc",
           "name": "u",
           "desc": "I",
@@ -2284,17 +2265,41 @@
           "desc": "(IB)V",
           "access": 0
         },
+        "startBitAccess": {
+          "owner": "dc",
+          "name": "hj",
+          "desc": "(I)V",
+          "access": 0
+        },
+        "getBits": {
+          "owner": "dc",
+          "name": "hq",
+          "desc": "(IB)I",
+          "predicate": 159,
+          "access": 0
+        },
+        "getBitsLeft": {
+          "owner": "dc",
+          "name": "hf",
+          "desc": "(II)I",
+          "access": 0
+        },
         "readHeader": {
           "owner": "dc",
           "name": "hv",
           "desc": "(I)I",
           "access": 0
         },
-        "readBits": {
+        "endBitAccess": {
           "owner": "dc",
-          "name": "hq",
-          "desc": "(IB)I",
-          "predicate": 159,
+          "name": "hb",
+          "desc": "(B)V",
+          "access": 0
+        },
+        "initCipher": {
+          "owner": "dc",
+          "name": "hs",
+          "desc": "([II)V",
           "access": 0
         }
       }
