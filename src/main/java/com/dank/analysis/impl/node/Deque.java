@@ -6,10 +6,7 @@ import com.dank.analysis.Analyser;
 import com.dank.hook.Hook;
 import com.dank.hook.RSField;
 
-/**
- * @author Septron
- * @since February 12, 2015
- */
+
 //All fields identified as of r111
 public class Deque extends Analyser {
     @Override

@@ -95,6 +95,9 @@ public class Client extends Analyser {
 				}
 			}
 		}
+		
+		//TODO move Sprite static hooks here
+		
 		//Find engineCycle; easily found in Message.<init>
 		ClassData messageData = DynaFlowAnalyzer.getClass(Hook.MESSAGES.getInternalName());
 		if(messageData!=null){
@@ -455,6 +458,9 @@ public class Client extends Analyser {
 		for (final ClassNode node : getClassPath().getClasses()) {
 			for (final MethodNode mn : node.methods) {
 				if (Modifier.isStatic(mn.access)) {
+					if(new Wildcard("(L"+Hook.NPC_DEFINITION.getInternalName()+";III?)V").matches(mn.desc)){
+						Hook.CLIENT.put(new RSMethod(mn, "addNPCToMenu"));
+					}
 					for (final BasicBlock block : mn.graph()) {
 						final NodeTree tree = block.tree();
 						// dependant on previous
@@ -464,7 +470,6 @@ public class Client extends Analyser {
 						tree.accept(new SpellTargetsVisitor(block));
 						tree.accept(new WidgetActionContentVisitor());
 						tree.accept(new WidgetBoundsIndexVisitor());
-						tree.accept(new NpcDefCombatLevelVisitor(block));
 						if (mn.desc.startsWith("(Ljava/lang/String;Ljava/lang/String;III")) {
 							tree.accept(new MenuOpenVisitor());
 						} else if (mn.desc.endsWith("V") && Type.getArgumentTypes(mn.desc).length == 3) {

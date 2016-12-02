@@ -18,11 +18,7 @@ import com.marn.asm.FieldData;
 import com.marn.asm.MethodData;
 import com.marn.dynapool.DynaFlowAnalyzer;
 
-/**
- * Project: RS3Injector
- * Time: 06:31
- * Date: 07-02-2015
- */
+//All fields and methods identified as of r111
 public class DualNode extends Analyser {
     @Override
     public ClassSpec specify(ClassNode cn) {

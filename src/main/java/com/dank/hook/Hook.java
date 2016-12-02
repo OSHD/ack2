@@ -86,7 +86,10 @@ public enum Hook {
     ANIMATION_SEQUENCE("AnimationSequence", null),
     STILL_MODEL("StillModel", ENTITY),
     MODEL("Model", ENTITY, "verticesX::[I", "verticesY::[I", "verticesZ::[I", "XYZMag::I", "allowClickBounds::Z"),
-    SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I"),
+    SPRITE("Sprite", null, "pixels::[I", "width::I", "height::I", "paddingX::I", "paddingY::I", "maxX::I", "maxY::I",
+    		"adjustRGB::(III)V", "drawImage2::(III)V", "drawImage::(II)V", "drawInverse::(II)V", "copyPixels::([I[IIIIIII)V", 
+    		"shapeImageToPixels::([I[IIIIIIII)V", "createGraphics::()V", "copyPixelsAlpha::([I[IIIIIIIII)V", "rotate::(IIIIIID?)V",
+    		"rotate2::(IIIIIIII[I[I)V", "trim::()V"),
     
     GPI("GPI", null, "chatBuffer::LBuffer;", "cachedAppearances::[LBuffer;", "pendingFlagsIndices::[I", "pendingFlagsCount::I",
             "movementTypes::[B", "skipFlags::[B", "localPlayerCount::I", "localPlayerIndices::[I", "globalPlayerCount::I", "globalPlayerIndices::[I"),
@@ -119,8 +122,12 @@ public enum Hook {
             "animFrameId::I", "interAnimFrameId::I", "interAnimId::I"),
 
     NPC_DEFINITION("NpcDefinition", DUAL_NODE, "varpIndex::I", "varp32Index::I", "transformIds::[I",
-            "transform::()LNpcDefinition;", "combatLevel::I", "id::I", "colors::[S", "modifiedColors::[S",
-            "name::Ljava/lang/String;", "actions::[Ljava/lang/String;"),
+            "combatLevel::I", "id::I", "colors::[S", "modifiedColors::[S",
+            "name::Ljava/lang/String;", "actions::[Ljava/lang/String;", 
+            "headModelIds::[I", "modelIds::[I",
+            "childDefinitionExists::()Z", "transform::()LNpcDefinition;", 
+            "getBasicModel::()LStillModel;", "getAnimatedModel::(LAnimationSequence;ILAnimationSequence;I)LModel;",
+            "unpackBuffer::(LBuffer;I)V", "readBuffer::(LBuffer;?)V"),
 
     NPC("Npc", CHARACTER, "definition::LNpcDefinition;"),
 
@@ -269,6 +276,7 @@ public enum Hook {
             "loadWorlds::()V", "getRuneScript::(I)LRuneScript;", "getVarpbit::(I)I",
             "bootState::I", "cacheDirectory::Ljava/io/File;",
             "cacheLocation::Ljava/io/File;", "processLogin::()V", 
+            "addNPCToMenu::(LNpcDefinition;III?)V",
             "colorsToFind::[S", "colorsToReplace::[[S", "colorsToFind1::[S", "colorsToReplace1::[[S",
             "getKeyFocusListener::LKeyFocusListener;", "canvas::Ljava/awt/Canvas;", "widgetsHeight::[I",
             "widgetsWidth::[I", "widgetPositionsX::[I", "widgetPositionsY::[I", "messageChannels::Ljava/util/Map;",

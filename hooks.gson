@@ -391,6 +391,18 @@
           "decoder": 776327791,
           "access": 8
         },
+        "headModelIds": {
+          "owner": "aa",
+          "name": "n",
+          "desc": "[I",
+          "access": 1
+        },
+        "modelIds": {
+          "owner": "aa",
+          "name": "c",
+          "desc": "[I",
+          "access": 8
+        },
         "modifiedColors": {
           "owner": "aa",
           "name": "t",
@@ -449,6 +461,40 @@
           "name": "i",
           "desc": "(I)Laa;",
           "predicate": -673353486,
+          "access": 0
+        },
+        "readBuffer": {
+          "owner": "aa",
+          "name": "m",
+          "desc": "(Ldx;I)V",
+          "access": 0
+        },
+        "getBasicModel": {
+          "owner": "aa",
+          "name": "e",
+          "desc": "(I)Lcd;",
+          "predicate": 1342156882,
+          "access": 0
+        },
+        "unpackBuffer": {
+          "owner": "aa",
+          "name": "z",
+          "desc": "(Ldx;II)V",
+          "predicate": -1979702765,
+          "access": 0
+        },
+        "childDefinitionExists": {
+          "owner": "aa",
+          "name": "c",
+          "desc": "(I)Z",
+          "predicate": 935933639,
+          "access": 0
+        },
+        "getAnimatedModel": {
+          "owner": "aa",
+          "name": "x",
+          "desc": "(Lae;ILae;II)Ldf;",
+          "predicate": -677444164,
           "access": 0
         }
       }
@@ -1518,12 +1564,6 @@
           "decoder": 81892227,
           "access": 0
         },
-        "engineVars": {
-          "owner": "fc",
-          "name": "h",
-          "desc": "[I",
-          "access": 0
-        },
         "yViewportBuffer": {
           "owner": "df",
           "name": "as",
@@ -2223,6 +2263,13 @@
           "owner": "client",
           "name": "kh",
           "desc": "(Ljava/lang/String;Ljava/lang/String;IIII)V",
+          "access": 0
+        },
+        "addNPCToMenu": {
+          "owner": "cx",
+          "name": "bl",
+          "desc": "(Laa;IIII)V",
+          "predicate": 170170386,
           "access": 0
         },
         "removeHUD": {
@@ -3229,7 +3276,7 @@
           "owner": "cj",
           "name": "y",
           "desc": "(III)V",
-          "access": 1
+          "access": 0
         },
         "removeObject": {
           "owner": "cj",
@@ -4469,6 +4516,74 @@
           "name": "x",
           "desc": "I",
           "access": 1
+        }
+      },
+      "methods": {
+        "rotate": {
+          "owner": "ce",
+          "name": "v",
+          "desc": "(IIIIIIDI)V",
+          "access": 0
+        },
+        "drawImage": {
+          "owner": "ce",
+          "name": "a",
+          "desc": "(II)V",
+          "access": 1025
+        },
+        "drawInverse": {
+          "owner": "ce",
+          "name": "u",
+          "desc": "(II)V",
+          "access": 0
+        },
+        "trim": {
+          "owner": "ce",
+          "name": "x",
+          "desc": "()V",
+          "access": 0
+        },
+        "adjustRGB": {
+          "owner": "ce",
+          "name": "z",
+          "desc": "(III)V",
+          "access": 1
+        },
+        "rotate2": {
+          "owner": "ce",
+          "name": "o",
+          "desc": "(IIIIIIII[I[I)V",
+          "access": 0
+        },
+        "copyPixels": {
+          "owner": "ce",
+          "name": "r",
+          "desc": "([I[IIIIIII)V",
+          "access": 0
+        },
+        "copyPixelsAlpha": {
+          "owner": "ce",
+          "name": "w",
+          "desc": "([I[IIIIIIIII)V",
+          "access": 0
+        },
+        "createGraphics": {
+          "owner": "ce",
+          "name": "m",
+          "desc": "()V",
+          "access": 16
+        },
+        "drawImage2": {
+          "owner": "ce",
+          "name": "y",
+          "desc": "(III)V",
+          "access": 0
+        },
+        "shapeImageToPixels": {
+          "owner": "ce",
+          "name": "d",
+          "desc": "([I[IIIIIIII)V",
+          "access": 0
         }
       }
     },
